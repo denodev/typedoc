@@ -2,7 +2,7 @@
     "inputFiles": "./lib.deno.ns.d.ts",
     "out": "typedoc",
     "entryPoint": "Deno",
-    "name": "Deno 中文 API",
+    "name": "Deno API 简体中文版",
     "mode": "file",
     "includeDeclarations": true,
     "excludeExternals": true,
