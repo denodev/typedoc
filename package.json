@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "format": "pretty-quick",
+    "build": "typedoc"
+  },
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "prettier": "^2.0.4",
+    "pretty-quick": "^2.0.1",
+    "typedoc": "^0.17.4",
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "license": "CC BY-NC 4.0"
+}
