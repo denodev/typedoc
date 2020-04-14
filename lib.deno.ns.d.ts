@@ -1411,27 +1411,26 @@ declare namespace Deno {
    * Requires `allow-read` permission. */
   export function realpath(path: string): Promise<string>;
 
-  /** UNSTABLE: This API is likely to change to return an iterable object instead
+  /** 不稳定：此 API 可能会更改为返回一个可迭代对象
    *
-   * Synchronously reads the directory given by `path` and returns an array of
-   * `Deno.FileInfo`.
+   * 同步读取 `path` 文件目录，并返回 `Deno.FileInfo` 数组。
    *
    *       const files = Deno.readdirSync("/");
    *
-   * Throws error if `path` is not a directory.
+   * 如果 `path` 不是目录则抛出错误。
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限 */
   export function readdirSync(path: string): FileInfo[];
 
-  /** UNSTABLE: This API is likely to change to return an `AsyncIterable`.
+  /** 不稳定：此 API 返回值可能更改为 `AsyncIterable`。
    *
-   * Reads the directory given by `path` and resolves to an array of `Deno.FileInfo`.
+   * 读取 `path` 文件目录，并返回 `Deno.FileInfo` 数组。
    *
    *       const files = await Deno.readdir("/");
    *
-   * Throws error if `path` is not a directory.
+   * 如果 `path` 不是目录则抛出错误。
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限 */
   export function readdir(path: string): Promise<FileInfo[]>;
 
   /** Synchronously copies the contents and permissions of one file to another
