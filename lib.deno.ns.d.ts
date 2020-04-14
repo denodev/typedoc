@@ -890,7 +890,7 @@ declare namespace Deno {
      *
      * **警告**: 当数据流经缓冲区时存在多个字节, 这种方法可能会因为字符被拆分而导致字符串的结果错误。 */
     toString(): string;
-    /** 返回缓冲区的未读部分是否为空. */
+    /** 返回缓冲区的未读部分是否为空。 */
     empty(): boolean;
     /** 只读缓冲区未读部分的字节数. */
     readonly length: number;
