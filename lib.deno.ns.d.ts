@@ -1242,26 +1242,24 @@ declare namespace Deno {
     recursive?: boolean;
   }
 
-  /** Synchronously removes the named file or directory.
+  /** 同步删除指定的文件或目录。
    *
    *       Deno.removeSync("/path/to/empty_dir/or/file");
    *       Deno.removeSync("/path/to/populated_dir/or/file", { recursive: true });
    *
-   * Throws error if permission denied, path not found, or path is a non-empty
-   * directory and the `recursive` option isn't set to `true`.
+   * 当权限被拒绝、路径找不到或者为非空目录且 `recursive` 未设置为 `true`，则抛出异常。
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限 */
   export function removeSync(path: string, options?: RemoveOptions): void;
 
-  /** Removes the named file or directory.
+  /** 删除指定的文件或目录。
    *
    *       await Deno.remove("/path/to/empty_dir/or/file");
    *       await Deno.remove("/path/to/populated_dir/or/file", { recursive: true });
    *
-   * Throws error if permission denied, path not found, or path is a non-empty
-   * directory and the `recursive` option isn't set to `true`.
+   * 当权限被拒绝、路径找不到或者为非空目录且 `recursive` 未设置为 `true`，则抛出异常。
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限 */
   export function remove(path: string, options?: RemoveOptions): Promise<void>;
 
   /** Synchronously renames (moves) `oldpath` to `newpath`. Paths may be files or
