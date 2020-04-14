@@ -191,9 +191,8 @@ declare namespace Deno {
    */
   export function exit(code?: number): never;
 
-  /** Returns a snapshot of the environment variables at invocation. Changing a
-   * property in the object will set that variable in the environment for the
-   * process. The environment object will only accept `string`s as values.
+  /** 返回调用时环境变量的快照。如果更改环境变量对象的属性，则会在进程的环境中设置该属性。
+   * 环境变量对象只接受 `string` 类型的值。
    *
    *       const myEnv = Deno.env();
    *       console.log(myEnv.SHELL);
@@ -201,18 +200,17 @@ declare namespace Deno {
    *       const newEnv = Deno.env();
    *       console.log(myEnv.TEST_VAR === newEnv.TEST_VAR);  //outputs "true"
    *
-   * Requires `allow-env` permission. */
+   * 需要 `allow-env` 权限 */
   export function env(): {
     [index: string]: string;
   };
 
-  /** Retrieve the value of an environment variable. Returns undefined if that
-   * key doesn't exist.
+  /** 获取环境变量的值。如果 `key` 不存在，则返回 `undefined`。
    *
    *       console.log(Deno.env("HOME"));  //e.g. outputs "/home/alice"
    *       console.log(Deno.env("MADE_UP_VAR"));  //outputs "Undefined"
    *
-   * Requires `allow-env` permission. */
+   * 需要 `allow-env` 权限 */
   export function env(key: string): string | undefined;
 
   /** **UNSTABLE** */
