@@ -1512,18 +1512,18 @@ declare namespace Deno {
    * Requires `allow-read` permission. */
   export function statSync(path: string): FileInfo;
 
-  /** Synchronously creates `newpath` as a hard link to `oldpath`.
+  /** 同步方式创建 `newpath` 作为 `oldpath` 的硬链接。
    *
    *       Deno.linkSync("old/name", "new/name");
    *
-   * Requires `allow-read` and `allow-write` permissions. */
+   * 需要 `allow-read` 和 `allow-write` 权限 */
   export function linkSync(oldpath: string, newpath: string): void;
 
-  /** Creates `newpath` as a hard link to `oldpath`.
+  /** 创建 `newpath` 作为 `oldpath` 的硬链接。
    *
    *       await Deno.link("old/name", "new/name");
    *
-   * Requires `allow-read` and `allow-write` permissions. */
+   * 需要 `allow-read` 和 `allow-write` 权限 */
   export function link(oldpath: string, newpath: string): Promise<void>;
 
   /** **UNSTABLE**: `type` argument type may be changed to `"dir" | "file"`.
