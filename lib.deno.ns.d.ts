@@ -1387,28 +1387,28 @@ declare namespace Deno {
     isSymlink(): boolean;
   }
 
-  /** Returns absolute normalized path, with symbolic links resolved.
+  /** 返回被解析后的符号链接绝对路径。
    *
-   *       // e.g. given /home/alice/file.txt and current directory /home/alice
+   *       // 例如: 给定文件 /home/alice/file.txt 和当前目录 /home/alice
    *       Deno.symlinkSync("file.txt", "symlink_file.txt");
    *       const realPath = Deno.realpathSync("./file.txt");
    *       const realSymLinkPath = Deno.realpathSync("./symlink_file.txt");
-   *       console.log(realPath);  // outputs "/home/alice/file.txt"
-   *       console.log(realSymLinkPath);  //outputs "/home/alice/file.txt"
+   *       console.log(realPath);  //输出 "/home/alice/file.txt"
+   *       console.log(realSymLinkPath);  //输出 "/home/alice/file.txt"
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限 */
   export function realpathSync(path: string): string;
 
-  /** Resolves to the absolute normalized path, with symbolic links resolved.
+  /** 返回被解析后的符号链接绝对路径。
    *
-   *       // e.g. given /home/alice/file.txt and current directory /home/alice
+   *       // 例如: 给定文件 /home/alice/file.txt 和当前目录 /home/alice
    *       await Deno.symlink("file.txt", "symlink_file.txt");
    *       const realPath = await Deno.realpath("./file.txt");
    *       const realSymLinkPath = await Deno.realpath("./symlink_file.txt");
    *       console.log(realPath);  // outputs "/home/alice/file.txt"
    *       console.log(realSymLinkPath);  //outputs "/home/alice/file.txt"
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限 */
   export function realpath(path: string): Promise<string>;
 
   /** UNSTABLE: This API is likely to change to return an iterable object instead
