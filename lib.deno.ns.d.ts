@@ -1459,7 +1459,7 @@ declare namespace Deno {
    *       Deno.symlinkSync("./test.txt", "./test_link.txt");
    *       const target = Deno.readlinkSync("./test_link.txt"); // ./test.txt 的绝对路径
    *
-   * 如果使用硬链接调用，则会引发类型错误。
+   * 如果使用硬链接调用，则会抛出 `TypeError`。
    *
    * 需要 `allow-read` 权限 */
   export function readlinkSync(path: string): string;
