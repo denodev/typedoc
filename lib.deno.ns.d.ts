@@ -892,7 +892,7 @@ declare namespace Deno {
     toString(): string;
     /** 返回缓冲区的未读部分是否为空。 */
     empty(): boolean;
-    /** 只读缓冲区未读部分的字节数. */
+    /** 只读缓冲区未读部分的字节数。 */
     readonly length: number;
     /** 缓冲区底层字节片段的只读容量， 即为缓冲区数据分配的总空间. */
     readonly capacity: number;
