@@ -1444,7 +1444,7 @@ declare namespace Deno {
   export function copyFileSync(fromPath: string, toPath: string): void;
 
   /** 将一个文件的内容和权限复制到另一个指定的路径，默认情况下根据需要
-   * 创建或者覆盖一个新文件。 如果目标路径是目录或不可写，则失败。
+   * 创建新文件或者覆盖原文件。 如果目标路径是目录或不可写，则失败。
    *
    *       await Deno.copyFile("from.txt", "to.txt");
    *
