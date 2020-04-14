@@ -177,11 +177,11 @@ declare namespace Deno {
    */
   export function hostname(): string;
 
-  /** Returns the release version of the Operating System.
+  /** 返回操作系统的发行版本。
    *
    *       console.log(Deno.osRelease());
    *
-   * Requires `allow-env` permission.
+   * 需要 `allow-env` 权限。
    */
   export function osRelease(): string;
 
