@@ -880,7 +880,7 @@ declare namespace Deno {
    * 基于 [Go Buffer](https://golang.org/pkg/bytes/#Buffer)。 */
   export class Buffer implements Reader, SyncReader, Writer, SyncWriter {
     constructor(ab?: ArrayBuffer);
-    /** 返回一个缓冲区未读部分的片段.
+    /** 返回一个缓冲区未读部分的片段。
      *
      * 该片段只在下一次缓冲区修改之前有效 (即, 只有在下一次调用像 `read()`, `write()`,
      * `reset()`, 或者 `truncate()` 这样的方法).
