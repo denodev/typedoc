@@ -904,7 +904,7 @@ declare namespace Deno {
     /** 在缓冲区中读取下一个 `p.length` 字节，或直到缓冲区用完为止。
      * 返回只读的字节数。当缓冲区没有数据返回，则返回值为 `Deno.EOF`。 */
     readSync(p: Uint8Array): number | EOF;
-    /** 在缓冲区中读取下一个 `p.length` 字节, 或直到缓冲区用完为止.
+    /** 在缓冲区中读取下一个 `p.length` 字节，或直到缓冲区用完为止。
      * 解析读取的字节数. 当缓冲区没有数据返回, 则解析为 `Deno.EOF` */
     read(p: Uint8Array): Promise<number | EOF>;
     writeSync(p: Uint8Array): number;
