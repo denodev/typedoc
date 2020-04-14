@@ -875,7 +875,7 @@ declare namespace Deno {
    */
   export function setRaw(rid: number, mode: boolean): void;
 
-  /** 一个具有 `read()` 和 `write()` 方法大小可变的字节缓冲区.
+  /** 一个具有 `read()` 和 `write()` 方法大小可变的字节缓冲区。
    *
    * 基于 [Go Buffer](https://golang.org/pkg/bytes/#Buffer). */
   export class Buffer implements Reader, SyncReader, Writer, SyncWriter {
