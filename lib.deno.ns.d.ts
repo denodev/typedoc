@@ -916,7 +916,7 @@ declare namespace Deno {
      * 基于 Go Lang 的
      * [Buffer.Grow](https://golang.org/pkg/bytes/#Buffer.Grow). */
     grow(n: number): void;
-    /** 从 `r` 读取数据直到 `Deno.EOF`, 并将其附加到缓冲区, 根据需要扩展缓冲区.
+    /** 从 `r` 读取数据直到 `Deno.EOF`，并将其附加到缓冲区，根据需要扩展缓冲区。
      * 解析读取的字节数。 如果缓冲区过大，`.readFrom()` 将会 reject 一个错误。
      * 基于 Go Lang 的
      * [Buffer.ReadFrom](https://golang.org/pkg/bytes/#Buffer.ReadFrom). */
