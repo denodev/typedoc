@@ -113,8 +113,11 @@ declare namespace Deno {
   }
 
   export interface RunTestsOptions {
-    /** If `true`, Deno will exit with status code 1 if there was
-     * test failure. Defaults to `true`. */
+    /**
+     * 如果为 `true`，当测试失败时 Deno 将以状态码 1 退出。
+     *
+     * 默认为 `true`。
+     */
     exitOnFail?: boolean;
     /** If `true`, Deno will exit upon first test failure. Defaults to `false`. */
     failFast?: boolean;
