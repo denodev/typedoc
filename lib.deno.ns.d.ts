@@ -185,8 +185,7 @@ declare namespace Deno {
    */
   export function osRelease(): string;
 
-  /** Exit the Deno process with optional exit code. If no exit code is supplied
-   * then Deno will exit with return code of 0.
+  /** 退出Deno进程，可以指定退出码，若无则为 0.
    *
    *       Deno.exit(5);
    */
