@@ -875,20 +875,20 @@ declare namespace Deno {
    */
   export function setRaw(rid: number, mode: boolean): void;
 
-  /** A variable-sized buffer of bytes with `read()` and `write()` methods.
+  /** 一个具有 `read()` 和 `write()` 方法大小可变的字节缓冲区.
    *
-   * Based on [Go Buffer](https://golang.org/pkg/bytes/#Buffer). */
+   * 基于 [Go Buffer](https://golang.org/pkg/bytes/#Buffer). */
   export class Buffer implements Reader, SyncReader, Writer, SyncWriter {
     constructor(ab?: ArrayBuffer);
+    /** 返回一个缓冲区未读部分的片段.
+     *
+     * 该片段只在下一次缓冲区修改之前有效 (即, 只有在下一次调用像 `read()`, `write()`,
+     * `reset()`, 或者 `truncate()` 这样的方法).
+     * 该片段会在下一次修改缓冲区内容之前将缓冲区内容进行别名处理, 所以立刻改变片段会影响未来读取的结果. */
+    bytes(): Uint8Array;
     /** 将缓冲区中未读部分的内容以 "string "的形式返回.
      *
      * **警告**: 当数据流经缓冲区时存在多个字节, 这种方法可能会因为字符被拆分而导致字符串的结果错误. */
-    bytes(): Uint8Array;
-    /** Returns the contents of the unread portion of the buffer as a `string`.
-     *
-     * **Warning**: if multibyte characters are present when data is flowing
-     * through the buffer, this method may result in incorrect strings due to a
-     * character being split. */
     toString(): string;
     /** 返回缓冲区的未读部分是否为空. */
     empty(): boolean;
