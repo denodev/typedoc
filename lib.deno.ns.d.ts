@@ -1432,9 +1432,8 @@ declare namespace Deno {
    * 需要 `allow-read` 权限 */
   export function readdir(path: string): Promise<FileInfo[]>;
 
-  /** Synchronously copies the contents and permissions of one file to another
-   * specified path, by default creating a new file if needed, else overwriting.
-   * Fails if target path is a directory or is unwritable.
+  /** 采用同步方式将一个文件的内容和权限复制到另一个指定的路径，默认情况下根据需要
+   * 创建新文件或者覆盖原文件。 如果目标路径是目录或不可写，则失败。
    *
    *       Deno.copyFileSync("from.txt", "to.txt");
    *
@@ -1442,14 +1441,13 @@ declare namespace Deno {
    * Requires `allow-write` permission on toPath. */
   export function copyFileSync(fromPath: string, toPath: string): void;
 
-  /** Copies the contents and permissions of one file to another specified path,
-   * by default creating a new file if needed, else overwriting. Fails if target
-   * path is a directory or is unwritable.
+  /** 将一个文件的内容和权限复制到另一个指定的路径，默认情况下根据需要
+   * 创建新文件或者覆盖原文件。 如果目标路径是目录或不可写，则失败。
    *
    *       await Deno.copyFile("from.txt", "to.txt");
    *
-   * Requires `allow-read` permission on fromPath.
-   * Requires `allow-write` permission on toPath. */
+   * `fromPath` 需要 `allow-read` 权限。
+   * `toPath` 需要 `allow-write` 权限。 */
   export function copyFile(fromPath: string, toPath: string): Promise<void>;
 
   /** 同步方式解析并返回符号链接对目标文件的绝对路径。
