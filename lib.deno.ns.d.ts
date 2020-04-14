@@ -384,7 +384,7 @@ declare namespace Deno {
   export function dir(kind: DirKind): string | null;
 
   /**
-   * 返回当前deno可执行文件的路径。
+   * 返回当前 deno 可执行文件的路径。
    *
    *       console.log(Deno.execPath());  //e.g. "/home/alice/.local/bin/deno"
    *
