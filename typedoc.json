@@ -10,5 +10,6 @@
     "excludePrivate": true,
     "excludeProtected": true,
     "theme": "minimal",
+    "gaID": "UA-123999279-2",
     "readme": "none"
 }
