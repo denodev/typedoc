@@ -15,9 +15,8 @@ jobs:
       - run: yarn build
 
       - name: Deploy
-        if: github.ref == 'refs/heads/source' && github.event_name == 'push' && github.repository == 'denodev/typedoc'
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push' && github.repository == 'denodev/typedoc'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./typedoc
-          publish_branch: master
