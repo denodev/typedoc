@@ -912,7 +912,7 @@ declare namespace Deno {
     /** 增加缓冲区的容量，必要时保证另一个 `n` 字节的空间。
      * 在 `.grow(n)` 之后，至少可以将 `n` 个字节写到缓冲区中而不需要另外分配。
      * 若 `n` 为负数，`.grow()` 将抛出异常。
-     * 当缓冲区不能增加的时候会抛出错误.
+     * 当缓冲区不能增加的时候会抛出错误。
      * 基于 Go Lang 的
      * [Buffer.Grow](https://golang.org/pkg/bytes/#Buffer.Grow). */
     grow(n: number): void;
