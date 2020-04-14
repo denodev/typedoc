@@ -1046,15 +1046,15 @@ declare namespace Deno {
    * Requires `allow-write` permission. */
   export function mkdirSync(path: string, options?: MkdirOptions): void;
 
-  /** Creates a new directory with the specified path.
+  /** 在指定路径下创建一个新的目录。
    *
    *       await Deno.mkdir("new_dir");
    *       await Deno.mkdir("nested/directories", { recursive: true });
    *       await Deno.mkdir("restricted_access_dir", { mode: 0o700 });
    *
-   * Defaults to throwing error if the directory already exists.
+   * 目录存在的情况下，默认抛出错误。
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
   export function mkdir(path: string, options?: MkdirOptions): Promise<void>;
 
   export interface MakeTempOptions {
