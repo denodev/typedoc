@@ -902,7 +902,7 @@ declare namespace Deno {
     /** 将缓冲区重置为空，但它保留了底层存储供未来写入时使用，`.reset()` 与 `.truncate(0)` 相同。 */
     reset(): void;
     /** 在缓冲区中读取下一个 `p.length` 字节，或直到缓冲区用完为止。
-     * 返回只读的字节数. 当缓冲区没有数据返回, 则返回值为 `Deno.EOF`. */
+     * 返回只读的字节数。当缓冲区没有数据返回，则返回值为 `Deno.EOF`。 */
     readSync(p: Uint8Array): number | EOF;
     /** 在缓冲区中读取下一个 `p.length` 字节, 或直到缓冲区用完为止.
      * 解析读取的字节数. 当缓冲区没有数据返回, 则解析为 `Deno.EOF` */
