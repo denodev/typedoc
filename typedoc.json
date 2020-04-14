@@ -1,15 +1,15 @@
 {
-    "inputFiles": "./lib.deno.ns.d.ts",
-    "out": "typedoc",
-    "entryPoint": "Deno",
-    "name": "Deno API 简体中文版",
-    "mode": "file",
-    "includeDeclarations": true,
-    "excludeExternals": true,
-    "ignoreCompilerErrors": true,
-    "excludePrivate": true,
-    "excludeProtected": true,
-    "theme": "./theme",
-    "gaID": "UA-123999279-2",
-    "readme": "none"
+  "inputFiles": "./lib.deno.ns.d.ts",
+  "out": "typedoc",
+  "entryPoint": "Deno",
+  "name": "Deno API 简体中文版",
+  "mode": "file",
+  "includeDeclarations": true,
+  "excludeExternals": true,
+  "ignoreCompilerErrors": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "theme": "minimal",
+  "gaID": "UA-123999279-2",
+  "readme": "none"
 }
