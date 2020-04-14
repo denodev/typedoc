@@ -11,6 +11,8 @@
 
 ## 参与翻译
 
+翻译规范请参阅[中文文案排版指北](https://github.com/sparanoid/chinese-copywriting-guidelines)
+
 - [参与翻译](https://github.com/denodev/typedoc/issues/4)
 - [翻译进度](https://github.com/denodev/typedoc/issues/6)
 
