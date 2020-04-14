@@ -469,18 +469,18 @@ declare namespace Deno {
      *
      * Implementations should not retain a reference to `p`.
      */
-    /** 最多读取`p.byteLength`个字节到p中，然后返回读取的字节数（`0 < n <= p.byteLength`），并在遇到任何错误时回调失败。
-      * 即使`read()`返回值为`n < p.byteLength`，p也可能在调用期间被用作临时空间。
-      * 如果有数据可用，但不存在`p.byteLength`，`read()`通常会返回可用值，而不是等待更多。
+    /** 最多读取 `p.byteLength` 个字节到p中，然后返回读取的字节数（`0 < n <= p.byteLength`），并在遇到任何错误时返回拒绝状态的回调函数。
+      * 即使 `read()` 返回值为 `n < p.byteLength`，p也可能在调用期间被用作临时空间。
+      * 如果有数据可用，但不存在 `p.byteLength`，`read()` 通常会返回可用值，而不是等待更多。
       * 
-      * 当`read()`遇到文件结束条件时，将返回`Deno.EOF`符号。
+      * 当 `read()` 遇到文件结束条件时，将返回 `Deno.EOF` 符号。
       * 
-      * 当`read()`遇到错误时，它会回调失败并返回错误信息。
+      * 当 `read()` 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。
       * 
-      * 调用者应始终处理返回值为`n > 0`的情况，然后再考虑`EOF`。
+      * 调用者应始终处理返回值为 `n > 0` 的情况，然后再考虑 `EOF`。
       * 应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的I/O错误。
       *
-      * 实现不应保留对“ p”的引用。
+      * 实现不应保留对 `p` 的引用。
      */
     read(p: Uint8Array): Promise<number | EOF>;
   }
