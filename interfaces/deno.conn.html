@@ -2805,7 +2805,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">local<wbr>Addr<span class="tsd-signature-symbol">:</span> <a href="../index.html#addr" class="tsd-signature-type">Addr</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L1875">lib.deno.ns.d.ts:1875</a></li>
+						<li>Defined in <a href="https://github.com/denodev/typedoc/blob/b1f2c74/lib.deno.ns.d.ts#L1888">lib.deno.ns.d.ts:1888</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2820,7 +2820,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">remote<wbr>Addr<span class="tsd-signature-symbol">:</span> <a href="../index.html#addr" class="tsd-signature-type">Addr</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L1877">lib.deno.ns.d.ts:1877</a></li>
+						<li>Defined in <a href="https://github.com/denodev/typedoc/blob/b1f2c74/lib.deno.ns.d.ts#L1890">lib.deno.ns.d.ts:1890</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2835,7 +2835,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">rid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L1879">lib.deno.ns.d.ts:1879</a></li>
+						<li>Defined in <a href="https://github.com/denodev/typedoc/blob/b1f2c74/lib.deno.ns.d.ts#L1892">lib.deno.ns.d.ts:1892</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2858,7 +2858,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="deno.closer.html">Closer</a>.<a href="deno.closer.html#close">close</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L519">lib.deno.ns.d.ts:519</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/b1f2c74/lib.deno.ns.d.ts#L532">lib.deno.ns.d.ts:532</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -2875,7 +2875,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L1882">lib.deno.ns.d.ts:1882</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/b1f2c74/lib.deno.ns.d.ts#L1895">lib.deno.ns.d.ts:1895</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2898,7 +2898,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L1885">lib.deno.ns.d.ts:1885</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/b1f2c74/lib.deno.ns.d.ts#L1898">lib.deno.ns.d.ts:1898</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2922,25 +2922,20 @@ img {
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="deno.reader.html">Reader</a>.<a href="deno.reader.html#read">read</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L467">lib.deno.ns.d.ts:467</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/b1f2c74/lib.deno.ns.d.ts#L480">lib.deno.ns.d.ts:480</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Reads up to <code>p.byteLength</code> bytes into <code>p</code>. It resolves to the number of
-									bytes read (<code>0</code> &lt; <code>n</code> &lt;= <code>p.byteLength</code>) and rejects if any error
-									encountered. Even if <code>read()</code> resolves to <code>n</code> &lt; <code>p.byteLength</code>, it may
-									use all of <code>p</code> as scratch space during the call. If some data is
-									available but not <code>p.byteLength</code> bytes, <code>read()</code> conventionally resolves
-								to what is available instead of waiting for more.</p>
+								<p>最多读取 <code>p.byteLength</code> 个字节到p中，然后返回读取的字节数（<code>0 &lt; n &lt;= p.byteLength</code>），并在遇到任何错误时返回拒绝状态的回调函数。
+									即使 <code>read()</code> 返回值为 <code>n &lt; p.byteLength</code>，p也可能在调用期间被用作临时空间。
+								如果有数据可用，但不存在 <code>p.byteLength</code>，<code>read()</code> 通常会返回可用值，而不是等待更多。</p>
 							</div>
-							<p>When <code>read()</code> encounters end-of-file condition, it resolves to
-							<code>Deno.EOF</code> symbol.</p>
-							<p>When <code>read()</code> encounters an error, it rejects with an error.</p>
-							<p>Callers should always process the <code>n</code> &gt; <code>0</code> bytes returned before
-								considering the <code>EOF</code>. Doing so correctly handles I/O errors that happen
-							after reading some bytes and also both of the allowed EOF behaviors.</p>
-							<p>Implementations should not retain a reference to <code>p</code>.</p>
+							<p>当 <code>read()</code> 遇到文件结束条件时，将返回 <code>Deno.EOF</code> 符号。</p>
+							<p>当 <code>read()</code> 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。</p>
+							<p>调用者应始终处理返回值为 <code>n &gt; 0</code> 的情况，然后再考虑 <code>EOF</code>。
+							应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的I/O错误。</p>
+							<p>实现不应保留对 <code>p</code> 的引用。</p>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
@@ -2963,7 +2958,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="deno.writer.html">Writer</a>.<a href="deno.writer.html#write">write</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L502">lib.deno.ns.d.ts:502</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/b1f2c74/lib.deno.ns.d.ts#L515">lib.deno.ns.d.ts:515</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
