@@ -1469,7 +1469,7 @@ declare namespace Deno {
    *       await Deno.symlink("./test.txt", "./test_link.txt");
    *       const target = await Deno.readlink("./test_link.txt"); // ./test.txt 的绝对路径
    *
-   * 如果使用硬链接调用，则会引发类型错误。
+   * 如果使用硬链接调用，则会抛出 `TypeError`。
    *
    * 需要 `allow-read` 权限 */
   export function readlink(path: string): Promise<string>;
