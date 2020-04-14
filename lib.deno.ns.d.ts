@@ -1240,8 +1240,7 @@ declare namespace Deno {
   ): Promise<void>;
 
   export interface RemoveOptions {
-    /** Defaults to `false`. If set to `true`, path will be removed even if
-     * it's a non-empty directory. */
+    /** 默认为 `false`。如果设置为 `true`，则即使路径为非空目录也会被删除。 */
     recursive?: boolean;
   }
 
