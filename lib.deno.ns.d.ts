@@ -880,13 +880,9 @@ declare namespace Deno {
    * Based on [Go Buffer](https://golang.org/pkg/bytes/#Buffer). */
   export class Buffer implements Reader, SyncReader, Writer, SyncWriter {
     constructor(ab?: ArrayBuffer);
-    /** Returns a slice holding the unread portion of the buffer.
+    /** 将缓冲区中未读部分的内容以 "string "的形式返回.
      *
-     * The slice is valid for use only until the next buffer modification (that
-     * is, only until the next call to a method like `read()`, `write()`,
-     * `reset()`, or `truncate()`). The slice aliases the buffer content at
-     * least until the next buffer modification, so immediate changes to the
-     * slice will affect the result of future reads. */
+     * **警告**: 当数据流经缓冲区时存在多个字节, 这种方法可能会因为字符被拆分而导致字符串的结果错误. */
     bytes(): Uint8Array;
     /** Returns the contents of the unread portion of the buffer as a `string`.
      *
@@ -894,50 +890,40 @@ declare namespace Deno {
      * through the buffer, this method may result in incorrect strings due to a
      * character being split. */
     toString(): string;
-    /** Returns whether the unread portion of the buffer is empty. */
+    /** 返回缓冲区的未读部分是否为空. */
     empty(): boolean;
-    /** A read only number of bytes of the unread portion of the buffer. */
+    /** 只读缓冲区未读部分的字节数. */
     readonly length: number;
-    /** The read only capacity of the buffer's underlying byte slice, that is,
-     * the total space allocated for the buffer's data. */
+    /** 缓冲区底层字节片段的只读容量， 即为缓冲区数据分配的总空间. */
     readonly capacity: number;
-    /** Discards all but the first `n` unread bytes from the buffer but
-     * continues to use the same allocated storage. It throws if `n` is
-     * negative or greater than the length of the buffer. */
+    /** 除了缓冲器中开头 `n` 个未读字节之外, 其他的所有字节都丢弃, 但是继续使用相同分配的存储空间.
+     * 当 `n` 为负数或者大于缓冲区的长度, 则会抛出. */
     truncate(n: number): void;
-    /** Resets the buffer to be empty, but it retains the underlying storage for
-     * use by future writes. `.reset()` is the same as `.truncate(0)`. */
+    /** 将缓冲区重置为空, 但它保留了底层存储供未来写入时使用. `.reset()` 与 `.truncate(0)` 相同. */
     reset(): void;
-    /** Reads the next `p.length` bytes from the buffer or until the buffer is
-     * drained. Returns the number of bytes read. If the buffer has no data to
-     * return, the return is `Deno.EOF`. */
+    /** 在缓冲区中读取下一个 `p.length` 字节, 或直到缓冲区用完为止.
+     * 返回只读的字节数. 当缓冲区没有数据返回, 则返回值为 `Deno.EOF`. */
     readSync(p: Uint8Array): number | EOF;
-    /** Reads the next `p.length` bytes from the buffer or until the buffer is
-     * drained. Resolves to the number of bytes read. If the buffer has no
-     * data to return, resolves to `Deno.EOF`. */
+    /** 在缓冲区中读取下一个 `p.length` 字节, 或直到缓冲区用完为止.
+     * 解析读取的字节数. 当缓冲区没有数据返回, 则解析为 `Deno.EOF` */
     read(p: Uint8Array): Promise<number | EOF>;
     writeSync(p: Uint8Array): number;
     write(p: Uint8Array): Promise<number>;
-    /** Grows the buffer's capacity, if necessary, to guarantee space for
-     * another `n` bytes. After `.grow(n)`, at least `n` bytes can be written to
-     * the buffer without another allocation. If `n` is negative, `.grow()` will
-     * throw. If the buffer can't grow it will throw an error.
-     *
-     * Based on Go Lang's
+    /** 增加缓冲区的容量, 必要时保证另一个 "n" 字节的空间.
+     * 在 `.grow(n)` 之后, 至少可以将 "n" 字节写到缓冲区中而不需要另外分配.
+     * 若 `n`为负数, `.grow()` 将抛出.
+     * 当缓冲区不能增加的时候会抛出错误.
+     * 基于 Go Lang's
      * [Buffer.Grow](https://golang.org/pkg/bytes/#Buffer.Grow). */
     grow(n: number): void;
-    /** Reads data from `r` until `Deno.EOF` and appends it to the buffer,
-     * growing the buffer as needed. It resolves to the number of bytes read.
-     * If the buffer becomes too large, `.readFrom()` will reject with an error.
-     *
-     * Based on Go Lang's
+    /** 从 `r` 读取数据直到 `Deno.EOF`, 并将其附加到缓冲区, 根据需要扩展缓冲区.
+     * 解析读取的字节数. 如果缓冲区过大, `.readFrom()` 将会 reject 一个错误.
+     * 基于 Go Lang's
      * [Buffer.ReadFrom](https://golang.org/pkg/bytes/#Buffer.ReadFrom). */
     readFrom(r: Reader): Promise<number>;
-    /** Reads data from `r` until `Deno.EOF` and appends it to the buffer,
-     * growing the buffer as needed. It returns the number of bytes read. If the
-     * buffer becomes too large, `.readFromSync()` will throw an error.
-     *
-     * Based on Go Lang's
+    /** 从 `r` 读取数据直到 `Deno.EOF`, 并将其附加到缓冲区, 根据需要扩展缓冲区.
+     * 返回读取的字节数, 如果缓冲区过大, `.readFromSync()` 将会抛出错误.
+     * 基于 Go Lang's
      * [Buffer.ReadFrom](https://golang.org/pkg/bytes/#Buffer.ReadFrom). */
     readFromSync(r: SyncReader): number;
   }
