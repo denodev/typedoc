@@ -2777,9 +2777,9 @@ img {
 		<section class="tsd-panel tsd-comment">
 			<div class="tsd-comment tsd-typography">
 				<div class="lead">
-					<p>A variable-sized buffer of bytes with <code>read()</code> and <code>write()</code> methods.</p>
+					<p>一个具有 <code>read()</code> 和 <code>write()</code> 方法大小可变的字节缓冲区。</p>
 				</div>
-				<p>Based on <a href="https://golang.org/pkg/bytes/#Buffer">Go Buffer</a>.</p>
+				<p>基于 <a href="https://golang.org/pkg/bytes/#Buffer">Go Buffer</a>。</p>
 			</div>
 		</section>
 		<section class="tsd-panel tsd-hierarchy">
@@ -2848,7 +2848,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L875">lib.deno.ns.d.ts:875</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L875">lib.deno.ns.d.ts:875</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2870,13 +2870,12 @@ img {
 				<div class="tsd-signature tsd-kind-icon">capacity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L897">lib.deno.ns.d.ts:897</a></li>
+						<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L892">lib.deno.ns.d.ts:892</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The read only capacity of the buffer&#39;s underlying byte slice, that is,
-						the total space allocated for the buffer&#39;s data.</p>
+						<p>缓冲区底层字节片段的只读容量，即为缓冲区数据分配的总空间。</p>
 					</div>
 				</div>
 			</section>
@@ -2886,12 +2885,12 @@ img {
 				<div class="tsd-signature tsd-kind-icon">length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L894">lib.deno.ns.d.ts:894</a></li>
+						<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L890">lib.deno.ns.d.ts:890</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A read only number of bytes of the unread portion of the buffer.</p>
+						<p>只读缓冲区未读部分的字节数。</p>
 					</div>
 				</div>
 			</section>
@@ -2908,18 +2907,16 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L884">lib.deno.ns.d.ts:884</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L882">lib.deno.ns.d.ts:882</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Returns a slice holding the unread portion of the buffer.</p>
+								<p>返回一个缓冲区未读部分的片段。</p>
 							</div>
-							<p>The slice is valid for use only until the next buffer modification (that
-								is, only until the next call to a method like <code>read()</code>, <code>write()</code>,
-								<code>reset()</code>, or <code>truncate()</code>). The slice aliases the buffer content at
-								least until the next buffer modification, so immediate changes to the
-							slice will affect the result of future reads.</p>
+							<p>该片段只在下一次缓冲区修改之前有效 (即, 只有在下一次调用像 <code>read()</code>, <code>write()</code>,
+								<code>reset()</code>, 或者 <code>truncate()</code> 这样的方法)。
+							该片段会在下一次修改缓冲区内容之前将缓冲区内容进行别名处理 ,  所以立刻改变片段会影响未来读取的结果。</p>
 						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Uint8Array</span></h4>
 					</li>
@@ -2935,12 +2932,12 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L892">lib.deno.ns.d.ts:892</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L888">lib.deno.ns.d.ts:888</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Returns whether the unread portion of the buffer is empty.</p>
+								<p>返回缓冲区的未读部分是否为空。</p>
 							</div>
 						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -2957,18 +2954,18 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L922">lib.deno.ns.d.ts:922</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L912">lib.deno.ns.d.ts:912</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Grows the buffer&#39;s capacity, if necessary, to guarantee space for
-									another <code>n</code> bytes. After <code>.grow(n)</code>, at least <code>n</code> bytes can be written to
-									the buffer without another allocation. If <code>n</code> is negative, <code>.grow()</code> will
-								throw. If the buffer can&#39;t grow it will throw an error.</p>
+								<p>增加缓冲区的容量，必要时保证另一个 <code>n</code> 字节的空间。
+									在 <code>.grow(n)</code> 之后，至少可以将 <code>n</code> 个字节写到缓冲区中而不需要另外分配。
+									若 <code>n</code> 为负数，<code>.grow()</code> 将抛出异常。
+									当缓冲区不能增加的时候会抛出错误。
+									基于 Go Lang 的
+								<a href="https://golang.org/pkg/bytes/#Buffer.Grow">Buffer.Grow</a>.</p>
 							</div>
-							<p>Based on Go Lang&#39;s
-							<a href="https://golang.org/pkg/bytes/#Buffer.Grow">Buffer.Grow</a>.</p>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
@@ -2991,14 +2988,13 @@ img {
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/deno.reader.html">Reader</a>.<a href="../interfaces/deno.reader.html#read">read</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L912">lib.deno.ns.d.ts:912</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L903">lib.deno.ns.d.ts:903</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Reads the next <code>p.length</code> bytes from the buffer or until the buffer is
-									drained. Resolves to the number of bytes read. If the buffer has no
-								data to return, resolves to <code>Deno.EOF</code>.</p>
+								<p>在缓冲区中读取下一个 <code>p.length</code> 字节，或直到缓冲区用完为止。
+								解析读取的字节数。当缓冲区没有数据返回，则解析为 <code>Deno.EOF</code>。</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3021,17 +3017,16 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L929">lib.deno.ns.d.ts:929</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L917">lib.deno.ns.d.ts:917</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Reads data from <code>r</code> until <code>Deno.EOF</code> and appends it to the buffer,
-									growing the buffer as needed. It resolves to the number of bytes read.
-								If the buffer becomes too large, <code>.readFrom()</code> will reject with an error.</p>
+								<p>从 <code>r</code> 读取数据直到 <code>Deno.EOF</code>，并将其附加到缓冲区，根据需要扩展缓冲区。
+									解析读取的字节数。 如果缓冲区过大，<code>.readFrom()</code> 将会 reject 一个错误。
+									基于 Go Lang 的
+								<a href="https://golang.org/pkg/bytes/#Buffer.ReadFrom">Buffer.ReadFrom</a>.</p>
 							</div>
-							<p>Based on Go Lang&#39;s
-							<a href="https://golang.org/pkg/bytes/#Buffer.ReadFrom">Buffer.ReadFrom</a>.</p>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
@@ -3053,17 +3048,16 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L936">lib.deno.ns.d.ts:936</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L922">lib.deno.ns.d.ts:922</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Reads data from <code>r</code> until <code>Deno.EOF</code> and appends it to the buffer,
-									growing the buffer as needed. It returns the number of bytes read. If the
-								buffer becomes too large, <code>.readFromSync()</code> will throw an error.</p>
+								<p>从 <code>r</code> 读取数据直到 <code>Deno.EOF</code>，并将其附加到缓冲区，根据需要扩展缓冲区。
+									返回读取的字节数，如果缓冲区过大，<code>.readFromSync()</code> 将会抛出错误。
+									基于 Go Lang 的
+								<a href="https://golang.org/pkg/bytes/#Buffer.ReadFrom">Buffer.ReadFrom</a>.</p>
 							</div>
-							<p>Based on Go Lang&#39;s
-							<a href="https://golang.org/pkg/bytes/#Buffer.ReadFrom">Buffer.ReadFrom</a>.</p>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
@@ -3086,14 +3080,13 @@ img {
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/deno.syncreader.html">SyncReader</a>.<a href="../interfaces/deno.syncreader.html#readsync">readSync</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L908">lib.deno.ns.d.ts:908</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L900">lib.deno.ns.d.ts:900</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Reads the next <code>p.length</code> bytes from the buffer or until the buffer is
-									drained. Returns the number of bytes read. If the buffer has no data to
-								return, the return is <code>Deno.EOF</code>.</p>
+								<p>在缓冲区中读取下一个 <code>p.length</code> 字节，或直到缓冲区用完为止。
+								返回只读的字节数。当缓冲区没有数据返回，则返回值为 <code>Deno.EOF</code>。</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3116,13 +3109,12 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L904">lib.deno.ns.d.ts:904</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L897">lib.deno.ns.d.ts:897</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Resets the buffer to be empty, but it retains the underlying storage for
-								use by future writes. <code>.reset()</code> is the same as <code>.truncate(0)</code>.</p>
+								<p>将缓冲区重置为空，但它保留了底层存储供未来写入时使用，<code>.reset()</code> 与 <code>.truncate(0)</code> 相同。</p>
 							</div>
 						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -3139,16 +3131,14 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L890">lib.deno.ns.d.ts:890</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L886">lib.deno.ns.d.ts:886</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Returns the contents of the unread portion of the buffer as a <code>string</code>.</p>
+								<p>将缓冲区中未读部分的内容以 <code>string</code> 的形式返回。</p>
 							</div>
-							<p><strong>Warning</strong>: if multibyte characters are present when data is flowing
-								through the buffer, this method may result in incorrect strings due to a
-							character being split.</p>
+							<p><strong>警告</strong>: 当数据流经缓冲区时存在多个字节, 这种方法可能会因为字符被拆分而导致字符串的结果错误。</p>
 						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 					</li>
@@ -3164,14 +3154,13 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L901">lib.deno.ns.d.ts:901</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L895">lib.deno.ns.d.ts:895</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Discards all but the first <code>n</code> unread bytes from the buffer but
-									continues to use the same allocated storage. It throws if <code>n</code> is
-								negative or greater than the length of the buffer.</p>
+								<p>除了缓冲器中开头 <code>n</code> 个未读字节之外，其他的所有字节都丢弃，但是继续使用相同分配的存储空间。
+								当 <code>n</code> 为负数或者大于缓冲区的长度, 则会抛出异常。</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3195,7 +3184,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/deno.writer.html">Writer</a>.<a href="../interfaces/deno.writer.html#write">write</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L914">lib.deno.ns.d.ts:914</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L905">lib.deno.ns.d.ts:905</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3219,7 +3208,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/deno.syncwriter.html">SyncWriter</a>.<a href="../interfaces/deno.syncwriter.html#writesync">writeSync</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/04e61b7/lib.deno.ns.d.ts#L913">lib.deno.ns.d.ts:913</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/0600bde/lib.deno.ns.d.ts#L904">lib.deno.ns.d.ts:904</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
