@@ -762,12 +762,11 @@ declare namespace Deno {
     whence: SeekMode
   ): Promise<number>;
 
-  /** Close the given resource ID (rid) which has been previously opened, such
-   * as via opening or creating a file.  Closing a file when you are finished
-   * with it is important to avoid leaking resources.
+  /** 使用给定的资源 ID (rid) 来关闭先前创建或打开的文件。
+   * 为避免资源泄露，事关重大，文件应当用完即关。
    *
    *      const file = await Deno.open("my_file.txt");
-   *      // do work with "file" object
+   *      // 与 "file" 对象一起使用
    *      Deno.close(file.rid);
    */
   export function close(rid: number): void;
