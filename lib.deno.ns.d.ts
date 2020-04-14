@@ -923,7 +923,7 @@ declare namespace Deno {
     readFrom(r: Reader): Promise<number>;
     /** 从 `r` 读取数据直到 `Deno.EOF`, 并将其附加到缓冲区, 根据需要扩展缓冲区.
      * 返回读取的字节数, 如果缓冲区过大, `.readFromSync()` 将会抛出错误.
-     * 基于 Go Lang's
+     * 基于 Go Lang 的
      * [Buffer.ReadFrom](https://golang.org/pkg/bytes/#Buffer.ReadFrom). */
     readFromSync(r: SyncReader): number;
   }
