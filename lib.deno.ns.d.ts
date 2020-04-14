@@ -2734,12 +2734,11 @@ declare namespace Deno {
     options?: CompilerOptions
   ): Promise<[DiagnosticItem[] | undefined, string]>;
 
-  /** Returns the script arguments to the program. If for example we run a
-   * program:
+  /** 将脚本参数返回给程序。例如我们运行下方的程序:
    *
    *      deno --allow-read https://deno.land/std/examples/cat.ts /etc/passwd
    *
-   * Then `Deno.args` will contain:
+   * 然后 `Deno.args` 将包含:
    *
    *      [ "/etc/passwd" ]
    */
