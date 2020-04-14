@@ -388,7 +388,7 @@ declare namespace Deno {
    *
    *       console.log(Deno.execPath());  //e.g. "/home/alice/.local/bin/deno"
    *
-   * 需要 `--allow-env` 权限.
+   * 需要 `allow-env` 权限.
    */
   export function execPath(): string;
 
