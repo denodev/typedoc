@@ -1250,7 +1250,7 @@ declare namespace Deno {
    *       Deno.removeSync("/path/to/empty_dir/or/file");
    *       Deno.removeSync("/path/to/populated_dir/or/file", { recursive: true });
    *
-   * 当权限被拒绝、路径找不到或者为非空目录且 `recursive` 未设置为 `true`，则抛出异常
+   * 当权限被拒绝、路径找不到或者为非空目录且 `recursive` 未设置为 `true`，则抛出异常。
    *
    * 需要 `allow-write` 权限 */
   export function removeSync(path: string, options?: RemoveOptions): void;
@@ -1260,7 +1260,7 @@ declare namespace Deno {
    *       await Deno.remove("/path/to/empty_dir/or/file");
    *       await Deno.remove("/path/to/populated_dir/or/file", { recursive: true });
    *
-   * 当权限被拒绝、路径找不到或者为非空目录且 `recursive` 未设置为 `true`，则抛出异常
+   * 当权限被拒绝、路径找不到或者为非空目录且 `recursive` 未设置为 `true`，则抛出异常。
    *
    * 需要 `allow-write` 权限 */
   export function remove(path: string, options?: RemoveOptions): Promise<void>;
