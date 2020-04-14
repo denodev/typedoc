@@ -1562,15 +1562,15 @@ declare namespace Deno {
     type?: string
   ): Promise<void>;
 
-  /** Options for writing to a file. */
+  /** `Deno.writeFileSync` 和 `Deno.writeFile` 的选项。*/
   export interface WriteFileOptions {
-    /** Defaults to `false`. If set to `true`, will append to a file instead of
-     * overwriting previous contents. */
+    /** 默认为 `false`。如果设置为 `true`，
+     * 则将追加到文件中，而不是覆盖之前的内容。 */
     append?: boolean;
-    /** Sets the option to allow creating a new file, if one doesn't already
-     * exist at the specified path (defaults to `true`). */
+    /** 默认为 `true`。如果指定路径不存在
+     * 文件，是否允许创建新文件的选项。*/
     create?: boolean;
-    /** Permissions always applied to file. */
+    /** 文件的权限。*/
     mode?: number;
   }
 
