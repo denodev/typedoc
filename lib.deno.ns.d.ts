@@ -405,18 +405,16 @@ declare namespace Deno {
   export function cwd(): string;
 
   /**
-   * **UNSTABLE**: Currently under evaluation to decide if explicit permission is
-   * required to change the current working directory.
+   * **不稳定**: 更改当前工作目录是否需要明确的权限，目前正在评估中。
    *
-   * Change the current working directory to the specified path.
+   * 将当前工作目录更改为指定路径。
    *
    *       Deno.chdir("/home/userA");
    *       Deno.chdir("../userB");
    *       Deno.chdir("C:\\Program Files (x86)\\Java");
    *
-   * Throws `Deno.errors.NotFound` if directory not found.
-   * Throws `Deno.errors.PermissionDenied` if the user does not have access
-   * rights
+   * 如果目录未被找到，则抛出 `Deno.errors.NotFound` 。
+   * 如果用户没有访问权限，则抛出 `Deno.errors.PermissionDenied` 。
    */
   export function chdir(directory: string): void;
 
