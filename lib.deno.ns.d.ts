@@ -169,11 +169,11 @@ declare namespace Deno {
    */
   export function loadavg(): number[];
 
-  /** Get the `hostname` of the machine the Deno process is running on.
+  /** 获取 Deno 进程所在的计算机 `主机名`。
    *
    *       console.log(Deno.hostname());
    *
-   *  Requires `allow-env` permission.
+   *  需要 `allow-env` 权限。
    */
   export function hostname(): string;
 
