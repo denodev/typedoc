@@ -1489,7 +1489,7 @@ declare namespace Deno {
    *       const fileInfo = Deno.lstatSync("hello.txt");
    *       assert(fileInfo.isFile());
    *
-   * 需要 `allow-read` 权限. */
+   * 需要 `allow-read` 权限 */
   export function lstatSync(path: string): FileInfo;
 
   /** Resolves to a `Deno.FileInfo` for the specified `path`. Will always
