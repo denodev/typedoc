@@ -384,11 +384,11 @@ declare namespace Deno {
   export function dir(kind: DirKind): string | null;
 
   /**
-   * Returns the path to the current deno executable.
+   * 返回当前deno可执行文件的路径。
    *
    *       console.log(Deno.execPath());  //e.g. "/home/alice/.local/bin/deno"
    *
-   * Requires `allow-env` permission.
+   * 需要 `allow-env` 权限。
    */
   export function execPath(): string;
 
