@@ -169,7 +169,7 @@ declare namespace Deno {
    */
   export function loadavg(): number[];
 
-  /** 获取 Deno 进程所在的计算机 `主机名`。
+  /** 获取 Deno 进程所在的计算机主机名(`hostname`)。
    *
    *       console.log(Deno.hostname());
    *
