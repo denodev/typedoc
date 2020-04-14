@@ -18,4 +18,4 @@
 
 ## 版权许可
 
-本文档采用[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.zh) 许可协议。
+本文档采用 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.zh) 许可协议。
