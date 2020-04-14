@@ -1453,24 +1453,24 @@ declare namespace Deno {
    * Requires `allow-write` permission on toPath. */
   export function copyFile(fromPath: string, toPath: string): Promise<void>;
 
-  /** Returns the full path destination of the named symbolic link.
+  /** 同步方式解析并返回符号链接对目标文件的绝对路径。
    *
    *       Deno.symlinkSync("./test.txt", "./test_link.txt");
-   *       const target = Deno.readlinkSync("./test_link.txt"); // full path of ./test.txt
+   *       const target = Deno.readlinkSync("./test_link.txt"); // ./test.txt 的绝对路径
    *
-   * Throws TypeError if called with a hard link
+   * 如果使用硬链接调用，则会抛出 `TypeError`。
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限 */
   export function readlinkSync(path: string): string;
 
-  /** Resolves to the full path destination of the named symbolic link.
+  /** 解析并返回符号链接对目标文件的绝对路径。
    *
    *       await Deno.symlink("./test.txt", "./test_link.txt");
-   *       const target = await Deno.readlink("./test_link.txt"); // full path of ./test.txt
+   *       const target = await Deno.readlink("./test_link.txt"); // ./test.txt 的绝对路径
    *
-   * Throws TypeError if called with a hard link
+   * 如果使用硬链接调用，则会抛出 `TypeError`。
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限 */
   export function readlink(path: string): Promise<string>;
 
   /** Resolves to a `Deno.FileInfo` for the specified `path`. If `path` is a
