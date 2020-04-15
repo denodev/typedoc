@@ -432,7 +432,7 @@ declare namespace Deno {
   export const EOF: unique symbol;
   export type EOF = typeof EOF;
 
-  /** **UNSTABLE**: might remove `"SEEK_"` prefix. Might not use all-caps. */
+  /** **不稳定**: 可能会移除 `"SEEK_"` 前缀。可能不使用全大写。 */
   export enum SeekMode {
     SEEK_START = 0,
     SEEK_CURRENT = 1,
