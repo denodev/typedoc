@@ -1879,58 +1879,58 @@ declare namespace Deno {
   }
 
   export interface ListenOptions {
-    /** The port to listen on. */
+    /** 要监听的端口号 */
     port: number;
-    /** A literal IP address or host name that can be resolved to an IP address.
-     * If not specified, defaults to `0.0.0.0`. */
+    /** 一个 IP 地址或者可以被解析为 IP 地址的主机名。
+     * 如果没有指定，默认值为 `0.0.0.0`。 */
     hostname?: string;
   }
 
   export interface UnixListenOptions {
-    /** A Path to the Unix Socket. */
+    /** 一个 Unix 套接字路径。 */
     address: string;
   }
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Listen announces on the local transport address.
+   * 监听本地传输地址广播。
    *
    *      const listener1 = Deno.listen({ port: 80 })
    *      const listener2 = Deno.listen({ hostname: "192.0.2.1", port: 80 })
    *      const listener3 = Deno.listen({ hostname: "[2001:db8::1]", port: 80 });
    *      const listener4 = Deno.listen({ hostname: "golang.org", port: 80, transport: "tcp" });
    *
-   * Requires `allow-net` permission. */
+   * 需要 `allow-net` 权限。 */
   export function listen(
     options: ListenOptions & { transport?: "tcp" }
   ): Listener;
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Listen announces on the local transport address.
+   * 监听本地传输地址广播。
    *
    *     const listener = Deno.listen({ address: "/foo/bar.sock", transport: "unix" })
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限。 */
   export function listen(
     options: UnixListenOptions & { transport: "unix" }
   ): Listener;
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Listen announces on the local transport address.
+   * 监听本地传输地址广播。
    *
    *      const listener1 = Deno.listen({ port: 80, transport: "udp" })
    *      const listener2 = Deno.listen({ hostname: "golang.org", port: 80, transport: "udp" });
    *
-   * Requires `allow-net` permission. */
+   * 需要 `allow-net` 权限。 */
   export function listen(
     options: ListenOptions & { transport: "udp" }
   ): DatagramConn;
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Listen announces on the local transport address.
+   * 监听本地传输地址广播。
    *
    *     const listener = Deno.listen({ address: "/foo/bar.sock", transport: "unixpacket" })
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限。 */
   export function listen(
     options: UnixListenOptions & { transport: "unixpacket" }
   ): DatagramConn;
