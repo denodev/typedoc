@@ -1953,10 +1953,10 @@ declare namespace Deno {
   export function listenTLS(options: ListenTLSOptions): Listener;
 
   export interface ConnectOptions {
-    /** The port to connect to. */
+    /** 要连接的端口号。 */
     port: number;
-    /** A literal IP address or host name that can be resolved to an IP address.
-     * If not specified, defaults to `127.0.0.1`. */
+    /** 一个 IP 地址或者可以被解析为 IP 地址的主机名。
+     * 如果没有指定，默认值为 `127.0.0.1`。 */
     hostname?: string;
     transport?: "tcp";
   }
