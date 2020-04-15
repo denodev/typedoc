@@ -769,7 +769,7 @@ declare namespace Deno {
    */
   export function close(rid: number): void;
 
-  /** The Deno abstraction for reading and writing files. */
+  /** 用于读取和写入文件的 Deno 抽象类。 */
   export class File
     implements
       Reader,
