@@ -1041,7 +1041,7 @@ declare namespace Deno {
   export function mkdir(path: string, options?: MkdirOptions): Promise<void>;
 
   export interface MakeTempOptions {
-    /** 指定在哪里创建临时文件夹（默认为环境变量TMPDIR或者是系统默认目录，ps:通常是/tmp）。*/
+    /** 指定在哪里创建临时文件夹（默认为环境变量 TMPDIR 或者是系统默认目录，ps：通常是 /tmp）。 */
     dir?: string;
     /** 临时文件夹名前缀 */
     prefix?: string;
