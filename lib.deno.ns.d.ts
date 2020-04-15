@@ -1725,9 +1725,7 @@ declare namespace Deno {
     constructor(state: PermissionState);
   }
 
-  /** Synchronously truncates or extends the specified file, to reach the
-   * specified `len`.  If `len` is not specified then the entire file contents
-   * are truncated.
+  /** 同步地通过指定的 `len` ，截取或者扩展指定的文件内容。如果未指定 `len` ，则整个文件内容将被截取。
    *
    *       //truncate the entire file
    *       Deno.truncateSync("my_file.txt");
@@ -1739,11 +1737,11 @@ declare namespace Deno {
    *       const data = Deno.readFileSync(file);
    *       console.log(new TextDecoder().decode(data));
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
+
   export function truncateSync(name: string, len?: number): void;
 
-  /** Truncates or extends the specified file, to reach the specified `len`. If
-   * `len` is not specified then the entire file contents are truncated.
+  /** 通过指定的 `len` ，截取或者扩展指定的文件内容。如果未指定 `len` ，则整个文件内容将被截取。
    *
    *       //truncate the entire file
    *       await Deno.truncate("my_file.txt");
@@ -1755,7 +1753,8 @@ declare namespace Deno {
    *       const data = await Deno.readFile(file);
    *       console.log(new TextDecoder().decode(data));  //"Hello W"
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
+
   export function truncate(name: string, len?: number): Promise<void>;
 
   export interface AsyncHandler {
@@ -1805,9 +1804,9 @@ declare namespace Deno {
    *
    * See: http://man7.org/linux/man-pages/man2/shutdown.2.html */
   /** **不稳定的**：可能会完全删除 `ShutdownMode`。
-   * 
+   *
    * 对应类 POSIX 系统上的 `SHUT_RD`，`SHUT_WR`，`SHUT_RDWR`。
-   * 
+   *
    * 参阅：http://man7.org/linux/man-pages/man2/shutdown.2.html */
   export enum ShutdownMode {
     Read = 0,
@@ -1827,11 +1826,11 @@ declare namespace Deno {
    *       Deno.shutdown(conn.rid, Deno.ShutdownMode.Write);
    */
   /** **不稳定的**：参数 `how` 和 枚举 `ShutdownMode` 都在考虑移除。
-   * 
+   *
    * Shutdown 套接字的发送和接收操作。
-   * 
+   *
    * 与 POSIX 的 shutdown(3) 行为一致。
-   * 
+   *
    *       const listener = Deno.listen({ port: 80 });
    *       const conn = await listener.accept();
    *       Deno.shutdown(conn.rid, Deno.ShutdownMode.Write);
