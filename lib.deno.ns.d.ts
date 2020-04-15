@@ -1530,7 +1530,7 @@ declare namespace Deno {
    *
    * 同步方式创建 `newpath` 作为指向 `oldpath` 的符号链接。
    *
-   * `type` 参数可以设置为 `dir` 或 `file`。此参数仅在Windows上可用，其他平台会被忽略。
+   * `type` 参数可以设置为 `dir` 或 `file`。此参数仅在 Windows 上可用，其他平台会被忽略。
    *
    * 注意：此函数尚未在Windows上实现。
    *
