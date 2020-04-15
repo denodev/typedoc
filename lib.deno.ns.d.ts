@@ -428,7 +428,7 @@ declare namespace Deno {
    */
   export function umask(mask?: number): number;
 
-  /** **UNSTABLE**: might move to `Deno.symbols`. */
+  /** **不稳定**: 可能会移动到 `Deno.symbols`。 */
   export const EOF: unique symbol;
   export type EOF = typeof EOF;
 
