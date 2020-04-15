@@ -116,7 +116,7 @@ declare namespace Deno {
      * 默认为 `true`。
      */
     exitOnFail?: boolean;
-    /** If `true`, Deno will exit upon first test failure. Defaults to `false`. */
+    /** 如果为 `true`，Deno 将在第一次测试失败后退出。默认值为 `false` */
     failFast?: boolean;
     /** String or RegExp used to filter test to run. Only test with names
      * matching provided `String` or `RegExp` will be run. */
@@ -460,17 +460,17 @@ declare namespace Deno {
      * Implementations should not retain a reference to `p`.
      */
     /** 最多读取 `p.byteLength` 个字节到p中，然后返回读取的字节数（`0 < n <= p.byteLength`），并在遇到任何错误时返回拒绝状态的回调函数。
-      * 即使 `read()` 返回值为 `n < p.byteLength`，p也可能在调用期间被用作临时空间。
-      * 如果有数据可用，但不存在 `p.byteLength`，`read()` 通常会返回可用值，而不是等待更多。
-      * 
-      * 当 `read()` 遇到文件结束条件时，将返回 `Deno.EOF` 符号。
-      * 
-      * 当 `read()` 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。
-      * 
-      * 调用者应始终处理返回值为 `n > 0` 的情况，然后再考虑 `EOF`。
-      * 应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的I/O错误。
-      *
-      * 实现不应保留对 `p` 的引用。
+     * 即使 `read()` 返回值为 `n < p.byteLength`，p也可能在调用期间被用作临时空间。
+     * 如果有数据可用，但不存在 `p.byteLength`，`read()` 通常会返回可用值，而不是等待更多。
+     *
+     * 当 `read()` 遇到文件结束条件时，将返回 `Deno.EOF` 符号。
+     *
+     * 当 `read()` 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。
+     *
+     * 调用者应始终处理返回值为 `n > 0` 的情况，然后再考虑 `EOF`。
+     * 应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的I/O错误。
+     *
+     * 实现不应保留对 `p` 的引用。
      */
     read(p: Uint8Array): Promise<number | EOF>;
   }
@@ -562,20 +562,18 @@ declare namespace Deno {
   export interface ReadWriteCloser extends Reader, Writer, Closer {}
   export interface ReadWriteSeeker extends Reader, Writer, Seeker {}
 
-  /** Copies from `src` to `dst` until either `EOF` is reached on `src` or an
-   * error occurs. It resolves to the number of bytes copied or rejects with
-   * the first error encountered while copying.
+  /** 从 `src` 拷贝文件至 `dst`，拷贝至 `src` 的 `EOF` 或有异常出现时结束。
+   * `copy()` 函数返回一个 `Promise`, 成功时 resolve 并返回拷贝的字节数，失败时 reject 并返回拷贝过程中的首个异常
    *
    *       const source = await Deno.open("my_file.txt");
    *       const buffer = new Deno.Buffer()
    *       const bytesCopied1 = await Deno.copy(Deno.stdout, source);
    *       const bytesCopied2 = await Deno.copy(buffer, source);
    *
-   * Because `copy()` is defined to read from `src` until `EOF`, it does not
-   * treat an `EOF` from `read()` as an error to be reported.
+   * 因为 `copy()` 函数在读到 `EOF` 时停止，所以不会将 `EOF` 视为异常（区别于 `read()` 函数）。
    *
-   * @param dst The destination to copy to
-   * @param src The source to copy from
+   * @param dst 需要拷贝至的目标位置
+   * @param src 拷贝的源位置
    */
   export function copy(dst: Writer, src: Reader): Promise<number>;
 
@@ -587,71 +585,63 @@ declare namespace Deno {
    */
   export function toAsyncIterator(r: Reader): AsyncIterableIterator<Uint8Array>;
 
-  /** Synchronously open a file and return an instance of `Deno.File`.  The
-   * file does not need to previously exist if using the `create` or `createNew`
-   * open options.  It is the callers responsibility to close the file when finished
-   * with it.
+  /** 用同步方式打开一个文件并返回一个 `Deno.File` 实例。如果使用了 `create` 或 `createNew`配置项
+   * 文件可以不需要预先存在。调用者应该在完成后关闭文件。
    *
    *       const file = Deno.openSync("/foo/bar.txt", { read: true, write: true });
    *       // Do work with file
    *       Deno.close(file.rid);
    *
-   * Requires `allow-read` and/or `allow-write` permissions depending on options.
+   * 根据不同的配置需要相应的 `allow-read` 及 `allow-write` 权限。
    */
   export function openSync(path: string, options?: OpenOptions): File;
 
-  /** Synchronously open a file and return an instance of `Deno.File`.  The file
-   * may be created depending on the mode passed in.  It is the callers responsibility
-   * to close the file when finished with it.
+  /** 用同步方式打开一个文件并返回一个 `Deno.File` 实例。根据传入的模式，可以创建文件。
+   * 调用者应该在完成后关闭文件。
    *
    *       const file = Deno.openSync("/foo/bar.txt", "r");
    *       // Do work with file
    *       Deno.close(file.rid);
    *
-   * Requires `allow-read` and/or `allow-write` permissions depending on openMode.
+   * 根据不同的打开模式需要相应的 `allow-read` 及 `allow-write` 权限。
    */
   export function openSync(path: string, openMode?: OpenMode): File;
 
-  /** Open a file and resolve to an instance of `Deno.File`.  The
-   * file does not need to previously exist if using the `create` or `createNew`
-   * open options.  It is the callers responsibility to close the file when finished
-   * with it.
+  /** 打开一个文件并异步返回一个 `Deno.File` 实例。如果使用了 `create` 或 `createNew`配置项
+   * 文件可以不需要预先存在。调用者应该在完成后关闭文件。
    *
    *       const file = await Deno.open("/foo/bar.txt", { read: true, write: true });
    *       // Do work with file
    *       Deno.close(file.rid);
    *
-   * Requires `allow-read` and/or `allow-write` permissions depending on options.
+   * 根据不同的配置需要相应的 `allow-read` 及 `allow-write` 权限。
    */
   export function open(path: string, options?: OpenOptions): Promise<File>;
 
-  /** Open a file and resolve to an instance of `Deno.File`.  The file may be
-   * created depending on the mode passed in.  It is the callers responsibility
-   * to close the file when finished with it.
+  /** 打开一个文件并异步返回一个 `Deno.File` 实例。根据传入的模式，可以创建文件。
+   * 调用者应该在完成后关闭文件。
    *
    *       const file = await Deno.open("/foo/bar.txt", "w+");
    *       // Do work with file
    *       Deno.close(file.rid);
    *
-   * Requires `allow-read` and/or `allow-write` permissions depending on openMode.
+   * 根据不同的打开模式需要相应的 `allow-read` 及 `allow-write` 权限。
    */
   export function open(path: string, openMode?: OpenMode): Promise<File>;
 
-  /** Creates a file if none exists or truncates an existing file and returns
-   *  an instance of `Deno.File`.
+  /** 创建文件并返回一个 `Deno.File` 实例，如果文件已存在则进行覆盖。
    *
    *       const file = Deno.createSync("/foo/bar.txt");
    *
-   * Requires `allow-read` and `allow-write` permissions.
+   * 需要 `allow-read` 和 `allow-write` 权限。
    */
   export function createSync(path: string): File;
 
-  /** Creates a file if none exists or truncates an existing file and resolves to
-   *  an instance of `Deno.File`.
+  /** 创建文件并异步返回一个 `Deno.File` 实例，如果文件已存在则进行覆盖。
    *
    *       const file = await Deno.create("/foo/bar.txt");
    *
-   * Requires `allow-read` and `allow-write` permissions.
+   * 需要 `allow-read` 和 `allow-write` 权限。
    */
   export function create(path: string): Promise<File>;
 
@@ -683,10 +673,9 @@ declare namespace Deno {
    */
   export function read(rid: number, buffer: Uint8Array): Promise<number | EOF>;
 
-  /** Synchronously write to the resource ID (`rid`) the contents of the array
-   * buffer (`data`).
+  /** 同步地将数组缓冲区 (`data`) 的内容写入资源ID的所属文件 (`rid`) 。
    *
-   * Returns the number of bytes written.
+   * 返回写入的字节数。
    *
    *       const encoder = new TextEncoder();
    *       const data = encoder.encode("Hello world");
@@ -696,9 +685,9 @@ declare namespace Deno {
    */
   export function writeSync(rid: number, data: Uint8Array): number;
 
-  /** Write to the resource ID (`rid`) the contents of the array buffer (`data`).
+  /** 将数组缓冲区 (`data`) 的内容写入资源ID的所属文件 (`rid`) 。
    *
-   * Resolves to the number of bytes written.
+   * 解析为写入的字节数。
    *
    *      const encoder = new TextEncoder();
    *      const data = encoder.encode("Hello world");
@@ -774,7 +763,7 @@ declare namespace Deno {
    */
   export function close(rid: number): void;
 
-  /** The Deno abstraction for reading and writing files. */
+  /** 用于读取和写入文件的 Deno 抽象类。 */
   export class File
     implements
       Reader,
@@ -836,18 +825,18 @@ declare namespace Deno {
     mode?: number;
   }
 
-  /** A set of string literals which specify how to open a file.
+  /** 一组字符串文本，用于指定如何打开文件。
    *
-   * |Value |Description                                                                                       |
+   * |值    |描述                                                                                               |
    * |------|--------------------------------------------------------------------------------------------------|
-   * |`"r"` |Read-only. Default. Starts at beginning of file.                                                  |
-   * |`"r+"`|Read-write. Start at beginning of file.                                                           |
-   * |`"w"` |Write-only. Opens and truncates existing file or creates new one for writing only.                |
-   * |`"w+"`|Read-write. Opens and truncates existing file or creates new one for writing and reading.         |
-   * |`"a"` |Write-only. Opens existing file or creates new one. Each write appends content to the end of file.|
-   * |`"a+"`|Read-write. Behaves like `"a"` and allows to read from file.                                      |
-   * |`"x"` |Write-only. Exclusive create - creates new file only if one doesn't exist already.                |
-   * |`"x+"`|Read-write. Behaves like `x` and allows reading from file.                                        |
+   * |`"r"` |只读。默认值。从文件开头开始。                                                                         |
+   * |`"r+"`|可读写。从文件开头开始。                                                                              |
+   * |`"w"` |仅写入。打开并截取现有文件或者创建一个仅写入权限的新文件。                                                  |
+   * |`"w+"`|可读写。打开并截取现有文件或者创建一个可读写权限的新文件。                                                  |
+   * |`"a"` |仅写入。打开现有文件或者创建新文件。每次写入都会将内容追加到文件末尾。                                        |
+   * |`"a+"`|可读写。行为类似于 `"a"` 并且允许从文件中读取。                                                          |
+   * |`"x"` |仅写入。专属创建 - 仅在文件不存在时创建新文件。                                                           |
+   * |`"x+"`|可读写。行为类似于 `"x"` 并且允许从文件中读取。                                                         |
    */
   export type OpenMode = "r" | "r+" | "w" | "w+" | "a" | "a+" | "x" | "x+";
 
@@ -1046,14 +1035,11 @@ declare namespace Deno {
   export function mkdir(path: string, options?: MkdirOptions): Promise<void>;
 
   export interface MakeTempOptions {
-    /** Directory where the temporary directory should be created (defaults to
-     * the env variable TMPDIR, or the system's default, usually /tmp). */
+    /** 指定在哪里创建临时文件夹（默认为环境变量 TMPDIR 或者是系统默认目录，ps：通常是 /tmp）。 */
     dir?: string;
-    /** String that should precede the random portion of the temporary
-     * directory's name. */
+    /** 临时文件夹名前缀 */
     prefix?: string;
-    /** String that should follow the random portion of the temporary
-     * directory's name. */
+    /** 临时文件夹名后缀 */
     suffix?: string;
   }
 
@@ -1093,38 +1079,32 @@ declare namespace Deno {
   // TODO(ry) Doesn't check permissions.
   export function makeTempDir(options?: MakeTempOptions): Promise<string>;
 
-  /** Synchronously creates a new temporary file in the default directory for
-   * temporary files (see also `Deno.dir("temp")`), unless `dir` is specified.
-   * Other optional options include prefixing and suffixing the directory name
-   * with `prefix` and `suffix` respectively.
+  /** 以同步的方式在默认文件夹（另见 `Deno.dir("temp")`）中创建一个临时文件,
+   * 如果指定了 `dir` ， 则在指定的 `dir` 中创建。
+   * 如果没有指定 `dir` ，那么 `prefix` 和 `suffx` 将分别是文件名前缀和后缀。
    *
-   * The full path to the newly created file is returned.
+   * 返回新建文件的完整路径。
    *
-   * Multiple programs calling this function simultaneously will create different
-   * files. It is the caller's responsibility to remove the file when no longer
-   * needed.
+   * 多个程序同时调用该函数将会创建不同的文件。当不再需要该临时文件时，调用者应该主动删除该文件。
    *
    *       const tempFileName0 = Deno.makeTempFileSync(); // e.g. /tmp/419e0bf2
    *       const tempFileName1 = Deno.makeTempFileSync({ prefix: 'my_temp' });  //e.g. /tmp/my_temp754d3098
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限. */
   export function makeTempFileSync(options?: MakeTempOptions): string;
 
-  /** Creates a new temporary file in the default directory for temporary
-   * files (see also `Deno.dir("temp")`), unless `dir` is specified.  Other
-   * optional options include prefixing and suffixing the directory name with
-   * `prefix` and `suffix` respectively.
+  /** 在默认文件夹（另见 `Deno.dir("temp")`）中创建一个临时文件,
+   * 如果指定了 `dir` ， 则在指定的 `dir` 中创建。
+   * 如果没有指定 `dir` ，那么 `prefix` 和 `suffx` 将分别是文件名前缀和后缀。
    *
-   * This call resolves to the full path to the newly created file.
+   * 返回新建文件的完整路径。
    *
-   * Multiple programs calling this function simultaneously will create different
-   * files. It is the caller's responsibility to remove the file when no longer
-   * needed.
+   * 多个程序同时调用该函数将会创建不同的文件。当不再需要该临时文件时，调用者应该主动删除该文件。
    *
    *       const tmpFileName0 = await Deno.makeTempFile();  // e.g. /tmp/419e0bf2
    *       const tmpFileName1 = await Deno.makeTempFile({ prefix: 'my_temp' });  //e.g. /tmp/my_temp754d3098
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限. */
   export function makeTempFile(options?: MakeTempOptions): Promise<string>;
 
   /** Synchronously changes the permission of a specific file/directory of
@@ -1282,26 +1262,26 @@ declare namespace Deno {
    * Requires `allow-read` and `allow-write` permission. */
   export function rename(oldpath: string, newpath: string): Promise<void>;
 
-  /** Synchronously reads and returns the entire contents of a file as an array
-   * of bytes. `TextDecoder` can be used to transform the bytes to string if
-   * required.  Reading a directory returns an empty data array.
+  /** 同步地读取并将文件的全部内容解析为字节数组。
+   * `TextDecoder` 可以在需要的情况下可以将字节转换成字符串。
+   * 读取目录返回一个空的数据数组。
    *
    *       const decoder = new TextDecoder("utf-8");
    *       const data = Deno.readFileSync("hello.txt");
    *       console.log(decoder.decode(data));
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限。 */
   export function readFileSync(path: string): Uint8Array;
 
-  /** Reads and resolves to the entire contents of a file as an array of bytes.
-   * `TextDecoder` can be used to transform the bytes to string if required.
-   * Reading a directory returns an empty data array.
+  /** 读取并将文件的全部内容解析为字节数组。
+   * `TextDecoder` 可以在需要的情况下可以将字节转换成字符串。
+   * 读取目录返回一个空的数据数组。
    *
    *       const decoder = new TextDecoder("utf-8");
    *       const data = await Deno.readFile("hello.txt");
    *       console.log(decoder.decode(data));
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限。 */
   export function readFile(path: string): Promise<Uint8Array>;
 
   /** A FileInfo describes a file and is returned by `stat`, `lstat`,
@@ -1736,9 +1716,7 @@ declare namespace Deno {
     constructor(state: PermissionState);
   }
 
-  /** Synchronously truncates or extends the specified file, to reach the
-   * specified `len`.  If `len` is not specified then the entire file contents
-   * are truncated.
+  /** 同步地通过指定的 `len` ，截取或者扩展指定的文件内容。如果未指定 `len` ，则整个文件内容将被截取。
    *
    *       //truncate the entire file
    *       Deno.truncateSync("my_file.txt");
@@ -1750,11 +1728,11 @@ declare namespace Deno {
    *       const data = Deno.readFileSync(file);
    *       console.log(new TextDecoder().decode(data));
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
+
   export function truncateSync(name: string, len?: number): void;
 
-  /** Truncates or extends the specified file, to reach the specified `len`. If
-   * `len` is not specified then the entire file contents are truncated.
+  /** 通过指定的 `len` ，截取或者扩展指定的文件内容。如果未指定 `len` ，则整个文件内容将被截取。
    *
    *       //truncate the entire file
    *       await Deno.truncate("my_file.txt");
@@ -1766,7 +1744,8 @@ declare namespace Deno {
    *       const data = await Deno.readFile(file);
    *       console.log(new TextDecoder().decode(data));  //"Hello W"
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
+
   export function truncate(name: string, len?: number): Promise<void>;
 
   export interface AsyncHandler {
@@ -1815,10 +1794,15 @@ declare namespace Deno {
    * Corresponds to `SHUT_RD`, `SHUT_WR`, `SHUT_RDWR` on POSIX-like systems.
    *
    * See: http://man7.org/linux/man-pages/man2/shutdown.2.html */
+  /** **不稳定的**：可能会完全删除 `ShutdownMode`。
+   *
+   * 对应类 POSIX 系统上的 `SHUT_RD`，`SHUT_WR`，`SHUT_RDWR`。
+   *
+   * 参阅：http://man7.org/linux/man-pages/man2/shutdown.2.html */
   export enum ShutdownMode {
     Read = 0,
     Write,
-    ReadWrite, // TODO(ry) panics on ReadWrite.
+    ReadWrite, // TODO(ry) panics on ReadWrite. // TODO(ry) `ReadWrite` 上的异常。
   }
 
   /** **UNSTABLE**: Both the `how` parameter and `ShutdownMode` enum are under
@@ -1827,6 +1811,16 @@ declare namespace Deno {
    * Shutdown socket send and receive operations.
    *
    * Matches behavior of POSIX shutdown(3).
+   *
+   *       const listener = Deno.listen({ port: 80 });
+   *       const conn = await listener.accept();
+   *       Deno.shutdown(conn.rid, Deno.ShutdownMode.Write);
+   */
+  /** **不稳定的**：参数 `how` 和 枚举 `ShutdownMode` 都在考虑移除。
+   *
+   * Shutdown 套接字的发送和接收操作。
+   *
+   * 与 POSIX 的 shutdown(3) 行为一致。
    *
    *       const listener = Deno.listen({ port: 80 });
    *       const conn = await listener.accept();
@@ -1973,8 +1967,7 @@ declare namespace Deno {
   }
 
   /**
-   * Connects to the hostname (default is "127.0.0.1") and port on the named
-   * transport (default is "tcp"), and resolves to the connection (`Conn`).
+   * 通过指定传输协议（默认 "tcp"）连接主机名（默认 "127.0.0.1"）和端口号，并异步返回这个连接（`Conn`）。
    *
    *     const conn1 = await Deno.connect({ port: 80 });
    *     const conn2 = await Deno.connect({ hostname: "192.0.2.1", port: 80 });
@@ -1982,7 +1975,8 @@ declare namespace Deno {
    *     const conn4 = await Deno.connect({ hostname: "golang.org", port: 80, transport: "tcp" });
    *     const conn5 = await Deno.connect({ address: "/foo/bar.sock", transport: "unix" });
    *
-   * Requires `allow-net` permission for "tcp" and `allow-read` for unix. */
+   * "tcp" 需要 `allow-net` 权限，unix 需要 `allow-read` 权限。
+   * */
   export function connect(
     options: ConnectOptions | UnixConnectOptions
   ): Promise<Conn>;
@@ -2011,7 +2005,7 @@ declare namespace Deno {
    */
   export function connectTLS(options: ConnectTLSOptions): Promise<Conn>;
 
-  /** **UNSTABLE**: not sure if broken or not */
+  /** **不稳定**: not sure if broken or not */
   export interface Metrics {
     opsDispatched: number;
     opsDispatchedSync: number;
@@ -2026,9 +2020,9 @@ declare namespace Deno {
     bytesReceived: number;
   }
 
-  /** Receive metrics from the privileged side of Deno.  This is primarily used
-   * in the development of Deno. 'Ops', also called 'bindings', are the go-between
-   * between Deno Javascript and Deno Rust.
+  /** 从 Deno 的特权方接收指标。
+   * 这主要用于 Deno 的开发中。
+   * 'Ops'（也称为 'bindings'）是 Deno Javascript 和 Deno Rust 之间的沟通桥梁。
    *
    *      > console.table(Deno.metrics())
    *      ┌─────────────────────────┬────────┐
@@ -2049,12 +2043,12 @@ declare namespace Deno {
    */
   export function metrics(): Metrics;
 
-  /** **UNSTABLE**: reconsider representation. */
+  /** **不稳定**: 重新考虑表示方法。 */
   interface ResourceMap {
     [rid: number]: string;
   }
 
-  /** **UNSTABLE**: The return type is under consideration and may change.
+  /** **不稳定**: The return type is under consideration and may change.
    *
    * Returns a map of open _file like_ resource ids (rid) along with their string
    * representations.
@@ -2125,27 +2119,26 @@ declare namespace Deno {
    * Requires `allow-run` permission. */
   export function kill(pid: number, signo: number): void;
 
-  /** **UNSTABLE**: There are some issues to work out with respect to when and
-   * how the process should be closed. */
+  /** **UNSTABLE**: 这里有一些关于如何结束进程的问题需要解决。 */
   export class Process {
     readonly rid: number;
     readonly pid: number;
     readonly stdin?: WriteCloser;
     readonly stdout?: ReadCloser;
     readonly stderr?: ReadCloser;
-    /** Resolves to the current status of the process. */
+    /** 解析进程当前的状态。 */
     status(): Promise<ProcessStatus>;
-    /** Buffer the stdout and return it as `Uint8Array` after `Deno.EOF`.
+    /** 缓冲区中的 stdout，会在 `Deno.EOF` 之后以 `Uint8Array` 的形式返回。
      *
-     * You must set stdout to `"piped"` when creating the process.
+     * 在创建进程时，你必须将 stdout 设置为 `"piped"`。
      *
-     * This calls `close()` on stdout after its done. */
+     * 会在 stdout 完成后调用 `close()`。 */
     output(): Promise<Uint8Array>;
-    /** Buffer the stderr and return it as `Uint8Array` after `Deno.EOF`.
+    /** 缓冲区中的 stderr， 会在 `Deno.EOF` 之后以 `Uint8Array` 的形式返回。
      *
-     * You must set stderr to `"piped"` when creating the process.
+     * 在创建进程时，你必须将 stderr 设置为 `"piped"`。
      *
-     * This calls `close()` on stderr after its done. */
+     * 会在 stderr 完成后调用 `close()`。 */
     stderrOutput(): Promise<Uint8Array>;
     close(): void;
     kill(signo: number): void;
@@ -2717,10 +2710,9 @@ declare namespace Deno {
    */
   export const args: string[];
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Represents the stream of signals, implements both `AsyncIterator` and
-   * `PromiseLike`. */
+   * 信号流，实现了 `AsyncIterator` 和 `PromiseLike` 接口。 */
   export class SignalStream
     implements AsyncIterableIterator<void>, PromiseLike<void> {
     constructor(signal: typeof Deno.Signal);
@@ -2733,23 +2725,20 @@ declare namespace Deno {
     dispose(): void;
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Returns the stream of the given signal number. You can use it as an async
-   * iterator.
+   * 返回指定信号编码的流。返回值可用于异步迭代。
    *
    *      for await (const _ of Deno.signal(Deno.Signal.SIGTERM)) {
    *        console.log("got SIGTERM!");
    *      }
    *
-   * You can also use it as a promise. In this case you can only receive the
-   * first one.
+   * 也可以把它作为 Promise 来使用。在这种情况下，只能收到第一个值。
    *
    *      await Deno.signal(Deno.Signal.SIGTERM);
    *      console.log("SIGTERM received!")
    *
-   * If you want to stop receiving the signals, you can use `.dispose()` method
-   * of the signal stream object.
+   * 如果要停止接收信号，可以使用信号流对象(`SignalStream`)的 `.dispose()` 方法。
    *
    *      const sig = Deno.signal(Deno.Signal.SIGTERM);
    *      setTimeout(() => { sig.dispose(); }, 5000);
@@ -2757,70 +2746,68 @@ declare namespace Deno {
    *        console.log("SIGTERM!")
    *      }
    *
-   * The above for-await loop exits after 5 seconds when `sig.dispose()` is
-   * called.
+   * 当调用 `sig.dispose()` 5 秒后，上述 for-await 循环退出。
    *
-   * NOTE: This functionality is not yet implemented on Windows.
+   * 注意: 这个功能还没有在 Windows 上实现。
    */
   export function signal(signo: number): SignalStream;
 
-  /** **UNSTABLE**: new API, yet to be vetted. */
+  /** **不稳定**: 新 API，没有经过审查。 */
   export const signals: {
-    /** Returns the stream of SIGALRM signals.
+    /** 返回 SIGALRM 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGALRM)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGALRM)` 的简写形式。 */
     alarm: () => SignalStream;
-    /** Returns the stream of SIGCHLD signals.
+    /** 返回 SIGCHLD 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGCHLD)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGCHLD)` 的简写形式。 */
     child: () => SignalStream;
-    /** Returns the stream of SIGHUP signals.
+    /** 返回 SIGHUP 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGHUP)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGHUP)` 的简写形式。 */
     hungup: () => SignalStream;
-    /** Returns the stream of SIGINT signals.
+    /** 返回 SIGINT 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGINT)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGINT)` 的简写形式。 */
     interrupt: () => SignalStream;
-    /** Returns the stream of SIGIO signals.
+    /** 返回 SIGIO 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGIO)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGIO)` 的简写形式。 */
     io: () => SignalStream;
-    /** Returns the stream of SIGPIPE signals.
+    /** 返回 SIGPIPE 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGPIPE)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGPIPE)` 的简写形式。 */
     pipe: () => SignalStream;
-    /** Returns the stream of SIGQUIT signals.
+    /** 返回 SIGQUIT 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGQUIT)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGQUIT)` 的简写形式。 */
     quit: () => SignalStream;
-    /** Returns the stream of SIGTERM signals.
+    /** 返回 SIGTERM 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGTERM)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGTERM)` 的简写形式。 */
     terminate: () => SignalStream;
-    /** Returns the stream of SIGUSR1 signals.
+    /** 返回 SIGUSR1 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGUSR1)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGUSR1)` 的简写形式。 */
     userDefined1: () => SignalStream;
-    /** Returns the stream of SIGUSR2 signals.
+    /** 返回 SIGUSR2 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGUSR2)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGUSR2)` 的简写形式。 */
     userDefined2: () => SignalStream;
-    /** Returns the stream of SIGWINCH signals.
+    /** 返回 SIGWINCH 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGWINCH)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGWINCH)` 的简写形式。 */
     windowChange: () => SignalStream;
   };
 
-  /** **UNSTABLE**: new API. Maybe move `Deno.EOF` here.
+  /** **不稳定**: 新 API。可能会把 `Deno.EOF` 移动到这里。
    *
-   * Special Deno related symbols. */
+   * 和 Deno 相关的 `Symbol`。 */
   export const symbols: {
-    /** Symbol to access exposed internal Deno API */
+    /** 用于将 Deno 内部 API 暴露出来的 Symbol */
     readonly internal: unique symbol;
-    /** A symbol which can be used as a key for a custom method which will be
-     * called when `Deno.inspect()` is called, or when the object is logged to
-     * the console. */
+    /** 这个 Symbol 可以作为 key 来定义一个方法，当 `Deno.inspect()` 被调用或者调用了
+     * console 的日志方法时，这个自定义函数被调用。 */
     readonly customInspect: unique symbol;
     // TODO(ry) move EOF here?
   };

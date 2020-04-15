@@ -9,7 +9,7 @@
   "ignoreCompilerErrors": true,
   "excludePrivate": true,
   "excludeProtected": true,
-  "theme": "minimal",
+  "theme": "./node_modules/typedoc-deno-theme/dist",
   "gaID": "UA-123999279-2",
   "readme": "none"
 }
