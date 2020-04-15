@@ -1826,7 +1826,7 @@ declare namespace Deno {
   export enum ShutdownMode {
     Read = 0,
     Write,
-    ReadWrite, // TODO(ry) panics on ReadWrite. // TODO(ry) ReadWrite上的异常。
+    ReadWrite, // TODO(ry) panics on ReadWrite. // TODO(ry) `ReadWrite` 上的异常。
   }
 
   /** **UNSTABLE**: Both the `how` parameter and `ShutdownMode` enum are under
