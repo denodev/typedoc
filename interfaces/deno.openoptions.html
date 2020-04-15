@@ -109,15 +109,14 @@
 				<div class="tsd-signature tsd-kind-icon">append<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/7b3d0b8/lib.deno.ns.d.ts#L805">lib.deno.ns.d.ts:805</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/598534c/lib.deno.ns.d.ts#L803">lib.deno.ns.d.ts:803</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Sets the option for the append mode. This option, when <code>true</code>, means that
-							writes will append to a file instead of overwriting previous contents.
-							Note that setting <code>{ write: true, append: true }</code> has the same effect as
-						setting only <code>{ append: true }</code>.</p>
+						<p>设置追加模式的选项。
+							当为 <code>true</code> 时，表示写入将追加到文件中，而不是覆盖先前的内容。
+						请注意，设置 <code>{ write: true, append: true }</code> 与仅设置 <code>{ append: true }</code> 具有相同的效果。</p>
 					</div>
 				</div>
 			</section>
@@ -127,14 +126,13 @@
 				<div class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/7b3d0b8/lib.deno.ns.d.ts#L814">lib.deno.ns.d.ts:814</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/598534c/lib.deno.ns.d.ts#L810">lib.deno.ns.d.ts:810</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Sets the option to allow creating a new file, if one doesn&#39;t already
-							exist at the specified path. Requires write or append access to be
-						used.</p>
+						<p>设置选项以允许创建新文件（如果指定路径尚不存在）。
+						需要使用写权限或追加权限。</p>
 					</div>
 				</div>
 			</section>
@@ -144,15 +142,15 @@
 				<div class="tsd-signature tsd-kind-icon">create<wbr>New<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/7b3d0b8/lib.deno.ns.d.ts#L819">lib.deno.ns.d.ts:819</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/598534c/lib.deno.ns.d.ts#L815">lib.deno.ns.d.ts:815</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Defaults to <code>false</code>. If set to <code>true</code>, no file, directory, or symlink is
-							allowed to exist at the target location. Requires write or append
-							access to be used. When createNew is set to <code>true</code>, create and truncate
-						are ignored.</p>
+						<p>默认为 <code>false</code>。
+							如果设置为 <code>true</code>，则在目标位置不允许存在文件、目录或符号链接。
+							需要使用写权限或追加权限。
+						当 createNew 设置为 <code>true</code> 时，create 和 truncate 被忽略。</p>
 					</div>
 				</div>
 			</section>
@@ -162,14 +160,13 @@
 				<div class="tsd-signature tsd-kind-icon">mode<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/7b3d0b8/lib.deno.ns.d.ts#L823">lib.deno.ns.d.ts:823</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/598534c/lib.deno.ns.d.ts#L818">lib.deno.ns.d.ts:818</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Permissions to use if creating the file (defaults to <code>0o666</code>, before
-							the process&#39;s umask).
-						Ignored on Windows.</p>
+						<p>创建文件时使用的权限（在进程调用 <code>umask</code> 之前默认为 <code>0o666</code>）。
+						在 Windows 上此选项被忽略。</p>
 					</div>
 				</div>
 			</section>
@@ -179,13 +176,13 @@
 				<div class="tsd-signature tsd-kind-icon">read<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/7b3d0b8/lib.deno.ns.d.ts#L795">lib.deno.ns.d.ts:795</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/598534c/lib.deno.ns.d.ts#L795">lib.deno.ns.d.ts:795</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Sets the option for read access. This option, when <code>true</code>, means that the
-						file should be read-able if opened.</p>
+						<p>设置读取访问权限的选项。
+						当为 <code>true</code> 时，表示该文件在打开后即处于可读状态。</p>
 					</div>
 				</div>
 			</section>
@@ -195,15 +192,14 @@
 				<div class="tsd-signature tsd-kind-icon">truncate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/7b3d0b8/lib.deno.ns.d.ts#L810">lib.deno.ns.d.ts:810</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/598534c/lib.deno.ns.d.ts#L807">lib.deno.ns.d.ts:807</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Sets the option for truncating a previous file. If a file is
-							successfully opened with this option set it will truncate the file to <code>0</code>
-							size if it already exists. The file must be opened with write access
-						for truncate to work.</p>
+						<p>设置截断上一个文件的选项。
+							如果使用此选项后成功打开了文件，则文件的长度将被截断为 <code>0</code>（如果已存在）。
+						该文件必须具有写访问权限才能打开，才能进行截断。</p>
 					</div>
 				</div>
 			</section>
@@ -213,15 +209,14 @@
 				<div class="tsd-signature tsd-kind-icon">write<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/7b3d0b8/lib.deno.ns.d.ts#L800">lib.deno.ns.d.ts:800</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/598534c/lib.deno.ns.d.ts#L799">lib.deno.ns.d.ts:799</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Sets the option for write access. This option, when <code>true</code>, means that
-							the file should be write-able if opened. If the file already exists,
-							any write calls on it will overwrite its contents, by default without
-						truncating it.</p>
+						<p>设置写访问权限的选项。
+							当为 <code>true</code> 时，表示该文件在打开时即处于可写状态。
+						如果该文件已存在，则默认情况下，对该文件的任何写调用都将覆盖其内容，而不会截断该文件。</p>
 					</div>
 				</div>
 			</section>
