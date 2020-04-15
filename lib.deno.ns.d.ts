@@ -414,17 +414,16 @@ declare namespace Deno {
   export function chdir(directory: string): void;
 
   /**
-   * **UNSTABLE**: New API, yet to be vetted.  This API is under consideration to
-   * determine if permissions are required to call it.
+   * **不稳定**: 新 API，没有经过审查。正在考虑调用此 API 时，是否需要申请权限。
    *
-   * Retrieve the process umask.  If `mask` is provided, sets the process umask.
-   * This call always returns what the umask was before the call.
+   * 获取进程权限掩码。如果提供 `mask`，则设置进程权限掩码。
+   * 此函数始终返回调用前的权限掩码。
    *
    *        console.log(Deno.umask());  //e.g. 18 (0o022)
    *        const prevUmaskValue = Deno.umask(0o077);  //e.g. 18 (0o022)
    *        console.log(Deno.umask());  //e.g. 63 (0o077)
    *
-   * NOTE:  This API is not implemented on Windows
+   * 注意: 此 API 未在 Windows 平台实现。
    */
   export function umask(mask?: number): number;
 
