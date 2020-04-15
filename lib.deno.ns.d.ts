@@ -786,7 +786,7 @@ declare namespace Deno {
   export const stdin: File;
   /** 用于 `stdout` 的 `Deno.File` 实例。 */
   export const stdout: File;
-  /** An instance of `Deno.File` for `stderr`. */
+  /** 用于 `stderr` 的 `Deno.File` 实例。 */
   export const stderr: File;
 
   export interface OpenOptions {
