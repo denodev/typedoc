@@ -460,17 +460,17 @@ declare namespace Deno {
      * Implementations should not retain a reference to `p`.
      */
     /** 最多读取 `p.byteLength` 个字节到p中，然后返回读取的字节数（`0 < n <= p.byteLength`），并在遇到任何错误时返回拒绝状态的回调函数。
-      * 即使 `read()` 返回值为 `n < p.byteLength`，p也可能在调用期间被用作临时空间。
-      * 如果有数据可用，但不存在 `p.byteLength`，`read()` 通常会返回可用值，而不是等待更多。
-      * 
-      * 当 `read()` 遇到文件结束条件时，将返回 `Deno.EOF` 符号。
-      * 
-      * 当 `read()` 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。
-      * 
-      * 调用者应始终处理返回值为 `n > 0` 的情况，然后再考虑 `EOF`。
-      * 应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的I/O错误。
-      *
-      * 实现不应保留对 `p` 的引用。
+     * 即使 `read()` 返回值为 `n < p.byteLength`，p也可能在调用期间被用作临时空间。
+     * 如果有数据可用，但不存在 `p.byteLength`，`read()` 通常会返回可用值，而不是等待更多。
+     *
+     * 当 `read()` 遇到文件结束条件时，将返回 `Deno.EOF` 符号。
+     *
+     * 当 `read()` 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。
+     *
+     * 调用者应始终处理返回值为 `n > 0` 的情况，然后再考虑 `EOF`。
+     * 应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的I/O错误。
+     *
+     * 实现不应保留对 `p` 的引用。
      */
     read(p: Uint8Array): Promise<number | EOF>;
   }
@@ -562,20 +562,18 @@ declare namespace Deno {
   export interface ReadWriteCloser extends Reader, Writer, Closer {}
   export interface ReadWriteSeeker extends Reader, Writer, Seeker {}
 
-  /** Copies from `src` to `dst` until either `EOF` is reached on `src` or an
-   * error occurs. It resolves to the number of bytes copied or rejects with
-   * the first error encountered while copying.
+  /** 从 `src` 拷贝文件至 `dst`，拷贝至 `src` 的 `EOF` 或有异常出现时结束。
+   * `copy()` 函数返回一个 `Promise`, 成功时 resolve 并返回拷贝的字节数，失败时 reject 并返回拷贝过程中的首个异常
    *
    *       const source = await Deno.open("my_file.txt");
    *       const buffer = new Deno.Buffer()
    *       const bytesCopied1 = await Deno.copy(Deno.stdout, source);
    *       const bytesCopied2 = await Deno.copy(buffer, source);
    *
-   * Because `copy()` is defined to read from `src` until `EOF`, it does not
-   * treat an `EOF` from `read()` as an error to be reported.
+   * 因为 `copy()` 函数在读到 `EOF` 时停止，所以不会将 `EOF` 视为异常（区别于 `read()` 函数）。
    *
-   * @param dst The destination to copy to
-   * @param src The source to copy from
+   * @param dst 需要拷贝至的目标位置
+   * @param src 拷贝的源位置
    */
   export function copy(dst: Writer, src: Reader): Promise<number>;
 
