@@ -790,36 +790,31 @@ declare namespace Deno {
   export const stderr: File;
 
   export interface OpenOptions {
-    /** Sets the option for read access. This option, when `true`, means that the
-     * file should be read-able if opened. */
+    /** 设置读取访问权限的选项。
+     * 当为 `true` 时，表示该文件在打开后即处于可读状态。 */
     read?: boolean;
-    /** Sets the option for write access. This option, when `true`, means that
-     * the file should be write-able if opened. If the file already exists,
-     * any write calls on it will overwrite its contents, by default without
-     * truncating it. */
+    /** 设置写访问权限的选项。
+     * 当为 `true` 时，表示该文件在打开时即处于可写状态。
+     * 如果该文件已存在，则默认情况下，对该文件的任何写调用都将覆盖其内容，而不会截断该文件。 */
     write?: boolean;
-    /**Sets the option for the append mode. This option, when `true`, means that
-     * writes will append to a file instead of overwriting previous contents.
-     * Note that setting `{ write: true, append: true }` has the same effect as
-     * setting only `{ append: true }`. */
+    /** 设置追加模式的选项。
+     * 当为 `true` 时，表示写入将追加到文件中，而不是覆盖先前的内容。
+     * 请注意，设置 `{ write: true, append: true }` 与仅设置 `{ append: true }` 具有相同的效果。 */
     append?: boolean;
-    /** Sets the option for truncating a previous file. If a file is
-     * successfully opened with this option set it will truncate the file to `0`
-     * size if it already exists. The file must be opened with write access
-     * for truncate to work. */
+    /** 设置截断上一个文件的选项。
+     * 如果使用此选项后成功打开了文件，则文件的长度将被截断为 `0`（如果已存在）。
+     * 该文件必须具有写访问权限才能打开，才能进行截断。 */
     truncate?: boolean;
-    /** Sets the option to allow creating a new file, if one doesn't already
-     * exist at the specified path. Requires write or append access to be
-     * used. */
+    /** 设置选项以允许创建新文件（如果指定路径尚不存在）。
+     * 需要使用写权限或追加权限。*/
     create?: boolean;
-    /** Defaults to `false`. If set to `true`, no file, directory, or symlink is
-     * allowed to exist at the target location. Requires write or append
-     * access to be used. When createNew is set to `true`, create and truncate
-     * are ignored. */
+    /** 默认为 `false`。
+     * 如果设置为 `true`，则在目标位置不允许存在文件、目录或符号链接。
+     * 需要使用写权限或追加权限。
+     * 当 createNew 设置为 `true` 时，create 和 truncate 被忽略。 */
     createNew?: boolean;
-    /** Permissions to use if creating the file (defaults to `0o666`, before
-     * the process's umask).
-     * Ignored on Windows. */
+    /** 创建文件时使用的权限（在进程调用 `umask` 之前默认为 `0o666`）。
+     * 在 Windows 上此选项被忽略。 */
     mode?: number;
   }
 
