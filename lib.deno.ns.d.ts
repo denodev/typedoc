@@ -833,11 +833,11 @@ declare namespace Deno {
    */
   export type OpenMode = "r" | "r+" | "w" | "w+" | "a" | "a+" | "x" | "x+";
 
-  /** **UNSTABLE**: new API, yet to be vetted
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   *  Check if a given resource id (`rid`) is a TTY.
+   *  检查指定的资源 id (`rid`) 是否为 TTY（终端）。
    *
-   *       //This example is system and context specific
+   *       // 这个例子依赖于特定的操作系统和环境
    *       const nonTTYRid = Deno.openSync("my_file.txt").rid;
    *       const ttyRid = Deno.openSync("/dev/tty6").rid;
    *       console.log(Deno.isatty(nonTTYRid)); // false
