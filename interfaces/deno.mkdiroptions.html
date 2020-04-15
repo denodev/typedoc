@@ -89,14 +89,12 @@
 				<div class="tsd-signature tsd-kind-icon">mode<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/7a1f7ed/lib.deno.ns.d.ts#L1001">lib.deno.ns.d.ts:1001</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/8edc088/lib.deno.ns.d.ts#L997">lib.deno.ns.d.ts:997</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Permissions to use when creating the directory (defaults to <code>0o777</code>,
-							before the process&#39;s umask).
-						Ignored on Windows.</p>
+						<p>创建目录时使用的权限（在调用 <code>umask</code> 之前，默认值为 <code>0o777</code>）。在 Windows 上被忽略。</p>
 					</div>
 				</div>
 			</section>
@@ -106,17 +104,15 @@
 				<div class="tsd-signature tsd-kind-icon">recursive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/7a1f7ed/lib.deno.ns.d.ts#L997">lib.deno.ns.d.ts:997</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/8edc088/lib.deno.ns.d.ts#L995">lib.deno.ns.d.ts:995</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Defaults to <code>false</code>. If set to <code>true</code>, means that any intermediate
-							directories will also be created (as with the shell command <code>mkdir -p</code>).
-							Intermediate directories are created with the same permissions.
-							When recursive is set to <code>true</code>, succeeds silently (without changing any
-							permissions) if a directory already exists at the path, or if the path
-						is a symlink to an existing directory.</p>
+						<p>默认为 <code>false</code>。
+							如果设置为 <code>true</code>，则意味着还将创建所有中间目录（如 shell 命令 <code>mkdir -p</code> 那样）。
+							使用相同的权限创建中间目录。
+						当设置为 <code>true</code> 时，如果路径中已经存在目录，或者该路径是到现有目录的符号链接，则会静默地操作成功（不更改任何权限）。</p>
 					</div>
 				</div>
 			</section>
