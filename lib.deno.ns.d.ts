@@ -2048,10 +2048,9 @@ declare namespace Deno {
     [rid: number]: string;
   }
 
-  /** **不稳定**: The return type is under consideration and may change.
+  /** **不稳定**: 返回类型正在考虑中，并且可能会更改。
    *
-   * Returns a map of open _file like_ resource ids (rid) along with their string
-   * representations.
+   * 返回打开的_文件_资源 ID（rid）及其字符串表示形式的 Map。
    *
    *       console.log(Deno.resources()); //e.g. { 0: "stdin", 1: "stdout", 2: "stderr" }
    *       Deno.openSync('../test.file');
