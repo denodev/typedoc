@@ -20,9 +20,8 @@ declare namespace Deno {
     disableResourceSanitizer?: boolean;
   }
 
-  /** Register a test which will be run when `deno test` is used on the command
-   * line and the containing module looks like a test module, or explicitly
-   * when `Deno.runTests` is used.  `fn` can be async if required.
+  /** 注册一个测试，它将在命令行执行 `deno test` 操作并且包含的模块看起来像一个测试模块时运行，
+   * 或者在使用 `Deno.runTests` 时显式运行。如果需要， `fn` 可以是异步的。
    *
    *          import {assert, fail, assertEquals} from "https://deno.land/std/testing/asserts.ts";
    *
@@ -37,7 +36,7 @@ declare namespace Deno {
    *            name: "example ignored test",
    *            ignore: Deno.build.os === "win"
    *            fn(): void {
-   *              //This test is ignored only on Windows machines
+   *              // 仅在 Windows 机器上忽略这个测试。
    *            },
    *          });
    *
@@ -52,9 +51,8 @@ declare namespace Deno {
    */
   export function test(t: TestDefinition): void;
 
-  /** Register a test which will be run when `deno test` is used on the command
-   * line and the containing module looks like a test module, or explicitly
-   * when `Deno.runTests` is used
+  /** 注册一个测试，它将在命令行执行 `deno test` 操作并且包含的模块看起来像一个测试模块时运行，
+   * 或者在使用 `Deno.runTests` 时显式运行。
    *
    *        import {assert, fail, assertEquals} from "https://deno.land/std/testing/asserts.ts";
    *
@@ -70,9 +68,8 @@ declare namespace Deno {
    **/
   export function test(fn: () => void | Promise<void>): void;
 
-  /** Register a test which will be run when `deno test` is used on the command
-   * line and the containing module looks like a test module, or explicitly
-   * when `Deno.runTests` is used
+  /** 注册一个测试，它将在命令行执行 `deno test` 操作并且包含的模块看起来像一个测试模块时运行，
+   * 或者在使用 `Deno.runTests` 时显式运行。
    *
    *        import {assert, fail, assertEquals} from "https://deno.land/std/testing/asserts.ts";
    *
@@ -390,17 +387,15 @@ declare namespace Deno {
   export function execPath(): string;
 
   /**
-   * **UNSTABLE**: Currently under evaluation to decide if explicit permission is
-   * required to get the value of the current working directory.
+   * **不稳定**: 获取当前工作目录是否需要明确的权限，目前正在评估中。
    *
-   * Return a string representing the current working directory.
+   * 返回当前工作目录的字符串。
    *
-   * If the current directory can be reached via multiple paths (due to symbolic
-   * links), `cwd()` may return any one of them.
+   * 如果当前目录可以通过多个路径访问（由于符号链接导致），可能会返回其中任意一个。
    *
    *       const currentWorkingDirectory = Deno.cwd();
    *
-   * Throws `Deno.errors.NotFound` if directory not available.
+   * 如果目录不存在，则抛出 `Deno.errors.NotFound`。
    */
   export function cwd(): string;
 
@@ -1646,11 +1641,11 @@ declare namespace Deno {
     Http: ErrorConstructor;
   };
 
-  /** **UNSTABLE**: potentially want names to overlap more with browser.
+  /** **不稳定**：希望与浏览器在名称上有更多的相同。
    *
-   * The permissions as granted by the caller.
+   * 调用方授予的权限。
    *
-   * See: https://w3c.github.io/permissions/#permission-registry */
+   * 具体查看：https://w3c.github.io/permissions/#permission-registry */
   export type PermissionName =
     | "run"
     | "read"
@@ -1660,9 +1655,9 @@ declare namespace Deno {
     | "plugin"
     | "hrtime";
 
-  /** The current status of the permission.
+  /** 权限的状态。
    *
-   * See: https://w3c.github.io/permissions/#status-of-a-permission */
+   * 具体查看：https://w3c.github.io/permissions/#status-of-a-permission */
   export type PermissionState = "granted" | "denied" | "prompt";
 
   interface RunPermissionDescriptor {
@@ -1691,10 +1686,9 @@ declare namespace Deno {
     name: "hrtime";
   }
 
-  /** Permission descriptors which define a permission which can be queried,
-   * requested, or revoked.
+  /** 权限描述符，定义一个可以查询、请求或撤销的权限。
    *
-   * See: https://w3c.github.io/permissions/#permission-descriptor */
+   * 具体查看：https://w3c.github.io/permissions/#permission-descriptor */
   type PermissionDescriptor =
     | RunPermissionDescriptor
     | ReadWritePermissionDescriptor
@@ -1704,7 +1698,7 @@ declare namespace Deno {
     | HrtimePermissionDescriptor;
 
   export class Permissions {
-    /** Resolves to the current status of a permission.
+    /** 查询给定权限的状态。
      *
      *       const status = await Deno.permissions.query({ name: "read", path: "/etc" });
      *       if (status.state === "granted") {
@@ -1713,14 +1707,14 @@ declare namespace Deno {
      */
     query(desc: PermissionDescriptor): Promise<PermissionStatus>;
 
-    /** Revokes a permission, and resolves to the state of the permission.
+    /** 撤销给定的权限，并且返回该权限的状态。
      *
      *       const status = await Deno.permissions.revoke({ name: "run" });
-     *       assert(status.state !== "granted")
+     *       console.assert(status.state !== "granted")
      */
     revoke(desc: PermissionDescriptor): Promise<PermissionStatus>;
 
-    /** Requests the permission, and resolves to the state of the permission.
+    /** 请求权限，并且返回该权限请求结果的状态。
      *
      *       const status = await Deno.permissions.request({ name: "env" });
      *       if (status.state === "granted") {
@@ -1732,10 +1726,10 @@ declare namespace Deno {
     request(desc: PermissionDescriptor): Promise<PermissionStatus>;
   }
 
-  /** **UNSTABLE**: maybe move to `navigator.permissions` to match web API. */
+  /** **不稳定**：可能移动到 `navigator.permissions` 以匹配 web API。 */
   export const permissions: Permissions;
 
-  /** see: https://w3c.github.io/permissions/#permissionstatus */
+  /** 具体查看：https://w3c.github.io/permissions/#permissionstatus */
   export class PermissionStatus {
     state: PermissionState;
     constructor(state: PermissionState);
