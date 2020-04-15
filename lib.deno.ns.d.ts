@@ -637,21 +637,19 @@ declare namespace Deno {
    */
   export function open(path: string, openMode?: OpenMode): Promise<File>;
 
-  /** Creates a file if none exists or truncates an existing file and returns
-   *  an instance of `Deno.File`.
+  /** 创建文件并返回一个 `Deno.File` 实例，如果文件已存在则进行覆盖。
    *
    *       const file = Deno.createSync("/foo/bar.txt");
    *
-   * Requires `allow-read` and `allow-write` permissions.
+   * 需要 `allow-read` 和 `allow-write` 权限。
    */
   export function createSync(path: string): File;
 
-  /** Creates a file if none exists or truncates an existing file and resolves to
-   *  an instance of `Deno.File`.
+  /** 创建文件并异步返回一个 `Deno.File` 实例，如果文件已存在则进行覆盖。
    *
    *       const file = await Deno.create("/foo/bar.txt");
    *
-   * Requires `allow-read` and `allow-write` permissions.
+   * 需要 `allow-read` 和 `allow-write` 权限。
    */
   export function create(path: string): Promise<File>;
 
