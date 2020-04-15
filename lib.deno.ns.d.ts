@@ -497,27 +497,25 @@ declare namespace Deno {
   }
 
   export interface Writer {
-    /** Writes `p.byteLength` bytes from `p` to the underlying data stream. It
-     * resolves to the number of bytes written from `p` (`0` <= `n` <=
-     * `p.byteLength`) or reject with the error encountered that caused the
-     * write to stop early. `write()` must reject with a non-null error if
-     * would resolve to `n` < `p.byteLength`. `write()` must not modify the
-     * slice data, even temporarily.
-     *
-     * Implementations should not retain a reference to `p`.
+    /**
+     * 将 `p` 中的 `p.byteLength` 字节写入底层数据流。 它 resolve 时返回值为从 `p` 写入的
+     * 字节数(`0` <= `n` <= `p.byteLength`），reject 时返回值为导致写入提前停止的错误。
+     * 如果将要 resolve 一个 `n` < `p.byteLength` 的值时， `write()` 必须 reject，并且返回
+     * 一个非空错误。`write()` 禁止修改分片数据，即使是临时修改。
+     * 
+     * 实现不应保留对 `p` 的引用。
      */
     write(p: Uint8Array): Promise<number>;
   }
 
   export interface SyncWriter {
-    /** Writes `p.byteLength` bytes from `p` to the underlying data
-     * stream. It returns the number of bytes written from `p` (`0` <= `n`
-     * <= `p.byteLength`) and any error encountered that caused the write to
-     * stop early. `writeSync()` must throw a non-null error if it returns `n` <
-     * `p.byteLength`. `writeSync()` must not modify the slice data, even
-     * temporarily.
-     *
-     * Implementations should not retain a reference to `p`.
+    /**
+     * 将 `p` 中的 `p.byteLength` 字节写入底层数据流。它的返回值为从 `p` 写入的
+     * 字节数(`0` <= `n` <= `p.byteLength`）或者导致写入提前停止的错误。
+     * `writeSync()` 会抛出一个非空错误当返回值 `n` < `p.byteLength`。`writeSync()` 
+     * 禁止修改分片数据，即使是临时修改。
+     * 
+     * 实现不应保留对 `p` 的引用。
      */
     writeSync(p: Uint8Array): number;
   }
