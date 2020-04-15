@@ -2005,7 +2005,7 @@ declare namespace Deno {
    */
   export function connectTLS(options: ConnectTLSOptions): Promise<Conn>;
 
-  /** **UNSTABLE**: not sure if broken or not */
+  /** **不稳定**: not sure if broken or not */
   export interface Metrics {
     opsDispatched: number;
     opsDispatchedSync: number;
@@ -2020,9 +2020,9 @@ declare namespace Deno {
     bytesReceived: number;
   }
 
-  /** Receive metrics from the privileged side of Deno.  This is primarily used
-   * in the development of Deno. 'Ops', also called 'bindings', are the go-between
-   * between Deno Javascript and Deno Rust.
+  /** 从 Deno 的特权方接收指标。
+   * 这主要用于 Deno 的开发中。
+   * 'Ops'（也称为 'bindings'）是 Deno Javascript 和 Deno Rust 之间的沟通桥梁。
    *
    *      > console.table(Deno.metrics())
    *      ┌─────────────────────────┬────────┐
