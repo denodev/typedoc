@@ -669,6 +669,11 @@ typedoc-default-themes@^0.10.0:
   dependencies:
     lunr "^2.3.8"
 
+typedoc-deno-theme@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/typedoc-deno-theme/download/typedoc-deno-theme-1.0.1.tgz?cache=0&sync_timestamp=1586938691028&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftypedoc-deno-theme%2Fdownload%2Ftypedoc-deno-theme-1.0.1.tgz#d5f84ca81461cce362cf10aebae3c10c70cb46b3"
+  integrity sha1-1fhMqBRhzONizxCuuuPBDHDLRrM=
+
 typedoc@^0.17.4:
   version "0.17.4"
   resolved "https://registry.npm.taobao.org/typedoc/download/typedoc-0.17.4.tgz#1de11e2e5e741af20bcdd73b9525f8ad04b59863"
