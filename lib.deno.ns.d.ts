@@ -988,16 +988,12 @@ declare namespace Deno {
   export function writeAllSync(w: SyncWriter, arr: Uint8Array): void;
 
   export interface MkdirOptions {
-    /** Defaults to `false`. If set to `true`, means that any intermediate
-     * directories will also be created (as with the shell command `mkdir -p`).
-     * Intermediate directories are created with the same permissions.
-     * When recursive is set to `true`, succeeds silently (without changing any
-     * permissions) if a directory already exists at the path, or if the path
-     * is a symlink to an existing directory. */
+    /** 默认为 `false`。
+     * 如果设置为 `true`，则意味着还将创建所有中间目录（如 shell 命令 `mkdir -p` 那样）。
+     * 使用相同的权限创建中间目录。
+     * 当设置为 `true` 时，如果路径中已经存在目录，或者该路径是到现有目录的符号链接，则会静默地操作成功（不更改任何权限）。*/
     recursive?: boolean;
-    /** Permissions to use when creating the directory (defaults to `0o777`,
-     * before the process's umask).
-     * Ignored on Windows. */
+    /** 创建目录时使用的权限（在调用 `umask` 之前，默认值为 `0o777`）。在 Windows 上被忽略。*/
     mode?: number;
   }
 
