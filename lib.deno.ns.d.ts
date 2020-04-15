@@ -1035,14 +1035,11 @@ declare namespace Deno {
   export function mkdir(path: string, options?: MkdirOptions): Promise<void>;
 
   export interface MakeTempOptions {
-    /** Directory where the temporary directory should be created (defaults to
-     * the env variable TMPDIR, or the system's default, usually /tmp). */
+    /** 指定在哪里创建临时文件夹（默认为环境变量 TMPDIR 或者是系统默认目录，ps：通常是 /tmp）。 */
     dir?: string;
-    /** String that should precede the random portion of the temporary
-     * directory's name. */
+    /** 临时文件夹名前缀 */
     prefix?: string;
-    /** String that should follow the random portion of the temporary
-     * directory's name. */
+    /** 临时文件夹名后缀 */
     suffix?: string;
   }
 
@@ -1082,38 +1079,32 @@ declare namespace Deno {
   // TODO(ry) Doesn't check permissions.
   export function makeTempDir(options?: MakeTempOptions): Promise<string>;
 
-  /** Synchronously creates a new temporary file in the default directory for
-   * temporary files (see also `Deno.dir("temp")`), unless `dir` is specified.
-   * Other optional options include prefixing and suffixing the directory name
-   * with `prefix` and `suffix` respectively.
+  /** 以同步的方式在默认文件夹（另见 `Deno.dir("temp")`）中创建一个临时文件,
+   * 如果指定了 `dir` ， 则在指定的 `dir` 中创建。
+   * 如果没有指定 `dir` ，那么 `prefix` 和 `suffx` 将分别是文件名前缀和后缀。
    *
-   * The full path to the newly created file is returned.
+   * 返回新建文件的完整路径。
    *
-   * Multiple programs calling this function simultaneously will create different
-   * files. It is the caller's responsibility to remove the file when no longer
-   * needed.
+   * 多个程序同时调用该函数将会创建不同的文件。当不再需要该临时文件时，调用者应该主动删除该文件。
    *
    *       const tempFileName0 = Deno.makeTempFileSync(); // e.g. /tmp/419e0bf2
    *       const tempFileName1 = Deno.makeTempFileSync({ prefix: 'my_temp' });  //e.g. /tmp/my_temp754d3098
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限. */
   export function makeTempFileSync(options?: MakeTempOptions): string;
 
-  /** Creates a new temporary file in the default directory for temporary
-   * files (see also `Deno.dir("temp")`), unless `dir` is specified.  Other
-   * optional options include prefixing and suffixing the directory name with
-   * `prefix` and `suffix` respectively.
+  /** 在默认文件夹（另见 `Deno.dir("temp")`）中创建一个临时文件,
+   * 如果指定了 `dir` ， 则在指定的 `dir` 中创建。
+   * 如果没有指定 `dir` ，那么 `prefix` 和 `suffx` 将分别是文件名前缀和后缀。
    *
-   * This call resolves to the full path to the newly created file.
+   * 返回新建文件的完整路径。
    *
-   * Multiple programs calling this function simultaneously will create different
-   * files. It is the caller's responsibility to remove the file when no longer
-   * needed.
+   * 多个程序同时调用该函数将会创建不同的文件。当不再需要该临时文件时，调用者应该主动删除该文件。
    *
    *       const tmpFileName0 = await Deno.makeTempFile();  // e.g. /tmp/419e0bf2
    *       const tmpFileName1 = await Deno.makeTempFile({ prefix: 'my_temp' });  //e.g. /tmp/my_temp754d3098
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限. */
   export function makeTempFile(options?: MakeTempOptions): Promise<string>;
 
   /** Synchronously changes the permission of a specific file/directory of
