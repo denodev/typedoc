@@ -1842,7 +1842,7 @@ declare namespace Deno {
    */
   /** **不稳定的**：参数 `how` 和 枚举 `ShutdownMode` 都在考虑移除。
    * 
-   * Shutdown套接字的发送和接收操作。
+   * Shutdown 套接字的发送和接收操作。
    * 
    * 与 POSIX 的 shutdown(3) 行为一致。
    * 
