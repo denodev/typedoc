@@ -782,7 +782,7 @@ declare namespace Deno {
     close(): void;
   }
 
-  /** An instance of `Deno.File` for `stdin`. */
+  /** 用于 `stdin` 的 `Deno.File` 实例。 */
   export const stdin: File;
   /** An instance of `Deno.File` for `stdout`. */
   export const stdout: File;
