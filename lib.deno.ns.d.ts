@@ -390,17 +390,15 @@ declare namespace Deno {
   export function execPath(): string;
 
   /**
-   * **UNSTABLE**: Currently under evaluation to decide if explicit permission is
-   * required to get the value of the current working directory.
+   * **不稳定**: 获取当前工作目录是否需要明确的权限，目前正在评估中。
    *
-   * Return a string representing the current working directory.
+   * 返回当前工作目录的字符串
    *
-   * If the current directory can be reached via multiple paths (due to symbolic
-   * links), `cwd()` may return any one of them.
+   * 如果当前目录可以通过多个路径访问（由于符号链接导致），可能会返回其中任意一个。
    *
    *       const currentWorkingDirectory = Deno.cwd();
    *
-   * Throws `Deno.errors.NotFound` if directory not available.
+   * 如果目录不存在，则抛出 `Deno.errors.NotFound`。
    */
   export function cwd(): string;
 
