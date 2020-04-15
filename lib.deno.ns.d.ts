@@ -919,20 +919,19 @@ declare namespace Deno {
     readFromSync(r: SyncReader): number;
   }
 
-  /** Read Reader `r` until end of file (`Deno.EOF`) and resolve to the content
-   * as `Uint8Array`.
+  /** 读取 Reader `r` 直到文件的末尾 (`Deno.EOF`)，返回文件的内容，以 `Uint8Array` 表示。
    *
-   *       //Example from stdin
+   *       // Example：从 stdin 读取
    *       const stdinContent = await Deno.readAll(Deno.stdin);
    *
-   *       //Example from file
+   *       // Example：从文件读取
    *       const file = await Deno.open("my_file.txt", {read: true});
    *       const myFileContent = await Deno.readAll(file);
    *       Deno.close(file.rid);
    *
-   *       //Example from buffer
+   *       // Example：从 buffer 读取
    *       const myData = new Uint8Array(100);
-   *       // ... fill myData array with data
+   *       // ... 此处省略了填充 myData 数组的代码
    *       const reader = new Deno.Buffer(myData.buffer as ArrayBuffer);
    *       const bufferContent = await Deno.readAll(reader);
    */
