@@ -577,7 +577,7 @@ declare namespace Deno {
    */
   export function copy(dst: Writer, src: Reader): Promise<number>;
 
-  /** Turns a Reader, `r`, into an async iterator.
+  /** 将 Reader 对象 (`r`) 转换为异步迭代器。
    *
    *      for await (const chunk of toAsyncIterator(reader)) {
    *        console.log(chunk);
