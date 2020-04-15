@@ -1578,10 +1578,10 @@ declare namespace Deno {
    *
    *       const encoder = new TextEncoder();
    *       const data = encoder.encode("Hello world\n");
-   *       Deno.writeFileSync("hello1.txt", data);  //覆盖或者创建 "hello1.txt"
-   *       Deno.writeFileSync("hello2.txt", data, {create: false});  //仅当 "hello2.txt" 存在的情况下才有效
-   *       Deno.writeFileSync("hello3.txt", data, {mode: 0o777});  //设置新文件的权限
-   *       Deno.writeFileSync("hello4.txt", data, {append: true});  //在文件末尾添加数据
+   *       Deno.writeFileSync("hello1.txt", data);  // 覆盖或者创建 "hello1.txt"
+   *       Deno.writeFileSync("hello2.txt", data, {create: false});  // 仅当 "hello2.txt" 存在的情况下才有效
+   *       Deno.writeFileSync("hello3.txt", data, {mode: 0o777});  // 设置新文件的权限
+   *       Deno.writeFileSync("hello4.txt", data, {append: true});  // 在文件末尾添加数据
    *
    * 需要 `allow-write` 权限。如果 `options.create` 为 `false` 且需要 `allow-read` 权限。
    */
@@ -1595,10 +1595,10 @@ declare namespace Deno {
    *
    *       const encoder = new TextEncoder();
    *       const data = encoder.encode("Hello world\n");
-   *       await Deno.writeFile("hello1.txt", data);  //覆盖或者创建 "hello1.txt"
-   *       await Deno.writeFile("hello2.txt", data, {create: false});  //仅当 "hello2.txt" 存在的情况下才有效
-   *       await Deno.writeFile("hello3.txt", data, {mode: 0o777});  //设置新文件的权限
-   *       await Deno.writeFile("hello4.txt", data, {append: true});  //在文件末尾添加数据
+   *       await Deno.writeFile("hello1.txt", data);  // 覆盖或者创建 "hello1.txt"
+   *       await Deno.writeFile("hello2.txt", data, {create: false});  // 仅当 "hello2.txt" 存在的情况下才有效
+   *       await Deno.writeFile("hello3.txt", data, {mode: 0o777});  // 设置新文件的权限
+   *       await Deno.writeFile("hello4.txt", data, {append: true});  // 在文件末尾添加数据
    *
    * 需要 `allow-write` 权限。如果 `options.create` 为 `false` 且需要 `allow-read` 权限。
    */
