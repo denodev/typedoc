@@ -1510,36 +1510,34 @@ declare namespace Deno {
    * 需要 `allow-read` 和 `allow-write` 权限 */
   export function link(oldpath: string, newpath: string): Promise<void>;
 
-  /** **UNSTABLE**: `type` argument type may be changed to `"dir" | "file"`.
+  /** **不稳定**：`type` 参数可能更改为 `"dir" | "file"` 的联合类型。
    *
-   * Creates `newpath` as a symbolic link to `oldpath`.
+   * 同步方式创建 `newpath` 作为指向 `oldpath` 的符号链接。
    *
-   * The type argument can be set to `dir` or `file`. This argument is only
-   * available on Windows and ignored on other platforms.
+   * `type` 参数可以设置为 `dir` 或 `file`。此参数仅在 Windows 上可用，其他平台会被忽略。
    *
-   * NOTE: This function is not yet implemented on Windows.
+   * 注意：此函数尚未在 Windows 上实现。
    *
    *       Deno.symlinkSync("old/name", "new/name");
    *
-   * Requires `allow-read` and `allow-write` permissions. */
+   * 需要 `allow-read` 和 `allow-write` 权限 */
   export function symlinkSync(
     oldpath: string,
     newpath: string,
     type?: string
   ): void;
 
-  /** **UNSTABLE**: `type` argument may be changed to `"dir" | "file"`
+  /** **不稳定**：`type` 参数可能更改为 `"dir" | "file"` 的联合类型。
    *
-   * Creates `newpath` as a symbolic link to `oldpath`.
+   * 创建 `newpath` 作为指向 `oldpath` 的符号链接。
    *
-   * The type argument can be set to `dir` or `file`. This argument is only
-   * available on Windows and ignored on other platforms.
+   * `type` 参数可以设置为 `dir` 或 `file`。此参数仅在 Windows 上可用，其他平台会被忽略。
    *
-   * NOTE: This function is not yet implemented on Windows.
+   * 注意：此函数尚未在 Windows 上实现。
    *
    *       await Deno.symlink("old/name", "new/name");
    *
-   * Requires `allow-read` and `allow-write` permissions. */
+   * 需要 `allow-read` 和 `allow-write` 权限 */
   export function symlink(
     oldpath: string,
     newpath: string,
