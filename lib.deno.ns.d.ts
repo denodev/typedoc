@@ -2710,10 +2710,9 @@ declare namespace Deno {
    */
   export const args: string[];
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Represents the stream of signals, implements both `AsyncIterator` and
-   * `PromiseLike`. */
+   * 信号流，实现了 `AsyncIterator` 和 `PromiseLike` 接口。 */
   export class SignalStream
     implements AsyncIterableIterator<void>, PromiseLike<void> {
     constructor(signal: typeof Deno.Signal);
@@ -2726,23 +2725,20 @@ declare namespace Deno {
     dispose(): void;
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Returns the stream of the given signal number. You can use it as an async
-   * iterator.
+   * 返回指定信号编码的流。返回值可用于异步迭代。
    *
    *      for await (const _ of Deno.signal(Deno.Signal.SIGTERM)) {
    *        console.log("got SIGTERM!");
    *      }
    *
-   * You can also use it as a promise. In this case you can only receive the
-   * first one.
+   * 也可以把它作为 Promise 来使用。在这种情况下，只能收到第一个值。
    *
    *      await Deno.signal(Deno.Signal.SIGTERM);
    *      console.log("SIGTERM received!")
    *
-   * If you want to stop receiving the signals, you can use `.dispose()` method
-   * of the signal stream object.
+   * 如果要停止接收信号，可以使用信号流对象(`SignalStream`)的 `.dispose()` 方法。
    *
    *      const sig = Deno.signal(Deno.Signal.SIGTERM);
    *      setTimeout(() => { sig.dispose(); }, 5000);
@@ -2750,58 +2746,57 @@ declare namespace Deno {
    *        console.log("SIGTERM!")
    *      }
    *
-   * The above for-await loop exits after 5 seconds when `sig.dispose()` is
-   * called.
+   * 当调用 `sig.dispose()` 5 秒后，上述 for-await 循环退出。
    *
-   * NOTE: This functionality is not yet implemented on Windows.
+   * 注意: 这个功能还没有在 Windows 上实现。
    */
   export function signal(signo: number): SignalStream;
 
-  /** **UNSTABLE**: new API, yet to be vetted. */
+  /** **不稳定**: 新 API，没有经过审查。 */
   export const signals: {
-    /** Returns the stream of SIGALRM signals.
+    /** 返回 SIGALRM 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGALRM)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGALRM)` 的简写形式。 */
     alarm: () => SignalStream;
-    /** Returns the stream of SIGCHLD signals.
+    /** 返回 SIGCHLD 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGCHLD)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGCHLD)` 的简写形式。 */
     child: () => SignalStream;
-    /** Returns the stream of SIGHUP signals.
+    /** 返回 SIGHUP 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGHUP)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGHUP)` 的简写形式。 */
     hungup: () => SignalStream;
-    /** Returns the stream of SIGINT signals.
+    /** 返回 SIGINT 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGINT)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGINT)` 的简写形式。 */
     interrupt: () => SignalStream;
-    /** Returns the stream of SIGIO signals.
+    /** 返回 SIGIO 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGIO)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGIO)` 的简写形式。 */
     io: () => SignalStream;
-    /** Returns the stream of SIGPIPE signals.
+    /** 返回 SIGPIPE 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGPIPE)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGPIPE)` 的简写形式。 */
     pipe: () => SignalStream;
-    /** Returns the stream of SIGQUIT signals.
+    /** 返回 SIGQUIT 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGQUIT)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGQUIT)` 的简写形式。 */
     quit: () => SignalStream;
-    /** Returns the stream of SIGTERM signals.
+    /** 返回 SIGTERM 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGTERM)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGTERM)` 的简写形式。 */
     terminate: () => SignalStream;
-    /** Returns the stream of SIGUSR1 signals.
+    /** 返回 SIGUSR1 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGUSR1)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGUSR1)` 的简写形式。 */
     userDefined1: () => SignalStream;
-    /** Returns the stream of SIGUSR2 signals.
+    /** 返回 SIGUSR2 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGUSR2)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGUSR2)` 的简写形式。 */
     userDefined2: () => SignalStream;
-    /** Returns the stream of SIGWINCH signals.
+    /** 返回 SIGWINCH 信号流。
      *
-     * This method is the shorthand for `Deno.signal(Deno.Signal.SIGWINCH)`. */
+     * 此方法是 `Deno.signal(Deno.Signal.SIGWINCH)` 的简写形式。 */
     windowChange: () => SignalStream;
   };
 
