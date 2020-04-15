@@ -1556,18 +1556,16 @@ declare namespace Deno {
     mode?: number;
   }
 
-  /** Synchronously write `data` to the given `path`, by default creating a new
-   * file if needed, else overwriting.
+  /** 同步方式将 `data` 写入给定的 `path`，并且根据需要创建新文件或者覆盖原文件。
    *
    *       const encoder = new TextEncoder();
    *       const data = encoder.encode("Hello world\n");
-   *       Deno.writeFileSync("hello1.txt", data);  //overwrite "hello.txt" or create it
-   *       Deno.writeFileSync("hello2.txt", data, {create: false});  //only works if "hello2.txt" exists
-   *       Deno.writeFileSync("hello3.txt", data, {mode: 0o777});  //set permissions on new file
-   *       Deno.writeFileSync("hello4.txt", data, {append: true});  //add data to the end of the file
+   *       Deno.writeFileSync("hello1.txt", data);  // 覆盖或者创建 "hello1.txt"
+   *       Deno.writeFileSync("hello2.txt", data, {create: false});  // 仅当 "hello2.txt" 存在的情况下才有效
+   *       Deno.writeFileSync("hello3.txt", data, {mode: 0o777});  // 设置新文件的权限
+   *       Deno.writeFileSync("hello4.txt", data, {append: true});  // 在文件末尾添加数据
    *
-   * Requires `allow-write` permission, and `allow-read` if `options.create` is
-   * `false`.
+   * 需要 `allow-write` 权限。如果 `options.create` 为 `false` 且需要 `allow-read` 权限。
    */
   export function writeFileSync(
     path: string,
@@ -1575,17 +1573,16 @@ declare namespace Deno {
     options?: WriteFileOptions
   ): void;
 
-  /** Write `data` to the given `path`, by default creating a new file if needed,
-   * else overwriting.
+  /** 将 `data` 写入给定的 `path`，并且根据需要创建新文件或者覆盖原文件。
    *
    *       const encoder = new TextEncoder();
    *       const data = encoder.encode("Hello world\n");
-   *       await Deno.writeFile("hello1.txt", data);  //overwrite "hello.txt" or create it
-   *       await Deno.writeFile("hello2.txt", data, {create: false});  //only works if "hello2.txt" exists
-   *       await Deno.writeFile("hello3.txt", data, {mode: 0o777});  //set permissions on new file
-   *       await Deno.writeFile("hello4.txt", data, {append: true});  //add data to the end of the file
+   *       await Deno.writeFile("hello1.txt", data);  // 覆盖或者创建 "hello1.txt"
+   *       await Deno.writeFile("hello2.txt", data, {create: false});  // 仅当 "hello2.txt" 存在的情况下才有效
+   *       await Deno.writeFile("hello3.txt", data, {mode: 0o777});  // 设置新文件的权限
+   *       await Deno.writeFile("hello4.txt", data, {append: true});  // 在文件末尾添加数据
    *
-   * Requires `allow-write` permission, and `allow-read` if `options.create` is `false`.
+   * 需要 `allow-write` 权限。如果 `options.create` 为 `false` 且需要 `allow-read` 权限。
    */
   export function writeFile(
     path: string,
