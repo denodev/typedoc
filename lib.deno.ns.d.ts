@@ -681,10 +681,9 @@ declare namespace Deno {
    */
   export function read(rid: number, buffer: Uint8Array): Promise<number | EOF>;
 
-  /** Synchronously write to the resource ID (`rid`) the contents of the array
-   * buffer (`data`).
+  /** 同步地将数组缓冲区 (`data`) 的内容写入资源ID的所属文件 (`rid`) 。
    *
-   * Returns the number of bytes written.
+   * 返回写入的字节数。
    *
    *       const encoder = new TextEncoder();
    *       const data = encoder.encode("Hello world");
@@ -694,9 +693,9 @@ declare namespace Deno {
    */
   export function writeSync(rid: number, data: Uint8Array): number;
 
-  /** Write to the resource ID (`rid`) the contents of the array buffer (`data`).
+  /** 将数组缓冲区 (`data`) 的内容写入资源ID的所属文件 (`rid`) 。
    *
-   * Resolves to the number of bytes written.
+   * 解析为写入的字节数。
    *
    *      const encoder = new TextEncoder();
    *      const data = encoder.encode("Hello world");
