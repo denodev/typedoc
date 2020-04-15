@@ -2773,12 +2773,12 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/39a5cab/lib.deno.ns.d.ts#L1715">lib.deno.ns.d.ts:1715</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/795c724/lib.deno.ns.d.ts#L1714">lib.deno.ns.d.ts:1714</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Resolves to the current status of a permission.</p>
+								<p>查询给定权限的状态。</p>
 							</div>
 							<pre><code>  const status = await Deno.permissions.query({ name: <span class="hljs-string">"read"</span>, path: <span class="hljs-string">"/etc"</span> });
   if (status.<span class="hljs-keyword">state</span> === <span class="hljs-string">"granted"</span>) {
@@ -2805,12 +2805,12 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/39a5cab/lib.deno.ns.d.ts#L1733">lib.deno.ns.d.ts:1733</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/795c724/lib.deno.ns.d.ts#L1732">lib.deno.ns.d.ts:1732</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Requests the permission, and resolves to the state of the permission.</p>
+								<p>请求权限，并且返回该权限请求结果的状态。</p>
 							</div>
 							<pre><code>  const status = await Deno.permissions.request({ name: <span class="hljs-string">"env"</span> });
   if (status.<span class="hljs-keyword">state</span> === <span class="hljs-string">"granted"</span>) {
@@ -2839,15 +2839,15 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/39a5cab/lib.deno.ns.d.ts#L1722">lib.deno.ns.d.ts:1722</a></li>
+								<li>Defined in <a href="https://github.com/denodev/typedoc/blob/795c724/lib.deno.ns.d.ts#L1721">lib.deno.ns.d.ts:1721</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Revokes a permission, and resolves to the state of the permission.</p>
+								<p>撤销给定的权限，并且返回该权限的状态。</p>
 							</div>
 							<pre><code>  const status = await Deno.permissions.revoke({ name: <span class="hljs-string">"run"</span> });
-  assert(status.<span class="hljs-keyword">state</span> !== <span class="hljs-string">"granted"</span>)</code></pre>
+  console.assert(status.<span class="hljs-keyword">state</span> !== <span class="hljs-string">"granted"</span>)</code></pre>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
