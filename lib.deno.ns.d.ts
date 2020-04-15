@@ -116,7 +116,7 @@ declare namespace Deno {
      * 默认为 `true`。
      */
     exitOnFail?: boolean;
-    /** If `true`, Deno will exit upon first test failure. Defaults to `false`. */
+    /** 如果为 `true`，Deno将在第一次测试失败后退出。默认值为 `false` */
     failFast?: boolean;
     /** String or RegExp used to filter test to run. Only test with names
      * matching provided `String` or `RegExp` will be run. */
