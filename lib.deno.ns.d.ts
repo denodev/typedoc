@@ -1271,15 +1271,15 @@ declare namespace Deno {
    * Requires `allow-read` and `allow-write` permission. */
   export function rename(oldpath: string, newpath: string): Promise<void>;
 
-  /** Synchronously reads and returns the entire contents of a file as an array
-   * of bytes. `TextDecoder` can be used to transform the bytes to string if
-   * required.  Reading a directory returns an empty data array.
+  /** 同步地读取并将文件的全部内容解析为字节数组。
+   * `TextDecoder` 可以在需要的情况下可以将字节转换成字符串。
+   * 读取目录返回一个空的数据数组。
    *
    *       const decoder = new TextDecoder("utf-8");
    *       const data = Deno.readFileSync("hello.txt");
    *       console.log(decoder.decode(data));
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限。 */
   export function readFileSync(path: string): Uint8Array;
 
   /** Reads and resolves to the entire contents of a file as an array of bytes.
