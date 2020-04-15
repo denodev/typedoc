@@ -1461,24 +1461,22 @@ declare namespace Deno {
    * 需要 `allow-read` 权限 */
   export function readlink(path: string): Promise<string>;
 
-  /** Resolves to a `Deno.FileInfo` for the specified `path`. If `path` is a
-   * symlink, information for the symlink will be returned instead of what it
-   * points to.
+  /** 解析给定的 `path`，并返回 `Deno.FileInfo`。如果 `path` 是一个
+   * 符号链接，则将返回符号链接的信息，而不是该符号链接引用的文件信息。
    *
    *       const fileInfo = await Deno.lstat("hello.txt");
    *       assert(fileInfo.isFile());
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限 */
   export function lstat(path: string): Promise<FileInfo>;
 
-  /** Synchronously returns a `Deno.FileInfo` for the specified `path`. If
-   * `path` is a symlink, information for the symlink will be returned instead of
-   * what it points to..
+  /** 同步方式解析给定的 `path`，并返回 `Deno.FileInfo`。如果 `path` 是一个
+   * 符号链接，则将返回符号链接的信息，而不是该符号链接引用的文件信息。
    *
    *       const fileInfo = Deno.lstatSync("hello.txt");
    *       assert(fileInfo.isFile());
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限 */
   export function lstatSync(path: string): FileInfo;
 
   /** Resolves to a `Deno.FileInfo` for the specified `path`. Will always
