@@ -847,13 +847,12 @@ declare namespace Deno {
    */
   export function isatty(rid: number): boolean;
 
-  /** **UNSTABLE**: new API, yet to be vetted
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Set TTY to be under raw mode or not. In raw mode, characters are read and
-   * returned as is, without being processed. All special processing of
-   * characters by the terminal is disabled, including echoing input characters.
-   * Reading from a TTY device in raw mode is faster than reading from a TTY
-   * device in canonical mode.
+   * 设置终端是否为 raw 模式。
+   * 在 raw 模式下，无需处理即可直接读取和返回字符。
+   * 终端将禁止所有特殊的字符处理，包括回显输入字符。
+   * 在 raw 模式下从终端设备读取的速度比在标准模式下更快。
    *
    *       Deno.setRaw(myTTY.rid, true);
    */
