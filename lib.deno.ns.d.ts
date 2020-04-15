@@ -839,18 +839,18 @@ declare namespace Deno {
     mode?: number;
   }
 
-  /** A set of string literals which specify how to open a file.
+  /** 一组字符串文本，用于指定如何打开文件。
    *
-   * |Value |Description                                                                                       |
+   * |值    |描述                                                                                               |
    * |------|--------------------------------------------------------------------------------------------------|
-   * |`"r"` |Read-only. Default. Starts at beginning of file.                                                  |
-   * |`"r+"`|Read-write. Start at beginning of file.                                                           |
-   * |`"w"` |Write-only. Opens and truncates existing file or creates new one for writing only.                |
-   * |`"w+"`|Read-write. Opens and truncates existing file or creates new one for writing and reading.         |
-   * |`"a"` |Write-only. Opens existing file or creates new one. Each write appends content to the end of file.|
-   * |`"a+"`|Read-write. Behaves like `"a"` and allows to read from file.                                      |
-   * |`"x"` |Write-only. Exclusive create - creates new file only if one doesn't exist already.                |
-   * |`"x+"`|Read-write. Behaves like `x` and allows reading from file.                                        |
+   * |`"r"` |只读。默认值。从文件开头开始。                                                                         |
+   * |`"r+"`|可读写。从文件开头开始。                                                                              |
+   * |`"w"` |仅写入。打开并截取现有文件或者创建一个仅写入权限的新文件。                                                  |
+   * |`"w+"`|可读写。打开并截取现有文件或者创建一个可读写权限的新文件。                                                  |
+   * |`"a"` |仅写入。打开现有文件或者创建新文件。每次写入都会将内容追加到文件末尾。                                        |
+   * |`"a+"`|可读写。行为类似于 `"a"` 并且允许从文件中读取。                                                          |
+   * |`"x"` |仅写入。专属创建 - 仅在文件不存在时创建新文件。                                                           |
+   * |`"x+"`|可读写。 行为类似于 `"x"` 并且允许从文件中读取。                                                         |
    */
   export type OpenMode = "r" | "r+" | "w" | "w+" | "a" | "a+" | "x" | "x+";
 
