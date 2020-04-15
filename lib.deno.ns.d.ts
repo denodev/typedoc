@@ -2043,12 +2043,12 @@ declare namespace Deno {
    */
   export function metrics(): Metrics;
 
-  /** **UNSTABLE**: reconsider representation. */
+  /** **不稳定**: 重新考虑表示方法。 */
   interface ResourceMap {
     [rid: number]: string;
   }
 
-  /** **UNSTABLE**: The return type is under consideration and may change.
+  /** **不稳定**: The return type is under consideration and may change.
    *
    * Returns a map of open _file like_ resource ids (rid) along with their string
    * representations.
