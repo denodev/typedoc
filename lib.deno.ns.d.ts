@@ -1549,7 +1549,7 @@ declare namespace Deno {
    *
    * `type` 参数可以设置为 `dir` 或 `file`。此参数仅在 Windows 上可用，其他平台会被忽略。
    *
-   * 注意：此函数尚未在Windows上实现。
+   * 注意：此函数尚未在 Windows 上实现。
    *
    *       await Deno.symlink("old/name", "new/name");
    *
