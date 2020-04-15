@@ -2058,7 +2058,7 @@ declare namespace Deno {
    */
   export function resources(): ResourceMap;
 
-  /** **UNSTABLE**: new API. Needs docs. */
+  /** **不稳定**: 新 API。需要补充文档。 */
   export interface FsEvent {
     kind: "any" | "access" | "create" | "modify" | "remove";
     paths: string[];
