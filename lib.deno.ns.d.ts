@@ -1647,11 +1647,11 @@ declare namespace Deno {
     Http: ErrorConstructor;
   };
 
-  /** **UNSTABLE**: potentially want names to overlap more with browser.
+  /** **不稳定**：希望与浏览器在名称上有更多的相同。
    *
-   * The permissions as granted by the caller.
+   * 调用方授予的权限。
    *
-   * See: https://w3c.github.io/permissions/#permission-registry */
+   * 具体查看：https://w3c.github.io/permissions/#permission-registry */
   export type PermissionName =
     | "run"
     | "read"
@@ -1661,9 +1661,9 @@ declare namespace Deno {
     | "plugin"
     | "hrtime";
 
-  /** The current status of the permission.
+  /** 权限的状态。
    *
-   * See: https://w3c.github.io/permissions/#status-of-a-permission */
+   * 具体查看：https://w3c.github.io/permissions/#status-of-a-permission */
   export type PermissionState = "granted" | "denied" | "prompt";
 
   interface RunPermissionDescriptor {
@@ -1692,10 +1692,9 @@ declare namespace Deno {
     name: "hrtime";
   }
 
-  /** Permission descriptors which define a permission which can be queried,
-   * requested, or revoked.
+  /** 权限描述符，定义一个可以查询、请求或撤销的权限。
    *
-   * See: https://w3c.github.io/permissions/#permission-descriptor */
+   * 具体查看：https://w3c.github.io/permissions/#permission-descriptor */
   type PermissionDescriptor =
     | RunPermissionDescriptor
     | ReadWritePermissionDescriptor
@@ -1705,7 +1704,7 @@ declare namespace Deno {
     | HrtimePermissionDescriptor;
 
   export class Permissions {
-    /** Resolves to the current status of a permission.
+    /** 查询给定权限的状态。
      *
      *       const status = await Deno.permissions.query({ name: "read", path: "/etc" });
      *       if (status.state === "granted") {
@@ -1714,14 +1713,14 @@ declare namespace Deno {
      */
     query(desc: PermissionDescriptor): Promise<PermissionStatus>;
 
-    /** Revokes a permission, and resolves to the state of the permission.
+    /** 撤销给定的权限，并且返回该权限的状态。
      *
      *       const status = await Deno.permissions.revoke({ name: "run" });
-     *       assert(status.state !== "granted")
+     *       console.assert(status.state !== "granted")
      */
     revoke(desc: PermissionDescriptor): Promise<PermissionStatus>;
 
-    /** Requests the permission, and resolves to the state of the permission.
+    /** 请求权限，并且返回该权限请求结果的状态。
      *
      *       const status = await Deno.permissions.request({ name: "env" });
      *       if (status.state === "granted") {
@@ -1733,10 +1732,10 @@ declare namespace Deno {
     request(desc: PermissionDescriptor): Promise<PermissionStatus>;
   }
 
-  /** **UNSTABLE**: maybe move to `navigator.permissions` to match web API. */
+  /** **不稳定**：可能移动到 `navigator.permissions` 以匹配 web API。 */
   export const permissions: Permissions;
 
-  /** see: https://w3c.github.io/permissions/#permissionstatus */
+  /** 具体查看：https://w3c.github.io/permissions/#permissionstatus */
   export class PermissionStatus {
     state: PermissionState;
     constructor(state: PermissionState);
