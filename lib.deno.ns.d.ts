@@ -1892,7 +1892,7 @@ declare namespace Deno {
   }
   /** **不稳定**: 新 API，没有经过审查。
    *
-   * 监听本地传输地址广播。
+   * 在本地监听网络连接。
    *
    *      const listener1 = Deno.listen({ port: 80 })
    *      const listener2 = Deno.listen({ hostname: "192.0.2.1", port: 80 })
@@ -1905,7 +1905,7 @@ declare namespace Deno {
   ): Listener;
   /** **不稳定**: 新 API，没有经过审查。
    *
-   * 监听本地传输地址广播。
+   * 在本地监听网络连接。
    *
    *     const listener = Deno.listen({ address: "/foo/bar.sock", transport: "unix" })
    *
@@ -1915,7 +1915,7 @@ declare namespace Deno {
   ): Listener;
   /** **不稳定**: 新 API，没有经过审查。
    *
-   * 监听本地传输地址广播。
+   * 在本地监听网络连接。
    *
    *      const listener1 = Deno.listen({ port: 80, transport: "udp" })
    *      const listener2 = Deno.listen({ hostname: "golang.org", port: 80, transport: "udp" });
@@ -1926,7 +1926,7 @@ declare namespace Deno {
   ): DatagramConn;
   /** **不稳定**: 新 API，没有经过审查。
    *
-   * 监听本地传输地址广播。
+   * 在本地监听网络连接。
    *
    *     const listener = Deno.listen({ address: "/foo/bar.sock", transport: "unixpacket" })
    *
