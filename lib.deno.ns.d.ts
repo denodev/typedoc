@@ -2129,27 +2129,26 @@ declare namespace Deno {
    * Requires `allow-run` permission. */
   export function kill(pid: number, signo: number): void;
 
-  /** **UNSTABLE**: There are some issues to work out with respect to when and
-   * how the process should be closed. */
+  /** **UNSTABLE**: 这里有一些关于如何结束进程的问题需要解决。 */
   export class Process {
     readonly rid: number;
     readonly pid: number;
     readonly stdin?: WriteCloser;
     readonly stdout?: ReadCloser;
     readonly stderr?: ReadCloser;
-    /** Resolves to the current status of the process. */
+    /** 解析进程当前的状态。 */
     status(): Promise<ProcessStatus>;
-    /** Buffer the stdout and return it as `Uint8Array` after `Deno.EOF`.
+    /** 缓冲区中的 stdout，会在 `Deno.EOF` 之后以 `Uint8Array` 的形式返回。
      *
-     * You must set stdout to `"piped"` when creating the process.
+     * 在创建进程时，你必须将 stdout 设置为 `"piped"`。
      *
-     * This calls `close()` on stdout after its done. */
+     * 会在 stdout 完成后调用 `close()`。 */
     output(): Promise<Uint8Array>;
-    /** Buffer the stderr and return it as `Uint8Array` after `Deno.EOF`.
+    /** 缓冲区中的 stderr， 会在 `Deno.EOF` 之后以 `Uint8Array` 的形式返回。
      *
-     * You must set stderr to `"piped"` when creating the process.
+     * 在创建进程时，你必须将 stderr 设置为 `"piped"`。
      *
-     * This calls `close()` on stderr after its done. */
+     * 会在 stderr 完成后调用 `close()`。 */
     stderrOutput(): Promise<Uint8Array>;
     close(): void;
     kill(signo: number): void;
