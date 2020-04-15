@@ -645,12 +645,11 @@ declare namespace Deno {
    */
   export function create(path: string): Promise<File>;
 
-  /** Synchronously read from a resource ID (`rid`) into an array buffer (`buffer`).
+  /** 同步地从资源ID (`rid`) 读取内容，并写入到数组缓冲区 (`buffer`)。
    *
-   * Returns either the number of bytes read during the operation or End Of File
-   * (`Symbol(EOF)`) if there was nothing to read.
+   * 如果没有要读取的内容，返回值为操作期间读取的字节数，或者文件结尾（`Symbol（EOF）`）。
    *
-   *      // if "/foo/bar.txt" contains the text "hello world":
+   *      // 如果 "/foo/bar.txt" 文件里面有 "hello world":
    *      const file = Deno.openSync("/foo/bar.txt");
    *      const buf = new Uint8Array(100);
    *      const numberOfBytesRead = Deno.readSync(file.rid, buf); // 11 bytes
