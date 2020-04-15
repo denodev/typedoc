@@ -2805,15 +2805,14 @@ declare namespace Deno {
     windowChange: () => SignalStream;
   };
 
-  /** **UNSTABLE**: new API. Maybe move `Deno.EOF` here.
+  /** **不稳定**: 新 API。可能会把 `Deno.EOF` 移动到这里。
    *
-   * Special Deno related symbols. */
+   * 和 Deno 相关的 `Symbol`。 */
   export const symbols: {
-    /** Symbol to access exposed internal Deno API */
+    /** 用于将 Deno 内部 API 暴露出来的 Symbol */
     readonly internal: unique symbol;
-    /** A symbol which can be used as a key for a custom method which will be
-     * called when `Deno.inspect()` is called, or when the object is logged to
-     * the console. */
+    /** 这个 Symbol 可以作为 key 来定义一个方法，当 `Deno.inspect()` 被调用或者调用了
+     * console 的日志方法时，这个自定义函数被调用。 */
     readonly customInspect: unique symbol;
     // TODO(ry) move EOF here?
   };
