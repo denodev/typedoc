@@ -585,53 +585,47 @@ declare namespace Deno {
    */
   export function toAsyncIterator(r: Reader): AsyncIterableIterator<Uint8Array>;
 
-  /** Synchronously open a file and return an instance of `Deno.File`.  The
-   * file does not need to previously exist if using the `create` or `createNew`
-   * open options.  It is the callers responsibility to close the file when finished
-   * with it.
+  /** 用同步方式打开一个文件并返回一个 `Deno.File` 实例。如果使用了 `create` 或 `createNew`配置项
+   * 文件可以不需要预先存在。调用者应该在完成后关闭文件。
    *
    *       const file = Deno.openSync("/foo/bar.txt", { read: true, write: true });
    *       // Do work with file
    *       Deno.close(file.rid);
    *
-   * Requires `allow-read` and/or `allow-write` permissions depending on options.
+   * 根据不同的配置需要相应的 `allow-read` 及 `allow-write` 权限。
    */
   export function openSync(path: string, options?: OpenOptions): File;
 
-  /** Synchronously open a file and return an instance of `Deno.File`.  The file
-   * may be created depending on the mode passed in.  It is the callers responsibility
-   * to close the file when finished with it.
+  /** 用同步方式打开一个文件并返回一个 `Deno.File` 实例。根据传入的模式，可以创建文件。
+   * 调用者应该在完成后关闭文件。
    *
    *       const file = Deno.openSync("/foo/bar.txt", "r");
    *       // Do work with file
    *       Deno.close(file.rid);
    *
-   * Requires `allow-read` and/or `allow-write` permissions depending on openMode.
+   * 根据不同的打开模式需要相应的 `allow-read` 及 `allow-write` 权限。
    */
   export function openSync(path: string, openMode?: OpenMode): File;
 
-  /** Open a file and resolve to an instance of `Deno.File`.  The
-   * file does not need to previously exist if using the `create` or `createNew`
-   * open options.  It is the callers responsibility to close the file when finished
-   * with it.
+  /** 打开一个文件并异步返回一个 `Deno.File` 实例。如果使用了 `create` 或 `createNew`配置项
+   * 文件可以不需要预先存在。调用者应该在完成后关闭文件。
    *
    *       const file = await Deno.open("/foo/bar.txt", { read: true, write: true });
    *       // Do work with file
    *       Deno.close(file.rid);
    *
-   * Requires `allow-read` and/or `allow-write` permissions depending on options.
+   * 根据不同的配置需要相应的 `allow-read` 及 `allow-write` 权限。
    */
   export function open(path: string, options?: OpenOptions): Promise<File>;
 
-  /** Open a file and resolve to an instance of `Deno.File`.  The file may be
-   * created depending on the mode passed in.  It is the callers responsibility
-   * to close the file when finished with it.
+  /** 打开一个文件并异步返回一个 `Deno.File` 实例。根据传入的模式，可以创建文件。
+   * 调用者应该在完成后关闭文件。
    *
    *       const file = await Deno.open("/foo/bar.txt", "w+");
    *       // Do work with file
    *       Deno.close(file.rid);
    *
-   * Requires `allow-read` and/or `allow-write` permissions depending on openMode.
+   * 根据不同的打开模式需要相应的 `allow-read` 及 `allow-write` 权限。
    */
   export function open(path: string, openMode?: OpenMode): Promise<File>;
 
