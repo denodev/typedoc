@@ -20,8 +20,8 @@ declare namespace Deno {
     disableResourceSanitizer?: boolean;
   }
 
-  /** 注册一个测试，它将在命令行执行 `deno test` 操作并且包含的模块看起来一个测试模块时运行，
-   * 或者在使用 `Deno.runTests` 时显示运行。如果可以， `fn` 可以是异步的。
+  /** 注册一个测试，它将在命令行执行 `deno test` 操作并且包含的模块看起来像一个测试模块时运行，
+   * 或者在使用 `Deno.runTests` 时显式运行。如果需要， `fn` 可以是异步的。
    *
    *          import {assert, fail, assertEquals} from "https://deno.land/std/testing/asserts.ts";
    *
@@ -51,8 +51,8 @@ declare namespace Deno {
    */
   export function test(t: TestDefinition): void;
 
-  /** 注册一个测试，它将在命令行执行 `deno test` 操作并且包含的模块看起来一个测试模块时运行，
-   * 或者在使用 `Deno.runTests` 时显示运行。
+  /** 注册一个测试，它将在命令行执行 `deno test` 操作并且包含的模块看起来像一个测试模块时运行，
+   * 或者在使用 `Deno.runTests` 时显式运行。
    *
    *        import {assert, fail, assertEquals} from "https://deno.land/std/testing/asserts.ts";
    *
@@ -68,8 +68,8 @@ declare namespace Deno {
    **/
   export function test(fn: () => void | Promise<void>): void;
 
-  /** 注册一个测试，它将在命令行执行 `deno test` 操作并且包含的模块看起来一个测试模块时运行，
-   * 或者在使用 `Deno.runTests` 时显示运行。
+  /** 注册一个测试，它将在命令行执行 `deno test` 操作并且包含的模块看起来像一个测试模块时运行，
+   * 或者在使用 `Deno.runTests` 时显式运行。
    *
    *        import {assert, fail, assertEquals} from "https://deno.land/std/testing/asserts.ts";
    *
