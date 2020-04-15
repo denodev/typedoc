@@ -1813,10 +1813,15 @@ declare namespace Deno {
    * Corresponds to `SHUT_RD`, `SHUT_WR`, `SHUT_RDWR` on POSIX-like systems.
    *
    * See: http://man7.org/linux/man-pages/man2/shutdown.2.html */
+  /** **不稳定的**：可能会完全删除 `ShutdownMode`。
+   * 
+   * 对应类 POSIX 系统上的 `SHUT_RD`，`SHUT_WR`，`SHUT_RDWR`。
+   * 
+   * 参阅：http://man7.org/linux/man-pages/man2/shutdown.2.html */
   export enum ShutdownMode {
     Read = 0,
     Write,
-    ReadWrite, // TODO(ry) panics on ReadWrite.
+    ReadWrite, // TODO(ry) panics on ReadWrite. // TODO(ry) `ReadWrite` 上的异常。
   }
 
   /** **UNSTABLE**: Both the `how` parameter and `ShutdownMode` enum are under
@@ -1826,6 +1831,16 @@ declare namespace Deno {
    *
    * Matches behavior of POSIX shutdown(3).
    *
+   *       const listener = Deno.listen({ port: 80 });
+   *       const conn = await listener.accept();
+   *       Deno.shutdown(conn.rid, Deno.ShutdownMode.Write);
+   */
+  /** **不稳定的**：参数 `how` 和 枚举 `ShutdownMode` 都在考虑移除。
+   * 
+   * Shutdown 套接字的发送和接收操作。
+   * 
+   * 与 POSIX 的 shutdown(3) 行为一致。
+   * 
    *       const listener = Deno.listen({ port: 80 });
    *       const conn = await listener.accept();
    *       Deno.shutdown(conn.rid, Deno.ShutdownMode.Write);
