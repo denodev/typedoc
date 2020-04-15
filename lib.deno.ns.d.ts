@@ -20,9 +20,8 @@ declare namespace Deno {
     disableResourceSanitizer?: boolean;
   }
 
-  /** Register a test which will be run when `deno test` is used on the command
-   * line and the containing module looks like a test module, or explicitly
-   * when `Deno.runTests` is used.  `fn` can be async if required.
+  /** 注册一个测试，它将在命令行执行 `deno test` 操作并且包含的模块看起来一个测试模块时运行，
+   * 或者在使用 `Deno.runTests` 时显示运行。如果可以， `fn` 可以是异步的。
    *
    *          import {assert, fail, assertEquals} from "https://deno.land/std/testing/asserts.ts";
    *
@@ -37,7 +36,7 @@ declare namespace Deno {
    *            name: "example ignored test",
    *            ignore: Deno.build.os === "win"
    *            fn(): void {
-   *              //This test is ignored only on Windows machines
+   *              // 仅在 Windows 机器上忽略这个测试。
    *            },
    *          });
    *
@@ -52,9 +51,8 @@ declare namespace Deno {
    */
   export function test(t: TestDefinition): void;
 
-  /** Register a test which will be run when `deno test` is used on the command
-   * line and the containing module looks like a test module, or explicitly
-   * when `Deno.runTests` is used
+  /** 注册一个测试，它将在命令行执行 `deno test` 操作并且包含的模块看起来一个测试模块时运行，
+   * 或者在使用 `Deno.runTests` 时显示运行。
    *
    *        import {assert, fail, assertEquals} from "https://deno.land/std/testing/asserts.ts";
    *
@@ -70,9 +68,8 @@ declare namespace Deno {
    **/
   export function test(fn: () => void | Promise<void>): void;
 
-  /** Register a test which will be run when `deno test` is used on the command
-   * line and the containing module looks like a test module, or explicitly
-   * when `Deno.runTests` is used
+  /** 注册一个测试，它将在命令行执行 `deno test` 操作并且包含的模块看起来一个测试模块时运行，
+   * 或者在使用 `Deno.runTests` 时显示运行。
    *
    *        import {assert, fail, assertEquals} from "https://deno.land/std/testing/asserts.ts";
    *
