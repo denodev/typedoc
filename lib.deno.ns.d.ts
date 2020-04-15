@@ -1085,9 +1085,9 @@ declare namespace Deno {
   // TODO(ry) Doesn't check permissions.
   export function makeTempDir(options?: MakeTempOptions): Promise<string>;
 
-  /** 以同步的方式在默认文件夹（see also `Deno.dir("temp")`）中创建一个临时文件,
-   * 如果指定了`dir`， 则在指定的`dir`中创建。
-   * 如果没有指定`dir`，那么`prefix`和`suffx`将分别是文件名前缀和后缀。
+  /** 以同步的方式在默认文件夹（另见 `Deno.dir("temp")`）中创建一个临时文件,
+   * 如果指定了 `dir` ， 则在指定的 `dir` 中创建。
+   * 如果没有指定 `dir` ，那么 `prefix` 和 `suffx` 将分别是文件名前缀和后缀。
    *
    * 返回新建文件的完整路径。
    *
@@ -1099,9 +1099,9 @@ declare namespace Deno {
    * 需要 `allow-write` 权限. */
   export function makeTempFileSync(options?: MakeTempOptions): string;
 
-  /** 在默认文件夹（see also `Deno.dir("temp")`）中创建一个临时文件,
-   * 如果指定了`dir`， 则在指定的`dir`中创建。
-   * 如果没有指定`dir`，那么`prefix`和`suffx`将分别是文件名前缀和后缀。
+  /** 在默认文件夹（另见 `Deno.dir("temp")`）中创建一个临时文件,
+   * 如果指定了 `dir` ， 则在指定的 `dir` 中创建。
+   * 如果没有指定 `dir` ，那么 `prefix` 和 `suffx` 将分别是文件名前缀和后缀。
    *
    * 返回新建文件的完整路径。
    *
