@@ -118,24 +118,21 @@ declare namespace Deno {
     exitOnFail?: boolean;
     /** 如果为 `true`，Deno 将在第一次测试失败后退出。默认值为 `false` */
     failFast?: boolean;
-    /** String or RegExp used to filter test to run. Only test with names
-     * matching provided `String` or `RegExp` will be run. */
+    /** 用于筛选要运行的测试的字符串或正则表达式。只有当测试名称与提供的 `String` 或 `RegExp` 相匹配时才会运行。*/
     filter?: string | RegExp;
-    /** String or RegExp used to skip tests to run. Tests with names
-     * matching provided `String` or `RegExp` will not be run. */
+    /** 用于跳过要运行的测试的字符串或正则表达式。当测试名称与提供的 `String` 或 `RegExp` 相匹配时将不会运行。 */
     skip?: string | RegExp;
-    /** Disable logging of the results. Defaults to `false`. */
+    /** 禁用记录结果. 默认值为 `false`。 */
     disableLog?: boolean;
-    /** If true, report results to the console as is done for `deno test`. Defaults to `true`. */
+    /** 如果为 `true`，将 `deno test` 完成的结果输出到控制台。默认值为 `true`. */
     reportToConsole?: boolean;
-    /** Called for each message received from the test run. */
+    /** 回调从测试运行收到的每个消息。 */
     onMessage?: (message: TestMessage) => void | Promise<void>;
   }
 
-  /** Run any tests which have been registered via `Deno.test()`. Always resolves
-   * asynchronously.
+  /** 运行所有通过 `Deno.test()` 注册的测试。始终异步 resolve。
    *
-   *        //Register test
+   *        // 注册一个测试。
    *        Deno.test({
    *          name: "example test",
    *          fn(): void {
@@ -144,7 +141,7 @@ declare namespace Deno {
    *          },
    *        });
    *
-   *        //Run tests
+   *        // 运行所有已经注册过的测试。
    *        const runInfo = await Deno.runTests();
    *        console.log(runInfo.duration);  // all tests duration, e.g. "5" (in ms)
    *        console.log(runInfo.stats.passed);  //e.g. 1
@@ -154,15 +151,14 @@ declare namespace Deno {
     opts?: RunTestsOptions
   ): Promise<TestMessage["end"]> & {};
 
-  /** Returns an array containing the 1, 5, and 15 minute load averages. The
-   * load average is a measure of CPU and IO utilization of the last one, five,
-   * and 15 minute periods expressed as a fractional number.  Zero means there
-   * is no load. On Windows, the three values are always the same and represent
-   * the current load, not the 1, 5 and 15 minute load averages.
+  /** 返回 1 分钟、5 分钟和 15 分钟平均负载的数组。
+   * 平均负载是对最后 1 分钟、5 分钟和 15 分钟的 CPU 以及 IO 利用率的度量，以分数表示。
+   * `0` 表示没有负载。
+   * 在 Windows 上，这 3 个值始终相同，代表当前负载，而不是 1 分钟、5 分钟和 15 分钟的平均负载。
    *
    *       console.log(Deno.loadavg());  //e.g. [ 0.71, 0.44, 0.44 ]
    *
-   * Requires `allow-env` permission.
+   * 需要 `allow-env` 权限。
    */
   export function loadavg(): number[];
 
@@ -230,25 +226,23 @@ declare namespace Deno {
     | "video";
 
   /**
-   * **UNSTABLE**: Currently under evaluation to decide if method name `dir` and
-   * parameter type alias name `DirKind` should be renamed.
+   * **不稳定**: 当前正在评估中，以确定是否应重命名方法名 `dir` 和参数类型 `DirKind`。
    *
-   * Returns the user and platform specific directories.
+   * 返回特定于用户和平台的目录。
    *
    *       const homeDirectory = Deno.dir("home");
    *
-   * Requires `allow-env` permission.
+   * 需要 `allow-env` 权限。
    *
-   * Returns `null` if there is no applicable directory or if any other error
-   * occurs.
+   * 如果没有适用的目录或发生任何其他错误，则返回 `null`。
    *
-   * Argument values: `"home"`, `"cache"`, `"config"`, `"executable"`, `"data"`,
+   * 参数值包含：`"home"`, `"cache"`, `"config"`, `"executable"`, `"data"`,
    * `"data_local"`, `"audio"`, `"desktop"`, `"document"`, `"download"`,
    * `"font"`, `"picture"`, `"public"`, `"template"`, `"tmp"`, `"video"`
    *
    * `"home"`
    *
-   * |Platform | Value                                    | Example                |
+   * |平台      | 值                                       | 示例                    |
    * | ------- | -----------------------------------------| -----------------------|
    * | Linux   | `$HOME`                                  | /home/alice            |
    * | macOS   | `$HOME`                                  | /Users/alice           |
@@ -256,7 +250,7 @@ declare namespace Deno {
    *
    * `"cache"`
    *
-   * |Platform | Value                               | Example                      |
+   * |平台      | 值                                  | 示例                          |
    * | ------- | ----------------------------------- | ---------------------------- |
    * | Linux   | `$XDG_CACHE_HOME` or `$HOME`/.cache | /home/alice/.cache           |
    * | macOS   | `$HOME`/Library/Caches              | /Users/Alice/Library/Caches  |
@@ -264,7 +258,7 @@ declare namespace Deno {
    *
    * `"config"`
    *
-   * |Platform | Value                                 | Example                          |
+   * |平台      | 值                                    | 示例                              |
    * | ------- | ------------------------------------- | -------------------------------- |
    * | Linux   | `$XDG_CONFIG_HOME` or `$HOME`/.config | /home/alice/.config              |
    * | macOS   | `$HOME`/Library/Preferences           | /Users/Alice/Library/Preferences |
@@ -272,7 +266,7 @@ declare namespace Deno {
    *
    * `"executable"`
    *
-   * |Platform | Value                                                           | Example                |
+   * |平台      | 值                                                              | 示例                    |
    * | ------- | --------------------------------------------------------------- | -----------------------|
    * | Linux   | `XDG_BIN_HOME` or `$XDG_DATA_HOME`/../bin or `$HOME`/.local/bin | /home/alice/.local/bin |
    * | macOS   | -                                                               | -                      |
@@ -280,7 +274,7 @@ declare namespace Deno {
    *
    * `"data"`
    *
-   * |Platform | Value                                    | Example                                  |
+   * |平台      | 值                                       | 示例                                      |
    * | ------- | ---------------------------------------- | ---------------------------------------- |
    * | Linux   | `$XDG_DATA_HOME` or `$HOME`/.local/share | /home/alice/.local/share                 |
    * | macOS   | `$HOME`/Library/Application Support      | /Users/Alice/Library/Application Support |
@@ -288,7 +282,7 @@ declare namespace Deno {
    *
    * `"data_local"`
    *
-   * |Platform | Value                                    | Example                                  |
+   * |平台      | 值                                       | 示例                                      |
    * | ------- | ---------------------------------------- | ---------------------------------------- |
    * | Linux   | `$XDG_DATA_HOME` or `$HOME`/.local/share | /home/alice/.local/share                 |
    * | macOS   | `$HOME`/Library/Application Support      | /Users/Alice/Library/Application Support |
@@ -296,7 +290,7 @@ declare namespace Deno {
    *
    * `"audio"`
    *
-   * |Platform | Value              | Example              |
+   * |平台      | 值                 | 示例                  |
    * | ------- | ------------------ | -------------------- |
    * | Linux   | `XDG_MUSIC_DIR`    | /home/alice/Music    |
    * | macOS   | `$HOME`/Music      | /Users/Alice/Music   |
@@ -304,7 +298,7 @@ declare namespace Deno {
    *
    * `"desktop"`
    *
-   * |Platform | Value                | Example                |
+   * |平台      | 值                   | 示例                    |
    * | ------- | -------------------- | ---------------------- |
    * | Linux   | `XDG_DESKTOP_DIR`    | /home/alice/Desktop    |
    * | macOS   | `$HOME`/Desktop      | /Users/Alice/Desktop   |
@@ -312,7 +306,7 @@ declare namespace Deno {
    *
    * `"document"`
    *
-   * |Platform | Value                  | Example                  |
+   * |平台      | 值                     | 示例                      |
    * | ------- | ---------------------- | ------------------------ |
    * | Linux   | `XDG_DOCUMENTS_DIR`    | /home/alice/Documents    |
    * | macOS   | `$HOME`/Documents      | /Users/Alice/Documents   |
@@ -320,7 +314,7 @@ declare namespace Deno {
    *
    * `"download"`
    *
-   * |Platform | Value                  | Example                  |
+   * |平台      | 值                     | 示例                      |
    * | ------- | ---------------------- | ------------------------ |
    * | Linux   | `XDG_DOWNLOAD_DIR`     | /home/alice/Downloads    |
    * | macOS   | `$HOME`/Downloads      | /Users/Alice/Downloads   |
@@ -328,7 +322,7 @@ declare namespace Deno {
    *
    * `"font"`
    *
-   * |Platform | Value                                                | Example                        |
+   * |平台      | 值                                                   | 示例                           |
    * | ------- | ---------------------------------------------------- | ------------------------------ |
    * | Linux   | `$XDG_DATA_HOME`/fonts or `$HOME`/.local/share/fonts | /home/alice/.local/share/fonts |
    * | macOS   | `$HOME/Library/Fonts`                                | /Users/Alice/Library/Fonts     |
@@ -336,7 +330,7 @@ declare namespace Deno {
    *
    * `"picture"`
    *
-   * |Platform | Value                 | Example                 |
+   * |平台      | 值                    | 示例                     |
    * | ------- | --------------------- | ----------------------- |
    * | Linux   | `XDG_PICTURES_DIR`    | /home/alice/Pictures    |
    * | macOS   | `$HOME`/Pictures      | /Users/Alice/Pictures   |
@@ -344,7 +338,7 @@ declare namespace Deno {
    *
    * `"public"`
    *
-   * |Platform | Value                 | Example             |
+   * |平台      | 值                    | 示例                 |
    * | ------- | --------------------- | ------------------- |
    * | Linux   | `XDG_PUBLICSHARE_DIR` | /home/alice/Public  |
    * | macOS   | `$HOME`/Public        | /Users/Alice/Public |
@@ -352,7 +346,7 @@ declare namespace Deno {
    *
    * `"template"`
    *
-   * |Platform | Value                  | Example                                                    |
+   * |平台      | 值                     | 示例                                                       |
    * | ------- | ---------------------- | ---------------------------------------------------------- |
    * | Linux   | `XDG_TEMPLATES_DIR`    | /home/alice/Templates                                      |
    * | macOS   | –                      | –                                                          |
@@ -360,7 +354,7 @@ declare namespace Deno {
    *
    * `"tmp"`
    *
-   * |Platform | Value                  | Example                                                    |
+   * |平台      | 值                     | 示例                                                        |
    * | ------- | ---------------------- | ---------------------------------------------------------- |
    * | Linux   | `TMPDIR`               | /tmp                                                       |
    * | macOS   | `TMPDIR`               | /tmp                                                       |
@@ -368,7 +362,7 @@ declare namespace Deno {
    *
    * `"video"`
    *
-   * |Platform | Value               | Example               |
+   * |平台      | 值                  | 示例                   |
    * | ------- | ------------------- | --------------------- |
    * | Linux   | `XDG_VIDEOS_DIR`    | /home/alice/Videos    |
    * | macOS   | `$HOME`/Movies      | /Users/Alice/Movies   |
@@ -414,25 +408,24 @@ declare namespace Deno {
   export function chdir(directory: string): void;
 
   /**
-   * **UNSTABLE**: New API, yet to be vetted.  This API is under consideration to
-   * determine if permissions are required to call it.
+   * **不稳定**: 新 API，没有经过审查。正在考虑调用此 API 时，是否需要申请权限。
    *
-   * Retrieve the process umask.  If `mask` is provided, sets the process umask.
-   * This call always returns what the umask was before the call.
+   * 获取进程权限掩码。如果提供 `mask`，则设置进程权限掩码。
+   * 此函数始终返回调用前的权限掩码。
    *
    *        console.log(Deno.umask());  //e.g. 18 (0o022)
    *        const prevUmaskValue = Deno.umask(0o077);  //e.g. 18 (0o022)
    *        console.log(Deno.umask());  //e.g. 63 (0o077)
    *
-   * NOTE:  This API is not implemented on Windows
+   * 注意: 此 API 未在 Windows 平台实现。
    */
   export function umask(mask?: number): number;
 
-  /** **UNSTABLE**: might move to `Deno.symbols`. */
+  /** **不稳定**: 可能会移动到 `Deno.symbols`。 */
   export const EOF: unique symbol;
   export type EOF = typeof EOF;
 
-  /** **UNSTABLE**: might remove `"SEEK_"` prefix. Might not use all-caps. */
+  /** **不稳定**: 可能会移除 `"SEEK_"` 前缀。可能不使用全大写。 */
   export enum SeekMode {
     SEEK_START = 0,
     SEEK_CURRENT = 1,
@@ -468,7 +461,7 @@ declare namespace Deno {
      * 当 `read()` 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。
      *
      * 调用者应始终处理返回值为 `n > 0` 的情况，然后再考虑 `EOF`。
-     * 应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的I/O错误。
+     * 应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的 I/O 错误。
      *
      * 实现不应保留对 `p` 的引用。
      */
@@ -476,49 +469,42 @@ declare namespace Deno {
   }
 
   export interface SyncReader {
-    /** Reads up to `p.byteLength` bytes into `p`. It resolves to the number
-     * of bytes read (`0` < `n` <= `p.byteLength`) and rejects if any error
-     * encountered. Even if `read()` returns `n` < `p.byteLength`, it may use
-     * all of `p` as scratch space during the call. If some data is available
-     * but not `p.byteLength` bytes, `read()` conventionally returns what is
-     * available instead of waiting for more.
+    /** 最多读取 `p.byteLength` 个字节到p中，然后返回读取的字节数（`0 < n <= p.byteLength`），并在遇到任何错误时返回拒绝状态的回调函数。
+     * 即使 `readSync()` 返回值为 `n < p.byteLength`，p也可能在调用期间被用作临时空间。
+     * 如果有数据可用，但不存在 `p.byteLength`，`readSync()` 通常会返回可用值，而不是等待更多。
      *
-     * When `readSync()` encounters end-of-file condition, it returns `Deno.EOF`
-     * symbol.
+     * 当 `readSync()` 遇到文件结束条件时，将返回 `Deno.EOF` 符号。
      *
-     * When `readSync()` encounters an error, it throws with an error.
+     * 当 `readSync()` 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。
      *
-     * Callers should always process the `n` > `0` bytes returned before
-     * considering the `EOF`. Doing so correctly handles I/O errors that happen
-     * after reading some bytes and also both of the allowed EOF behaviors.
+     * 调用者应始终处理返回值为 `n > 0` 的情况，然后再考虑 `EOF`。
+     * 应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的 I/O 错误。
      *
-     * Implementations should not retain a reference to `p`.
+     * 实现不应保留对 `p` 的引用。
      */
     readSync(p: Uint8Array): number | EOF;
   }
 
   export interface Writer {
-    /** Writes `p.byteLength` bytes from `p` to the underlying data stream. It
-     * resolves to the number of bytes written from `p` (`0` <= `n` <=
-     * `p.byteLength`) or reject with the error encountered that caused the
-     * write to stop early. `write()` must reject with a non-null error if
-     * would resolve to `n` < `p.byteLength`. `write()` must not modify the
-     * slice data, even temporarily.
+    /**
+     * 将 `p` 中的 `p.byteLength` 字节写入底层数据流。 它 resolve 时返回值为从 `p` 写入的
+     * 字节数(`0` <= `n` <= `p.byteLength`），reject 时返回值为导致写入提前停止的错误。
+     * 如果将要 resolve 一个 `n` < `p.byteLength` 的值时， `write()` 必须 reject，并且返回
+     * 一个非空错误。`write()` 禁止修改分片数据，即使是临时修改。
      *
-     * Implementations should not retain a reference to `p`.
+     * 实现不应保留对 `p` 的引用。
      */
     write(p: Uint8Array): Promise<number>;
   }
 
   export interface SyncWriter {
-    /** Writes `p.byteLength` bytes from `p` to the underlying data
-     * stream. It returns the number of bytes written from `p` (`0` <= `n`
-     * <= `p.byteLength`) and any error encountered that caused the write to
-     * stop early. `writeSync()` must throw a non-null error if it returns `n` <
-     * `p.byteLength`. `writeSync()` must not modify the slice data, even
-     * temporarily.
+    /**
+     * 将 `p` 中的 `p.byteLength` 字节写入底层数据流。它的返回值为从 `p` 写入的
+     * 字节数(`0` <= `n` <= `p.byteLength`）或者导致写入提前停止的错误。
+     * `writeSync()` 会抛出一个非空错误当返回值 `n` < `p.byteLength`。`writeSync()`
+     * 禁止修改分片数据，即使是临时修改。
      *
-     * Implementations should not retain a reference to `p`.
+     * 实现不应保留对 `p` 的引用。
      */
     writeSync(p: Uint8Array): number;
   }
@@ -577,7 +563,7 @@ declare namespace Deno {
    */
   export function copy(dst: Writer, src: Reader): Promise<number>;
 
-  /** Turns a Reader, `r`, into an async iterator.
+  /** 将 Reader 对象 (`r`) 转换为异步迭代器。
    *
    *      for await (const chunk of toAsyncIterator(reader)) {
    *        console.log(chunk);
@@ -645,12 +631,11 @@ declare namespace Deno {
    */
   export function create(path: string): Promise<File>;
 
-  /** Synchronously read from a resource ID (`rid`) into an array buffer (`buffer`).
+  /** 同步地从资源ID (`rid`) 读取内容，并写入到数组缓冲区 (`buffer`)。
    *
-   * Returns either the number of bytes read during the operation or End Of File
-   * (`Symbol(EOF)`) if there was nothing to read.
+   * 如果没有要读取的内容，返回值为操作期间读取的字节数，或者文件结尾（`Symbol（EOF）`）。
    *
-   *      // if "/foo/bar.txt" contains the text "hello world":
+   *      // 如果 "/foo/bar.txt" 文件里面有 "hello world":
    *      const file = Deno.openSync("/foo/bar.txt");
    *      const buf = new Uint8Array(100);
    *      const numberOfBytesRead = Deno.readSync(file.rid, buf); // 11 bytes
@@ -659,12 +644,11 @@ declare namespace Deno {
    */
   export function readSync(rid: number, buffer: Uint8Array): number | EOF;
 
-  /** Read from a resource ID (`rid`) into an array buffer (`buffer`).
+  /** 从资源ID (`rid`) 读取内容，并写入到数组缓冲区 (`buffer`)。
    *
-   * Resolves to either the number of bytes read during the operation or End Of
-   * File (`Symbol(EOF)`) if there was nothing to read.
+   * 如果没有要读取的内容，返回值为操作期间读取的字节数，或者文件结尾（`Symbol（EOF）`）。
    *
-   *      // if "/foo/bar.txt" contains the text "hello world":
+   *      // 如果 "/foo/bar.txt" 文件里面有 "hello world":
    *      const file = await Deno.open("/foo/bar.txt");
    *      const buf = new Uint8Array(100);
    *      const numberOfBytesRead = await Deno.read(file.rid, buf); // 11 bytes
@@ -784,44 +768,39 @@ declare namespace Deno {
     close(): void;
   }
 
-  /** An instance of `Deno.File` for `stdin`. */
+  /** 用于 `stdin` 的 `Deno.File` 实例。 */
   export const stdin: File;
-  /** An instance of `Deno.File` for `stdout`. */
+  /** 用于 `stdout` 的 `Deno.File` 实例。 */
   export const stdout: File;
-  /** An instance of `Deno.File` for `stderr`. */
+  /** 用于 `stderr` 的 `Deno.File` 实例。 */
   export const stderr: File;
 
   export interface OpenOptions {
-    /** Sets the option for read access. This option, when `true`, means that the
-     * file should be read-able if opened. */
+    /** 设置读取访问权限的选项。
+     * 当为 `true` 时，表示该文件在打开后即处于可读状态。 */
     read?: boolean;
-    /** Sets the option for write access. This option, when `true`, means that
-     * the file should be write-able if opened. If the file already exists,
-     * any write calls on it will overwrite its contents, by default without
-     * truncating it. */
+    /** 设置写访问权限的选项。
+     * 当为 `true` 时，表示该文件在打开时即处于可写状态。
+     * 如果该文件已存在，则默认情况下，对该文件的任何写调用都将覆盖其内容，而不会截断该文件。 */
     write?: boolean;
-    /**Sets the option for the append mode. This option, when `true`, means that
-     * writes will append to a file instead of overwriting previous contents.
-     * Note that setting `{ write: true, append: true }` has the same effect as
-     * setting only `{ append: true }`. */
+    /** 设置追加模式的选项。
+     * 当为 `true` 时，表示写入将追加到文件中，而不是覆盖先前的内容。
+     * 请注意，设置 `{ write: true, append: true }` 与仅设置 `{ append: true }` 具有相同的效果。 */
     append?: boolean;
-    /** Sets the option for truncating a previous file. If a file is
-     * successfully opened with this option set it will truncate the file to `0`
-     * size if it already exists. The file must be opened with write access
-     * for truncate to work. */
+    /** 设置截断上一个文件的选项。
+     * 如果使用此选项后成功打开了文件，则文件的长度将被截断为 `0`（如果已存在）。
+     * 该文件必须具有写访问权限才能打开，才能进行截断。 */
     truncate?: boolean;
-    /** Sets the option to allow creating a new file, if one doesn't already
-     * exist at the specified path. Requires write or append access to be
-     * used. */
+    /** 设置选项以允许创建新文件（如果指定路径尚不存在）。
+     * 需要使用写权限或追加权限。*/
     create?: boolean;
-    /** Defaults to `false`. If set to `true`, no file, directory, or symlink is
-     * allowed to exist at the target location. Requires write or append
-     * access to be used. When createNew is set to `true`, create and truncate
-     * are ignored. */
+    /** 默认为 `false`。
+     * 如果设置为 `true`，则在目标位置不允许存在文件、目录或符号链接。
+     * 需要使用写权限或追加权限。
+     * 当 createNew 设置为 `true` 时，create 和 truncate 被忽略。 */
     createNew?: boolean;
-    /** Permissions to use if creating the file (defaults to `0o666`, before
-     * the process's umask).
-     * Ignored on Windows. */
+    /** 创建文件时使用的权限（在进程调用 `umask` 之前默认为 `0o666`）。
+     * 在 Windows 上此选项被忽略。 */
     mode?: number;
   }
 
@@ -840,11 +819,11 @@ declare namespace Deno {
    */
   export type OpenMode = "r" | "r+" | "w" | "w+" | "a" | "a+" | "x" | "x+";
 
-  /** **UNSTABLE**: new API, yet to be vetted
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   *  Check if a given resource id (`rid`) is a TTY.
+   *  检查指定的资源 id (`rid`) 是否为 TTY（终端）。
    *
-   *       //This example is system and context specific
+   *       // 这个例子依赖于特定的操作系统和环境
    *       const nonTTYRid = Deno.openSync("my_file.txt").rid;
    *       const ttyRid = Deno.openSync("/dev/tty6").rid;
    *       console.log(Deno.isatty(nonTTYRid)); // false
@@ -854,13 +833,12 @@ declare namespace Deno {
    */
   export function isatty(rid: number): boolean;
 
-  /** **UNSTABLE**: new API, yet to be vetted
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Set TTY to be under raw mode or not. In raw mode, characters are read and
-   * returned as is, without being processed. All special processing of
-   * characters by the terminal is disabled, including echoing input characters.
-   * Reading from a TTY device in raw mode is faster than reading from a TTY
-   * device in canonical mode.
+   * 设置终端是否为 raw 模式。
+   * 在 raw 模式下，无需处理即可直接读取和返回字符。
+   * 终端将禁止所有特殊的字符处理，包括回显输入字符。
+   * 在 raw 模式下从终端设备读取的速度比在标准模式下更快。
    *
    *       Deno.setRaw(myTTY.rid, true);
    */
@@ -919,39 +897,37 @@ declare namespace Deno {
     readFromSync(r: SyncReader): number;
   }
 
-  /** Read Reader `r` until end of file (`Deno.EOF`) and resolve to the content
-   * as `Uint8Array`.
+  /** 读取 Reader `r` 直到文件的末尾 (`Deno.EOF`)，返回文件的内容，以 `Uint8Array` 表示。
    *
-   *       //Example from stdin
+   *       // Example：从 stdin 读取
    *       const stdinContent = await Deno.readAll(Deno.stdin);
    *
-   *       //Example from file
+   *       // Example：从文件读取
    *       const file = await Deno.open("my_file.txt", {read: true});
    *       const myFileContent = await Deno.readAll(file);
    *       Deno.close(file.rid);
    *
-   *       //Example from buffer
+   *       // Example：从 buffer 读取
    *       const myData = new Uint8Array(100);
-   *       // ... fill myData array with data
+   *       // ... 此处省略了填充 myData 数组的代码
    *       const reader = new Deno.Buffer(myData.buffer as ArrayBuffer);
    *       const bufferContent = await Deno.readAll(reader);
    */
   export function readAll(r: Reader): Promise<Uint8Array>;
 
-  /** Synchronously reads Reader `r` until end of file (`Deno.EOF`) and returns
-   * the content as `Uint8Array`.
+  /** 同步地读取 Reader `r` 直到文件的末尾 (`Deno.EOF`)，返回文件的内容，以 `Uint8Array` 表示。
    *
-   *       //Example from stdin
+   *       // Example：从 stdin 读取
    *       const stdinContent = Deno.readAllSync(Deno.stdin);
    *
-   *       //Example from file
+   *       // Example：从文件读取
    *       const file = Deno.openSync("my_file.txt", {read: true});
    *       const myFileContent = Deno.readAllSync(file);
    *       Deno.close(file.rid);
    *
-   *       //Example from buffer
+   *       // Example：从 buffer 读取
    *       const myData = new Uint8Array(100);
-   *       // ... fill myData array with data
+   *       // ... 此处省略了填充 myData 数组的代码
    *       const reader = new Deno.Buffer(myData.buffer as ArrayBuffer);
    *       const bufferContent = Deno.readAllSync(reader);
    */
@@ -999,16 +975,12 @@ declare namespace Deno {
   export function writeAllSync(w: SyncWriter, arr: Uint8Array): void;
 
   export interface MkdirOptions {
-    /** Defaults to `false`. If set to `true`, means that any intermediate
-     * directories will also be created (as with the shell command `mkdir -p`).
-     * Intermediate directories are created with the same permissions.
-     * When recursive is set to `true`, succeeds silently (without changing any
-     * permissions) if a directory already exists at the path, or if the path
-     * is a symlink to an existing directory. */
+    /** 默认为 `false`。
+     * 如果设置为 `true`，则意味着还将创建所有中间目录（如 shell 命令 `mkdir -p` 那样）。
+     * 使用相同的权限创建中间目录。
+     * 当设置为 `true` 时，如果路径中已经存在目录，或者该路径是到现有目录的符号链接，则会静默地操作成功（不更改任何权限）。*/
     recursive?: boolean;
-    /** Permissions to use when creating the directory (defaults to `0o777`,
-     * before the process's umask).
-     * Ignored on Windows. */
+    /** 创建目录时使用的权限（在调用 `umask` 之前，默认值为 `0o777`）。在 Windows 上被忽略。*/
     mode?: number;
   }
 
@@ -1879,58 +1851,58 @@ declare namespace Deno {
   }
 
   export interface ListenOptions {
-    /** The port to listen on. */
+    /** 要监听的端口号 */
     port: number;
-    /** A literal IP address or host name that can be resolved to an IP address.
-     * If not specified, defaults to `0.0.0.0`. */
+    /** 一个 IP 地址或者可以被解析为 IP 地址的主机名。
+     * 如果没有指定，默认值为 `0.0.0.0`。 */
     hostname?: string;
   }
 
   export interface UnixListenOptions {
-    /** A Path to the Unix Socket. */
+    /** 一个 Unix 套接字路径。 */
     address: string;
   }
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Listen announces on the local transport address.
+   * 在本地监听网络连接。
    *
    *      const listener1 = Deno.listen({ port: 80 })
    *      const listener2 = Deno.listen({ hostname: "192.0.2.1", port: 80 })
    *      const listener3 = Deno.listen({ hostname: "[2001:db8::1]", port: 80 });
    *      const listener4 = Deno.listen({ hostname: "golang.org", port: 80, transport: "tcp" });
    *
-   * Requires `allow-net` permission. */
+   * 需要 `allow-net` 权限。 */
   export function listen(
     options: ListenOptions & { transport?: "tcp" }
   ): Listener;
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Listen announces on the local transport address.
+   * 在本地监听网络连接。
    *
    *     const listener = Deno.listen({ address: "/foo/bar.sock", transport: "unix" })
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限。 */
   export function listen(
     options: UnixListenOptions & { transport: "unix" }
   ): Listener;
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Listen announces on the local transport address.
+   * 在本地监听网络连接。
    *
    *      const listener1 = Deno.listen({ port: 80, transport: "udp" })
    *      const listener2 = Deno.listen({ hostname: "golang.org", port: 80, transport: "udp" });
    *
-   * Requires `allow-net` permission. */
+   * 需要 `allow-net` 权限。 */
   export function listen(
     options: ListenOptions & { transport: "udp" }
   ): DatagramConn;
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Listen announces on the local transport address.
+   * 在本地监听网络连接。
    *
    *     const listener = Deno.listen({ address: "/foo/bar.sock", transport: "unixpacket" })
    *
-   * Requires `allow-read` permission. */
+   * 需要 `allow-read` 权限。 */
   export function listen(
     options: UnixListenOptions & { transport: "unixpacket" }
   ): DatagramConn;
@@ -1953,10 +1925,10 @@ declare namespace Deno {
   export function listenTLS(options: ListenTLSOptions): Listener;
 
   export interface ConnectOptions {
-    /** The port to connect to. */
+    /** 要连接的端口号。 */
     port: number;
-    /** A literal IP address or host name that can be resolved to an IP address.
-     * If not specified, defaults to `127.0.0.1`. */
+    /** 一个 IP 地址或者可以被解析为 IP 地址的主机名。
+     * 如果没有指定，默认值为 `127.0.0.1`。 */
     hostname?: string;
     transport?: "tcp";
   }
@@ -2048,10 +2020,9 @@ declare namespace Deno {
     [rid: number]: string;
   }
 
-  /** **不稳定**: The return type is under consideration and may change.
+  /** **不稳定**: 返回类型正在考虑中，并且可能会更改。
    *
-   * Returns a map of open _file like_ resource ids (rid) along with their string
-   * representations.
+   * 返回打开的_文件_资源 ID（rid）及其字符串表示形式的 Map。
    *
    *       console.log(Deno.resources()); //e.g. { 0: "stdin", 1: "stdout", 2: "stderr" }
    *       Deno.openSync('../test.file');
@@ -2059,7 +2030,7 @@ declare namespace Deno {
    */
   export function resources(): ResourceMap;
 
-  /** **UNSTABLE**: new API. Needs docs. */
+  /** **不稳定**: 新 API。需要补充文档。 */
   export interface FsEvent {
     kind: "any" | "access" | "create" | "modify" | "remove";
     paths: string[];
@@ -2150,11 +2121,9 @@ declare namespace Deno {
     signal?: number;
   }
 
-  /** **UNSTABLE**: `args` has been recently renamed to `cmd` to differentiate from
-   * `Deno.args`. */
+  /** **不稳定**: `args` 最近被重命名为 `cmd`，以区别于 `Deno.args`。 */
   export interface RunOptions {
-    /** Arguments to pass. Note, the first element needs to be a path to the
-     * binary */
+    /** 需要传递的参数。注意，第一个元素必须是二进制文件的路径。 */
     cmd: string[];
     cwd?: string;
     env?: {
@@ -2165,26 +2134,22 @@ declare namespace Deno {
     stdin?: ProcessStdio | number;
   }
 
-  /** Spawns new subprocess.  RunOptions must contain at a minimum the `opt.cmd`,
-   * an array of program arguments, the first of which is the binary.
+  /** 派生新的子进程。 RunOptions 必须包含 `opt.cmd`，即程序参数数组，其中第一个参数是二进制文件路径。
    *
-   * Subprocess uses same working directory as parent process unless `opt.cwd`
-   * is specified.
+   * 子进程使用与父进程相同的工作目录，除非指定了 `opt.cwd`。
    *
-   * Environmental variables for subprocess can be specified using `opt.env`
-   * mapping.
+   * 子进程的环境变量可以使用 `opt.env` 来设置
    *
-   * By default subprocess inherits stdio of parent process. To change that
-   * `opt.stdout`, `opt.stderr` and `opt.stdin` can be specified independently -
-   * they can be set to either `ProcessStdio` or `rid` of open file.
+   * 默认情况下，子进程继承父进程的 stdio。要更改这些值，可以分别指定`opt.stdout`、`opt.stderr`、`opt.stdin`
+   * - 可以将其设置为 `ProcessStdio` 或打开文件的 `rid`。
    *
-   * Details of the spawned process are returned.
+   * 返回派生子进程的详细信息。
    *
    *       const p = Deno.run({
    *         cmd: ["echo", "hello"],
    *       });
    *
-   * Requires `allow-run` permission. */
+   * 需要 `allow-run` 权限。 */
   export function run(opt: RunOptions): Process;
 
   enum LinuxSignal {
@@ -2254,9 +2219,9 @@ declare namespace Deno {
     SIGUSR2 = 31,
   }
 
-  /** **UNSTABLE**: make platform independent.
+  /** **不稳定**: make platform independent.
    *
-   * Signals numbers. This is platform dependent. */
+   * 信号数字。此值是独立于平台的。 */
   export const Signal: typeof MacOSSignal | typeof LinuxSignal;
 
   interface InspectOptions {
@@ -2304,13 +2269,13 @@ declare namespace Deno {
   export type Arch = "x64" | "arm64";
 
   interface BuildInfo {
-    /** The CPU architecture. */
+    /** CPU 架构。 */
     arch: Arch;
-    /** The operating system. */
+    /** 操作系统。 */
     os: OperatingSystem;
   }
 
-  /** Build related information. */
+  /** 构建的相关信息。 */
   export const build: BuildInfo;
 
   interface Version {
@@ -2318,7 +2283,7 @@ declare namespace Deno {
     v8: string;
     typescript: string;
   }
-  /** Version related information. */
+  /** Deno 的详细版本信息。包括了 deno、v8、typescript。 */
   export const version: Version;
 
   /** The log category for a diagnostic message. */
