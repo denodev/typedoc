@@ -1761,12 +1761,7 @@ declare namespace Deno {
   }
 
   export type Addr = NetAddr | UnixAddr;
-  /** **UNSTABLE**: Maybe remove `ShutdownMode` entirely.
-   *
-   * Corresponds to `SHUT_RD`, `SHUT_WR`, `SHUT_RDWR` on POSIX-like systems.
-   *
-   * See: http://man7.org/linux/man-pages/man2/shutdown.2.html */
-  /** **不稳定的**：可能会完全删除 `ShutdownMode`。
+  /** **不稳定**：可能会完全删除 `ShutdownMode`。
    *
    * 对应类 POSIX 系统上的 `SHUT_RD`，`SHUT_WR`，`SHUT_RDWR`。
    *
@@ -1774,21 +1769,10 @@ declare namespace Deno {
   export enum ShutdownMode {
     Read = 0,
     Write,
-    ReadWrite, // TODO(ry) panics on ReadWrite. // TODO(ry) `ReadWrite` 上的异常。
+    ReadWrite, // TODO(ry) `ReadWrite` 上的异常。
   }
 
-  /** **UNSTABLE**: Both the `how` parameter and `ShutdownMode` enum are under
-   * consideration for removal.
-   *
-   * Shutdown socket send and receive operations.
-   *
-   * Matches behavior of POSIX shutdown(3).
-   *
-   *       const listener = Deno.listen({ port: 80 });
-   *       const conn = await listener.accept();
-   *       Deno.shutdown(conn.rid, Deno.ShutdownMode.Write);
-   */
-  /** **不稳定的**：参数 `how` 和 枚举 `ShutdownMode` 都在考虑移除。
+  /** **不稳定**：参数 `how` 和 枚举 `ShutdownMode` 都在考虑移除。
    *
    * Shutdown 套接字的发送和接收操作。
    *
@@ -1800,53 +1784,49 @@ declare namespace Deno {
    */
   export function shutdown(rid: number, how: ShutdownMode): void;
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**：新的 API，尚待审查。
    *
-   * A generic transport listener for message-oriented protocols. */
+   * 面向消息协议的通用传输监听器。*/
   export interface DatagramConn extends AsyncIterable<[Uint8Array, Addr]> {
-    /** **UNSTABLE**: new API, yet to be vetted.
-     *
-     * Waits for and resolves to the next message to the `UDPConn`. */
+    /** **不稳定**：新的 API，尚待审查。
+     * 
+     * 等待并解析 (resolve) 为下一条消息传递给 `UDPConn`。*/
     receive(p?: Uint8Array): Promise<[Uint8Array, Addr]>;
-    /** UNSTABLE: new API, yet to be vetted.
-     *
-     * Sends a message to the target. */
+    /** **不稳定**：新的 API，尚待审查。
+     * 
+     * 向目标发送消息。*/
     send(p: Uint8Array, addr: Addr): Promise<void>;
-    /** UNSTABLE: new API, yet to be vetted.
-     *
-     * Close closes the socket. Any pending message promises will be rejected
-     * with errors. */
+    /** **不稳定**：新的 API，尚待审查。
+     * 
+     * 关闭套接字。任何待处理的消息应答都将被拒绝 (rejected)，并返回错误。*/
     close(): void;
-    /** Return the address of the `UDPConn`. */
+    /** 返回 `UDPConn` 的地址。 */
     readonly addr: Addr;
     [Symbol.asyncIterator](): AsyncIterator<[Uint8Array, Addr]>;
   }
 
-  /** A generic network listener for stream-oriented protocols. */
+  /** 面向流协议的通用网络监听器。 */
   export interface Listener extends AsyncIterable<Conn> {
-    /** Waits for and resolves to the next connection to the `Listener`. */
+    /** 等待并解析 (resolve) 到与 `Listener` 的下一个连接。 */
     accept(): Promise<Conn>;
-    /** Close closes the listener. Any pending accept promises will be rejected
-     * with errors. */
+    /** 关闭监听器。任何待处理的接收应答都将被拒绝 (rejected)，并返回错误。*/
     close(): void;
-    /** Return the address of the `Listener`. */
+    /** 返回 `Listener` 的地址。 */
     readonly addr: Addr;
 
     [Symbol.asyncIterator](): AsyncIterator<Conn>;
   }
 
   export interface Conn extends Reader, Writer, Closer {
-    /** The local address of the connection. */
+    /** 连接的本地地址。*/
     readonly localAddr: Addr;
-    /** The remote address of the connection. */
+    /** 连接的远程地址。*/
     readonly remoteAddr: Addr;
-    /** The resource ID of the connection. */
+    /** 连接的资源 ID。*/
     readonly rid: number;
-    /** Shuts down (`shutdown(2)`) the reading side of the TCP connection. Most
-     * callers should just use `close()`. */
+    /** 关闭 (`shutdown(2)`) TCP 连接的读取端。大多数调用者应该只使用 `close()`。*/
     closeRead(): void;
-    /** Shuts down (`shutdown(2)`) the writing side of the TCP connection. Most
-     * callers should just use `close()`. */
+    /** 关闭 (`shutdown(2)`) TCP 连接的写入端。大多数调用者应该只使用 `close()`。*/
     closeWrite(): void;
   }
 
