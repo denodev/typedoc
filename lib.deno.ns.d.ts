@@ -469,23 +469,18 @@ declare namespace Deno {
   }
 
   export interface SyncReader {
-    /** Reads up to `p.byteLength` bytes into `p`. It resolves to the number
-     * of bytes read (`0` < `n` <= `p.byteLength`) and rejects if any error
-     * encountered. Even if `read()` returns `n` < `p.byteLength`, it may use
-     * all of `p` as scratch space during the call. If some data is available
-     * but not `p.byteLength` bytes, `read()` conventionally returns what is
-     * available instead of waiting for more.
+    /** 最多读取 `p.byteLength` 个字节到p中，然后返回读取的字节数（`0 < n <= p.byteLength`），并在遇到任何错误时返回拒绝状态的回调函数。
+     * 即使 `readSync()` 返回值为 `n < p.byteLength`，p也可能在调用期间被用作临时空间。
+     * 如果有数据可用，但不存在 `p.byteLength`，`readSync()` 通常会返回可用值，而不是等待更多。
      *
-     * When `readSync()` encounters end-of-file condition, it returns `Deno.EOF`
-     * symbol.
+     * 当 `readSync()` 遇到文件结束条件时，将返回 `Deno.EOF` 符号。
      *
-     * When `readSync()` encounters an error, it throws with an error.
+     * 当 `readSync()` 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。
      *
-     * Callers should always process the `n` > `0` bytes returned before
-     * considering the `EOF`. Doing so correctly handles I/O errors that happen
-     * after reading some bytes and also both of the allowed EOF behaviors.
+     * 调用者应始终处理返回值为 `n > 0` 的情况，然后再考虑 `EOF`。
+     * 应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的 I/O 错误。
      *
-     * Implementations should not retain a reference to `p`.
+     * 实现不应保留对 `p` 的引用。
      */
     readSync(p: Uint8Array): number | EOF;
   }
