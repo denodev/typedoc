@@ -226,25 +226,23 @@ declare namespace Deno {
     | "video";
 
   /**
-   * **UNSTABLE**: Currently under evaluation to decide if method name `dir` and
-   * parameter type alias name `DirKind` should be renamed.
+   * **不稳定**: 当前正在评估中，以确定是否应重命名方法名 `dir` 和参数类型 `DirKind`。
    *
-   * Returns the user and platform specific directories.
+   * 返回特定于用户和平台的目录。
    *
    *       const homeDirectory = Deno.dir("home");
    *
-   * Requires `allow-env` permission.
+   * 需要 `allow-env` 权限。
    *
-   * Returns `null` if there is no applicable directory or if any other error
-   * occurs.
+   * 如果没有适用的目录或发生任何其他错误，则返回 `null`。
    *
-   * Argument values: `"home"`, `"cache"`, `"config"`, `"executable"`, `"data"`,
+   * 参数值包含：`"home"`, `"cache"`, `"config"`, `"executable"`, `"data"`,
    * `"data_local"`, `"audio"`, `"desktop"`, `"document"`, `"download"`,
    * `"font"`, `"picture"`, `"public"`, `"template"`, `"tmp"`, `"video"`
    *
    * `"home"`
    *
-   * |Platform | Value                                    | Example                |
+   * |平台      | 值                                       | 示例                    |
    * | ------- | -----------------------------------------| -----------------------|
    * | Linux   | `$HOME`                                  | /home/alice            |
    * | macOS   | `$HOME`                                  | /Users/alice           |
@@ -252,7 +250,7 @@ declare namespace Deno {
    *
    * `"cache"`
    *
-   * |Platform | Value                               | Example                      |
+   * |平台      | 值                                  | 示例                          |
    * | ------- | ----------------------------------- | ---------------------------- |
    * | Linux   | `$XDG_CACHE_HOME` or `$HOME`/.cache | /home/alice/.cache           |
    * | macOS   | `$HOME`/Library/Caches              | /Users/Alice/Library/Caches  |
@@ -260,7 +258,7 @@ declare namespace Deno {
    *
    * `"config"`
    *
-   * |Platform | Value                                 | Example                          |
+   * |平台      | 值                                    | 示例                              |
    * | ------- | ------------------------------------- | -------------------------------- |
    * | Linux   | `$XDG_CONFIG_HOME` or `$HOME`/.config | /home/alice/.config              |
    * | macOS   | `$HOME`/Library/Preferences           | /Users/Alice/Library/Preferences |
@@ -268,7 +266,7 @@ declare namespace Deno {
    *
    * `"executable"`
    *
-   * |Platform | Value                                                           | Example                |
+   * |平台      | 值                                                              | 示例                    |
    * | ------- | --------------------------------------------------------------- | -----------------------|
    * | Linux   | `XDG_BIN_HOME` or `$XDG_DATA_HOME`/../bin or `$HOME`/.local/bin | /home/alice/.local/bin |
    * | macOS   | -                                                               | -                      |
@@ -276,7 +274,7 @@ declare namespace Deno {
    *
    * `"data"`
    *
-   * |Platform | Value                                    | Example                                  |
+   * |平台      | 值                                       | 示例                                      |
    * | ------- | ---------------------------------------- | ---------------------------------------- |
    * | Linux   | `$XDG_DATA_HOME` or `$HOME`/.local/share | /home/alice/.local/share                 |
    * | macOS   | `$HOME`/Library/Application Support      | /Users/Alice/Library/Application Support |
@@ -284,7 +282,7 @@ declare namespace Deno {
    *
    * `"data_local"`
    *
-   * |Platform | Value                                    | Example                                  |
+   * |平台      | 值                                       | 示例                                      |
    * | ------- | ---------------------------------------- | ---------------------------------------- |
    * | Linux   | `$XDG_DATA_HOME` or `$HOME`/.local/share | /home/alice/.local/share                 |
    * | macOS   | `$HOME`/Library/Application Support      | /Users/Alice/Library/Application Support |
@@ -292,7 +290,7 @@ declare namespace Deno {
    *
    * `"audio"`
    *
-   * |Platform | Value              | Example              |
+   * |平台      | 值                 | 示例                  |
    * | ------- | ------------------ | -------------------- |
    * | Linux   | `XDG_MUSIC_DIR`    | /home/alice/Music    |
    * | macOS   | `$HOME`/Music      | /Users/Alice/Music   |
@@ -300,7 +298,7 @@ declare namespace Deno {
    *
    * `"desktop"`
    *
-   * |Platform | Value                | Example                |
+   * |平台      | 值                   | 示例                    |
    * | ------- | -------------------- | ---------------------- |
    * | Linux   | `XDG_DESKTOP_DIR`    | /home/alice/Desktop    |
    * | macOS   | `$HOME`/Desktop      | /Users/Alice/Desktop   |
@@ -308,7 +306,7 @@ declare namespace Deno {
    *
    * `"document"`
    *
-   * |Platform | Value                  | Example                  |
+   * |平台      | 值                     | 示例                      |
    * | ------- | ---------------------- | ------------------------ |
    * | Linux   | `XDG_DOCUMENTS_DIR`    | /home/alice/Documents    |
    * | macOS   | `$HOME`/Documents      | /Users/Alice/Documents   |
@@ -316,7 +314,7 @@ declare namespace Deno {
    *
    * `"download"`
    *
-   * |Platform | Value                  | Example                  |
+   * |平台      | 值                     | 示例                      |
    * | ------- | ---------------------- | ------------------------ |
    * | Linux   | `XDG_DOWNLOAD_DIR`     | /home/alice/Downloads    |
    * | macOS   | `$HOME`/Downloads      | /Users/Alice/Downloads   |
@@ -324,7 +322,7 @@ declare namespace Deno {
    *
    * `"font"`
    *
-   * |Platform | Value                                                | Example                        |
+   * |平台      | 值                                                   | 示例                           |
    * | ------- | ---------------------------------------------------- | ------------------------------ |
    * | Linux   | `$XDG_DATA_HOME`/fonts or `$HOME`/.local/share/fonts | /home/alice/.local/share/fonts |
    * | macOS   | `$HOME/Library/Fonts`                                | /Users/Alice/Library/Fonts     |
@@ -332,7 +330,7 @@ declare namespace Deno {
    *
    * `"picture"`
    *
-   * |Platform | Value                 | Example                 |
+   * |平台      | 值                    | 示例                     |
    * | ------- | --------------------- | ----------------------- |
    * | Linux   | `XDG_PICTURES_DIR`    | /home/alice/Pictures    |
    * | macOS   | `$HOME`/Pictures      | /Users/Alice/Pictures   |
@@ -340,7 +338,7 @@ declare namespace Deno {
    *
    * `"public"`
    *
-   * |Platform | Value                 | Example             |
+   * |平台      | 值                    | 示例                 |
    * | ------- | --------------------- | ------------------- |
    * | Linux   | `XDG_PUBLICSHARE_DIR` | /home/alice/Public  |
    * | macOS   | `$HOME`/Public        | /Users/Alice/Public |
@@ -348,7 +346,7 @@ declare namespace Deno {
    *
    * `"template"`
    *
-   * |Platform | Value                  | Example                                                    |
+   * |平台      | 值                     | 示例                                                       |
    * | ------- | ---------------------- | ---------------------------------------------------------- |
    * | Linux   | `XDG_TEMPLATES_DIR`    | /home/alice/Templates                                      |
    * | macOS   | –                      | –                                                          |
@@ -356,7 +354,7 @@ declare namespace Deno {
    *
    * `"tmp"`
    *
-   * |Platform | Value                  | Example                                                    |
+   * |平台      | 值                     | 示例                                                        |
    * | ------- | ---------------------- | ---------------------------------------------------------- |
    * | Linux   | `TMPDIR`               | /tmp                                                       |
    * | macOS   | `TMPDIR`               | /tmp                                                       |
@@ -364,7 +362,7 @@ declare namespace Deno {
    *
    * `"video"`
    *
-   * |Platform | Value               | Example               |
+   * |平台      | 值                  | 示例                   |
    * | ------- | ------------------- | --------------------- |
    * | Linux   | `XDG_VIDEOS_DIR`    | /home/alice/Videos    |
    * | macOS   | `$HOME`/Movies      | /Users/Alice/Movies   |
