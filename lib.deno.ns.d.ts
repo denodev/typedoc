@@ -2298,7 +2298,7 @@ declare namespace Deno {
     v8: string;
     typescript: string;
   }
-  /** Version related information. */
+  /** Deno 的详细版本信息。包括了 deno、v8、typescript。 */
   export const version: Version;
 
   /** The log category for a diagnostic message. */
