@@ -130,10 +130,9 @@ declare namespace Deno {
     onMessage?: (message: TestMessage) => void | Promise<void>;
   }
 
-  /** Run any tests which have been registered via `Deno.test()`. Always resolves
-   * asynchronously.
+  /** 运行所有通过 `Deno.test()` 注册的测试。始终异步 resolve。
    *
-   *        //Register test
+   *        // 注册一个测试。
    *        Deno.test({
    *          name: "example test",
    *          fn(): void {
@@ -142,7 +141,7 @@ declare namespace Deno {
    *          },
    *        });
    *
-   *        //Run tests
+   *        // 运行所有已经注册过的测试。
    *        const runInfo = await Deno.runTests();
    *        console.log(runInfo.duration);  // all tests duration, e.g. "5" (in ms)
    *        console.log(runInfo.stats.passed);  //e.g. 1
