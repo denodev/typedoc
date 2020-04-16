@@ -120,13 +120,13 @@ declare namespace Deno {
     failFast?: boolean;
     /** 用于筛选要运行的测试的字符串或正则表达式。只有当测试名称与提供的 `String` 或 `RegExp` 相匹配时才会运行。*/
     filter?: string | RegExp;
-    /** 用于跳过要运行的测试的字符串或正则表达式。与提供的 `String` or `RegExp` 被匹配的测试名称将不会被运行。*/
+    /** 用于跳过要运行的测试的字符串或正则表达式。当测试名称与提供的 `String` 或 `RegExp` 相匹配时将不会运行。 */
     skip?: string | RegExp;
     /** 禁用记录结果. 默认值为 `false`。 */
     disableLog?: boolean;
-    /** If true, report results to the console as is done for `deno test`. Defaults to `true`. */
+    /** 如果为 `true`，将 `deno test` 完成的结果输出到控制台。默认值为 `true`. */
     reportToConsole?: boolean;
-    /** Called for each message received from the test run. */
+    /** 回调每个从测试运行收到的每个消息。 */
     onMessage?: (message: TestMessage) => void | Promise<void>;
   }
 
