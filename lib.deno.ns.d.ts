@@ -2288,13 +2288,13 @@ declare namespace Deno {
   export type Arch = "x64" | "arm64";
 
   interface BuildInfo {
-    /** The CPU architecture. */
+    /** CPU 架构。 */
     arch: Arch;
-    /** The operating system. */
+    /** 操作系统。 */
     os: OperatingSystem;
   }
 
-  /** Build related information. */
+  /** 构建的相关信息。 */
   export const build: BuildInfo;
 
   interface Version {
