@@ -1112,14 +1112,13 @@ declare namespace Deno {
    * Requires `allow-write` permission. */
   export function chmod(path: string, mode: number): Promise<void>;
 
-  /** Synchronously change owner of a regular file or directory. This functionality
-   * is not available on Windows.
+  /** 同步地更改常规文件或目录的所有者。该功能在Windows上不可用。
    *
    *      Deno.chownSync("myFile.txt", 1000, 1002);
    *
-   * Requires `allow-write` permission.
+   * 需要 `allow-write` 权限。
    *
-   * Throws Error (not implemented) if executed on Windows
+   * 如果在Windows上执行，将抛出错误（未实现）
    *
    * @param path path to the file
    * @param uid user id (UID) of the new owner
@@ -1127,14 +1126,13 @@ declare namespace Deno {
    */
   export function chownSync(path: string, uid: number, gid: number): void;
 
-  /** Change owner of a regular file or directory. This functionality
-   * is not available on Windows.
+  /** 更改常规文件或目录的所有者。该功能在Windows上不可用。
    *
    *      await Deno.chown("myFile.txt", 1000, 1002);
    *
-   * Requires `allow-write` permission.
+   * 需要 `allow-write` 权限。
    *
-   * Throws Error (not implemented) if executed on Windows
+   * 如果在Windows上执行，将抛出错误（未实现）
    *
    * @param path path to the file
    * @param uid user id (UID) of the new owner
@@ -1782,15 +1780,15 @@ declare namespace Deno {
    * 面向消息协议的通用传输监听器。*/
   export interface DatagramConn extends AsyncIterable<[Uint8Array, Addr]> {
     /** **不稳定**：新的 API，尚待审查。
-     * 
+     *
      * 等待并解析 (resolve) 为下一条消息传递给 `UDPConn`。*/
     receive(p?: Uint8Array): Promise<[Uint8Array, Addr]>;
     /** **不稳定**：新的 API，尚待审查。
-     * 
+     *
      * 向目标发送消息。*/
     send(p: Uint8Array, addr: Addr): Promise<void>;
     /** **不稳定**：新的 API，尚待审查。
-     * 
+     *
      * 关闭套接字。任何待处理的消息应答都将被拒绝 (rejected)，并返回错误。*/
     close(): void;
     /** 返回 `UDPConn` 的地址。 */
