@@ -118,7 +118,7 @@ declare namespace Deno {
     exitOnFail?: boolean;
     /** 如果为 `true`，Deno 将在第一次测试失败后退出。默认值为 `false` */
     failFast?: boolean;
-    /** 用于筛选要运行的测试的字符串或正则表达式。只有与提供的 `String` or `RegExp` 被匹配的测试名称将被运行。*/
+    /** 用于筛选要运行的测试的字符串或正则表达式。只有当测试名称与提供的 `String` 或 `RegExp` 相匹配时才会运行。*/
     filter?: string | RegExp;
     /** 用于跳过要运行的测试的字符串或正则表达式。与提供的 `String` or `RegExp` 被匹配的测试名称将不会被运行。*/
     skip?: string | RegExp;
