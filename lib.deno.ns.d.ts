@@ -2235,7 +2235,7 @@ declare namespace Deno {
    *      const objAsString = Deno.inspect(obj); // { propA: 10, propB: "hello" }
    *      console.log(obj);  // 输出与 objAsString 相同的值，例如: { propA: 10, propB: "hello" }
    *
-   * 你还可以通对象上的 `Deno.symbols.customInspect` 函数
+   * 你还可以通过对象上的 `Deno.symbols.customInspect` 函数
    * 注册自定义的 inspect function，以控制和自定义输出。
    *
    *      class A {
