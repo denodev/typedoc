@@ -2130,11 +2130,9 @@ declare namespace Deno {
     signal?: number;
   }
 
-  /** **UNSTABLE**: `args` has been recently renamed to `cmd` to differentiate from
-   * `Deno.args`. */
+  /** **不稳定**: `args` 最近被重命名为 `cmd`，以区别于 `Deno.args`。 */
   export interface RunOptions {
-    /** Arguments to pass. Note, the first element needs to be a path to the
-     * binary */
+    /** 需要传递的参数。注意，第一个元素必须是二进制文件的路径。 */
     cmd: string[];
     cwd?: string;
     env?: {
