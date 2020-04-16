@@ -2009,22 +2009,20 @@ declare namespace Deno {
     paths: string[];
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Watch for file system events against one or more `paths`, which can be files
-   * or directories.  These paths must exist already.  One user action (e.g.
-   * `touch test.file`) can  generate multiple file system events.  Likewise,
-   * one user action can result in multiple file paths in one event (e.g. `mv
-   * old_name.txt new_name.txt`).  Recursive option is `true` by default and,
-   * for directories, will watch the specified directory and all sub directories.
-   * Note that the exact ordering of the events can vary between operating systems.
+   * 监听一个或多个路径的文件系统事件，这个路径可以是文件或者目录，但是必须存在。
+   * 一个用户操作（例如 `touch test.file`）可以产生多个文件系统事件。同样，一个
+   * 用户操作也可能在一次事件中影响多个路径（例如 `mv old_name.txt new_name.txt`）。
+   * 递归选项默认为 `true`，对于目录，将监听指定目录及其所有子目录。
+   * 值得注意的是，不同操作系统的事件顺序可能会有所不同。
    *
    *       const iter = Deno.fsEvents("/");
    *       for await (const event of iter) {
    *          console.log(">>>> event", event);  //e.g. { kind: "create", paths: [ "/foo.txt" ] }
    *       }
    *
-   * Requires `allow-read` permission.
+   * 需要 `allow-read` 权限。
    */
   export function fsEvents(
     paths: string | string[],
