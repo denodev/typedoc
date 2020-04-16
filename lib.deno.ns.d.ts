@@ -2143,26 +2143,22 @@ declare namespace Deno {
     stdin?: ProcessStdio | number;
   }
 
-  /** Spawns new subprocess.  RunOptions must contain at a minimum the `opt.cmd`,
-   * an array of program arguments, the first of which is the binary.
+  /** 派生新的子进程。 RunOptions 必须包含 `opt.cmd`，即程序参数数组，其中第一个参数是二进制文件路径。
    *
-   * Subprocess uses same working directory as parent process unless `opt.cwd`
-   * is specified.
+   * 子进程使用与父进程相同的工作目录，除非指定了 `opt.cwd`。
    *
-   * Environmental variables for subprocess can be specified using `opt.env`
-   * mapping.
+   * 子进程的环境变量可以使用 `opt.env` 来设置
    *
-   * By default subprocess inherits stdio of parent process. To change that
-   * `opt.stdout`, `opt.stderr` and `opt.stdin` can be specified independently -
-   * they can be set to either `ProcessStdio` or `rid` of open file.
+   * 默认情况下，子进程继承父进程的 stdio。要更改这些值，可以分别指定`opt.stdout`、`opt.stderr`、`opt.stdin`
+   * - 可以将其设置为 `ProcessStdio` 或打开文件的 `rid`。
    *
-   * Details of the spawned process are returned.
+   * 返回派生子进程的详细信息。
    *
    *       const p = Deno.run({
    *         cmd: ["echo", "hello"],
    *       });
    *
-   * Requires `allow-run` permission. */
+   * 需要 `allow-run` 权限。 */
   export function run(opt: RunOptions): Process;
 
   enum LinuxSignal {
