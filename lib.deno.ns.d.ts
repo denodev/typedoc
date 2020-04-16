@@ -1015,22 +1015,19 @@ declare namespace Deno {
     suffix?: string;
   }
 
-  /** Synchronously creates a new temporary directory in the default directory
-   * for temporary files (see also `Deno.dir("temp")`), unless `dir` is specified.
-   * Other optional options include prefixing and suffixing the directory name
-   * with `prefix` and `suffix` respectively.
+  /** 以同步的方式在默认文件夹（另见 `Deno.dir("temp")`）中创建一个临时文件夹,
+   * 如果指定了 `dir` ， 则在指定的 `dir` 中创建。
+   * 其他可选的参数包括分别给文件夹名添加前缀的 `prefix` 和给文件夹名添加后缀的 `sufix`。
    *
-   * The full path to the newly created directory is returned.
+   * 返回新建文件夹的完整路径。
    *
-   * Multiple programs calling this function simultaneously will create different
-   * directories. It is the caller's responsibility to remove the directory when
-   * no longer needed.
+   * 多个程序同时调用该函数将会创建不同的文件夹。当不再需要该临时文件夹时，调用者应该主动删除该文件夹。
    *
    *       const tempDirName0 = Deno.makeTempDirSync();  // e.g. /tmp/2894ea76
    *       const tempDirName1 = Deno.makeTempDirSync({ prefix: 'my_temp' });  // e.g. /tmp/my_temp339c944d
    *
-   * Requires `allow-write` permission. */
-  // TODO(ry) Doesn't check permissions.
+   * 需要 `allow-write` 权限。 */
+  // TODO(ry) 不校验权限。
   export function makeTempDirSync(options?: MakeTempOptions): string;
 
   /** Creates a new temporary directory in the default directory for temporary
