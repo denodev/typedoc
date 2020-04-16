@@ -151,15 +151,14 @@ declare namespace Deno {
     opts?: RunTestsOptions
   ): Promise<TestMessage["end"]> & {};
 
-  /** Returns an array containing the 1, 5, and 15 minute load averages. The
-   * load average is a measure of CPU and IO utilization of the last one, five,
-   * and 15 minute periods expressed as a fractional number.  Zero means there
-   * is no load. On Windows, the three values are always the same and represent
-   * the current load, not the 1, 5 and 15 minute load averages.
+  /** 返回 1 分钟、5 分钟和 15 分钟平均负载的数组。
+   * 平均负载是对最后 1 分钟、5 分钟和 15 分钟的 CPU 以及 IO 利用率的度量，以分数表示。
+   * `0` 表示没有负载。
+   * 在 Windows 上，这 3 个值始终相同，代表当前负载，而不是 1 分钟、5 分钟和 15 分钟的平均负载。
    *
    *       console.log(Deno.loadavg());  //e.g. [ 0.71, 0.44, 0.44 ]
    *
-   * Requires `allow-env` permission.
+   * 需要 `allow-env` 权限。
    */
   export function loadavg(): number[];
 
