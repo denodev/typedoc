@@ -1112,7 +1112,7 @@ declare namespace Deno {
    * Requires `allow-write` permission. */
   export function chmod(path: string, mode: number): Promise<void>;
 
-  /** 同步地更改常规文件或目录的所有者。该功能在Windows上不可用。
+  /** 同步地更改常规文件或目录的所有者。该功能在 Windows 上不可用。
    *
    *      Deno.chownSync("myFile.txt", 1000, 1002);
    *
