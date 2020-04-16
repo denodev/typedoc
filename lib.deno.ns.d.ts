@@ -1118,7 +1118,7 @@ declare namespace Deno {
    *
    * 需要 `allow-write` 权限。
    *
-   * 如果在Windows上执行，将抛出错误（未实现）
+   * 如果在 Windows 上执行，将抛出错误（未实现）
    *
    * @param path path to the file
    * @param uid user id (UID) of the new owner
@@ -1132,7 +1132,7 @@ declare namespace Deno {
    *
    * 需要 `allow-write` 权限。
    *
-   * 如果在Windows上执行，将抛出错误（未实现）
+   * 如果在 Windows 上执行，将抛出错误（未实现）
    *
    * @param path path to the file
    * @param uid user id (UID) of the new owner
