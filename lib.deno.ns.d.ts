@@ -1738,7 +1738,7 @@ declare namespace Deno {
     };
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
    * Open and initalize a plugin.
    *
@@ -1800,11 +1800,11 @@ declare namespace Deno {
    */
   export function shutdown(rid: number, how: ShutdownMode): void;
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
    * A generic transport listener for message-oriented protocols. */
   export interface DatagramConn extends AsyncIterable<[Uint8Array, Addr]> {
-    /** **UNSTABLE**: new API, yet to be vetted.
+    /** **不稳定**: 新 API，没有经过审查。
      *
      * Waits for and resolves to the next message to the `UDPConn`. */
     receive(p?: Uint8Array): Promise<[Uint8Array, Addr]>;
@@ -2036,7 +2036,7 @@ declare namespace Deno {
     paths: string[];
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
    * Watch for file system events against one or more `paths`, which can be files
    * or directories.  These paths must exist already.  One user action (e.g.
@@ -2336,7 +2336,7 @@ declare namespace Deno {
     items: DiagnosticItem[];
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
    * Format an array of diagnostic items and return them as a single string in a
    * user friendly format.
@@ -2349,75 +2349,64 @@ declare namespace Deno {
    */
   export function formatDiagnostics(items: DiagnosticItem[]): string;
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * A specific subset TypeScript compiler options that can be supported by the
-   * Deno TypeScript compiler. */
+   * TypeScript 编译选项的特定子集，这些选项能够被 Deno 内置的 TypeScript 编译器支持。 */
   export interface CompilerOptions {
-    /** Allow JavaScript files to be compiled. Defaults to `true`. */
+    /** 允许编译 JavaScript 文件。默认为 `true`。 */
     allowJs?: boolean;
-    /** Allow default imports from modules with no default export. This does not
-     * affect code emit, just typechecking. Defaults to `false`. */
+    /** 允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。默认为 `false`。 */
     allowSyntheticDefaultImports?: boolean;
-    /** Allow accessing UMD globals from modules. Defaults to `false`. */
+    /** 允许从模块中访问 UMD 全局变量。默认为 `false`。 */
     allowUmdGlobalAccess?: boolean;
-    /** Do not report errors on unreachable code. Defaults to `false`. */
+    /** 不报告执行不到的代码错误。默认为 `false`。 */
     allowUnreachableCode?: boolean;
-    /** Do not report errors on unused labels. Defaults to `false` */
+    /** 不报告未使用的标签错误。默认为 `false`。 */
     allowUnusedLabels?: boolean;
-    /** Parse in strict mode and emit `"use strict"` for each source file.
-     * Defaults to `true`. */
+    /** 以严格模式解析源文件并为每个源文件生成 `"use strict"` 语句。
+     * 默认为 `true`。 */
     alwaysStrict?: boolean;
-    /** Base directory to resolve non-relative module names. Defaults to
-     * `undefined`. */
+    /** 解析非相对模块名的基准目录。默认为 `undefined`。 */
     baseUrl?: string;
-    /** Report errors in `.js` files. Use in conjunction with `allowJs`. Defaults
-     * to `false`. */
+    /** 报告 `.js` 文件中存在的错误。与 `allowJs` 配合使用。默认为 `false`。 */
     checkJs?: boolean;
-    /** Generates corresponding `.d.ts` file. Defaults to `false`. */
+    /** 生成相应的 `.d.ts` 文件。默认为 `false`。 */
     declaration?: boolean;
-    /** Output directory for generated declaration files. */
+    /** 生成声明文件的输出路径。 */
     declarationDir?: string;
-    /** Generates a source map for each corresponding `.d.ts` file. Defaults to
-     * `false`. */
+    /** 为每个 `.d.ts` 文件生成 ource map。默认为 `false`。 */
     declarationMap?: boolean;
-    /** Provide full support for iterables in `for..of`, spread and
-     * destructuring when targeting ES5 or ES3. Defaults to `false`. */
+    /** 当编译目标设置为 ES5 或 ES3 时，为 `for..of`、数组解构、数组展开提供完整的迭代支持。默认为 `false`。 */
     downlevelIteration?: boolean;
-    /** Emit a UTF-8 Byte Order Mark (BOM) in the beginning of output files.
-     * Defaults to `false`. */
+    /** 在输出文件的开头加入 BOM 头（UTF-8 Byte Order Mark）。默认为 `false`。 */
     emitBOM?: boolean;
-    /** Only emit `.d.ts` declaration files. Defaults to `false`. */
+    /** 只输出 `.d.ts` 文件。默认为 `false`。 */
     emitDeclarationOnly?: boolean;
-    /** Emit design-type metadata for decorated declarations in source. See issue
+    /** 给源码里的装饰器声明加上设计类型元数据。查看
      * [microsoft/TypeScript#2577](https://github.com/Microsoft/TypeScript/issues/2577)
-     * for details. Defaults to `false`. */
+     * 了解更多信息。默认为 `false`。 */
     emitDecoratorMetadata?: boolean;
-    /** Emit `__importStar` and `__importDefault` helpers for runtime babel
-     * ecosystem compatibility and enable `allowSyntheticDefaultImports` for type
-     * system compatibility. Defaults to `true`. */
+    /** 为了兼容 babel 运行时生态，输出 `__importStar` 和 `__importDefault` 辅助函数并且开启 `allowSyntheticDefaultImports` 选项。默认为 `true`。 */
     esModuleInterop?: boolean;
-    /** Enables experimental support for ES decorators. Defaults to `false`. */
+    /** 启用实验性的 ES 装饰器。默认为 `false`。 */
     experimentalDecorators?: boolean;
-    /** Emit a single file with source maps instead of having a separate file.
-     * Defaults to `false`. */
+    /** 生成单个 source maps 文件，而不是将每 source maps 生成不同的文件。
+     * 默认为 `false`。 */
     inlineSourceMap?: boolean;
-    /** Emit the source alongside the source maps within a single file; requires
-     * `inlineSourceMap` or `sourceMap` to be set. Defaults to `false`. */
+    /** 将代码与 source maps 生成到一个文件中，要求同时设置了 `inlineSourceMap` or `sourceMap` 选项。默认为 `false`。 */
     inlineSources?: boolean;
-    /** Perform additional checks to ensure that transpile only would be safe.
-     * Defaults to `false`. */
+    /** 执行额外的检查，确保我的程序代码可以被不进行任何类型检查的编译器正确地编译。
+     * 默认为 `false`。 */
     isolatedModules?: boolean;
-    /** Support JSX in `.tsx` files: `"react"`, `"preserve"`, `"react-native"`.
-     * Defaults to `"react"`. */
+    /** 为 `.tsx` 文件提供 JSX 支持：`"react"`, `"preserve"`, `"react-native"`。
+     * 默认为 `"react"`。 */
     jsx?: "react" | "preserve" | "react-native";
-    /** Specify the JSX factory function to use when targeting react JSX emit,
-     * e.g. `React.createElement` or `h`. Defaults to `React.createElement`. */
+    /** 指定生成目标为 JSX 时，使用的 JSX 工厂函数，比如 `React.createElement` 或 `h`。默认为 `React.createElement`。 */
     jsxFactory?: string;
     /** Resolve keyof to string valued property names only (no numbers or
-     * symbols). Defaults to `false`. */
+     * symbols). 默认为 `false`。 */
     keyofStringsOnly?: string;
-    /** Emit class fields with ECMAScript-standard semantics. Defaults to `false`.
+    /** Emit class fields with ECMAScript-standard semantics. 默认为 `false`。
      * Does not apply to `"esnext"` target. */
     useDefineForClassFields?: boolean;
     /** List of library files to be included in the compilation. If omitted,
@@ -2443,16 +2432,16 @@ declare namespace Deno {
       | "es2015"
       | "esnext";
     /** Do not generate custom helper functions like `__extends` in compiled
-     * output. Defaults to `false`. */
+     * output. 默认为 `false`。 */
     noEmitHelpers?: boolean;
     /** Report errors for fallthrough cases in switch statement. Defaults to
      * `false`. */
     noFallthroughCasesInSwitch?: boolean;
     /** Raise error on expressions and declarations with an implied any type.
-     * Defaults to `true`. */
+     * 默认为 `true`。 */
     noImplicitAny?: boolean;
     /** Report an error when not all code paths in function return a value.
-     * Defaults to `false`. */
+     * 默认为 `false`。 */
     noImplicitReturns?: boolean;
     /** Raise error on `this` expressions with an implied `any` type. Defaults to
      * `true`. */
@@ -2461,14 +2450,14 @@ declare namespace Deno {
      * `false`. */
     noImplicitUseStrict?: boolean;
     /** Do not add triple-slash references or module import targets to the list of
-     * compiled files. Defaults to `false`. */
+     * compiled files. 默认为 `false`。 */
     noResolve?: boolean;
     /** Disable strict checking of generic signatures in function types. Defaults
      * to `false`. */
     noStrictGenericChecks?: boolean;
-    /** Report errors on unused locals. Defaults to `false`. */
+    /** Report errors on unused locals. 默认为 `false`。 */
     noUnusedLocals?: boolean;
-    /** Report errors on unused parameters. Defaults to `false`. */
+    /** Report errors on unused parameters. 默认为 `false`。 */
     noUnusedParameters?: boolean;
     /** Redirect output structure to the directory. This only impacts
      * `Deno.compile` and only changes the emitted file names. Defaults to
@@ -2481,9 +2470,9 @@ declare namespace Deno {
      * `false`. */
     preserveConstEnums?: boolean;
     /** Remove all comments except copy-right header comments beginning with
-     * `/*!`. Defaults to `true`. */
+     * `/*!`. 默认为 `true`。 */
     removeComments?: boolean;
-    /** Include modules imported with `.json` extension. Defaults to `true`. */
+    /** Include modules imported with `.json` extension. 默认为 `true`。 */
     resolveJsonModule?: boolean;
     /** Specifies the root directory of input files. Only use to control the
      * output directory structure with `outDir`. Defaults to `undefined`. */
@@ -2491,7 +2480,7 @@ declare namespace Deno {
     /** List of _root_ folders whose combined content represent the structure of
      * the project at runtime. Defaults to `undefined`. */
     rootDirs?: string[];
-    /** Generates corresponding `.map` file. Defaults to `false`. */
+    /** Generates corresponding `.map` file. 默认为 `false`。 */
     sourceMap?: boolean;
     /** Specifies the location where debugger should locate TypeScript files
      * instead of source locations. Use this flag if the sources will be located
@@ -2502,17 +2491,17 @@ declare namespace Deno {
     /** Enable all strict type checking options. Enabling `strict` enables
      * `noImplicitAny`, `noImplicitThis`, `alwaysStrict`, `strictBindCallApply`,
      * `strictNullChecks`, `strictFunctionTypes` and
-     * `strictPropertyInitialization`. Defaults to `true`. */
+     * `strictPropertyInitialization`. 默认为 `true`。 */
     strict?: boolean;
     /** Enable stricter checking of the `bind`, `call`, and `apply` methods on
-     * functions. Defaults to `true`. */
+     * functions. 默认为 `true`。 */
     strictBindCallApply?: boolean;
     /** Disable bivariant parameter checking for function types. Defaults to
      * `true`. */
     strictFunctionTypes?: boolean;
     /** Ensure non-undefined class properties are initialized in the constructor.
      * This option requires `strictNullChecks` be enabled in order to take effect.
-     * Defaults to `true`. */
+     * 默认为 `true`。 */
     strictPropertyInitialization?: boolean;
     /** In strict null checking mode, the `null` and `undefined` values are not in
      * the domain of every type and are only assignable to themselves and `any`
@@ -2553,7 +2542,7 @@ declare namespace Deno {
     types?: string[];
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
    * The results of a transpile only command, where the `source` contains the
    * emitted source, and `map` optionally contains the source map. */
@@ -2562,7 +2551,7 @@ declare namespace Deno {
     map?: string;
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
    * Takes a set of TypeScript sources and resolves to a map where the key was
    * the original file name provided in sources and the result contains the
@@ -2588,7 +2577,7 @@ declare namespace Deno {
     options?: CompilerOptions
   ): Promise<Record<string, TranspileOnlyResult>>;
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
    * Takes a root module name, and optionally a record set of sources. Resolves
    * with a compiled set of modules and possibly diagnostics if the compiler
@@ -2624,7 +2613,7 @@ declare namespace Deno {
     options?: CompilerOptions
   ): Promise<[DiagnosticItem[] | undefined, Record<string, string>]>;
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
    * `bundle()` is part the compiler API.  A full description of this functionality
    * can be found in the [manual](https://deno.land/std/manual.md#denobundle).
