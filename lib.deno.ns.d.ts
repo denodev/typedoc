@@ -118,13 +118,11 @@ declare namespace Deno {
     exitOnFail?: boolean;
     /** 如果为 `true`，Deno 将在第一次测试失败后退出。默认值为 `false` */
     failFast?: boolean;
-    /** String or RegExp used to filter test to run. Only test with names
-     * matching provided `String` or `RegExp` will be run. */
+    /** 用于筛选要运行的测试的字符串或正则表达式。只有当测试名称与提供的 `String` 或 `RegExp` 相匹配时才会运行。*/
     filter?: string | RegExp;
-    /** String or RegExp used to skip tests to run. Tests with names
-     * matching provided `String` or `RegExp` will not be run. */
+    /** 用于跳过要运行的测试的字符串或正则表达式。与提供的 `String` or `RegExp` 被匹配的测试名称将不会被运行。*/
     skip?: string | RegExp;
-    /** Disable logging of the results. Defaults to `false`. */
+    /** 禁用记录结果. 默认值为 `false`。 */
     disableLog?: boolean;
     /** If true, report results to the console as is done for `deno test`. Defaults to `true`. */
     reportToConsole?: boolean;
