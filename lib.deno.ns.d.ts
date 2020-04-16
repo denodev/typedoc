@@ -1116,16 +1116,16 @@ declare namespace Deno {
    * Requires `allow-write` permission. */
   export function makeTempFile(options?: MakeTempOptions): Promise<string>;
 
-  /** Synchronously changes the permission of a specific file/directory of
-   * specified path.  Ignores the process's umask.
+  /** 同步地更改指定路径下特定的文件/目录的权限。
+   * 忽略进程的 umask。
    *
    *       Deno.chmodSync("/path/to/file", 0o666);
    *
-   * For a full description, see [chmod](#chmod)
+   * 相关完整说明，参考 [chmod](#chmod)
    *
-   * NOTE: This API currently throws on Windows
+   * 注意：该 API 当前仅能在 Windows 上使用。
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
   export function chmodSync(path: string, mode: number): void;
 
   /** Changes the permission of a specific file/directory of specified path.
