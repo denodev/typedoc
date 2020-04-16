@@ -500,7 +500,7 @@ declare namespace Deno {
      * 字节数(`0` <= `n` <= `p.byteLength`），reject 时返回值为导致写入提前停止的错误。
      * 如果将要 resolve 一个 `n` < `p.byteLength` 的值时， `write()` 必须 reject，并且返回
      * 一个非空错误。`write()` 禁止修改分片数据，即使是临时修改。
-     * 
+     *
      * 实现不应保留对 `p` 的引用。
      */
     write(p: Uint8Array): Promise<number>;
@@ -510,9 +510,9 @@ declare namespace Deno {
     /**
      * 将 `p` 中的 `p.byteLength` 字节写入底层数据流。它的返回值为从 `p` 写入的
      * 字节数(`0` <= `n` <= `p.byteLength`）或者导致写入提前停止的错误。
-     * `writeSync()` 会抛出一个非空错误当返回值 `n` < `p.byteLength`。`writeSync()` 
+     * `writeSync()` 会抛出一个非空错误当返回值 `n` < `p.byteLength`。`writeSync()`
      * 禁止修改分片数据，即使是临时修改。
-     * 
+     *
      * 实现不应保留对 `p` 的引用。
      */
     writeSync(p: Uint8Array): number;
@@ -2234,9 +2234,9 @@ declare namespace Deno {
     SIGUSR2 = 31,
   }
 
-  /** **UNSTABLE**: make platform independent.
+  /** **不稳定**: make platform independent.
    *
-   * Signals numbers. This is platform dependent. */
+   * 信号数字。此值是独立于平台的。 */
   export const Signal: typeof MacOSSignal | typeof LinuxSignal;
 
   interface InspectOptions {
