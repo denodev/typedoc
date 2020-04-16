@@ -2039,25 +2039,22 @@ declare namespace Deno {
    * the stream to `/dev/null`. */
   type ProcessStdio = "inherit" | "piped" | "null";
 
-  /** **UNSTABLE**: The `signo` argument may change to require the Deno.Signal
-   * enum.
+  /** **UNSTABLE**: `signo` 参数可能需要改成 Deno.Signal 枚举。
+   * 
+   * 给指定的 `pid` 进程发送信号。这个功能目前只在 Linux 和 Mac OS 上运行。
    *
-   * Send a signal to process under given `pid`. This functionality currently
-   * only works on Linux and Mac OS.
-   *
-   * If `pid` is negative, the signal will be sent to the process group
-   * identified by `pid`.
-   *
+   * 当 `pid` 是负的，信号将会发送到带有 `pid` 标识的进程组。
+   * 
    *      const p = Deno.run({
    *        cmd: ["python", "-c", "from time import sleep; sleep(10000)"]
    *      });
    *
    *      Deno.kill(p.pid, Deno.Signal.SIGINT);
    *
-   * Throws Error (not yet implemented) on Windows
-   *
-   * Requires `allow-run` permission. */
-  export function kill(pid: number, signo: number): void;
+   * 在 Windows 上抛出错误尚未实现。
+   * 
+   * 需要 `allow-run` 权限。 */
+  export function k(pid: number, signo: number): void;
 
   /** **UNSTABLE**: 这里有一些关于如何结束进程的问题需要解决。 */
   export class Process {
