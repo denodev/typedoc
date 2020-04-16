@@ -2557,16 +2557,15 @@ declare namespace Deno {
     options?: CompilerOptions
   ): Promise<Record<string, TranspileOnlyResult>>;
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**：新的 API，尚待审核。
    *
-   * Takes a root module name, and optionally a record set of sources. Resolves
-   * with a compiled set of modules and possibly diagnostics if the compiler
-   * encountered any issues. If just a root name is provided, the modules
-   * will be resolved as if the root module had been passed on the command line.
+   * 它接受根模块名 rootName，及 record 类型的可选参数 sources 做为模块源。
+   * 返回编译后的模块集合及编译过程中遇到的问题的诊断信息。
    *
-   * If sources are passed, all modules will be resolved out of this object, where
-   * the key is the module name and the value is the content. The extension of
-   * the module name will be used to determine the media type of the module.
+   * 如果仅传了 rootName，那么模块解析结果同命令行一致。
+   *
+   * 如果传递了 sources，则所有模块都将从该 sources 对象中解析出来，
+   * 其中键是模块名称，值是内容。模块名称的扩展名将用于确定模块的类型。
    *
    *      const [ maybeDiagnostics1, output1 ] = await Deno.compile("foo.ts");
    *
@@ -2575,17 +2574,11 @@ declare namespace Deno {
    *        "/bar.ts": `export const bar = "bar";`
    *      });
    *
-   * @param rootName The root name of the module which will be used as the
-   *                 "starting point". If no `sources` is specified, Deno will
-   *                 resolve the module externally as if the `rootName` had been
-   *                 specified on the command line.
-   * @param sources An optional key/value map of sources to be used when resolving
-   *                modules, where the key is the module name, and the value is
-   *                the source content. The extension of the key will determine
-   *                the media type of the file when processing. If supplied,
-   *                Deno will not attempt to resolve any modules externally.
-   * @param options An optional object of options to send to the compiler. This is
-   *                a subset of ts.CompilerOptions which can be supported by Deno.
+   * @param rootName 作为 “起点” 的模块名。如果没有传递 `sources` 参数,
+   *                 Deno 将从外部解析模块，就像在命令行中指定了 `rootName` 一样。
+   * @param sources 可选参数，解析模块时使用的 key/value 对象，其中 key 是模块名，value 是源内容。
+   *                key 的扩展名决定了解析模块的类型。如果提供此参数，Deno 将不会尝试从外部解析任何模块。
+   * @param options 编译选项。这是可以被 Deno 支持的 ts.CompilerOptions 选项的一个子集。
    */
   export function compile(
     rootName: string,
