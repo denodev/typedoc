@@ -933,19 +933,19 @@ declare namespace Deno {
    */
   export function readAllSync(r: SyncReader): Uint8Array;
 
-  /** Write all the content of the array buffer (`arr`) to the writer (`w`).
+  /** 将所有 Array Buffer （`arr`）中的的内容写入到对象 （`w`） 中
    *
-   *       //Example writing to stdout
+   *       // 举例：写入到 stdout
    *       const contentBytes = new TextEncoder().encode("Hello World");
    *       await Deno.writeAll(Deno.stdout, contentBytes);
    *
-   *       //Example writing to file
+   *       // 举例：写入到文件
    *       const contentBytes = new TextEncoder().encode("Hello World");
    *       const file = await Deno.open('test.file', {write: true});
    *       await Deno.writeAll(file, contentBytes);
    *       Deno.close(file.rid);
    *
-   *       //Example writing to buffer
+   *       // 举例：写入到 Buffer 对象
    *       const contentBytes = new TextEncoder().encode("Hello World");
    *       const writer = new Deno.Buffer();
    *       await Deno.writeAll(writer, contentBytes);
@@ -953,20 +953,19 @@ declare namespace Deno {
    */
   export function writeAll(w: Writer, arr: Uint8Array): Promise<void>;
 
-  /** Synchronously write all the content of the array buffer (`arr`) to the
-   * writer (`w`).
+  /** 将所有 Array Buffer （`arr`）中的的内容同步写入到对象 （`w`） 中
    *
-   *       //Example writing to stdout
+   *       // 举例：写入到 stdout
    *       const contentBytes = new TextEncoder().encode("Hello World");
    *       Deno.writeAllSync(Deno.stdout, contentBytes);
    *
-   *       //Example writing to file
+   *       // 举例：写入到文件
    *       const contentBytes = new TextEncoder().encode("Hello World");
    *       const file = Deno.openSync('test.file', {write: true});
    *       Deno.writeAllSync(file, contentBytes);
    *       Deno.close(file.rid);
    *
-   *       //Example writing to buffer
+   *       // 举例：写入到 Buffer 对象
    *       const contentBytes = new TextEncoder().encode("Hello World");
    *       const writer = new Deno.Buffer();
    *       Deno.writeAllSync(writer, contentBytes);
