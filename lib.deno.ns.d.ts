@@ -126,7 +126,7 @@ declare namespace Deno {
     disableLog?: boolean;
     /** 如果为 `true`，将 `deno test` 完成的结果输出到控制台。默认值为 `true`. */
     reportToConsole?: boolean;
-    /** 回调每个从测试运行收到的每个消息。 */
+    /** 回调从测试运行收到的每个消息。 */
     onMessage?: (message: TestMessage) => void | Promise<void>;
   }
 
