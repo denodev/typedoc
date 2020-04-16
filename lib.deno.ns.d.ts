@@ -2640,7 +2640,7 @@ declare namespace Deno {
    *        "/bar.ts": `export const bar = "bar";`
    *      });
    *
-   * @param rootName 做为 “起点” 的模块名。如果没有传递 `sources` 参数,
+   * @param rootName 作为 “起点” 的模块名。如果没有传递 `sources` 参数,
    *                 Deno 将从外部解析模块，就像在命令行中指定了 `rootName` 一样。
    * @param sources 可选参数，解析模块时使用的 key/value 对象，其中 key 是模块名，value 是源内容。
    *                key 的扩展名决定了解析模块的类型。如果提供此参数，Deno将不会尝试从外部解析任何模块。
