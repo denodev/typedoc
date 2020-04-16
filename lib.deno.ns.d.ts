@@ -2225,20 +2225,18 @@ declare namespace Deno {
     indentLevel?: number;
   }
 
-  /** **UNSTABLE**: The exact form of the string output is under consideration
-   * and may change.
+  /** **不稳定**：字符串输出的确切形式仍在考虑，可能会更改。
    *
-   * Converts the input into a string that has the same format as printed by
-   * `console.log()`.
+   * 将输入转换为与 `console.log()` 打印格式相同的字符串。
    *
    *      const obj = {};
    *      obj.propA = 10;
    *      obj.propB = "hello"
-   *      const objAsString = Deno.inspect(obj); //{ propA: 10, propB: "hello" }
-   *      console.log(obj);  //prints same value as objAsString, e.g. { propA: 10, propB: "hello" }
+   *      const objAsString = Deno.inspect(obj); // { propA: 10, propB: "hello" }
+   *      console.log(obj);  // 输出与 objAsString 相同的值，例如: { propA: 10, propB: "hello" }
    *
-   * You can also register custom inspect functions, via the `customInspect` Deno
-   * symbol on objects, to control and customize the output.
+   * 你还可以通对象上的 `Deno.symbols.customInspect` 函数
+   * 注册自定义的 inspect function，以控制和自定义输出。
    *
    *      class A {
    *        x = 10;
@@ -2248,10 +2246,10 @@ declare namespace Deno {
    *        }
    *      }
    *
-   *      const inStringFormat = Deno.inspect(new A()); //"x=10, y=hello"
-   *      console.log(inStringFormat);  //prints "x=10, y=hello"
+   *      const inStringFormat = Deno.inspect(new A()); // "x=10, y=hello"
+   *      console.log(inStringFormat);  // 输出 "x=10, y=hello"
    *
-   * Finally, a number of output options are also available.
+   * 同时还提供了一些输出选项。
    *
    *      const out = Deno.inspect(obj, {showHidden: true, depth: 4, colors: true, indentLevel: 2});
    *
