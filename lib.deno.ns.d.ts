@@ -1772,7 +1772,7 @@ declare namespace Deno {
     ReadWrite, // TODO(ry) `ReadWrite` 上的异常。
   }
 
-  /** **不稳定**：参数 `how` 和 枚举 `ShutdownMode` 都在考虑移除。
+  /** **不稳定**：参数 `how` 和枚举 `ShutdownMode` 都在考虑移除。
    *
    * Shutdown 套接字的发送和接收操作。
    *
