@@ -1126,7 +1126,7 @@ declare namespace Deno {
    */
   export function chownSync(path: string, uid: number, gid: number): void;
 
-  /** 更改常规文件或目录的所有者。该功能在Windows上不可用。
+  /** 更改常规文件或目录的所有者。该功能在 Windows 上不可用。
    *
    *      await Deno.chown("myFile.txt", 1000, 1002);
    *
