@@ -1123,7 +1123,7 @@ declare namespace Deno {
    *
    * 相关完整说明，参考 [chmod](#chmod)
    *
-   * 注意：该 API 当前仅能在 Windows 上使用。
+   * 注意：该 API 当前在 Windows 上使用会抛出异常
    *
    * 需要 `allow-write` 权限。 */
   export function chmodSync(path: string, mode: number): void;
