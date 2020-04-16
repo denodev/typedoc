@@ -1045,7 +1045,7 @@ declare namespace Deno {
    *       const tempDirName1 = await Deno.makeTempDir({ prefix: 'my_temp' }); // e.g. /tmp/my_temp339c944d
    *
    * Requires `allow-write` permission. */
-  // TODO(ry) 不校验权限。
+  // TODO(ry) Doesn't check permissions.
   export function makeTempDir(options?: MakeTempOptions): Promise<string>;
 
   /** 以同步的方式在默认文件夹（另见 `Deno.dir("temp")`）中创建一个临时文件,
