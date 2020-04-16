@@ -1084,19 +1084,19 @@ declare namespace Deno {
    * 需要 `allow-write` 权限。 */
   export function chmodSync(path: string, mode: number): void;
 
-  /** Changes the permission of a specific file/directory of specified path.
-   * Ignores the process's umask.
+  /** 更改指定路径下特定的文件/目录的权限。
+   * 忽略进程的 umask。
    *
    *       await Deno.chmod("/path/to/file", 0o666);
    *
-   * The mode is a sequence of 3 octal numbers.  The first/left-most number
-   * specifies the permissions for the owner.  The second number specifies the
-   * permissions for the group. The last/right-most number specifies the
-   * permissions for others.  For example, with a mode of 0o764, the owner (7) can
-   * read/write/execute, the group (6) can read/write and everyone else (4) can
-   * read only.
+   * 该模式是3个八进制数字的序列。
+   * 第一个/最左边的数字指定所有者（owner）的权限。
+   * 第二个数字指定组（group）的权限。
+   * 最后/最右边的数字指定其他用户的权限。
+   * 例如，在 0o764 模式下，所有者（owner）有读/写/执行权限（7），组（group）有读/写权限（6），
+   * 其他用户（4）只有读的权限。
    *
-   * | Number | Description |
+   * |   值   |     说明     |
    * | ------ | ----------- |
    * | 7      | read, write, and execute |
    * | 6      | read and write |
@@ -1107,9 +1107,9 @@ declare namespace Deno {
    * | 1      | execute only |
    * | 0      | no permission |
    *
-   * NOTE: This API currently throws on Windows
+   * 注意：该 API 当前在 Windows 上使用会抛出异常
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
   export function chmod(path: string, mode: number): Promise<void>;
 
   /** 同步地更改常规文件或目录的所有者。该功能在 Windows 上不可用。
