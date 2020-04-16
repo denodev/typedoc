@@ -2620,7 +2620,7 @@ declare namespace Deno {
 
   /** **不稳定**：新的 API，尚待审核。
    *
-   * `bundle()` 是编译器API的一部分。有关此功能的完整说明，
+   * `bundle()` 是编译器 API 的一部分。有关此功能的完整说明，
    * 请参见 [手册](https://deno.land/std/manual.md#denobundle)。
    *
    * 它接受根模块名 rootName，及可选参数 sources 做为模块源。
