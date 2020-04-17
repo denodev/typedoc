@@ -2051,7 +2051,7 @@ declare namespace Deno {
    *
    *      Deno.kill(p.pid, Deno.Signal.SIGINT);
    *
-   * 在 Windows 上抛出错误尚未实现。
+   * 在 Windows 上抛出错误（尚未实现）。
    * 
    * 需要 `allow-run` 权限。 */
   export function k(pid: number, signo: number): void;
