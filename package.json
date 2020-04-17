@@ -11,6 +11,7 @@
     "pretty-quick": "^2.0.1",
     "typedoc": "^0.17.4",
     "typedoc-deno-theme": "^1.0.1",
+    "typedoc-plugin-deno": "^1.0.0",
     "typescript": "^3.8.3"
   },
   "husky": {

@@ -144,8 +144,8 @@ declare namespace Deno {
    *        // 运行所有已经注册过的测试。
    *        const runInfo = await Deno.runTests();
    *        console.log(runInfo.duration);  // all tests duration, e.g. "5" (in ms)
-   *        console.log(runInfo.stats.passed);  //e.g. 1
-   *        console.log(runInfo.results[0].name);  //e.g. "example test"
+   *        console.log(runInfo.stats.passed);  // e.g. 1
+   *        console.log(runInfo.results[0].name);  // e.g. "example test"
    */
   export function runTests(
     opts?: RunTestsOptions
@@ -156,7 +156,7 @@ declare namespace Deno {
    * `0` 表示没有负载。
    * 在 Windows 上，这 3 个值始终相同，代表当前负载，而不是 1 分钟、5 分钟和 15 分钟的平均负载。
    *
-   *       console.log(Deno.loadavg());  //e.g. [ 0.71, 0.44, 0.44 ]
+   *       console.log(Deno.loadavg());  // e.g. [ 0.71, 0.44, 0.44 ]
    *
    * 需要 `allow-env` 权限。
    */
@@ -191,7 +191,7 @@ declare namespace Deno {
    *       console.log(myEnv.SHELL);
    *       myEnv.TEST_VAR = "HELLO";
    *       const newEnv = Deno.env();
-   *       console.log(myEnv.TEST_VAR === newEnv.TEST_VAR);  //outputs "true"
+   *       console.log(myEnv.TEST_VAR === newEnv.TEST_VAR);  // outputs "true"
    *
    * 需要 `allow-env` 权限 */
   export function env(): {
@@ -200,8 +200,8 @@ declare namespace Deno {
 
   /** 获取环境变量的值。如果 `key` 不存在，则返回 `undefined`。
    *
-   *       console.log(Deno.env("HOME"));  //e.g. outputs "/home/alice"
-   *       console.log(Deno.env("MADE_UP_VAR"));  //outputs "Undefined"
+   *       console.log(Deno.env("HOME"));  // e.g. outputs "/home/alice"
+   *       console.log(Deno.env("MADE_UP_VAR"));  // outputs "Undefined"
    *
    * 需要 `allow-env` 权限 */
   export function env(key: string): string | undefined;
@@ -374,7 +374,7 @@ declare namespace Deno {
   /**
    * 返回当前 deno 可执行文件的路径。
    *
-   *       console.log(Deno.execPath());  //e.g. "/home/alice/.local/bin/deno"
+   *       console.log(Deno.execPath());  // e.g. "/home/alice/.local/bin/deno"
    *
    * 需要 `allow-env` 权限。
    */
@@ -413,9 +413,9 @@ declare namespace Deno {
    * 获取进程权限掩码。如果提供 `mask`，则设置进程权限掩码。
    * 此函数始终返回调用前的权限掩码。
    *
-   *        console.log(Deno.umask());  //e.g. 18 (0o022)
-   *        const prevUmaskValue = Deno.umask(0o077);  //e.g. 18 (0o022)
-   *        console.log(Deno.umask());  //e.g. 63 (0o077)
+   *        console.log(Deno.umask());  // e.g. 18 (0o022)
+   *        const prevUmaskValue = Deno.umask(0o077);  // e.g. 18 (0o022)
+   *        console.log(Deno.umask());  // e.g. 63 (0o077)
    *
    * 注意: 此 API 未在 Windows 平台实现。
    */
@@ -687,7 +687,7 @@ declare namespace Deno {
    *
    *        const file = Deno.openSync('hello.txt', {read: true, write: true, truncate: true, create: true});
    *        Deno.writeSync(file.rid, new TextEncoder().encode("Hello world"));
-   *        //advance cursor 6 bytes
+   *        // advance cursor 6 bytes
    *        const cursorPosition = Deno.seekSync(file.rid, 6, Deno.SeekMode.SEEK_START);
    *        console.log(cursorPosition);  // 6
    *        const buf = new Uint8Array(100);
@@ -696,13 +696,13 @@ declare namespace Deno {
    *
    * The seek modes work as follows:
    *
-   *        //Given file.rid pointing to file with "Hello world", which is 11 bytes long:
-   *        //Seek 6 bytes from the start of the file
-   *        console.log(Deno.seekSync(file.rid, 6, Deno.SeekMode.SEEK_START)); //"6"
-   *        //Seek 2 more bytes from the current position
-   *        console.log(Deno.seekSync(file.rid, 2, Deno.SeekMode.SEEK_CURRENT)); //"8"
-   *        //Seek backwards 2 bytes from the end of the file
-   *        console.log(Deno.seekSync(file.rid, -2, Deno.SeekMode.SEEK_END)); //"9" (e.g. 11-2)
+   *        // Given file.rid pointing to file with "Hello world", which is 11 bytes long:
+   *        // Seek 6 bytes from the start of the file
+   *        console.log(Deno.seekSync(file.rid, 6, Deno.SeekMode.SEEK_START)); // "6"
+   *        // Seek 2 more bytes from the current position
+   *        console.log(Deno.seekSync(file.rid, 2, Deno.SeekMode.SEEK_CURRENT)); // "8"
+   *        // Seek backwards 2 bytes from the end of the file
+   *        console.log(Deno.seekSync(file.rid, -2, Deno.SeekMode.SEEK_END)); // "9" (e.g. 11-2)
    */
   export function seekSync(
     rid: number,
@@ -715,7 +715,7 @@ declare namespace Deno {
    *
    *        const file = await Deno.open('hello.txt', {read: true, write: true, truncate: true, create: true});
    *        await Deno.write(file.rid, new TextEncoder().encode("Hello world"));
-   *        //advance cursor 6 bytes
+   *        // advance cursor 6 bytes
    *        const cursorPosition = await Deno.seek(file.rid, 6, Deno.SeekMode.SEEK_START);
    *        console.log(cursorPosition);  // 6
    *        const buf = new Uint8Array(100);
@@ -724,13 +724,13 @@ declare namespace Deno {
    *
    * The seek modes work as follows:
    *
-   *        //Given file.rid pointing to file with "Hello world", which is 11 bytes long:
-   *        //Seek 6 bytes from the start of the file
-   *        console.log(await Deno.seek(file.rid, 6, Deno.SeekMode.SEEK_START)); //"6"
-   *        //Seek 2 more bytes from the current position
-   *        console.log(await Deno.seek(file.rid, 2, Deno.SeekMode.SEEK_CURRENT)); //"8"
-   *        //Seek backwards 2 bytes from the end of the file
-   *        console.log(await Deno.seek(file.rid, -2, Deno.SeekMode.SEEK_END)); //"9" (e.g. 11-2)
+   *        // Given file.rid pointing to file with "Hello world", which is 11 bytes long:
+   *        // Seek 6 bytes from the start of the file
+   *        console.log(await Deno.seek(file.rid, 6, Deno.SeekMode.SEEK_START)); // "6"
+   *        // Seek 2 more bytes from the current position
+   *        console.log(await Deno.seek(file.rid, 2, Deno.SeekMode.SEEK_CURRENT)); // "8"
+   *        // Seek backwards 2 bytes from the end of the file
+   *        console.log(await Deno.seek(file.rid, -2, Deno.SeekMode.SEEK_END)); // "9" (e.g. 11-2)
    */
   export function seek(
     rid: number,
@@ -933,19 +933,19 @@ declare namespace Deno {
    */
   export function readAllSync(r: SyncReader): Uint8Array;
 
-  /** Write all the content of the array buffer (`arr`) to the writer (`w`).
+  /** 将所有 Array Buffer （`arr`）中的的内容写入到对象 （`w`） 中
    *
-   *       //Example writing to stdout
+   *       // 举例：写入到 stdout
    *       const contentBytes = new TextEncoder().encode("Hello World");
    *       await Deno.writeAll(Deno.stdout, contentBytes);
    *
-   *       //Example writing to file
+   *       // 举例：写入到文件
    *       const contentBytes = new TextEncoder().encode("Hello World");
    *       const file = await Deno.open('test.file', {write: true});
    *       await Deno.writeAll(file, contentBytes);
    *       Deno.close(file.rid);
    *
-   *       //Example writing to buffer
+   *       // 举例：写入到 Buffer 对象
    *       const contentBytes = new TextEncoder().encode("Hello World");
    *       const writer = new Deno.Buffer();
    *       await Deno.writeAll(writer, contentBytes);
@@ -953,20 +953,19 @@ declare namespace Deno {
    */
   export function writeAll(w: Writer, arr: Uint8Array): Promise<void>;
 
-  /** Synchronously write all the content of the array buffer (`arr`) to the
-   * writer (`w`).
+  /** 将所有 Array Buffer （`arr`）中的的内容同步写入到对象 （`w`） 中
    *
-   *       //Example writing to stdout
+   *       // 举例：写入到 stdout
    *       const contentBytes = new TextEncoder().encode("Hello World");
    *       Deno.writeAllSync(Deno.stdout, contentBytes);
    *
-   *       //Example writing to file
+   *       // 举例：写入到文件
    *       const contentBytes = new TextEncoder().encode("Hello World");
    *       const file = Deno.openSync('test.file', {write: true});
    *       Deno.writeAllSync(file, contentBytes);
    *       Deno.close(file.rid);
    *
-   *       //Example writing to buffer
+   *       // 举例：写入到 Buffer 对象
    *       const contentBytes = new TextEncoder().encode("Hello World");
    *       const writer = new Deno.Buffer();
    *       Deno.writeAllSync(writer, contentBytes);
@@ -1015,95 +1014,89 @@ declare namespace Deno {
     suffix?: string;
   }
 
-  /** Synchronously creates a new temporary directory in the default directory
-   * for temporary files (see also `Deno.dir("temp")`), unless `dir` is specified.
-   * Other optional options include prefixing and suffixing the directory name
-   * with `prefix` and `suffix` respectively.
+  /** 以同步的方式在默认文件夹（另见 `Deno.dir("temp")`）中创建一个临时文件夹,
+   * 如果指定了 `dir` ， 则在指定的 `dir` 中创建。
+   * 其他可选的参数包括分别给文件夹名添加前缀的 `prefix` 和给文件夹名添加后缀的 `sufix`。
    *
-   * The full path to the newly created directory is returned.
+   * 返回新建文件夹的完整路径。
    *
-   * Multiple programs calling this function simultaneously will create different
-   * directories. It is the caller's responsibility to remove the directory when
-   * no longer needed.
+   * 多个程序同时调用该函数将会创建不同的文件夹。当不再需要该临时文件夹时，调用者应该主动删除该文件夹。
    *
    *       const tempDirName0 = Deno.makeTempDirSync();  // e.g. /tmp/2894ea76
    *       const tempDirName1 = Deno.makeTempDirSync({ prefix: 'my_temp' });  // e.g. /tmp/my_temp339c944d
    *
-   * Requires `allow-write` permission. */
-  // TODO(ry) Doesn't check permissions.
+   * 需要 `allow-write` 权限。 */
+  // TODO(ry) 不校验权限。
   export function makeTempDirSync(options?: MakeTempOptions): string;
 
-  /** Creates a new temporary directory in the default directory for temporary
-   * files (see also `Deno.dir("temp")`), unless `dir` is specified.  Other
-   * optional options include prefixing and suffixing the directory name with
-   * `prefix` and `suffix` respectively.
+  /** 在默认文件夹（另见 `Deno.dir("temp")`）中创建一个临时文件夹,
+   * 如果指定了 `dir` ， 则在指定的 `dir` 中创建。
+   * 其他可选的参数包括分别给文件夹名添加前缀的 `prefix` 和给文件夹名添加后缀的 `sufix`。
    *
-   * This call resolves to the full path to the newly created directory.
+   * 返回新建文件夹的完整路径。
    *
-   * Multiple programs calling this function simultaneously will create different
-   * directories. It is the caller's responsibility to remove the directory when
-   * no longer needed.
+   * 多个程序同时调用该函数将会创建不同的文件夹。当不再需要该临时文件夹时，调用者应该主动删除该文件夹。
    *
    *       const tempDirName0 = await Deno.makeTempDir();  // e.g. /tmp/2894ea76
    *       const tempDirName1 = await Deno.makeTempDir({ prefix: 'my_temp' }); // e.g. /tmp/my_temp339c944d
    *
-   * Requires `allow-write` permission. */
-  // TODO(ry) Doesn't check permissions.
+   * 需要 `allow-write` 权限。 */
+  // TODO(ry) 不校验权限。
   export function makeTempDir(options?: MakeTempOptions): Promise<string>;
 
   /** 以同步的方式在默认文件夹（另见 `Deno.dir("temp")`）中创建一个临时文件,
    * 如果指定了 `dir` ， 则在指定的 `dir` 中创建。
-   * 如果没有指定 `dir` ，那么 `prefix` 和 `suffx` 将分别是文件名前缀和后缀。
+   * 其他可选的参数包括分别给文件名添加前缀的 `prefix` 和给文件名添加后缀的 `sufix`。
    *
    * 返回新建文件的完整路径。
    *
    * 多个程序同时调用该函数将会创建不同的文件。当不再需要该临时文件时，调用者应该主动删除该文件。
    *
    *       const tempFileName0 = Deno.makeTempFileSync(); // e.g. /tmp/419e0bf2
-   *       const tempFileName1 = Deno.makeTempFileSync({ prefix: 'my_temp' });  //e.g. /tmp/my_temp754d3098
+   *       const tempFileName1 = Deno.makeTempFileSync({ prefix: 'my_temp' });  // e.g. /tmp/my_temp754d3098
    *
    * 需要 `allow-write` 权限. */
   export function makeTempFileSync(options?: MakeTempOptions): string;
 
   /** 在默认文件夹（另见 `Deno.dir("temp")`）中创建一个临时文件,
    * 如果指定了 `dir` ， 则在指定的 `dir` 中创建。
-   * 如果没有指定 `dir` ，那么 `prefix` 和 `suffx` 将分别是文件名前缀和后缀。
+   * 其他可选的参数包括分别给文件名添加前缀的 `prefix` 和给文件名添加后缀的 `sufix`。
    *
    * 返回新建文件的完整路径。
    *
    * 多个程序同时调用该函数将会创建不同的文件。当不再需要该临时文件时，调用者应该主动删除该文件。
    *
    *       const tmpFileName0 = await Deno.makeTempFile();  // e.g. /tmp/419e0bf2
-   *       const tmpFileName1 = await Deno.makeTempFile({ prefix: 'my_temp' });  //e.g. /tmp/my_temp754d3098
+   *       const tmpFileName1 = await Deno.makeTempFile({ prefix: 'my_temp' });  // e.g. /tmp/my_temp754d3098
    *
    * 需要 `allow-write` 权限. */
   export function makeTempFile(options?: MakeTempOptions): Promise<string>;
 
-  /** Synchronously changes the permission of a specific file/directory of
-   * specified path.  Ignores the process's umask.
+  /** 同步地更改指定路径下特定的文件/目录的权限。
+   * 忽略进程的 umask。
    *
    *       Deno.chmodSync("/path/to/file", 0o666);
    *
-   * For a full description, see [chmod](#chmod)
+   * 相关完整说明，参考 [chmod](#chmod)
    *
-   * NOTE: This API currently throws on Windows
+   * 注意：该 API 当前在 Windows 上使用会抛出异常
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
   export function chmodSync(path: string, mode: number): void;
 
-  /** Changes the permission of a specific file/directory of specified path.
-   * Ignores the process's umask.
+  /** 更改指定路径下特定的文件/目录的权限。
+   * 忽略进程的 umask。
    *
    *       await Deno.chmod("/path/to/file", 0o666);
    *
-   * The mode is a sequence of 3 octal numbers.  The first/left-most number
-   * specifies the permissions for the owner.  The second number specifies the
-   * permissions for the group. The last/right-most number specifies the
-   * permissions for others.  For example, with a mode of 0o764, the owner (7) can
-   * read/write/execute, the group (6) can read/write and everyone else (4) can
-   * read only.
+   * 该模式是3个八进制数字的序列。
+   * 第一个/最左边的数字指定所有者（owner）的权限。
+   * 第二个数字指定组（group）的权限。
+   * 最后/最右边的数字指定其他用户的权限。
+   * 例如，在 0o764 模式下，所有者（owner）有读/写/执行权限（7），组（group）有读/写权限（6），
+   * 其他用户（4）只有读的权限。
    *
-   * | Number | Description |
+   * |   值   |     说明     |
    * | ------ | ----------- |
    * | 7      | read, write, and execute |
    * | 6      | read and write |
@@ -1114,19 +1107,18 @@ declare namespace Deno {
    * | 1      | execute only |
    * | 0      | no permission |
    *
-   * NOTE: This API currently throws on Windows
+   * 注意：该 API 当前在 Windows 上使用会抛出异常
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
   export function chmod(path: string, mode: number): Promise<void>;
 
-  /** Synchronously change owner of a regular file or directory. This functionality
-   * is not available on Windows.
+  /** 同步地更改常规文件或目录的所有者。该功能在 Windows 上不可用。
    *
    *      Deno.chownSync("myFile.txt", 1000, 1002);
    *
-   * Requires `allow-write` permission.
+   * 需要 `allow-write` 权限。
    *
-   * Throws Error (not implemented) if executed on Windows
+   * 如果在 Windows 上执行，将抛出错误（未实现）
    *
    * @param path path to the file
    * @param uid user id (UID) of the new owner
@@ -1134,14 +1126,13 @@ declare namespace Deno {
    */
   export function chownSync(path: string, uid: number, gid: number): void;
 
-  /** Change owner of a regular file or directory. This functionality
-   * is not available on Windows.
+  /** 更改常规文件或目录的所有者。该功能在 Windows 上不可用。
    *
    *      await Deno.chown("myFile.txt", 1000, 1002);
    *
-   * Requires `allow-write` permission.
+   * 需要 `allow-write` 权限。
    *
-   * Throws Error (not implemented) if executed on Windows
+   * 如果在 Windows 上执行，将抛出错误（未实现）
    *
    * @param path path to the file
    * @param uid user id (UID) of the new owner
@@ -1149,30 +1140,28 @@ declare namespace Deno {
    */
   export function chown(path: string, uid: number, gid: number): Promise<void>;
 
-  /** **UNSTABLE**: needs investigation into high precision time.
+  /** **不稳定**：需要对高精度时间（hrtime）进行调查。
    *
-   * Synchronously changes the access (`atime`) and modification (`mtime`) times
-   * of a file system object referenced by `path`. Given times are either in
-   * seconds (UNIX epoch time) or as `Date` objects.
+   * 同步地更改路径（`path`）引用的文件系统对象的访问时间（`atime`）和修改时间（`mtime`）。
+   * 给定的时间参数可以是秒（UNIX 纪元时间）或者日期对象。
    *
    *       Deno.utimeSync("myfile.txt", 1556495550, new Date());
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
   export function utimeSync(
     path: string,
     atime: number | Date,
     mtime: number | Date
   ): void;
 
-  /** **UNSTABLE**: needs investigation into high precision time.
+  /** **UNSTABLE**: 需要调研高精度的 time。
    *
-   * Changes the access (`atime`) and modification (`mtime`) times of a file
-   * system object referenced by `path`. Given times are either in seconds
-   * (UNIX epoch time) or as `Date` objects.
+   * 基于文件系统的 `path` 改变访问 (`atime`) 和修改 (`mtime`) 的时间。
+   * 给定的时间以秒 （UNIX epoch time） 为单位或着是 `Date` 对象。
    *
    *       await Deno.utime("myfile.txt", 1556495550, new Date());
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
   export function utime(
     path: string,
     atime: number | Date,
@@ -1330,8 +1319,8 @@ declare namespace Deno {
    *       Deno.symlinkSync("file.txt", "symlink_file.txt");
    *       const realPath = Deno.realpathSync("./file.txt");
    *       const realSymLinkPath = Deno.realpathSync("./symlink_file.txt");
-   *       console.log(realPath);  //输出 "/home/alice/file.txt"
-   *       console.log(realSymLinkPath);  //输出 "/home/alice/file.txt"
+   *       console.log(realPath);  // 输出 "/home/alice/file.txt"
+   *       console.log(realSymLinkPath);  // 输出 "/home/alice/file.txt"
    *
    * 需要 `allow-read` 权限 */
   export function realpathSync(path: string): string;
@@ -1342,8 +1331,8 @@ declare namespace Deno {
    *       await Deno.symlink("file.txt", "symlink_file.txt");
    *       const realPath = await Deno.realpath("./file.txt");
    *       const realSymLinkPath = await Deno.realpath("./symlink_file.txt");
-   *       console.log(realPath);  // outputs "/home/alice/file.txt"
-   *       console.log(realSymLinkPath);  //outputs "/home/alice/file.txt"
+   *       console.log(realPath);  // 输出 "/home/alice/file.txt"
+   *       console.log(realSymLinkPath);  // 输出 "/home/alice/file.txt"
    *
    * 需要 `allow-read` 权限 */
   export function realpath(path: string): Promise<string>;
@@ -1537,14 +1526,13 @@ declare namespace Deno {
     options?: WriteFileOptions
   ): Promise<void>;
 
-  /** **UNSTABLE**: Should not have same name as `window.location` type. */
+  /** **不稳定**: 不应该和 `window.location` 具有相同的类型名. */
   interface Location {
-    /** The full url for the module, e.g. `file://some/file.ts` or
-     * `https://some/file.ts`. */
+    /** 模块的完整 url，例如：`file://some/file.ts` 抑或是 `https://some/file.ts`。*/
     filename: string;
-    /** The line number in the file. It is assumed to be 1-indexed. */
+    /** 在文件中的行号，从 1 开始索引。*/
     line: number;
-    /** The column number in the file. It is assumed to be 1-indexed. */
+    /** 在文件中的列号，从 1 开始索引。*/
     column: number;
   }
 
@@ -1690,10 +1678,10 @@ declare namespace Deno {
 
   /** 同步地通过指定的 `len` ，截取或者扩展指定的文件内容。如果未指定 `len` ，则整个文件内容将被截取。
    *
-   *       //truncate the entire file
+   *       // truncate the entire file
    *       Deno.truncateSync("my_file.txt");
    *
-   *       //truncate part of the file
+   *       // truncate part of the file
    *       const file = Deno.makeTempFileSync();
    *       Deno.writeFileSync(file, new TextEncoder().encode("Hello World"));
    *       Deno.truncateSync(file, 7);
@@ -1706,15 +1694,15 @@ declare namespace Deno {
 
   /** 通过指定的 `len` ，截取或者扩展指定的文件内容。如果未指定 `len` ，则整个文件内容将被截取。
    *
-   *       //truncate the entire file
+   *       // truncate the entire file
    *       await Deno.truncate("my_file.txt");
    *
-   *       //truncate part of the file
+   *       // truncate part of the file
    *       const file = await Deno.makeTempFile();
    *       await Deno.writeFile(file, new TextEncoder().encode("Hello World"));
    *       await Deno.truncate(file, 7);
    *       const data = await Deno.readFile(file);
-   *       console.log(new TextDecoder().decode(data));  //"Hello W"
+   *       console.log(new TextDecoder().decode(data));  // "Hello W"
    *
    * 需要 `allow-write` 权限。 */
 
@@ -1761,12 +1749,7 @@ declare namespace Deno {
   }
 
   export type Addr = NetAddr | UnixAddr;
-  /** **UNSTABLE**: Maybe remove `ShutdownMode` entirely.
-   *
-   * Corresponds to `SHUT_RD`, `SHUT_WR`, `SHUT_RDWR` on POSIX-like systems.
-   *
-   * See: http://man7.org/linux/man-pages/man2/shutdown.2.html */
-  /** **不稳定的**：可能会完全删除 `ShutdownMode`。
+  /** **不稳定**：可能会完全删除 `ShutdownMode`。
    *
    * 对应类 POSIX 系统上的 `SHUT_RD`，`SHUT_WR`，`SHUT_RDWR`。
    *
@@ -1774,21 +1757,10 @@ declare namespace Deno {
   export enum ShutdownMode {
     Read = 0,
     Write,
-    ReadWrite, // TODO(ry) panics on ReadWrite. // TODO(ry) `ReadWrite` 上的异常。
+    ReadWrite, // TODO(ry) `ReadWrite` 上的异常。
   }
 
-  /** **UNSTABLE**: Both the `how` parameter and `ShutdownMode` enum are under
-   * consideration for removal.
-   *
-   * Shutdown socket send and receive operations.
-   *
-   * Matches behavior of POSIX shutdown(3).
-   *
-   *       const listener = Deno.listen({ port: 80 });
-   *       const conn = await listener.accept();
-   *       Deno.shutdown(conn.rid, Deno.ShutdownMode.Write);
-   */
-  /** **不稳定的**：参数 `how` 和 枚举 `ShutdownMode` 都在考虑移除。
+  /** **不稳定**：参数 `how` 和枚举 `ShutdownMode` 都在考虑移除。
    *
    * Shutdown 套接字的发送和接收操作。
    *
@@ -1800,53 +1772,49 @@ declare namespace Deno {
    */
   export function shutdown(rid: number, how: ShutdownMode): void;
 
-  /** **不稳定**: 新 API，没有经过审查。
+  /** **不稳定**：新的 API，尚待审查。
    *
-   * A generic transport listener for message-oriented protocols. */
+   * 面向消息协议的通用传输监听器。*/
   export interface DatagramConn extends AsyncIterable<[Uint8Array, Addr]> {
-    /** **不稳定**: 新 API，没有经过审查。
+    /** **不稳定**：新的 API，尚待审查。
      *
-     * Waits for and resolves to the next message to the `UDPConn`. */
+     * 等待并解析 (resolve) 为下一条消息传递给 `UDPConn`。*/
     receive(p?: Uint8Array): Promise<[Uint8Array, Addr]>;
-    /** UNSTABLE: new API, yet to be vetted.
+    /** **不稳定**：新的 API，尚待审查。
      *
-     * Sends a message to the target. */
+     * 向目标发送消息。*/
     send(p: Uint8Array, addr: Addr): Promise<void>;
-    /** UNSTABLE: new API, yet to be vetted.
+    /** **不稳定**：新的 API，尚待审查。
      *
-     * Close closes the socket. Any pending message promises will be rejected
-     * with errors. */
+     * 关闭套接字。任何待处理的消息应答都将被拒绝 (rejected)，并返回错误。*/
     close(): void;
-    /** Return the address of the `UDPConn`. */
+    /** 返回 `UDPConn` 的地址。 */
     readonly addr: Addr;
     [Symbol.asyncIterator](): AsyncIterator<[Uint8Array, Addr]>;
   }
 
-  /** A generic network listener for stream-oriented protocols. */
+  /** 面向流协议的通用网络监听器。 */
   export interface Listener extends AsyncIterable<Conn> {
-    /** Waits for and resolves to the next connection to the `Listener`. */
+    /** 等待并解析 (resolve) 到与 `Listener` 的下一个连接。 */
     accept(): Promise<Conn>;
-    /** Close closes the listener. Any pending accept promises will be rejected
-     * with errors. */
+    /** 关闭监听器。任何待处理的接收应答都将被拒绝 (rejected)，并返回错误。*/
     close(): void;
-    /** Return the address of the `Listener`. */
+    /** 返回 `Listener` 的地址。 */
     readonly addr: Addr;
 
     [Symbol.asyncIterator](): AsyncIterator<Conn>;
   }
 
   export interface Conn extends Reader, Writer, Closer {
-    /** The local address of the connection. */
+    /** 连接的本地地址。*/
     readonly localAddr: Addr;
-    /** The remote address of the connection. */
+    /** 连接的远程地址。*/
     readonly remoteAddr: Addr;
-    /** The resource ID of the connection. */
+    /** 连接的资源 ID。*/
     readonly rid: number;
-    /** Shuts down (`shutdown(2)`) the reading side of the TCP connection. Most
-     * callers should just use `close()`. */
+    /** 关闭 (`shutdown(2)`) TCP 连接的读取端。大多数调用者应该只使用 `close()`。*/
     closeRead(): void;
-    /** Shuts down (`shutdown(2)`) the writing side of the TCP connection. Most
-     * callers should just use `close()`. */
+    /** 关闭 (`shutdown(2)`) TCP 连接的写入端。大多数调用者应该只使用 `close()`。*/
     closeWrite(): void;
   }
 
@@ -1908,20 +1876,19 @@ declare namespace Deno {
   ): DatagramConn;
 
   export interface ListenTLSOptions extends ListenOptions {
-    /** Server certificate file. */
+    /** 服务器证书文件。 */
     certFile: string;
-    /** Server public key file. */
+    /** 服务器公钥文件。 */
     keyFile: string;
 
     transport?: "tcp";
   }
 
-  /** Listen announces on the local transport address over TLS (transport layer
-   * security).
+  /** 在本地监听来自 TLS （传输层安全性协议）的网络连接。
    *
    *      const lstnr = Deno.listenTLS({ port: 443, certFile: "./server.crt", keyFile: "./server.key" });
    *
-   * Requires `allow-net` permission. */
+   * 需要 `allow-net` 权限。 */
   export function listenTLS(options: ListenTLSOptions): Listener;
 
   export interface ConnectOptions {
@@ -1954,26 +1921,25 @@ declare namespace Deno {
   ): Promise<Conn>;
 
   export interface ConnectTLSOptions {
-    /** The port to connect to. */
+    /** 要连接的端口。*/
     port: number;
-    /** A literal IP address or host name that can be resolved to an IP address.
-     * If not specified, defaults to `127.0.0.1`. */
+    /** 可以解析为 IP 地址的文本 IP 地址或主机名。如果没有指定，默认值为 `127.0.0.1`。*/
     hostname?: string;
-    /** Server certificate file. */
+    /** 服务器证书文件。*/
     certFile?: string;
   }
 
-  /** Establishes a secure connection over TLS (transport layer security) using
-   * an optional cert file, hostname (default is "127.0.0.1") and port.  The
-   * cert file is optional and if not included Mozilla's root certificates will
-   * be used (see also https://github.com/ctz/webpki-roots for specifics)
+  /** 使用可选的证书文件、主机名（默认值为 "127.0.0.1"）
+   * 和端口在 TLS（安全传输层协议）建立安全连接。
+   * 证书文件是可选的，如果不包含，则使用 Mozilla 的根证书
+   *（具体参见 https://github.com/ctz/webpki-roots）。
    *
    *     const conn1 = await Deno.connectTLS({ port: 80 });
    *     const conn2 = await Deno.connectTLS({ certFile: "./certs/my_custom_root_CA.pem", hostname: "192.0.2.1", port: 80 });
    *     const conn3 = await Deno.connectTLS({ hostname: "[2001:db8::1]", port: 80 });
    *     const conn4 = await Deno.connectTLS({ certFile: "./certs/my_custom_root_CA.pem", hostname: "golang.org", port: 80});
    *
-   * Requires `allow-net` permission.
+   * 需要 `allow-net` 权限。
    */
   export function connectTLS(options: ConnectTLSOptions): Promise<Conn>;
 
@@ -2024,9 +1990,9 @@ declare namespace Deno {
    *
    * 返回打开的_文件_资源 ID（rid）及其字符串表示形式的 Map。
    *
-   *       console.log(Deno.resources()); //e.g. { 0: "stdin", 1: "stdout", 2: "stderr" }
+   *       console.log(Deno.resources()); // e.g. { 0: "stdin", 1: "stdout", 2: "stderr" }
    *       Deno.openSync('../test.file');
-   *       console.log(Deno.resources()); //e.g. { 0: "stdin", 1: "stdout", 2: "stderr", 3: "fsFile" }
+   *       console.log(Deno.resources()); // e.g. { 0: "stdin", 1: "stdout", 2: "stderr", 3: "fsFile" }
    */
   export function resources(): ResourceMap;
 
@@ -2038,20 +2004,18 @@ declare namespace Deno {
 
   /** **不稳定**: 新 API，没有经过审查。
    *
-   * Watch for file system events against one or more `paths`, which can be files
-   * or directories.  These paths must exist already.  One user action (e.g.
-   * `touch test.file`) can  generate multiple file system events.  Likewise,
-   * one user action can result in multiple file paths in one event (e.g. `mv
-   * old_name.txt new_name.txt`).  Recursive option is `true` by default and,
-   * for directories, will watch the specified directory and all sub directories.
-   * Note that the exact ordering of the events can vary between operating systems.
+   * 监听一个或多个路径的文件系统事件，这个路径可以是文件或者目录，但是必须存在。
+   * 一个用户操作（例如 `touch test.file`）可以产生多个文件系统事件。同样，一个
+   * 用户操作也可能在一次事件中影响多个路径（例如 `mv old_name.txt new_name.txt`）。
+   * 递归选项默认为 `true`，对于目录，将监听指定目录及其所有子目录。
+   * 值得注意的是，不同操作系统的事件顺序可能会有所不同。
    *
    *       const iter = Deno.fsEvents("/");
    *       for await (const event of iter) {
-   *          console.log(">>>> event", event);  //e.g. { kind: "create", paths: [ "/foo.txt" ] }
+   *          console.log(">>>> event", event);  // e.g. { kind: "create", paths: [ "/foo.txt" ] }
    *       }
    *
-   * Requires `allow-read` permission.
+   * 需要 `allow-read` 权限。
    */
   export function fsEvents(
     paths: string | string[],
@@ -2070,14 +2034,11 @@ declare namespace Deno {
    * the stream to `/dev/null`. */
   type ProcessStdio = "inherit" | "piped" | "null";
 
-  /** **UNSTABLE**: The `signo` argument may change to require the Deno.Signal
-   * enum.
+  /** **UNSTABLE**: `signo` 参数可能需要改成 Deno.Signal 枚举。
    *
-   * Send a signal to process under given `pid`. This functionality currently
-   * only works on Linux and Mac OS.
+   * 给指定的 `pid` 进程发送信号。这个功能目前只在 Linux 和 Mac OS 上运行。
    *
-   * If `pid` is negative, the signal will be sent to the process group
-   * identified by `pid`.
+   * 当 `pid` 是负的，信号将会发送到带有 `pid` 标识的进程组。
    *
    *      const p = Deno.run({
    *        cmd: ["python", "-c", "from time import sleep; sleep(10000)"]
@@ -2085,9 +2046,9 @@ declare namespace Deno {
    *
    *      Deno.kill(p.pid, Deno.Signal.SIGINT);
    *
-   * Throws Error (not yet implemented) on Windows
+   * 在 Windows 上抛出错误（尚未实现）。
    *
-   * Requires `allow-run` permission. */
+   * 需要 `allow-run` 权限。 */
   export function kill(pid: number, signo: number): void;
 
   /** **UNSTABLE**: 这里有一些关于如何结束进程的问题需要解决。 */
@@ -2231,20 +2192,18 @@ declare namespace Deno {
     indentLevel?: number;
   }
 
-  /** **UNSTABLE**: The exact form of the string output is under consideration
-   * and may change.
+  /** **不稳定**：字符串输出的确切形式仍在考虑，可能会更改。
    *
-   * Converts the input into a string that has the same format as printed by
-   * `console.log()`.
+   * 将输入转换为与 `console.log()` 打印格式相同的字符串。
    *
    *      const obj = {};
    *      obj.propA = 10;
    *      obj.propB = "hello"
-   *      const objAsString = Deno.inspect(obj); //{ propA: 10, propB: "hello" }
-   *      console.log(obj);  //prints same value as objAsString, e.g. { propA: 10, propB: "hello" }
+   *      const objAsString = Deno.inspect(obj); // { propA: 10, propB: "hello" }
+   *      console.log(obj);  // 输出与 objAsString 相同的值，例如: { propA: 10, propB: "hello" }
    *
-   * You can also register custom inspect functions, via the `customInspect` Deno
-   * symbol on objects, to control and customize the output.
+   * 你还可以通过对象上的 `Deno.symbols.customInspect` 函数
+   * 注册自定义的 inspect function，以控制和自定义输出。
    *
    *      class A {
    *        x = 10;
@@ -2254,10 +2213,10 @@ declare namespace Deno {
    *        }
    *      }
    *
-   *      const inStringFormat = Deno.inspect(new A()); //"x=10, y=hello"
-   *      console.log(inStringFormat);  //prints "x=10, y=hello"
+   *      const inStringFormat = Deno.inspect(new A()); // "x=10, y=hello"
+   *      console.log(inStringFormat);  // 输出 "x=10, y=hello"
    *
-   * Finally, a number of output options are also available.
+   * 同时还提供了一些输出选项。
    *
    *      const out = Deno.inspect(obj, {showHidden: true, depth: 4, colors: true, indentLevel: 2});
    *
@@ -2286,7 +2245,7 @@ declare namespace Deno {
   /** Deno 的详细版本信息。包括了 deno、v8、typescript。 */
   export const version: Version;
 
-  /** The log category for a diagnostic message. */
+  /** 诊断消息的日志类别。 */
   export enum DiagnosticCategory {
     Log = 0,
     Debug = 1,
@@ -2304,48 +2263,46 @@ declare namespace Deno {
   }
 
   export interface DiagnosticItem {
-    /** A string message summarizing the diagnostic. */
+    /** 诊断信息总结。*/
     message: string;
-    /** An ordered array of further diagnostics. */
+    /** 进一步诊断的有序数组。*/
     messageChain?: DiagnosticMessageChain;
-    /** Information related to the diagnostic. This is present when there is a
-     * suggestion or other additional diagnostic information */
+    /** 与诊断相关的信息。当有建议或其他附加诊断信息时会出现。*/
     relatedInformation?: DiagnosticItem[];
-    /** The text of the source line related to the diagnostic. */
+    /** 与诊断相关的源代码。*/
     sourceLine?: string;
-    /** The line number that is related to the diagnostic. */
+    /** 与诊断相关的行号。*/
     lineNumber?: number;
-    /** The name of the script resource related to the diagnostic. */
+    /** 与诊断相关的文件名称。*/
     scriptResourceName?: string;
-    /** The start position related to the diagnostic. */
+    /** 与诊断相关的起始位置。*/
     startPosition?: number;
-    /** The end position related to the diagnostic. */
+    /** 与诊断相关的结束位置。*/
     endPosition?: number;
-    /** The category of the diagnostic. */
+    /** 诊断消息的日志类别。*/
     category: DiagnosticCategory;
-    /** A number identifier. */
+    /** 数字标识符。*/
     code: number;
-    /** The the start column of the sourceLine related to the diagnostic. */
+    /** 与诊断相关的 sourceLine 的开始列。*/
     startColumn?: number;
-    /** The end column of the sourceLine related to the diagnostic. */
+    /** 与诊断相关的 sourceLine 的结束列。*/
     endColumn?: number;
   }
 
   export interface Diagnostic {
-    /** An array of diagnostic items. */
+    /** 诊断信息数组。*/
     items: DiagnosticItem[];
   }
 
   /** **不稳定**: 新 API，没有经过审查。
    *
-   * Format an array of diagnostic items and return them as a single string in a
-   * user friendly format.
+   * 格式化诊断信息数组，并以用户友好的格式将其作为单个字符串返回。
    *
    *       const [diagnostics, result] = Deno.compile("file_with_compile_issues.ts");
-   *       console.table(diagnostics);  //Prints raw diagnostic data
-   *       console.log(Deno.formatDiagnostics(diagnostics));  //User friendly output of diagnostics
+   *       console.table(diagnostics);  // 输出原始诊断信息
+   *       console.log(Deno.formatDiagnostics(diagnostics));  // 用户友好方式的输出诊断信息
    *
-   * @param items An array of diagnostic items to format
+   * @param items 要格式化的诊断信息数组
    */
   export function formatDiagnostics(items: DiagnosticItem[]): string;
 
@@ -2525,51 +2482,43 @@ declare namespace Deno {
     types?: string[];
   }
 
-  /** **不稳定**: 新 API，没有经过审查。
+  /** **不稳定**：新的 API，尚待审核。
    *
-   * The results of a transpile only command, where the `source` contains the
-   * emitted source, and `map` optionally contains the source map. */
+   * transpile only 命令的结果，其中 `source`
+   * 为转化后的源码，而 `map` 则为源码的 source map。*/
   export interface TranspileOnlyResult {
     source: string;
     map?: string;
   }
 
-  /** **不稳定**: 新 API，没有经过审查。
+  /** **不稳定**：新的 API，尚待审核。
    *
-   * Takes a set of TypeScript sources and resolves to a map where the key was
-   * the original file name provided in sources and the result contains the
-   * `source` and optionally the `map` from the transpile operation. This does no
-   * type checking and validation, it effectively "strips" the types from the
-   * file.
+   * 给定一组 TypeScript 类型的源码 (sources)，返回解析后的映射，
+   * 其中的 key 是 sources 的 key，结果则包含转化过的源码及源码的 source map。
+   * 此函数并不进行类型校检，它可以有效地从文件中 “删除” 类型。
    *
    *      const results =  await Deno.transpileOnly({
    *        "foo.ts": `const foo: string = "foo";`
    *      });
    *
-   * @param sources A map where the key is the filename and the value is the text
-   *                to transpile. The filename is only used in the transpile and
-   *                not resolved, for example to fill in the source name in the
-   *                source map.
-   * @param options An option object of options to send to the compiler. This is
-   *                a subset of ts.CompilerOptions which can be supported by Deno.
-   *                Many of the options related to type checking and emitting
-   *                type declaration files will have no impact on the output.
+   * @param sources key 是文件名，value 是要转换的源码。
+   *                文件扩展名并不会被解析，仅用作解析结果的 key。
+   * @param options 编译选项。这是可以被 Deno 支持的 ts.CompilerOptions 选项的一个子集。
    */
   export function transpileOnly(
     sources: Record<string, string>,
     options?: CompilerOptions
   ): Promise<Record<string, TranspileOnlyResult>>;
 
-  /** **不稳定**: 新 API，没有经过审查。
+  /** **不稳定**：新的 API，尚待审核。
    *
-   * Takes a root module name, and optionally a record set of sources. Resolves
-   * with a compiled set of modules and possibly diagnostics if the compiler
-   * encountered any issues. If just a root name is provided, the modules
-   * will be resolved as if the root module had been passed on the command line.
+   * 它接受根模块名 rootName，及 Record<string, string> 类型的可选参数
+   * sources 做为模块源。返回编译后的模块集合及编译过程中遇到的问题的诊断信息。
    *
-   * If sources are passed, all modules will be resolved out of this object, where
-   * the key is the module name and the value is the content. The extension of
-   * the module name will be used to determine the media type of the module.
+   * 如果仅传了 rootName，那么模块解析结果同命令行一致。
+   *
+   * 如果传递了 sources，则所有模块都将从该 sources 对象中解析出来，
+   * 其中键是模块名称，值是内容。模块名称的扩展名将用于确定模块的类型。
    *
    *      const [ maybeDiagnostics1, output1 ] = await Deno.compile("foo.ts");
    *
@@ -2578,17 +2527,11 @@ declare namespace Deno {
    *        "/bar.ts": `export const bar = "bar";`
    *      });
    *
-   * @param rootName The root name of the module which will be used as the
-   *                 "starting point". If no `sources` is specified, Deno will
-   *                 resolve the module externally as if the `rootName` had been
-   *                 specified on the command line.
-   * @param sources An optional key/value map of sources to be used when resolving
-   *                modules, where the key is the module name, and the value is
-   *                the source content. The extension of the key will determine
-   *                the media type of the file when processing. If supplied,
-   *                Deno will not attempt to resolve any modules externally.
-   * @param options An optional object of options to send to the compiler. This is
-   *                a subset of ts.CompilerOptions which can be supported by Deno.
+   * @param rootName 作为 “起点” 的模块名。如果没有传递 `sources` 参数,
+   *                 Deno 将从外部解析模块，就像在命令行中指定了 `rootName` 一样。
+   * @param sources 可选参数，解析模块时使用的 key/value 对象，其中 key 是模块名，value 是源内容。
+   *                key 的扩展名决定了解析模块的类型。如果提供此参数，Deno 将不会尝试从外部解析任何模块。
+   * @param options 编译选项。这是可以被 Deno 支持的 ts.CompilerOptions 选项的一个子集。
    */
   export function compile(
     rootName: string,
@@ -2596,22 +2539,21 @@ declare namespace Deno {
     options?: CompilerOptions
   ): Promise<[DiagnosticItem[] | undefined, Record<string, string>]>;
 
-  /** **不稳定**: 新 API，没有经过审查。
+  /** **不稳定**：新的 API，尚待审核。
    *
-   * `bundle()` is part the compiler API.  A full description of this functionality
-   * can be found in the [manual](https://deno.land/std/manual.md#denobundle).
+   * `bundle()` 是编译器 API 的一部分。有关此功能的完整说明，
+   * 请参见 [手册](https://deno.land/std/manual.md#denobundle)。
    *
-   * Takes a root module name, and optionally a record set of sources. Resolves
-   * with a single JavaScript string (and bundle diagnostics if issues arise with
-   * the bundling) that is like the output of a `deno bundle` command. If just
-   * a root name is provided, the modules will be resolved as if the root module
-   * had been passed on the command line.
+   * 它接受根模块名 rootName，及可选参数 sources 做为模块源。
+   * 就像使用 `deno bundle` 命令输出的结果一样，其返回值是一个
+   * JavaScript 字符串（如果在打包过程中出现错误, 则会返回错误诊断信息）。
    *
-   * If sources are passed, all modules will be resolved out of this object, where
-   * the key is the module name and the value is the content. The extension of the
-   * module name will be used to determine the media type of the module.
+   * 如果仅传了 rootName，那么模块解析结果同命令行一致。
    *
-   *      //equivalent to "deno bundle foo.ts" from the command line
+   * 如果传递了 sources，则所有模块都将从该 sources 对象中解析出来，
+   * 其中键是模块名称，值是内容。模块名称的扩展名将用于确定模块的类型。
+   *
+   *      // 相当于执行 "deno bundle foo.ts" 命令
    *      const [ maybeDiagnostics1, output1 ] = await Deno.bundle("foo.ts");
    *
    *      const [ maybeDiagnostics2, output2 ] = await Deno.bundle("/foo.ts", {
@@ -2619,17 +2561,11 @@ declare namespace Deno {
    *        "/bar.ts": `export const bar = "bar";`
    *      });
    *
-   * @param rootName The root name of the module which will be used as the
-   *                 "starting point". If no `sources` is specified, Deno will
-   *                 resolve the module externally as if the `rootName` had been
-   *                 specified on the command line.
-   * @param sources An optional key/value map of sources to be used when resolving
-   *                modules, where the key is the module name, and the value is
-   *                the source content. The extension of the key will determine
-   *                the media type of the file when processing. If supplied,
-   *                Deno will not attempt to resolve any modules externally.
-   * @param options An optional object of options to send to the compiler. This is
-   *                a subset of ts.CompilerOptions which can be supported by Deno.
+   * @param rootName 作为 “起点” 的模块名。如果没有传递 `sources` 参数,
+   *                 Deno 将从外部解析模块，就像在命令行中指定了 `rootName` 一样。
+   * @param sources 可选参数，解析模块时使用的 key/value 对象，其中 key 是模块名，value 是源内容。
+   *                key 的扩展名决定了解析模块的类型。如果提供此参数，Deno 将不会尝试从外部解析任何模块。
+   * @param options 编译选项。这是可以被 Deno 支持的 ts.CompilerOptions 选项的一个子集。
    */
   export function bundle(
     rootName: string,
