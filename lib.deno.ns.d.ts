@@ -1532,7 +1532,7 @@ declare namespace Deno {
     filename: string;
     /** 在文件中的行号，从 1 开始索引。*/
     line: number;
-    /** 在文件中的列号，从1开始索引。*/
+    /** 在文件中的列号，从 1 开始索引。*/
     column: number;
   }
 
