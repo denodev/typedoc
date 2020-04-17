@@ -1155,7 +1155,7 @@ declare namespace Deno {
   ): void;
 
   /** **UNSTABLE**: 需要调研高精度的 time。
-   * 
+   *
    * 基于文件系统的 `path` 改变访问 (`atime`) 和修改 (`mtime`) 的时间。
    * 给定的时间以秒 （UNIX epoch time） 为单位或着是 `Date` 对象。
    *
@@ -1526,14 +1526,13 @@ declare namespace Deno {
     options?: WriteFileOptions
   ): Promise<void>;
 
-  /** **UNSTABLE**: Should not have same name as `window.location` type. */
+  /** **不稳定**: 不应该和 `window.location` 具有相同的类型名. */
   interface Location {
-    /** The full url for the module, e.g. `file://some/file.ts` or
-     * `https://some/file.ts`. */
+    /** 模块的完整 url，例如：`file://some/file.ts` 抑或是 `https://some/file.ts`。*/
     filename: string;
-    /** The line number in the file. It is assumed to be 1-indexed. */
+    /** 在文件中的行号，从 1 开始索引。*/
     line: number;
-    /** The column number in the file. It is assumed to be 1-indexed. */
+    /** 在文件中的列号，从 1 开始索引。*/
     column: number;
   }
 
@@ -2038,11 +2037,11 @@ declare namespace Deno {
   type ProcessStdio = "inherit" | "piped" | "null";
 
   /** **UNSTABLE**: `signo` 参数可能需要改成 Deno.Signal 枚举。
-   * 
+   *
    * 给指定的 `pid` 进程发送信号。这个功能目前只在 Linux 和 Mac OS 上运行。
    *
    * 当 `pid` 是负的，信号将会发送到带有 `pid` 标识的进程组。
-   * 
+   *
    *      const p = Deno.run({
    *        cmd: ["python", "-c", "from time import sleep; sleep(10000)"]
    *      });
@@ -2050,7 +2049,7 @@ declare namespace Deno {
    *      Deno.kill(p.pid, Deno.Signal.SIGINT);
    *
    * 在 Windows 上抛出错误（尚未实现）。
-   * 
+   *
    * 需要 `allow-run` 权限。 */
   export function kill(pid: number, signo: number): void;
 
