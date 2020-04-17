@@ -1876,20 +1876,19 @@ declare namespace Deno {
   ): DatagramConn;
 
   export interface ListenTLSOptions extends ListenOptions {
-    /** Server certificate file. */
+    /** 服务器证书文件。 */
     certFile: string;
-    /** Server public key file. */
+    /** 服务器公钥文件。 */
     keyFile: string;
 
     transport?: "tcp";
   }
 
-  /** Listen announces on the local transport address over TLS (transport layer
-   * security).
+  /** 在本地监听来自 TLS （传输层安全性协议）的网络连接。
    *
    *      const lstnr = Deno.listenTLS({ port: 443, certFile: "./server.crt", keyFile: "./server.key" });
    *
-   * Requires `allow-net` permission. */
+   * 需要 `allow-net` 权限。 */
   export function listenTLS(options: ListenTLSOptions): Listener;
 
   export interface ConnectOptions {
