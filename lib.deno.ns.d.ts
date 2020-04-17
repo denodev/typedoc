@@ -1193,34 +1193,32 @@ declare namespace Deno {
    * 需要 `allow-write` 权限 */
   export function remove(path: string, options?: RemoveOptions): Promise<void>;
 
-  /** Synchronously renames (moves) `oldpath` to `newpath`. Paths may be files or
-   * directories.  If `newpath` already exists and is not a directory,
-   * `renameSync()` replaces it. OS-specific restrictions may apply when
-   * `oldpath` and `newpath` are in different directories.
+  /** 同步方式将 `oldpath` 重命名（或移动）为 `newpath`。路径可以是文件或目录。
+   * 如果 `newpath` 已经存在且不是目录，那么 `rename()` 将替换它。
+   * 当 `oldpath` 和 `newpath` 位于不同的目录中时，可能会受到操作系统的限制。
    *
    *       Deno.renameSync("old/path", "new/path");
    *
-   * On Unix, this operation does not follow symlinks at either path.
+   * 在 Unix 系统上，此操作不会修改符号链接所指向的内容。
    *
-   * It varies between platforms when the operation throws errors, and if so what
-   * they are. It's always an error to rename anything to a non-empty directory.
+   * 当操作引发错误时，平台之间会有所不同。
+   * 如果 `newpath` 是非空目录则始终会报错。
    *
-   * Requires `allow-read` and `allow-write` permissions. */
+   * 需要 `allow-read` 和 `allow-write` 权限。 */
   export function renameSync(oldpath: string, newpath: string): void;
 
-  /** Renames (moves) `oldpath` to `newpath`.  Paths may be files or directories.
-   * If `newpath` already exists and is not a directory, `rename()` replaces it.
-   * OS-specific restrictions may apply when `oldpath` and `newpath` are in
-   * different directories.
+  /** 将 `oldpath` 重命名（或移动）为 `newpath`。路径可以是文件或目录。
+   * 如果 `newpath` 已经存在且不是目录，那么 `rename()` 将替换它。
+   * 当 `oldpath` 和 `newpath` 位于不同的目录中时，可能会受到操作系统的限制。
    *
    *       await Deno.rename("old/path", "new/path");
    *
-   * On Unix, this operation does not follow symlinks at either path.
+   * 在 Unix 系统上，此操作不会修改符号链接所指向的内容。
    *
-   * It varies between platforms when the operation throws errors, and if so what
-   * they are. It's always an error to rename anything to a non-empty directory.
+   * 当操作引发错误时，平台之间会有所不同。
+   * 如果 `newpath` 是非空目录则始终会报错。
    *
-   * Requires `allow-read` and `allow-write` permission. */
+   * 需要 `allow-read` 和 `allow-write` 权限。 */
   export function rename(oldpath: string, newpath: string): Promise<void>;
 
   /** 同步地读取并将文件的全部内容解析为字节数组。
