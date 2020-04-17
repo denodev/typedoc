@@ -514,29 +514,23 @@ declare namespace Deno {
   }
 
   export interface Seeker {
-    /** Seek sets the offset for the next `read()` or `write()` to offset,
-     * interpreted according to `whence`: `SEEK_START` means relative to the
-     * start of the file, `SEEK_CURRENT` means relative to the current offset,
-     * and `SEEK_END` means relative to the end. Seek resolves to the new offset
-     * relative to the start of the file.
+    /** 设置下一个 `read()` 或 `write()` 的偏移量，根据 `whence` 进行决定从哪个位置开始偏移：
+     * `SEEK_START` 表示相对于文件开头，`SEEK_CURRENT` 表示相对于当前位置，`SEEK_END` 表示相对于文件末尾。
+     * Seek 解析（resolve）的值为相对于文件开头的新偏移量。
      *
-     * Seeking to an offset before the start of the file is an error. Seeking to
-     * any positive offset is legal, but the behavior of subsequent I/O
-     * operations on the underlying object is implementation-dependent.
-     * It returns the number of cursor position.
+     * 把偏移量设置到文件开始之前是错误的。
+     * 设置任何正偏移都是合法的，但是对于之后的 I/O 操作的行为则取决于实现。
+     * 它返回设置之后的偏移位置。
      */
     seek(offset: number, whence: SeekMode): Promise<number>;
   }
 
   export interface SyncSeeker {
-    /** Seek sets the offset for the next `readSync()` or `writeSync()` to
-     * offset, interpreted according to `whence`: `SEEK_START` means relative
-     * to the start of the file, `SEEK_CURRENT` means relative to the current
-     * offset, and `SEEK_END` means relative to the end.
+    /** 设置下一个 `read()` 或 `write()` 的偏移量，根据 `whence` 进行决定从哪个位置开始偏移：
+     * `SEEK_START` 表示相对于文件开头，`SEEK_CURRENT` 表示相对于当前位置，`SEEK_END` 表示相对于文件末尾。
      *
-     * Seeking to an offset before the start of the file is an error. Seeking to
-     * any positive offset is legal, but the behavior of subsequent I/O
-     * operations on the underlying object is implementation-dependent.
+     * 把偏移量设置到文件开始之前是错误的。
+     * 设置任何正偏移都是合法的，但是对于之后的 I/O 操作的行为则取决于实现。
      */
     seekSync(offset: number, whence: SeekMode): number;
   }
