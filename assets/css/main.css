@@ -1900,6 +1900,24 @@ dl.tsd-comment-tags p {
   margin-bottom: 0;
 }
 
+.tsd-comment .lead.on {
+  margin-bottom: 0;
+}
+
+.tsd-comment .tsd_i18n + .tsd_en {
+  display: none;
+  border-top: 1px dashed #0273d4;
+}
+.tsd-comment .tsd_i18n.on > p {
+  margin-bottom: 0;
+}
+.tsd-comment .tsd_i18n.on + .tsd_en {
+  display: block;
+}
+.tsd-comment .tsd_i18n.on + .tsd_en > p {
+  margin-top: 0;
+}
+
 .toggle-protected .tsd-is-private {
   display: none;
 }

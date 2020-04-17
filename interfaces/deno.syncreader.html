@@ -96,20 +96,22 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/6ae7afe/lib.deno.ns.d.ts#L485">lib.deno.ns.d.ts:485</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/274fa13/lib.deno.ns.d.ts#L485">lib.deno.ns.d.ts:485</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
-							<div class="lead">
+							<div class="lead tsd_en">
 								<p>最多读取 <code>p.byteLength</code> 个字节到p中，然后返回读取的字节数（<code>0 &lt; n &lt;= p.byteLength</code>），并在遇到任何错误时返回拒绝状态的回调函数。
 									即使 <code>readSync()</code> 返回值为 <code>n &lt; p.byteLength</code>，p也可能在调用期间被用作临时空间。
 								如果有数据可用，但不存在 <code>p.byteLength</code>，<code>readSync()</code> 通常会返回可用值，而不是等待更多。</p>
 							</div>
-							<p>当 <code>readSync()</code> 遇到文件结束条件时，将返回 <code>Deno.EOF</code> 符号。</p>
-							<p>当 <code>readSync()</code> 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。</p>
-							<p>调用者应始终处理返回值为 <code>n &gt; 0</code> 的情况，然后再考虑 <code>EOF</code>。
-							应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的 I/O 错误。</p>
-							<p>实现不应保留对 <code>p</code> 的引用。</p>
+							<div class="tsd_en">
+								<p>当 <code>readSync()</code> 遇到文件结束条件时，将返回 <code>Deno.EOF</code> 符号。</p>
+								<p>当 <code>readSync()</code> 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。</p>
+								<p>调用者应始终处理返回值为 <code>n &gt; 0</code> 的情况，然后再考虑 <code>EOF</code>。
+								应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的 I/O 错误。</p>
+								<p>实现不应保留对 <code>p</code> 的引用。</p>
+							</div>
 						</div>
 						<h4 class="tsd-parameters-title">参数</h4>
 						<ul class="tsd-parameters">
