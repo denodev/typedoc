@@ -144,8 +144,8 @@ declare namespace Deno {
    *        // 运行所有已经注册过的测试。
    *        const runInfo = await Deno.runTests();
    *        console.log(runInfo.duration);  // all tests duration, e.g. "5" (in ms)
-   *        console.log(runInfo.stats.passed);  //e.g. 1
-   *        console.log(runInfo.results[0].name);  //e.g. "example test"
+   *        console.log(runInfo.stats.passed);  // e.g. 1
+   *        console.log(runInfo.results[0].name);  // e.g. "example test"
    */
   export function runTests(
     opts?: RunTestsOptions
@@ -156,7 +156,7 @@ declare namespace Deno {
    * `0` 表示没有负载。
    * 在 Windows 上，这 3 个值始终相同，代表当前负载，而不是 1 分钟、5 分钟和 15 分钟的平均负载。
    *
-   *       console.log(Deno.loadavg());  //e.g. [ 0.71, 0.44, 0.44 ]
+   *       console.log(Deno.loadavg());  // e.g. [ 0.71, 0.44, 0.44 ]
    *
    * 需要 `allow-env` 权限。
    */
@@ -191,7 +191,7 @@ declare namespace Deno {
    *       console.log(myEnv.SHELL);
    *       myEnv.TEST_VAR = "HELLO";
    *       const newEnv = Deno.env();
-   *       console.log(myEnv.TEST_VAR === newEnv.TEST_VAR);  //outputs "true"
+   *       console.log(myEnv.TEST_VAR === newEnv.TEST_VAR);  // outputs "true"
    *
    * 需要 `allow-env` 权限 */
   export function env(): {
@@ -200,8 +200,8 @@ declare namespace Deno {
 
   /** 获取环境变量的值。如果 `key` 不存在，则返回 `undefined`。
    *
-   *       console.log(Deno.env("HOME"));  //e.g. outputs "/home/alice"
-   *       console.log(Deno.env("MADE_UP_VAR"));  //outputs "Undefined"
+   *       console.log(Deno.env("HOME"));  // e.g. outputs "/home/alice"
+   *       console.log(Deno.env("MADE_UP_VAR"));  // outputs "Undefined"
    *
    * 需要 `allow-env` 权限 */
   export function env(key: string): string | undefined;
@@ -374,7 +374,7 @@ declare namespace Deno {
   /**
    * 返回当前 deno 可执行文件的路径。
    *
-   *       console.log(Deno.execPath());  //e.g. "/home/alice/.local/bin/deno"
+   *       console.log(Deno.execPath());  // e.g. "/home/alice/.local/bin/deno"
    *
    * 需要 `allow-env` 权限。
    */
@@ -413,9 +413,9 @@ declare namespace Deno {
    * 获取进程权限掩码。如果提供 `mask`，则设置进程权限掩码。
    * 此函数始终返回调用前的权限掩码。
    *
-   *        console.log(Deno.umask());  //e.g. 18 (0o022)
-   *        const prevUmaskValue = Deno.umask(0o077);  //e.g. 18 (0o022)
-   *        console.log(Deno.umask());  //e.g. 63 (0o077)
+   *        console.log(Deno.umask());  // e.g. 18 (0o022)
+   *        const prevUmaskValue = Deno.umask(0o077);  // e.g. 18 (0o022)
+   *        console.log(Deno.umask());  // e.g. 63 (0o077)
    *
    * 注意: 此 API 未在 Windows 平台实现。
    */
@@ -687,7 +687,7 @@ declare namespace Deno {
    *
    *        const file = Deno.openSync('hello.txt', {read: true, write: true, truncate: true, create: true});
    *        Deno.writeSync(file.rid, new TextEncoder().encode("Hello world"));
-   *        //advance cursor 6 bytes
+   *        // advance cursor 6 bytes
    *        const cursorPosition = Deno.seekSync(file.rid, 6, Deno.SeekMode.SEEK_START);
    *        console.log(cursorPosition);  // 6
    *        const buf = new Uint8Array(100);
@@ -696,13 +696,13 @@ declare namespace Deno {
    *
    * The seek modes work as follows:
    *
-   *        //Given file.rid pointing to file with "Hello world", which is 11 bytes long:
-   *        //Seek 6 bytes from the start of the file
-   *        console.log(Deno.seekSync(file.rid, 6, Deno.SeekMode.SEEK_START)); //"6"
-   *        //Seek 2 more bytes from the current position
-   *        console.log(Deno.seekSync(file.rid, 2, Deno.SeekMode.SEEK_CURRENT)); //"8"
-   *        //Seek backwards 2 bytes from the end of the file
-   *        console.log(Deno.seekSync(file.rid, -2, Deno.SeekMode.SEEK_END)); //"9" (e.g. 11-2)
+   *        // Given file.rid pointing to file with "Hello world", which is 11 bytes long:
+   *        // Seek 6 bytes from the start of the file
+   *        console.log(Deno.seekSync(file.rid, 6, Deno.SeekMode.SEEK_START)); // "6"
+   *        // Seek 2 more bytes from the current position
+   *        console.log(Deno.seekSync(file.rid, 2, Deno.SeekMode.SEEK_CURRENT)); // "8"
+   *        // Seek backwards 2 bytes from the end of the file
+   *        console.log(Deno.seekSync(file.rid, -2, Deno.SeekMode.SEEK_END)); // "9" (e.g. 11-2)
    */
   export function seekSync(
     rid: number,
@@ -715,7 +715,7 @@ declare namespace Deno {
    *
    *        const file = await Deno.open('hello.txt', {read: true, write: true, truncate: true, create: true});
    *        await Deno.write(file.rid, new TextEncoder().encode("Hello world"));
-   *        //advance cursor 6 bytes
+   *        // advance cursor 6 bytes
    *        const cursorPosition = await Deno.seek(file.rid, 6, Deno.SeekMode.SEEK_START);
    *        console.log(cursorPosition);  // 6
    *        const buf = new Uint8Array(100);
@@ -724,13 +724,13 @@ declare namespace Deno {
    *
    * The seek modes work as follows:
    *
-   *        //Given file.rid pointing to file with "Hello world", which is 11 bytes long:
-   *        //Seek 6 bytes from the start of the file
-   *        console.log(await Deno.seek(file.rid, 6, Deno.SeekMode.SEEK_START)); //"6"
-   *        //Seek 2 more bytes from the current position
-   *        console.log(await Deno.seek(file.rid, 2, Deno.SeekMode.SEEK_CURRENT)); //"8"
-   *        //Seek backwards 2 bytes from the end of the file
-   *        console.log(await Deno.seek(file.rid, -2, Deno.SeekMode.SEEK_END)); //"9" (e.g. 11-2)
+   *        // Given file.rid pointing to file with "Hello world", which is 11 bytes long:
+   *        // Seek 6 bytes from the start of the file
+   *        console.log(await Deno.seek(file.rid, 6, Deno.SeekMode.SEEK_START)); // "6"
+   *        // Seek 2 more bytes from the current position
+   *        console.log(await Deno.seek(file.rid, 2, Deno.SeekMode.SEEK_CURRENT)); // "8"
+   *        // Seek backwards 2 bytes from the end of the file
+   *        console.log(await Deno.seek(file.rid, -2, Deno.SeekMode.SEEK_END)); // "9" (e.g. 11-2)
    */
   export function seek(
     rid: number,
@@ -1053,7 +1053,7 @@ declare namespace Deno {
    * 多个程序同时调用该函数将会创建不同的文件。当不再需要该临时文件时，调用者应该主动删除该文件。
    *
    *       const tempFileName0 = Deno.makeTempFileSync(); // e.g. /tmp/419e0bf2
-   *       const tempFileName1 = Deno.makeTempFileSync({ prefix: 'my_temp' });  //e.g. /tmp/my_temp754d3098
+   *       const tempFileName1 = Deno.makeTempFileSync({ prefix: 'my_temp' });  // e.g. /tmp/my_temp754d3098
    *
    * 需要 `allow-write` 权限. */
   export function makeTempFileSync(options?: MakeTempOptions): string;
@@ -1067,7 +1067,7 @@ declare namespace Deno {
    * 多个程序同时调用该函数将会创建不同的文件。当不再需要该临时文件时，调用者应该主动删除该文件。
    *
    *       const tmpFileName0 = await Deno.makeTempFile();  // e.g. /tmp/419e0bf2
-   *       const tmpFileName1 = await Deno.makeTempFile({ prefix: 'my_temp' });  //e.g. /tmp/my_temp754d3098
+   *       const tmpFileName1 = await Deno.makeTempFile({ prefix: 'my_temp' });  // e.g. /tmp/my_temp754d3098
    *
    * 需要 `allow-write` 权限. */
   export function makeTempFile(options?: MakeTempOptions): Promise<string>;
@@ -1321,8 +1321,8 @@ declare namespace Deno {
    *       Deno.symlinkSync("file.txt", "symlink_file.txt");
    *       const realPath = Deno.realpathSync("./file.txt");
    *       const realSymLinkPath = Deno.realpathSync("./symlink_file.txt");
-   *       console.log(realPath);  //输出 "/home/alice/file.txt"
-   *       console.log(realSymLinkPath);  //输出 "/home/alice/file.txt"
+   *       console.log(realPath);  // 输出 "/home/alice/file.txt"
+   *       console.log(realSymLinkPath);  // 输出 "/home/alice/file.txt"
    *
    * 需要 `allow-read` 权限 */
   export function realpathSync(path: string): string;
@@ -1333,8 +1333,8 @@ declare namespace Deno {
    *       await Deno.symlink("file.txt", "symlink_file.txt");
    *       const realPath = await Deno.realpath("./file.txt");
    *       const realSymLinkPath = await Deno.realpath("./symlink_file.txt");
-   *       console.log(realPath);  // outputs "/home/alice/file.txt"
-   *       console.log(realSymLinkPath);  //outputs "/home/alice/file.txt"
+   *       console.log(realPath);  // 输出 "/home/alice/file.txt"
+   *       console.log(realSymLinkPath);  // 输出 "/home/alice/file.txt"
    *
    * 需要 `allow-read` 权限 */
   export function realpath(path: string): Promise<string>;
@@ -1681,10 +1681,10 @@ declare namespace Deno {
 
   /** 同步地通过指定的 `len` ，截取或者扩展指定的文件内容。如果未指定 `len` ，则整个文件内容将被截取。
    *
-   *       //truncate the entire file
+   *       // truncate the entire file
    *       Deno.truncateSync("my_file.txt");
    *
-   *       //truncate part of the file
+   *       // truncate part of the file
    *       const file = Deno.makeTempFileSync();
    *       Deno.writeFileSync(file, new TextEncoder().encode("Hello World"));
    *       Deno.truncateSync(file, 7);
@@ -1697,15 +1697,15 @@ declare namespace Deno {
 
   /** 通过指定的 `len` ，截取或者扩展指定的文件内容。如果未指定 `len` ，则整个文件内容将被截取。
    *
-   *       //truncate the entire file
+   *       // truncate the entire file
    *       await Deno.truncate("my_file.txt");
    *
-   *       //truncate part of the file
+   *       // truncate part of the file
    *       const file = await Deno.makeTempFile();
    *       await Deno.writeFile(file, new TextEncoder().encode("Hello World"));
    *       await Deno.truncate(file, 7);
    *       const data = await Deno.readFile(file);
-   *       console.log(new TextDecoder().decode(data));  //"Hello W"
+   *       console.log(new TextDecoder().decode(data));  // "Hello W"
    *
    * 需要 `allow-write` 权限。 */
 
@@ -1995,9 +1995,9 @@ declare namespace Deno {
    *
    * 返回打开的_文件_资源 ID（rid）及其字符串表示形式的 Map。
    *
-   *       console.log(Deno.resources()); //e.g. { 0: "stdin", 1: "stdout", 2: "stderr" }
+   *       console.log(Deno.resources()); // e.g. { 0: "stdin", 1: "stdout", 2: "stderr" }
    *       Deno.openSync('../test.file');
-   *       console.log(Deno.resources()); //e.g. { 0: "stdin", 1: "stdout", 2: "stderr", 3: "fsFile" }
+   *       console.log(Deno.resources()); // e.g. { 0: "stdin", 1: "stdout", 2: "stderr", 3: "fsFile" }
    */
   export function resources(): ResourceMap;
 
@@ -2017,7 +2017,7 @@ declare namespace Deno {
    *
    *       const iter = Deno.fsEvents("/");
    *       for await (const event of iter) {
-   *          console.log(">>>> event", event);  //e.g. { kind: "create", paths: [ "/foo.txt" ] }
+   *          console.log(">>>> event", event);  // e.g. { kind: "create", paths: [ "/foo.txt" ] }
    *       }
    *
    * 需要 `allow-read` 权限。
@@ -2309,8 +2309,8 @@ declare namespace Deno {
    * user friendly format.
    *
    *       const [diagnostics, result] = Deno.compile("file_with_compile_issues.ts");
-   *       console.table(diagnostics);  //Prints raw diagnostic data
-   *       console.log(Deno.formatDiagnostics(diagnostics));  //User friendly output of diagnostics
+   *       console.table(diagnostics);  // Prints raw diagnostic data
+   *       console.log(Deno.formatDiagnostics(diagnostics));  // User friendly output of diagnostics
    *
    * @param items An array of diagnostic items to format
    */
