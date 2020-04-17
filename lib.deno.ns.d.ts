@@ -1728,14 +1728,14 @@ declare namespace Deno {
 
   /** **不稳定**: 新 API，没有经过审查。
    *
-   * Open and initalize a plugin.
+   * 打开并初始化插件。
    *
    *        const plugin = Deno.openPlugin("./path/to/some/plugin.so");
    *        const some_op = plugin.ops.some_op;
    *        const response = some_op.dispatch(new Uint8Array([1,2,3,4]));
    *        console.log(`Response from plugin ${response}`);
    *
-   * Requires `allow-plugin` permission. */
+   * 需要 `allow-plugin` 权限。*/
   export function openPlugin(filename: string): Plugin;
   export interface NetAddr {
     transport: "tcp" | "udp";
