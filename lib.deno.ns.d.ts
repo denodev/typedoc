@@ -1140,30 +1140,28 @@ declare namespace Deno {
    */
   export function chown(path: string, uid: number, gid: number): Promise<void>;
 
-  /** **UNSTABLE**: needs investigation into high precision time.
+  /** **不稳定**：需要对高精度时间（hrtime）进行调查。
    *
-   * Synchronously changes the access (`atime`) and modification (`mtime`) times
-   * of a file system object referenced by `path`. Given times are either in
-   * seconds (UNIX epoch time) or as `Date` objects.
+   * 同步地更改路径（`path`）引用的文件系统对象的访问时间（`atime`）和修改时间（`mtime`）。
+   * 给定的时间参数可以是秒（UNIX 纪元时间）或者日期对象。
    *
    *       Deno.utimeSync("myfile.txt", 1556495550, new Date());
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
   export function utimeSync(
     path: string,
     atime: number | Date,
     mtime: number | Date
   ): void;
 
-  /** **UNSTABLE**: needs investigation into high precision time.
+  /** **UNSTABLE**: 需要调研高精度的 time。
    *
-   * Changes the access (`atime`) and modification (`mtime`) times of a file
-   * system object referenced by `path`. Given times are either in seconds
-   * (UNIX epoch time) or as `Date` objects.
+   * 基于文件系统的 `path` 改变访问 (`atime`) 和修改 (`mtime`) 的时间。
+   * 给定的时间以秒 （UNIX epoch time） 为单位或着是 `Date` 对象。
    *
    *       await Deno.utime("myfile.txt", 1556495550, new Date());
    *
-   * Requires `allow-write` permission. */
+   * 需要 `allow-write` 权限。 */
   export function utime(
     path: string,
     atime: number | Date,
@@ -1528,14 +1526,13 @@ declare namespace Deno {
     options?: WriteFileOptions
   ): Promise<void>;
 
-  /** **UNSTABLE**: Should not have same name as `window.location` type. */
+  /** **不稳定**: 不应该和 `window.location` 具有相同的类型名. */
   interface Location {
-    /** The full url for the module, e.g. `file://some/file.ts` or
-     * `https://some/file.ts`. */
+    /** 模块的完整 url，例如：`file://some/file.ts` 抑或是 `https://some/file.ts`。*/
     filename: string;
-    /** The line number in the file. It is assumed to be 1-indexed. */
+    /** 在文件中的行号，从 1 开始索引。*/
     line: number;
-    /** The column number in the file. It is assumed to be 1-indexed. */
+    /** 在文件中的列号，从 1 开始索引。*/
     column: number;
   }
 
@@ -2039,14 +2036,11 @@ declare namespace Deno {
    * the stream to `/dev/null`. */
   type ProcessStdio = "inherit" | "piped" | "null";
 
-  /** **UNSTABLE**: The `signo` argument may change to require the Deno.Signal
-   * enum.
+  /** **UNSTABLE**: `signo` 参数可能需要改成 Deno.Signal 枚举。
    *
-   * Send a signal to process under given `pid`. This functionality currently
-   * only works on Linux and Mac OS.
+   * 给指定的 `pid` 进程发送信号。这个功能目前只在 Linux 和 Mac OS 上运行。
    *
-   * If `pid` is negative, the signal will be sent to the process group
-   * identified by `pid`.
+   * 当 `pid` 是负的，信号将会发送到带有 `pid` 标识的进程组。
    *
    *      const p = Deno.run({
    *        cmd: ["python", "-c", "from time import sleep; sleep(10000)"]
@@ -2054,9 +2048,9 @@ declare namespace Deno {
    *
    *      Deno.kill(p.pid, Deno.Signal.SIGINT);
    *
-   * Throws Error (not yet implemented) on Windows
+   * 在 Windows 上抛出错误（尚未实现）。
    *
-   * Requires `allow-run` permission. */
+   * 需要 `allow-run` 权限。 */
   export function kill(pid: number, signo: number): void;
 
   /** **UNSTABLE**: 这里有一些关于如何结束进程的问题需要解决。 */
@@ -2253,7 +2247,7 @@ declare namespace Deno {
   /** Deno 的详细版本信息。包括了 deno、v8、typescript。 */
   export const version: Version;
 
-  /** The log category for a diagnostic message. */
+  /** 诊断消息的日志类别。 */
   export enum DiagnosticCategory {
     Log = 0,
     Debug = 1,
@@ -2271,48 +2265,46 @@ declare namespace Deno {
   }
 
   export interface DiagnosticItem {
-    /** A string message summarizing the diagnostic. */
+    /** 诊断信息总结。*/
     message: string;
-    /** An ordered array of further diagnostics. */
+    /** 进一步诊断的有序数组。*/
     messageChain?: DiagnosticMessageChain;
-    /** Information related to the diagnostic. This is present when there is a
-     * suggestion or other additional diagnostic information */
+    /** 与诊断相关的信息。当有建议或其他附加诊断信息时会出现。*/
     relatedInformation?: DiagnosticItem[];
-    /** The text of the source line related to the diagnostic. */
+    /** 与诊断相关的源代码。*/
     sourceLine?: string;
-    /** The line number that is related to the diagnostic. */
+    /** 与诊断相关的行号。*/
     lineNumber?: number;
-    /** The name of the script resource related to the diagnostic. */
+    /** 与诊断相关的文件名称。*/
     scriptResourceName?: string;
-    /** The start position related to the diagnostic. */
+    /** 与诊断相关的起始位置。*/
     startPosition?: number;
-    /** The end position related to the diagnostic. */
+    /** 与诊断相关的结束位置。*/
     endPosition?: number;
-    /** The category of the diagnostic. */
+    /** 诊断消息的日志类别。*/
     category: DiagnosticCategory;
-    /** A number identifier. */
+    /** 数字标识符。*/
     code: number;
-    /** The the start column of the sourceLine related to the diagnostic. */
+    /** 与诊断相关的 sourceLine 的开始列。*/
     startColumn?: number;
-    /** The end column of the sourceLine related to the diagnostic. */
+    /** 与诊断相关的 sourceLine 的结束列。*/
     endColumn?: number;
   }
 
   export interface Diagnostic {
-    /** An array of diagnostic items. */
+    /** 诊断信息数组。*/
     items: DiagnosticItem[];
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Format an array of diagnostic items and return them as a single string in a
-   * user friendly format.
+   * 格式化诊断信息数组，并以用户友好的格式将其作为单个字符串返回。
    *
    *       const [diagnostics, result] = Deno.compile("file_with_compile_issues.ts");
-   *       console.table(diagnostics);  // Prints raw diagnostic data
-   *       console.log(Deno.formatDiagnostics(diagnostics));  // User friendly output of diagnostics
+   *       console.table(diagnostics);  // 输出原始诊断信息
+   *       console.log(Deno.formatDiagnostics(diagnostics));  // 用户友好方式的输出诊断信息
    *
-   * @param items An array of diagnostic items to format
+   * @param items 要格式化的诊断信息数组
    */
   export function formatDiagnostics(items: DiagnosticItem[]): string;
 
@@ -2520,35 +2512,28 @@ declare namespace Deno {
     types?: string[];
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**：新的 API，尚待审核。
    *
-   * The results of a transpile only command, where the `source` contains the
-   * emitted source, and `map` optionally contains the source map. */
+   * transpile only 命令的结果，其中 `source`
+   * 为转化后的源码，而 `map` 则为源码的 source map。*/
   export interface TranspileOnlyResult {
     source: string;
     map?: string;
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**：新的 API，尚待审核。
    *
-   * Takes a set of TypeScript sources and resolves to a map where the key was
-   * the original file name provided in sources and the result contains the
-   * `source` and optionally the `map` from the transpile operation. This does no
-   * type checking and validation, it effectively "strips" the types from the
-   * file.
+   * 给定一组 TypeScript 类型的源码 (sources)，返回解析后的映射，
+   * 其中的 key 是 sources 的 key，结果则包含转化过的源码及源码的 source map。
+   * 此函数并不进行类型校检，它可以有效地从文件中 “删除” 类型。
    *
    *      const results =  await Deno.transpileOnly({
    *        "foo.ts": `const foo: string = "foo";`
    *      });
    *
-   * @param sources A map where the key is the filename and the value is the text
-   *                to transpile. The filename is only used in the transpile and
-   *                not resolved, for example to fill in the source name in the
-   *                source map.
-   * @param options An option object of options to send to the compiler. This is
-   *                a subset of ts.CompilerOptions which can be supported by Deno.
-   *                Many of the options related to type checking and emitting
-   *                type declaration files will have no impact on the output.
+   * @param sources key 是文件名，value 是要转换的源码。
+   *                文件扩展名并不会被解析，仅用作解析结果的 key。
+   * @param options 编译选项。这是可以被 Deno 支持的 ts.CompilerOptions 选项的一个子集。
    */
   export function transpileOnly(
     sources: Record<string, string>,
@@ -2557,8 +2542,8 @@ declare namespace Deno {
 
   /** **不稳定**：新的 API，尚待审核。
    *
-   * 它接受根模块名 rootName，及 record 类型的可选参数 sources 做为模块源。
-   * 返回编译后的模块集合及编译过程中遇到的问题的诊断信息。
+   * 它接受根模块名 rootName，及 Record<string, string> 类型的可选参数
+   * sources 做为模块源。返回编译后的模块集合及编译过程中遇到的问题的诊断信息。
    *
    * 如果仅传了 rootName，那么模块解析结果同命令行一致。
    *
