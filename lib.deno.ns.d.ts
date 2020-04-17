@@ -1559,7 +1559,7 @@ declare namespace Deno {
    */
   export function applySourceMap(location: Location): Location;
 
-  /** A set of error constructors that are raised by Deno APIs. */
+  /** 一些 Error 构造函数的集合，当 Deno API 抛出错误时会用到这些异常。 */
   export const errors: {
     NotFound: ErrorConstructor;
     PermissionDenied: ErrorConstructor;
