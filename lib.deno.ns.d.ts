@@ -2054,7 +2054,7 @@ declare namespace Deno {
    * 在 Windows 上抛出错误（尚未实现）。
    * 
    * 需要 `allow-run` 权限。 */
-  export function k(pid: number, signo: number): void;
+  export function kill(pid: number, signo: number): void;
 
   /** **UNSTABLE**: 这里有一些关于如何结束进程的问题需要解决。 */
   export class Process {
