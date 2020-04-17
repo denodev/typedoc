@@ -1528,7 +1528,7 @@ declare namespace Deno {
 
   /** **不稳定**: 不应该和 `window.location` 具有相同的类型名. */
   interface Location {
-    /** 模块的完整url，例如：`file://some/file.ts` 抑或是 `https://some/file.ts`。*/
+    /** 模块的完整 url，例如：`file://some/file.ts` 抑或是 `https://some/file.ts`。*/
     filename: string;
     /** 在文件中的行号，从1开始索引。*/
     line: number;
