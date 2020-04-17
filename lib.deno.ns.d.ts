@@ -2019,16 +2019,13 @@ declare namespace Deno {
     options?: { recursive: boolean }
   ): AsyncIterableIterator<FsEvent>;
 
-  /** How to handle subprocess stdio.
+  /** 如何处理子进程的 stdio。
    *
-   * `"inherit"` The default if unspecified. The child inherits from the
-   * corresponding parent descriptor.
+   * `"inherit"` 如果未指定，则为默认值。子进程继承父进程的 stdio。
    *
-   * `"piped"` A new pipe should be arranged to connect the parent and child
-   * sub-processes.
+   * `"piped"` 使用一个新管道来连接父子进程。
    *
-   * `"null"` This stream will be ignored. This is the equivalent of attaching
-   * the stream to `/dev/null`. */
+   * `"null"` 输入输出流将被忽略。这相当于将流附加到了 `/dev/null`。 */
   type ProcessStdio = "inherit" | "piped" | "null";
 
   /** **UNSTABLE**: `signo` 参数可能需要改成 Deno.Signal 枚举。
