@@ -1140,10 +1140,10 @@ declare namespace Deno {
    */
   export function chown(path: string, uid: number, gid: number): Promise<void>;
 
-  /** **UNSTABLE**: 需要调研高精度的 time。
-   * 
-   * 基于文件系统的 `path` 同时改变访问 (`atime`) 和修改 (`mtime`) 的时间。
-   * 给定的时间以秒 （UNIX epoch time） 为单位或着是 `Date` 对象。
+  /** **不稳定**：需要对高精度时间（hrtime）进行调查。
+   *
+   * 同步地更改路径（`path`）引用的文件系统对象的访问时间（`atime`）和修改时间（`mtime`）。
+   * 给定的时间参数可以是秒（UNIX 纪元时间）或者日期对象。
    *
    *       Deno.utimeSync("myfile.txt", 1556495550, new Date());
    *
