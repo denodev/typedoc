@@ -1925,26 +1925,25 @@ declare namespace Deno {
   ): Promise<Conn>;
 
   export interface ConnectTLSOptions {
-    /** The port to connect to. */
+    /** 要连接的端口。*/
     port: number;
-    /** A literal IP address or host name that can be resolved to an IP address.
-     * If not specified, defaults to `127.0.0.1`. */
+    /** 可以解析为 IP 地址的文本 IP 地址或主机名。如果没有指定，默认值为 `127.0.0.1`。*/
     hostname?: string;
-    /** Server certificate file. */
+    /** 服务器证书文件。*/
     certFile?: string;
   }
 
-  /** Establishes a secure connection over TLS (transport layer security) using
-   * an optional cert file, hostname (default is "127.0.0.1") and port.  The
-   * cert file is optional and if not included Mozilla's root certificates will
-   * be used (see also https://github.com/ctz/webpki-roots for specifics)
+  /** 使用可选的证书文件、主机名（默认值为 "127.0.0.1"）
+   * 和端口在 TLS（安全传输层协议）建立安全连接。
+   * 证书文件是可选的，如果不包含，则使用 Mozilla 的根证书
+   *（具体参见 https://github.com/ctz/webpki-roots）。
    *
    *     const conn1 = await Deno.connectTLS({ port: 80 });
    *     const conn2 = await Deno.connectTLS({ certFile: "./certs/my_custom_root_CA.pem", hostname: "192.0.2.1", port: 80 });
    *     const conn3 = await Deno.connectTLS({ hostname: "[2001:db8::1]", port: 80 });
    *     const conn4 = await Deno.connectTLS({ certFile: "./certs/my_custom_root_CA.pem", hostname: "golang.org", port: 80});
    *
-   * Requires `allow-net` permission.
+   * 需要 `allow-net` 权限。
    */
   export function connectTLS(options: ConnectTLSOptions): Promise<Conn>;
 
