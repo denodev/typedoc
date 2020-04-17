@@ -95,20 +95,17 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/d86d267/lib.deno.ns.d.ts#L541">lib.deno.ns.d.ts:541</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L535">lib.deno.ns.d.ts:535</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead tsd_en">
-								<p>Seek sets the offset for the next <code>readSync()</code> or <code>writeSync()</code> to
-									offset, interpreted according to <code>whence</code>: <code>SEEK_START</code> means relative
-									to the start of the file, <code>SEEK_CURRENT</code> means relative to the current
-								offset, and <code>SEEK_END</code> means relative to the end.</p>
+								<p>设置下一个 <code>read()</code> 或 <code>write()</code> 的偏移量，根据 <code>whence</code> 进行决定从哪个位置开始偏移：
+								<code>SEEK_START</code> 表示相对于文件开头，<code>SEEK_CURRENT</code> 表示相对于当前位置，<code>SEEK_END</code> 表示相对于文件末尾。</p>
 							</div>
 							<div class="tsd_en">
-								<p>Seeking to an offset before the start of the file is an error. Seeking to
-									any positive offset is legal, but the behavior of subsequent I/O
-								operations on the underlying object is implementation-dependent.</p>
+								<p>把偏移量设置到文件开始之前是错误的。
+								设置任何正偏移都是合法的，但是对于之后的 I/O 操作的行为则取决于实现。</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">参数</h4>

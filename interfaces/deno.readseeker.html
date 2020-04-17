@@ -102,7 +102,7 @@
 						<aside class="tsd-sources">
 							<p>继承自 <a href="deno.reader.html">Reader</a>.<a href="deno.reader.html#read">read</a></p>
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/d86d267/lib.deno.ns.d.ts#L468">lib.deno.ns.d.ts:468</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L468">lib.deno.ns.d.ts:468</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -140,22 +140,19 @@
 						<aside class="tsd-sources">
 							<p>继承自 <a href="deno.seeker.html">Seeker</a>.<a href="deno.seeker.html#seek">seek</a></p>
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/d86d267/lib.deno.ns.d.ts#L528">lib.deno.ns.d.ts:528</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L525">lib.deno.ns.d.ts:525</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead tsd_en">
-								<p>Seek sets the offset for the next <code>read()</code> or <code>write()</code> to offset,
-									interpreted according to <code>whence</code>: <code>SEEK_START</code> means relative to the
-									start of the file, <code>SEEK_CURRENT</code> means relative to the current offset,
-									and <code>SEEK_END</code> means relative to the end. Seek resolves to the new offset
-								relative to the start of the file.</p>
+								<p>设置下一个 <code>read()</code> 或 <code>write()</code> 的偏移量，根据 <code>whence</code> 进行决定从哪个位置开始偏移：
+									<code>SEEK_START</code> 表示相对于文件开头，<code>SEEK_CURRENT</code> 表示相对于当前位置，<code>SEEK_END</code> 表示相对于文件末尾。
+								Seek 解析（resolve）的值为相对于文件开头的新偏移量。</p>
 							</div>
 							<div class="tsd_en">
-								<p>Seeking to an offset before the start of the file is an error. Seeking to
-									any positive offset is legal, but the behavior of subsequent I/O
-									operations on the underlying object is implementation-dependent.
-								It returns the number of cursor position.</p>
+								<p>把偏移量设置到文件开始之前是错误的。
+									设置任何正偏移都是合法的，但是对于之后的 I/O 操作的行为则取决于实现。
+								它返回设置之后的偏移位置。</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">参数</h4>
