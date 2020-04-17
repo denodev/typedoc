@@ -2520,35 +2520,28 @@ declare namespace Deno {
     types?: string[];
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**：新的 API，尚待审核。
    *
-   * The results of a transpile only command, where the `source` contains the
-   * emitted source, and `map` optionally contains the source map. */
+   * transpile only 命令的结果，其中 `source`
+   * 为转化后的源码，而 `map` 则为源码的 source map。*/
   export interface TranspileOnlyResult {
     source: string;
     map?: string;
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**：新的 API，尚待审核。
    *
-   * Takes a set of TypeScript sources and resolves to a map where the key was
-   * the original file name provided in sources and the result contains the
-   * `source` and optionally the `map` from the transpile operation. This does no
-   * type checking and validation, it effectively "strips" the types from the
-   * file.
+   * 给定一组 TypeScript 类型的源码 (sources)，返回解析后的映射，
+   * 其中的 key 是 sources 的 key，结果则包含转化过的源码及源码的 source map。
+   * 此函数并不进行类型校检，它可以有效地从文件中 “删除” 类型。
    *
    *      const results =  await Deno.transpileOnly({
    *        "foo.ts": `const foo: string = "foo";`
    *      });
    *
-   * @param sources A map where the key is the filename and the value is the text
-   *                to transpile. The filename is only used in the transpile and
-   *                not resolved, for example to fill in the source name in the
-   *                source map.
-   * @param options An option object of options to send to the compiler. This is
-   *                a subset of ts.CompilerOptions which can be supported by Deno.
-   *                Many of the options related to type checking and emitting
-   *                type declaration files will have no impact on the output.
+   * @param sources key 是文件名，value 是要转换的源码。
+   *                文件扩展名并不会被解析，仅用作解析结果的 key。
+   * @param options 编译选项。这是可以被 Deno 支持的 ts.CompilerOptions 选项的一个子集。
    */
   export function transpileOnly(
     sources: Record<string, string>,
