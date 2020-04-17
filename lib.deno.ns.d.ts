@@ -681,9 +681,8 @@ declare namespace Deno {
    */
   export function write(rid: number, data: Uint8Array): Promise<number>;
 
-  /** Synchronously seek a resource ID (`rid`) to the given `offset` under mode
-   * given by `whence`.  The new position within the resource (bytes from the
-   * start) is returned.
+  /** 同步方式，在给定查询模式 `whence` 和偏移量 `offset` 的情况下，查找指定的资源 ID（`rid`）。
+   * 函数将解析并返回光标在资源中的新位置（从头开始的字节数）。
    *
    *        const file = Deno.openSync('hello.txt', {read: true, write: true, truncate: true, create: true});
    *        Deno.writeSync(file.rid, new TextEncoder().encode("Hello world"));
@@ -694,14 +693,14 @@ declare namespace Deno {
    *        file.readSync(buf);
    *        console.log(new TextDecoder().decode(buf)); // "world"
    *
-   * The seek modes work as follows:
+   * seek modes 的工作方式如下:
    *
-   *        // Given file.rid pointing to file with "Hello world", which is 11 bytes long:
-   *        // Seek 6 bytes from the start of the file
+   *        // 给定内容为 "Hello world" 的 file.rid 文件，该文件长度为11个字节。
+   *        // 从文件开头移动 6 个字节
    *        console.log(Deno.seekSync(file.rid, 6, Deno.SeekMode.SEEK_START)); // "6"
-   *        // Seek 2 more bytes from the current position
+   *        // 从当前位置再移动 2 个字节
    *        console.log(Deno.seekSync(file.rid, 2, Deno.SeekMode.SEEK_CURRENT)); // "8"
-   *        // Seek backwards 2 bytes from the end of the file
+   *        // 从文件末尾向后移动 2 个字节
    *        console.log(Deno.seekSync(file.rid, -2, Deno.SeekMode.SEEK_END)); // "9" (e.g. 11-2)
    */
   export function seekSync(
@@ -710,26 +709,26 @@ declare namespace Deno {
     whence: SeekMode
   ): number;
 
-  /** Seek a resource ID (`rid`) to the given `offset` under mode given by `whence`.
-   * The call resolves to the new position within the resource (bytes from the start).
+  /** 在给定查询模式 `whence` 和偏移量 `offset` 的情况下，查找指定的资源 ID（`rid`）。
+   * 函数将解析并返回光标在资源中的新位置（从头开始的字节数）。
    *
    *        const file = await Deno.open('hello.txt', {read: true, write: true, truncate: true, create: true});
    *        await Deno.write(file.rid, new TextEncoder().encode("Hello world"));
-   *        // advance cursor 6 bytes
+   *        // 光标前进 6 个字节
    *        const cursorPosition = await Deno.seek(file.rid, 6, Deno.SeekMode.SEEK_START);
    *        console.log(cursorPosition);  // 6
    *        const buf = new Uint8Array(100);
    *        await file.read(buf);
    *        console.log(new TextDecoder().decode(buf)); // "world"
    *
-   * The seek modes work as follows:
+   * seek modes 的工作方式如下:
    *
-   *        // Given file.rid pointing to file with "Hello world", which is 11 bytes long:
-   *        // Seek 6 bytes from the start of the file
+   *        // 给定内容为 "Hello world" 的 file.rid 文件，该文件长度为11个字节。
+   *        // 从文件开头移动 6 个字节
    *        console.log(await Deno.seek(file.rid, 6, Deno.SeekMode.SEEK_START)); // "6"
-   *        // Seek 2 more bytes from the current position
+   *        // 从当前位置再移动 2 个字节
    *        console.log(await Deno.seek(file.rid, 2, Deno.SeekMode.SEEK_CURRENT)); // "8"
-   *        // Seek backwards 2 bytes from the end of the file
+   *        // 从文件末尾向后移动 2 个字节
    *        console.log(await Deno.seek(file.rid, -2, Deno.SeekMode.SEEK_END)); // "9" (e.g. 11-2)
    */
   export function seek(
