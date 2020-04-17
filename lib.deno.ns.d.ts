@@ -1530,7 +1530,7 @@ declare namespace Deno {
   interface Location {
     /** 模块的完整 url，例如：`file://some/file.ts` 抑或是 `https://some/file.ts`。*/
     filename: string;
-    /** 在文件中的行号，从1开始索引。*/
+    /** 在文件中的行号，从 1 开始索引。*/
     line: number;
     /** 在文件中的列号，从1开始索引。*/
     column: number;
