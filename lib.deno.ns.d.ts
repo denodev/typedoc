@@ -1155,7 +1155,7 @@ declare namespace Deno {
   ): void;
 
   /** **UNSTABLE**: 需要调研高精度的 time。
-   * 
+   *
    * 基于文件系统的 `path` 改变访问 (`atime`) 和修改 (`mtime`) 的时间。
    * 给定的时间以秒 （UNIX epoch time） 为单位或着是 `Date` 对象。
    *
@@ -1923,26 +1923,26 @@ declare namespace Deno {
   ): Promise<Conn>;
 
   export interface ConnectTLSOptions {
-    /** The port to connect to. */
+    /** 要连接的端口号。 */
+
     port: number;
-    /** A literal IP address or host name that can be resolved to an IP address.
-     * If not specified, defaults to `127.0.0.1`. */
+    /** 一个 IP 地址或者可以被解析为 IP 地址的主机名。
+     * 如果没有指定，默认值为 `0.0.0.0`。 */
     hostname?: string;
-    /** Server certificate file. */
+    /** 服务器证书文件。 */
+
     certFile?: string;
   }
 
-  /** Establishes a secure connection over TLS (transport layer security) using
-   * an optional cert file, hostname (default is "127.0.0.1") and port.  The
-   * cert file is optional and if not included Mozilla's root certificates will
-   * be used (see also https://github.com/ctz/webpki-roots for specifics)
+  /** 使用可选的证书文件，主机名（默认为 "127.0.0.1" ）和端口号在 TLS （传输层安全性协议）上建立安全连接。
+   * 如果未使用可选的证书文件，则将使用 Mozilla 的根证书（有关详细信息，请参考 https://github.com/ctz/webpki-roots ）
    *
    *     const conn1 = await Deno.connectTLS({ port: 80 });
    *     const conn2 = await Deno.connectTLS({ certFile: "./certs/my_custom_root_CA.pem", hostname: "192.0.2.1", port: 80 });
    *     const conn3 = await Deno.connectTLS({ hostname: "[2001:db8::1]", port: 80 });
    *     const conn4 = await Deno.connectTLS({ certFile: "./certs/my_custom_root_CA.pem", hostname: "golang.org", port: 80});
    *
-   * Requires `allow-net` permission.
+   * 需要 `allow-net` 权限。
    */
   export function connectTLS(options: ConnectTLSOptions): Promise<Conn>;
 
@@ -2038,11 +2038,11 @@ declare namespace Deno {
   type ProcessStdio = "inherit" | "piped" | "null";
 
   /** **UNSTABLE**: `signo` 参数可能需要改成 Deno.Signal 枚举。
-   * 
+   *
    * 给指定的 `pid` 进程发送信号。这个功能目前只在 Linux 和 Mac OS 上运行。
    *
    * 当 `pid` 是负的，信号将会发送到带有 `pid` 标识的进程组。
-   * 
+   *
    *      const p = Deno.run({
    *        cmd: ["python", "-c", "from time import sleep; sleep(10000)"]
    *      });
@@ -2050,7 +2050,7 @@ declare namespace Deno {
    *      Deno.kill(p.pid, Deno.Signal.SIGINT);
    *
    * 在 Windows 上抛出错误（尚未实现）。
-   * 
+   *
    * 需要 `allow-run` 权限。 */
   export function kill(pid: number, signo: number): void;
 
