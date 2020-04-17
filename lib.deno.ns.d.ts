@@ -2557,8 +2557,8 @@ declare namespace Deno {
 
   /** **不稳定**：新的 API，尚待审核。
    *
-   * 它接受根模块名 rootName，及 record 类型的可选参数 sources 做为模块源。
-   * 返回编译后的模块集合及编译过程中遇到的问题的诊断信息。
+   * 它接受根模块名 rootName，及 Record<string, string> 类型的可选参数
+   * sources 做为模块源。返回编译后的模块集合及编译过程中遇到的问题的诊断信息。
    *
    * 如果仅传了 rootName，那么模块解析结果同命令行一致。
    *
