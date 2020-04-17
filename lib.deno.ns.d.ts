@@ -2253,7 +2253,7 @@ declare namespace Deno {
   /** Deno 的详细版本信息。包括了 deno、v8、typescript。 */
   export const version: Version;
 
-  /** The log category for a diagnostic message. */
+  /** 诊断消息的日志类别。 */
   export enum DiagnosticCategory {
     Log = 0,
     Debug = 1,
@@ -2271,48 +2271,46 @@ declare namespace Deno {
   }
 
   export interface DiagnosticItem {
-    /** A string message summarizing the diagnostic. */
+    /** 诊断信息总结。*/
     message: string;
-    /** An ordered array of further diagnostics. */
+    /** 进一步诊断的有序数组。*/
     messageChain?: DiagnosticMessageChain;
-    /** Information related to the diagnostic. This is present when there is a
-     * suggestion or other additional diagnostic information */
+    /** 与诊断相关的信息。当有建议或其他附加诊断信息时会出现。*/
     relatedInformation?: DiagnosticItem[];
-    /** The text of the source line related to the diagnostic. */
+    /** 与诊断相关的源代码。*/
     sourceLine?: string;
-    /** The line number that is related to the diagnostic. */
+    /** 与诊断相关的行号。*/
     lineNumber?: number;
-    /** The name of the script resource related to the diagnostic. */
+    /** 与诊断相关的文件名称。*/
     scriptResourceName?: string;
-    /** The start position related to the diagnostic. */
+    /** 与诊断相关的起始位置。*/
     startPosition?: number;
-    /** The end position related to the diagnostic. */
+    /** 与诊断相关的结束位置。*/
     endPosition?: number;
-    /** The category of the diagnostic. */
+    /** 诊断消息的日志类别。*/
     category: DiagnosticCategory;
-    /** A number identifier. */
+    /** 数字标识符。*/
     code: number;
-    /** The the start column of the sourceLine related to the diagnostic. */
+    /** 与诊断相关的 sourceLine 的开始列。*/
     startColumn?: number;
-    /** The end column of the sourceLine related to the diagnostic. */
+    /** 与诊断相关的 sourceLine 的结束列。*/
     endColumn?: number;
   }
 
   export interface Diagnostic {
-    /** An array of diagnostic items. */
+    /** 诊断信息数组。*/
     items: DiagnosticItem[];
   }
 
-  /** **UNSTABLE**: new API, yet to be vetted.
+  /** **不稳定**: 新 API，没有经过审查。
    *
-   * Format an array of diagnostic items and return them as a single string in a
-   * user friendly format.
+   * 格式化诊断信息数组，并以用户友好的格式将其作为单个字符串返回。
    *
    *       const [diagnostics, result] = Deno.compile("file_with_compile_issues.ts");
-   *       console.table(diagnostics);  //Prints raw diagnostic data
-   *       console.log(Deno.formatDiagnostics(diagnostics));  //User friendly output of diagnostics
+   *       console.table(diagnostics);  // 输出原始诊断信息
+   *       console.log(Deno.formatDiagnostics(diagnostics));  // 用户友好方式的输出诊断信息
    *
-   * @param items An array of diagnostic items to format
+   * @param items 要格式化的诊断信息数组
    */
   export function formatDiagnostics(items: DiagnosticItem[]): string;
 
