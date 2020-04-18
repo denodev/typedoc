@@ -1236,71 +1236,67 @@ declare namespace Deno {
    * 需要 `allow-read` 权限。 */
   export function readFile(path: string): Promise<Uint8Array>;
 
-  /** A FileInfo describes a file and is returned by `stat`, `lstat`,
-   * `statSync`, `lstatSync`. A list of FileInfo is returned by `readdir`,
-   * `readdirSync`. */
+  /** FileInfo 用于描述 `stat`, `lstat`,
+   * `statSync`, `lstatSync` 函数返回的文件信息。而 `readdir`,
+   * `readdirSync` 返回的信息则用 FileInfo 列表来描述。 */
   export interface FileInfo {
-    /** The size of the file, in bytes. */
+    /** 文件的大小，单位 byte。 */
     size: number;
-    /** The last modification time of the file. This corresponds to the `mtime`
-     * field from `stat` on Linux/Mac OS and `ftLastWriteTime` on Windows. This
-     * may not be available on all platforms. */
+    /** 文件最后修改时间。
+     * 在 Linux/Mac 系统这个值是 `mtime`，在 Windows 系统这个值是 `ftLastWriteTime`。
+     * 在某些系统中这个属性可能不存在。 */
     modified: number | null;
-    /** The last access time of the file. This corresponds to the `atime`
-     * field from `stat` on Unix and `ftLastAccessTime` on Windows. This may not
-     * be available on all platforms. */
+    /** 文件最后访问时间。
+     * 在 Linux/Mac 系统这个值是 `atime`，在 Windows 系统这个值是 `ftLastAccessTime`。
+     * 在某些系统中这个属性可能不存在。 */
     accessed: number | null;
-    /** The last access time of the file. This corresponds to the `birthtime`
-     * field from `stat` on Mac/BSD and `ftCreationTime` on Windows. This may not
-     * be available on all platforms. */
+    /** 文件的创建时间。
+     * 在 Linux/Mac 系统这个值是 `birthtime`，在 Windows 系统这个值是 `ftCreationTime`。
+     * 在某些系统中这个属性可能不存在。*/
     created: number | null;
-    /** The file or directory name. */
+    /** 文件名或目录名。 */
     name: string | null;
-    /** ID of the device containing the file.
+    /** 包含此文件的设备的 ID。
      *
-     * _Linux/Mac OS only._ */
+     * _只在 Linux/Mac OS 有效。_ */
     dev: number | null;
-    /** Inode number.
+    /** Inode 值。
      *
-     * _Linux/Mac OS only._ */
+     * _只在 Linux/Mac OS 有效。_ */
     ino: number | null;
-    /** **UNSTABLE**: Match behavior with Go on Windows for `mode`.
+    /** **不稳定**: 将此属性的行为与 Windows 上的 Go 相匹配。
      *
-     * The underlying raw `st_mode` bits that contain the standard Unix
-     * permissions for this file/directory. */
+     * 该文件或目录的权限位，返回标准的 Unix 底层 `st_mode` 位。 */
     mode: number | null;
-    /** Number of hard links pointing to this file.
+    /** 文件的硬链接数。
      *
-     * _Linux/Mac OS only._ */
+     * _只在 Linux/Mac OS 有效。_ */
     nlink: number | null;
-    /** User ID of the owner of this file.
+    /** 拥有该文件的用户的 uid。
      *
-     * _Linux/Mac OS only._ */
+     * _只在 Linux/Mac OS 有效。_ */
     uid: number | null;
-    /** User ID of the owner of this file.
+    /** 拥有该文件的用户组的 gid。
      *
-     * _Linux/Mac OS only._ */
+     * _只在 Linux/Mac OS 有效。_ */
     gid: number | null;
-    /** Device ID of this file.
+    /** 文件设备标识符 ID。
      *
-     * _Linux/Mac OS only._ */
+     * _只在 Linux/Mac OS 有效。_ */
     rdev: number | null;
-    /** Blocksize for filesystem I/O.
+    /** 用于 I/O 操作的文件系统块的大小。
      *
-     * _Linux/Mac OS only._ */
+     * _只在 Linux/Mac OS 有效。_ */
     blksize: number | null;
-    /** Number of blocks allocated to the file, in 512-byte units.
+    /** 为此文件分配的块数，此值是一个 512 字节单位。
      *
-     * _Linux/Mac OS only._ */
+     * _只在 Linux/Mac OS 有效。_ */
     blocks: number | null;
-    /** Returns whether this is info for a regular file. This result is mutually
-     * exclusive to `FileInfo.isDirectory` and `FileInfo.isSymlink`. */
+    /** 判断文件是否为一个常规文件。该结果与 `FileInfo.isDirectory` 和 `FileInfo.isSymlink` 互斥。 */
     isFile(): boolean;
-    /** Returns whether this is info for a regular directory. This result is
-     * mutually exclusive to `FileInfo.isFile` and `FileInfo.isSymlink`. */
+    /** 判断文件是否为一个常规目录。该结果与 `FileInfo.isFile` 和 `FileInfo.isSymlink` 互斥。 */
     isDirectory(): boolean;
-    /** Returns whether this is info for a symlink. This result is
-     * mutually exclusive to `FileInfo.isFile` and `FileInfo.isDirectory`. */
+    /** 判断文件是否为一个符号链接。该结果与 `FileInfo.isDirectory` 和 `FileInfo.isDirectory` 互斥。 */
     isSymlink(): boolean;
   }
 
