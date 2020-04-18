@@ -107,9 +107,9 @@
 		<section class="tsd-panel tsd-comment">
 			<div class="tsd-comment tsd-typography">
 				<div class="lead tsd_en">
-					<p>A FileInfo describes a file and is returned by <code>stat</code>, <code>lstat</code>,
-						<code>statSync</code>, <code>lstatSync</code>. A list of FileInfo is returned by <code>readdir</code>,
-					<code>readdirSync</code>.</p>
+					<p>FileInfo 用于描述 <code>stat</code>, <code>lstat</code>,
+						<code>statSync</code>, <code>lstatSync</code> 函数返回的文件信息。而 <code>readdir</code>,
+					<code>readdirSync</code> 返回的信息则用 FileInfo 列表来描述。</p>
 				</div>
 			</div>
 		</section>
@@ -163,14 +163,14 @@
 				<div class="tsd-signature tsd-kind-icon">accessed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1252">lib.deno.ns.d.ts:1252</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1252">lib.deno.ns.d.ts:1252</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>The last access time of the file. This corresponds to the <code>atime</code>
-							field from <code>stat</code> on Unix and <code>ftLastAccessTime</code> on Windows. This may not
-						be available on all platforms.</p>
+						<p>文件最后访问时间。
+							在 Linux/Mac 系统这个值是 <code>atime</code>，在 Windows 系统这个值是 <code>ftLastAccessTime</code>。
+						在某些系统中这个属性可能不存在。</p>
 					</div>
 				</div>
 			</section>
@@ -180,15 +180,15 @@
 				<div class="tsd-signature tsd-kind-icon">blksize<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1291">lib.deno.ns.d.ts:1291</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1290">lib.deno.ns.d.ts:1290</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>Blocksize for filesystem I/O.</p>
+						<p>用于 I/O 操作的文件系统块的大小。</p>
 					</div>
 					<div class="tsd_en">
-						<p><em>Linux/Mac OS only.</em></p>
+						<p><em>只在 Linux/Mac OS 有效。</em></p>
 					</div>
 				</div>
 			</section>
@@ -198,15 +198,15 @@
 				<div class="tsd-signature tsd-kind-icon">blocks<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1295">lib.deno.ns.d.ts:1295</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1294">lib.deno.ns.d.ts:1294</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>Number of blocks allocated to the file, in 512-byte units.</p>
+						<p>为此文件分配的块数，此值是一个 512 字节单位。</p>
 					</div>
 					<div class="tsd_en">
-						<p><em>Linux/Mac OS only.</em></p>
+						<p><em>只在 Linux/Mac OS 有效。</em></p>
 					</div>
 				</div>
 			</section>
@@ -216,14 +216,14 @@
 				<div class="tsd-signature tsd-kind-icon">created<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1256">lib.deno.ns.d.ts:1256</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1256">lib.deno.ns.d.ts:1256</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>The last access time of the file. This corresponds to the <code>birthtime</code>
-							field from <code>stat</code> on Mac/BSD and <code>ftCreationTime</code> on Windows. This may not
-						be available on all platforms.</p>
+						<p>文件的创建时间。
+							在 Linux/Mac 系统这个值是 <code>birthtime</code>，在 Windows 系统这个值是 <code>ftCreationTime</code>。
+						在某些系统中这个属性可能不存在。</p>
 					</div>
 				</div>
 			</section>
@@ -233,15 +233,15 @@
 				<div class="tsd-signature tsd-kind-icon">dev<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1262">lib.deno.ns.d.ts:1262</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1262">lib.deno.ns.d.ts:1262</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>ID of the device containing the file.</p>
+						<p>包含此文件的设备的 ID。</p>
 					</div>
 					<div class="tsd_en">
-						<p><em>Linux/Mac OS only.</em></p>
+						<p><em>只在 Linux/Mac OS 有效。</em></p>
 					</div>
 				</div>
 			</section>
@@ -251,15 +251,15 @@
 				<div class="tsd-signature tsd-kind-icon">gid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1283">lib.deno.ns.d.ts:1283</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1282">lib.deno.ns.d.ts:1282</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>User ID of the owner of this file.</p>
+						<p>拥有该文件的用户组的 gid。</p>
 					</div>
 					<div class="tsd_en">
-						<p><em>Linux/Mac OS only.</em></p>
+						<p><em>只在 Linux/Mac OS 有效。</em></p>
 					</div>
 				</div>
 			</section>
@@ -269,15 +269,15 @@
 				<div class="tsd-signature tsd-kind-icon">ino<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1266">lib.deno.ns.d.ts:1266</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1266">lib.deno.ns.d.ts:1266</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>Inode number.</p>
+						<p>Inode 值。</p>
 					</div>
 					<div class="tsd_en">
-						<p><em>Linux/Mac OS only.</em></p>
+						<p><em>只在 Linux/Mac OS 有效。</em></p>
 					</div>
 				</div>
 			</section>
@@ -287,16 +287,15 @@
 				<div class="tsd-signature tsd-kind-icon">mode<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1271">lib.deno.ns.d.ts:1271</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1270">lib.deno.ns.d.ts:1270</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p><em>UNSTABLE*</em>: Match behavior with Go on Windows for <code>mode</code>.</p>
+						<p><em>不稳定*</em>: 将此属性的行为与 Windows 上的 Go 相匹配。</p>
 					</div>
 					<div class="tsd_en">
-						<p>The underlying raw <code>st_mode</code> bits that contain the standard Unix
-						permissions for this file/directory.</p>
+						<p>该文件或目录的权限位，返回标准的 Unix 底层 <code>st_mode</code> 位。</p>
 					</div>
 				</div>
 			</section>
@@ -306,14 +305,14 @@
 				<div class="tsd-signature tsd-kind-icon">modified<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1248">lib.deno.ns.d.ts:1248</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1248">lib.deno.ns.d.ts:1248</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>The last modification time of the file. This corresponds to the <code>mtime</code>
-							field from <code>stat</code> on Linux/Mac OS and <code>ftLastWriteTime</code> on Windows. This
-						may not be available on all platforms.</p>
+						<p>文件最后修改时间。
+							在 Linux/Mac 系统这个值是 <code>mtime</code>，在 Windows 系统这个值是 <code>ftLastWriteTime</code>。
+						在某些系统中这个属性可能不存在。</p>
 					</div>
 				</div>
 			</section>
@@ -323,12 +322,12 @@
 				<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1258">lib.deno.ns.d.ts:1258</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1258">lib.deno.ns.d.ts:1258</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>The file or directory name.</p>
+						<p>文件名或目录名。</p>
 					</div>
 				</div>
 			</section>
@@ -338,15 +337,15 @@
 				<div class="tsd-signature tsd-kind-icon">nlink<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1275">lib.deno.ns.d.ts:1275</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1274">lib.deno.ns.d.ts:1274</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>Number of hard links pointing to this file.</p>
+						<p>文件的硬链接数。</p>
 					</div>
 					<div class="tsd_en">
-						<p><em>Linux/Mac OS only.</em></p>
+						<p><em>只在 Linux/Mac OS 有效。</em></p>
 					</div>
 				</div>
 			</section>
@@ -356,15 +355,15 @@
 				<div class="tsd-signature tsd-kind-icon">rdev<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1287">lib.deno.ns.d.ts:1287</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1286">lib.deno.ns.d.ts:1286</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>Device ID of this file.</p>
+						<p>文件设备标识符 ID。</p>
 					</div>
 					<div class="tsd_en">
-						<p><em>Linux/Mac OS only.</em></p>
+						<p><em>只在 Linux/Mac OS 有效。</em></p>
 					</div>
 				</div>
 			</section>
@@ -374,12 +373,12 @@
 				<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1244">lib.deno.ns.d.ts:1244</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1244">lib.deno.ns.d.ts:1244</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>The size of the file, in bytes.</p>
+						<p>文件的大小，单位 byte。</p>
 					</div>
 				</div>
 			</section>
@@ -389,15 +388,15 @@
 				<div class="tsd-signature tsd-kind-icon">uid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1279">lib.deno.ns.d.ts:1279</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1278">lib.deno.ns.d.ts:1278</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead tsd_en">
-						<p>User ID of the owner of this file.</p>
+						<p>拥有该文件的用户的 uid。</p>
 					</div>
 					<div class="tsd_en">
-						<p><em>Linux/Mac OS only.</em></p>
+						<p><em>只在 Linux/Mac OS 有效。</em></p>
 					</div>
 				</div>
 			</section>
@@ -414,13 +413,12 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1301">lib.deno.ns.d.ts:1301</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1298">lib.deno.ns.d.ts:1298</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead tsd_en">
-								<p>Returns whether this is info for a regular directory. This result is
-								mutually exclusive to <code>FileInfo.isFile</code> and <code>FileInfo.isSymlink</code>.</p>
+								<p>判断文件是否为一个常规目录。该结果与 <code>FileInfo.isFile</code> 和 <code>FileInfo.isSymlink</code> 互斥。</p>
 							</div>
 						</div>
 						<h4 class="tsd-returns-title">返回 <span class="tsd-signature-type">boolean</span></h4>
@@ -437,13 +435,12 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1298">lib.deno.ns.d.ts:1298</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1296">lib.deno.ns.d.ts:1296</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead tsd_en">
-								<p>Returns whether this is info for a regular file. This result is mutually
-								exclusive to <code>FileInfo.isDirectory</code> and <code>FileInfo.isSymlink</code>.</p>
+								<p>判断文件是否为一个常规文件。该结果与 <code>FileInfo.isDirectory</code> 和 <code>FileInfo.isSymlink</code> 互斥。</p>
 							</div>
 						</div>
 						<h4 class="tsd-returns-title">返回 <span class="tsd-signature-type">boolean</span></h4>
@@ -460,13 +457,12 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/3be78fe/lib.deno.ns.d.ts#L1304">lib.deno.ns.d.ts:1304</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/c70f65f/lib.deno.ns.d.ts#L1300">lib.deno.ns.d.ts:1300</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead tsd_en">
-								<p>Returns whether this is info for a symlink. This result is
-								mutually exclusive to <code>FileInfo.isFile</code> and <code>FileInfo.isDirectory</code>.</p>
+								<p>判断文件是否为一个符号链接。该结果与 <code>FileInfo.isDirectory</code> 和 <code>FileInfo.isDirectory</code> 互斥。</p>
 							</div>
 						</div>
 						<h4 class="tsd-returns-title">返回 <span class="tsd-signature-type">boolean</span></h4>
