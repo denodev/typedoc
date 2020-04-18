@@ -1523,21 +1523,18 @@ declare namespace Deno {
     column: number;
   }
 
-  /** UNSTABLE: new API, yet to be vetted.
+  /** 不稳定: 新 API，尚待审查。
    *
-   * Given a current location in a module, lookup the source location and return
-   * it.
+   * 给定模块中的当前位置，返回查找到的源文件中位置。
    *
-   * When Deno transpiles code, it keep source maps of the transpiled code. This
-   * function can be used to lookup the original location. This is
-   * automatically done when accessing the `.stack` of an error, or when an
-   * uncaught error is logged. This function can be used to perform the lookup
-   * for creating better error handling.
+   * 当 Deno 编译代码时，它将保留已编译代码的 source maps。
+   * 此功能可用于查找原始位置。
+   * 当访问 error 的 `.stack` 属性或出现未捕获的错误时，会自动执行此操作。
+   * 此功能可用于查找源文件以创建更好的错误处理。
    *
-   * **Note:** `line` and `column` are 1 indexed, which matches display
-   * expectations, but is not typical of most index numbers in Deno.
+   * **注意:** `line` 和 `column` 的下标从 1 开始，与代码的显示值匹配，但这种以 1 开始的索引方式并不代表 Deno 中大多数文件都是如此。
    *
-   * An example:
+   * 示例:
    *
    *       const orig = Deno.applySourceMap({
    *         location: "file://my/module.ts",
