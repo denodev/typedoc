@@ -1236,71 +1236,71 @@ declare namespace Deno {
    * 需要 `allow-read` 权限。 */
   export function readFile(path: string): Promise<Uint8Array>;
 
-  /** A FileInfo describes a file and is returned by `stat`, `lstat`,
-   * `statSync`, `lstatSync`. A list of FileInfo is returned by `readdir`,
-   * `readdirSync`. */
+  /** FileInfo 是文件描述信息。它是 `stat`、`lstat`、
+   * `statSync`、`lstatSync` 函数的返回值类型，并且
+   * 其数组形式是 `readdir`、`readdirSync` 返回值类型。*/
   export interface FileInfo {
-    /** The size of the file, in bytes. */
+    /** 文件的大小，以字节为单位。*/
     size: number;
-    /** The last modification time of the file. This corresponds to the `mtime`
-     * field from `stat` on Linux/Mac OS and `ftLastWriteTime` on Windows. This
-     * may not be available on all platforms. */
+    /** 文件的最后修改时间。这对应于 Linux/Mac OS 上
+     * 的 `stat` 中的 `mtime` 字段 和 Windows 上
+     * `ftLastWriteTime`。这可能不适用于所有平台。*/
     modified: number | null;
-    /** The last access time of the file. This corresponds to the `atime`
-     * field from `stat` on Unix and `ftLastAccessTime` on Windows. This may not
-     * be available on all platforms. */
+    /** 文件的最后访问时间。这对应于 Linux/Mac OS 上
+     * 的 `stat` 中 `atime` 字段 和 Windows 上
+     * `ftLastAccessTime`。这可能不适用于所有平台。*/
     accessed: number | null;
-    /** The last access time of the file. This corresponds to the `birthtime`
-     * field from `stat` on Mac/BSD and `ftCreationTime` on Windows. This may not
-     * be available on all platforms. */
+    /** 文件的创建时间。这对应于 Mac/BSD 上的 `stat`
+     * 的 `birthtime` 和 Windows 上的 `ftCreationTime`。
+     * 这可能不适用于所有平台。*/
     created: number | null;
-    /** The file or directory name. */
+    /** 文件或目录名。*/
     name: string | null;
-    /** ID of the device containing the file.
+    /** 包含此文件的设备的 ID。
      *
-     * _Linux/Mac OS only._ */
+     * 仅适用于 Linux/Mac OS。*/
     dev: number | null;
-    /** Inode number.
+    /** inode 索引节点。
      *
-     * _Linux/Mac OS only._ */
+     * 仅适用于 Linux/Mac OS。*/
     ino: number | null;
     /** **UNSTABLE**: Match behavior with Go on Windows for `mode`.
      *
      * The underlying raw `st_mode` bits that contain the standard Unix
      * permissions for this file/directory. */
     mode: number | null;
-    /** Number of hard links pointing to this file.
+    /** 指向此文件的硬链接数。
      *
-     * _Linux/Mac OS only._ */
+     * 仅适用于 Linux/Mac OS。*/
     nlink: number | null;
-    /** User ID of the owner of this file.
+    /** 此文件所有者的 User ID。
      *
-     * _Linux/Mac OS only._ */
+     * 仅适用于 Linux/Mac OS。*/
     uid: number | null;
-    /** User ID of the owner of this file.
+    /** 此文件所有者的 Group ID.
      *
-     * _Linux/Mac OS only._ */
+     * 仅适用于 Linux/Mac OS。*/
     gid: number | null;
-    /** Device ID of this file.
+    /** 该文件的设备 ID。
      *
-     * _Linux/Mac OS only._ */
+     * 仅适用于 Linux/Mac OS。*/
     rdev: number | null;
-    /** Blocksize for filesystem I/O.
+    /** 文件系统 I/O 的块大小。
      *
-     * _Linux/Mac OS only._ */
+     * 仅适用于 Linux/Mac OS。*/
     blksize: number | null;
-    /** Number of blocks allocated to the file, in 512-byte units.
+    /** 分配给文件的块数，以 512 个字节为单位。
      *
-     * _Linux/Mac OS only._ */
+     * 仅适用于 Linux/Mac OS。*/
     blocks: number | null;
-    /** Returns whether this is info for a regular file. This result is mutually
-     * exclusive to `FileInfo.isDirectory` and `FileInfo.isSymlink`. */
+    /** 返回是否是一个普通文件。这个结果与
+     * `FileInfo.isDirectory` 和 `FileInfo.isSymlink` 排斥。*/
     isFile(): boolean;
-    /** Returns whether this is info for a regular directory. This result is
-     * mutually exclusive to `FileInfo.isFile` and `FileInfo.isSymlink`. */
+    /** 返回是否是一个常规目录。这个结果与
+     * `FileInfo.isFile` 和 `FileInfo.isSymlink` 排斥。*/
     isDirectory(): boolean;
-    /** Returns whether this is info for a symlink. This result is
-     * mutually exclusive to `FileInfo.isFile` and `FileInfo.isDirectory`. */
+    /** 返回是否是一个符号链接。这个结果与
+     * `FileInfo.isFile` and `FileInfo.isDirectory` 排斥。*/
     isSymlink(): boolean;
   }
 
