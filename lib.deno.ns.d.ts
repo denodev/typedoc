@@ -2251,29 +2251,29 @@ declare namespace Deno {
   }
 
   export interface DiagnosticItem {
-    /** 诊断信息总结。*/
+    /** 诊断信息。*/
     message: string;
     /** 进一步诊断的有序数组。*/
     messageChain?: DiagnosticMessageChain;
     /** 与诊断相关的信息。当有建议或其他附加诊断信息时会出现。*/
     relatedInformation?: DiagnosticItem[];
-    /** 与诊断相关的源代码。*/
+    /** 与诊断相关的所在行的源代码。*/
     sourceLine?: string;
     /** 与诊断相关的行号。*/
     lineNumber?: number;
     /** 与诊断相关的文件名称。*/
     scriptResourceName?: string;
-    /** 与诊断相关的起始位置。*/
+    /** 与诊断相关的位于整个文件的开始位置。*/
     startPosition?: number;
-    /** 与诊断相关的结束位置。*/
+    /** 与诊断相关的位于整个文件的结束位置。*/
     endPosition?: number;
     /** 诊断消息的日志类别。*/
     category: DiagnosticCategory;
     /** 数字标识符。*/
     code: number;
-    /** 与诊断相关的 sourceLine 的开始列。*/
+    /** 与诊断相关的所在行的开始列。*/
     startColumn?: number;
-    /** 与诊断相关的 sourceLine 的结束列。*/
+    /** 与诊断相关的所在行的结束列。*/
     endColumn?: number;
   }
 
