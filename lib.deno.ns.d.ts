@@ -2344,8 +2344,8 @@ declare namespace Deno {
     /** 只解析字符串属性的 keyof (忽略 numbers 和
      * symbols)。默认为 `false`。 */
     keyofStringsOnly?: string;
-    /** Emit class fields with ECMAScript-standard semantics. 默认为 `false`。
-     * Does not apply to `"esnext"` target. */
+    /** 使用 ECMAScript 标准语义声明类字段。 默认为 `false`。
+     *  不适用于生成目标为 `"esnext"`。 */
     useDefineForClassFields?: boolean;
     /** 编译过程中需要引入的库文件的列表。当输出时，Deno 的核心运行库也会使用。 */
     lib?: string[];
@@ -2391,44 +2391,40 @@ declare namespace Deno {
     outDir?: string;
     /** 模块名到基于 `baseUrl` 的路径映射的列表。默认为 `undefined`。 */
     paths?: Record<string, string[]>;
-    /** Do not erase const enum declarations in generated code. 默认为 `false`。 */
+    /** 保留 const和 enum声明。 默认为 `false`。 */
     preserveConstEnums?: boolean;
-    /** Remove all comments except copy-right header comments beginning with
-     * `/*!`. 默认为 `true`。 */
+    /** 删除所有注释，除了以 /!*开头的版权信息。* `/*!`. 默认为 `true`。 */
     removeComments?: boolean;
     /** Include modules imported with `.json` extension. 默认为 `true`。 */
     resolveJsonModule?: boolean;
-    /** Specifies the root directory of input files. Only use to control the
-     * output directory structure with `outDir`. 默认为 `undefined`。 */
+    /** 指定输出文件的根(root)目录. 仅用来控制输出的目录结构 `outDir`. 默认为 `undefined`。 */
     rootDir?: string;
-    /** List of _root_ folders whose combined content represent the structure of
-     * the project at runtime. 默认为 `undefined`。 */
+    /** 根（root）文件夹列表，表示运行时组合工程结构的内容。 默认为 `undefined`。 */
     rootDirs?: string[];
-    /** Generates corresponding `.map` file. 默认为 `false`。 */
+    /** 生成相应的 .map文件。 默认为 `false`。 */
     sourceMap?: boolean;
-    /** Specifies the location where debugger should locate TypeScript files
-     * instead of source locations. Use this flag if the sources will be located
-     * at run-time in a different location than that at design-time. The location
-     * specified will be embedded in the sourceMap to direct the debugger where
-     * the source files will be located. 默认为 `undefined`。 */
+    /** 指定TypeScript源文件的路径，以便调试器定位。
+     *  Use this flag if the sources will be located
+     *  当TypeScript文件的位置是在运行时指定时使用此标记。
+     *  路径信息会被加到 sourceMap里。
+     *  默认为 `undefined`。 */
     sourceRoot?: string;
-    /** Enable all strict type checking options. Enabling `strict` enables
+    /** 启用所有严格类型检查选项。 启用 `strict` 相当于启用
      * `noImplicitAny`, `noImplicitThis`, `alwaysStrict`, `strictBindCallApply`,
      * `strictNullChecks`, `strictFunctionTypes` and
      * `strictPropertyInitialization`. 默认为 `true`。 */
     strict?: boolean;
-    /** Enable stricter checking of the `bind`, `call`, and `apply` methods on
-     * functions. 默认为 `true`。 */
+    /** 在函数里启用更严格的检查对 `bind`, `call`, 和 `apply` 方法。默认为 `true`。 */
     strictBindCallApply?: boolean;
-    /** Disable bivariant parameter checking for function types. 默认为 `true`。 */
+    /** 禁用函数参数双向协变检查。 默认为 `true`。 */
     strictFunctionTypes?: boolean;
-    /** Ensure non-undefined class properties are initialized in the constructor.
-     * This option requires `strictNullChecks` be enabled in order to take effect.
+    /** 确保类的非undefined属性已经在构造函数里初始化。
+     * 若要令此选项生效，需要同时启用 `strictNullChecks` 。
      * 默认为 `true`。 */
     strictPropertyInitialization?: boolean;
-    /** In strict null checking mode, the `null` and `undefined` values are not in
-     * the domain of every type and are only assignable to themselves and `any`
-     * (the one exception being that `undefined` is also assignable to `void`). */
+    /** 在严格的null检查模式下，null和 undefined值不包含在任何类型里。
+     * 只允许用它们自己和 any来赋值。
+     * (例外的是 `undefined` 可以赋值到 `void`). */
     strictNullChecks?: boolean;
     /** 阻止对对象字面量的额外属性检查。默认为 `false`。 */
     suppressExcessPropertyErrors?: boolean;
@@ -2446,11 +2442,11 @@ declare namespace Deno {
       | "es2019"
       | "es2020"
       | "esnext";
-    /** List of names of type definitions to include. 默认为 `undefined`。
+    /** 需要包含的类型声明文件名称列表. 默认为 `undefined`。
      *
-     * The type definitions are resolved according to the normal Deno resolution
-     * irrespective of if sources are provided on the call. Like other Deno
-     * modules, there is no "magical" resolution. For example:
+     * 该类型定义是解决了符合普通的 Deno 类型解析。
+     * 无论资源是否提供来源。
+     * 就像其他的 Deno 模块, 这里没有“神奇”解决方法。 如下:
      *
      *      Deno.compile(
      *        "./foo.js",
