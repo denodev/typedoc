@@ -2414,7 +2414,7 @@ declare namespace Deno {
      * `strictNullChecks`, `strictFunctionTypes` and
      * `strictPropertyInitialization`. 默认为 `true`。 */
     strict?: boolean;
-    /** 在函数里启用更严格的检查对 `bind`, `call`, 和 `apply` 方法。默认为 `true`。 */
+    /** 对函数中的 `bind`, `call`, `apply` 方法启用更严格的检查。默认为 `true`。 */
     strictBindCallApply?: boolean;
     /** 禁用函数参数双向协变检查。 默认为 `true`。 */
     strictFunctionTypes?: boolean;
