@@ -2403,7 +2403,7 @@ declare namespace Deno {
     rootDirs?: string[];
     /** 生成对应的 `.map` 文件。 默认为 `false`。 */
     sourceMap?: boolean;
-    /** 指定TypeScript源文件的路径，以便调试器定位。
+    /** 指定 TypeScript 源文件的路径，以便调试器定位。
      *  Use this flag if the sources will be located
      *  当TypeScript文件的位置是在运行时指定时使用此标记。
      *  路径信息会被加到 sourceMap里。
