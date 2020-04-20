@@ -2393,7 +2393,7 @@ declare namespace Deno {
     paths?: Record<string, string[]>;
     /** 保留 const 和 enum 声明。 默认为 `false`。 */
     preserveConstEnums?: boolean;
-    /** 删除所有注释，除了以 /!*开头的版权信息。* `/*!`. 默认为 `true`。 */
+    /** 删除所有注释，除了以 `/*!` 开头的版权信息。默认为 `true`。 */
     removeComments?: boolean;
     /** Include modules imported with `.json` extension. 默认为 `true`。 */
     resolveJsonModule?: boolean;
