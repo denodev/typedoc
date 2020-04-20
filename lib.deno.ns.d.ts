@@ -2399,7 +2399,7 @@ declare namespace Deno {
     resolveJsonModule?: boolean;
     /** 指定输出文件的根目录。仅用来控制 `outDir` 输出的目录结构。默认为 `undefined`。 */
     rootDir?: string;
-    /** 根（root）文件夹列表，表示运行时组合工程结构的内容。 默认为 `undefined`。 */
+    /** 根文件夹列表，表示运行时组合工程结构的内容。 默认为 `undefined`。 */
     rootDirs?: string[];
     /** 生成相应的 .map文件。 默认为 `false`。 */
     sourceMap?: boolean;
