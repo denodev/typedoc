@@ -2401,7 +2401,7 @@ declare namespace Deno {
     rootDir?: string;
     /** 根文件夹列表，表示运行时组合工程结构的内容。 默认为 `undefined`。 */
     rootDirs?: string[];
-    /** 生成相应的 .map文件。 默认为 `false`。 */
+    /** 生成对应的 `.map` 文件。 默认为 `false`。 */
     sourceMap?: boolean;
     /** 指定TypeScript源文件的路径，以便调试器定位。
      *  Use this flag if the sources will be located
