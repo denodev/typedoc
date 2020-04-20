@@ -2397,7 +2397,7 @@ declare namespace Deno {
     removeComments?: boolean;
     /** Include modules imported with `.json` extension. 默认为 `true`。 */
     resolveJsonModule?: boolean;
-    /** 指定输出文件的根(root)目录. 仅用来控制输出的目录结构 `outDir`. 默认为 `undefined`。 */
+    /** 指定输出文件的根目录。仅用来控制 `outDir` 输出的目录结构。默认为 `undefined`。 */
     rootDir?: string;
     /** 根（root）文件夹列表，表示运行时组合工程结构的内容。 默认为 `undefined`。 */
     rootDirs?: string[];
