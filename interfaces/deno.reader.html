@@ -120,21 +120,50 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L468">lib.deno.ns.d.ts:468</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L537">lib.deno.ns.d.ts:537</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
-							<div class="lead tsd_en">
+							<div class="lead tsd_i18n">
 								<p>最多读取 <code>p.byteLength</code> 个字节到p中，然后返回读取的字节数（<code>0 &lt; n &lt;= p.byteLength</code>），并在遇到任何错误时返回拒绝状态的回调函数。
 									即使 <code>read()</code> 返回值为 <code>n &lt; p.byteLength</code>，p也可能在调用期间被用作临时空间。
 								如果有数据可用，但不存在 <code>p.byteLength</code>，<code>read()</code> 通常会返回可用值，而不是等待更多。</p>
 							</div>
-							<div class="tsd_en">
+							<div class="lead tsd_en">
+								<p>Reads up to <code>p.byteLength</code> bytes into <code>p</code>. It resolves to the number of
+									bytes read (<code>0</code> &lt; <code>n</code> &lt;= <code>p.byteLength</code>) and rejects if any error
+									encountered. Even if <code>read()</code> resolves to <code>n</code> &lt; <code>p.byteLength</code>, it may
+									use all of <code>p</code> as scratch space during the call. If some data is
+									available but not <code>p.byteLength</code> bytes, <code>read()</code> conventionally resolves
+								to what is available instead of waiting for more.</p>
+							</div>
+							<div class="tsd_i18n">
 								<p>当 <code>read()</code> 遇到文件结束条件时，将返回 <code>Deno.EOF</code> 符号。</p>
+							</div>
+							<div class="tsd_en">
+								<p>When <code>read()</code> encounters end-of-file condition, it resolves to
+								<code>Deno.EOF</code> symbol.</p>
+							</div>
+							<div class="tsd_i18n">
 								<p>当 <code>read()</code> 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。</p>
+							</div>
+							<div class="tsd_en">
+								<p>When <code>read()</code> encounters an error, it rejects with an error.</p>
+							</div>
+							<div class="tsd_i18n">
 								<p>调用者应始终处理返回值为 <code>n &gt; 0</code> 的情况，然后再考虑 <code>EOF</code>。
 								应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的 I/O 错误。</p>
+							</div>
+							<div class="tsd_en">
+								<p>Callers should always process the <code>n</code> &gt; <code>0</code> bytes returned before
+									considering the <code>EOF</code>. Doing so correctly handles I/O errors that happen
+								after reading some bytes and also both of the allowed EOF behaviors.</p>
+							</div>
+							<div class="tsd_i18n">
 								<p>实现不应保留对 <code>p</code> 的引用。</p>
+							</div>
+							<div class="tsd_en">
+								<p>Implementations should not retain a reference to <code>p</code>.</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">参数</h4>

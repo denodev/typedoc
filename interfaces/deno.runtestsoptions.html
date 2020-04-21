@@ -109,12 +109,15 @@
 				<div class="tsd-signature tsd-kind-icon">disable<wbr>Log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L126">lib.deno.ns.d.ts:126</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L145">lib.deno.ns.d.ts:145</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
-					<div class="lead tsd_en">
+					<div class="lead tsd_i18n">
 						<p>禁用记录结果. 默认值为 <code>false</code>。</p>
+					</div>
+					<div class="lead tsd_en">
+						<p>Disable logging of the results. Defaults to <code>false</code>.</p>
 					</div>
 				</div>
 			</section>
@@ -124,15 +127,16 @@
 				<div class="tsd-signature tsd-kind-icon">exit<wbr>OnFail<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L118">lib.deno.ns.d.ts:118</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L131">lib.deno.ns.d.ts:131</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
-					<div class="lead tsd_en">
-						<p>如果为 <code>true</code>，当测试失败时 Deno 将以状态码 1 退出。</p>
+					<div class="lead tsd_i18n">
+						<p>如果为 <code>true</code>，当测试失败时 Deno 将以状态码 1 退出。默认为 <code>true</code>。</p>
 					</div>
-					<div class="tsd_en">
-						<p>默认为 <code>true</code>。</p>
+					<div class="lead tsd_en">
+						<p>If <code>true</code>, Deno will exit with status code 1 if there was
+						test failure. Defaults to <code>true</code>.</p>
 					</div>
 				</div>
 			</section>
@@ -142,12 +146,15 @@
 				<div class="tsd-signature tsd-kind-icon">fail<wbr>Fast<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L120">lib.deno.ns.d.ts:120</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L134">lib.deno.ns.d.ts:134</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
+					<div class="lead tsd_i18n">
+						<p>如果为 <code>true</code>，Deno 将在第一次测试失败后退出。默认值为 <code>false</code>。</p>
+					</div>
 					<div class="lead tsd_en">
-						<p>如果为 <code>true</code>，Deno 将在第一次测试失败后退出。默认值为 <code>false</code></p>
+						<p>If <code>true</code>, Deno will exit upon first test failure. Defaults to <code>false</code>.</p>
 					</div>
 				</div>
 			</section>
@@ -157,12 +164,16 @@
 				<div class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">RegExp</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L122">lib.deno.ns.d.ts:122</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L138">lib.deno.ns.d.ts:138</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
-					<div class="lead tsd_en">
+					<div class="lead tsd_i18n">
 						<p>用于筛选要运行的测试的字符串或正则表达式。只有当测试名称与提供的 <code>String</code> 或 <code>RegExp</code> 相匹配时才会运行。</p>
+					</div>
+					<div class="lead tsd_en">
+						<p>String or RegExp used to filter test to run. Only test with names
+						matching provided <code>String</code> or <code>RegExp</code> will be run.</p>
 					</div>
 				</div>
 			</section>
@@ -172,12 +183,15 @@
 				<div class="tsd-signature tsd-kind-icon">on<wbr>Message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="deno.testmessage.html" class="tsd-signature-type">TestMessage</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L130">lib.deno.ns.d.ts:130</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L151">lib.deno.ns.d.ts:151</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
-					<div class="lead tsd_en">
+					<div class="lead tsd_i18n">
 						<p>回调从测试运行收到的每个消息。</p>
+					</div>
+					<div class="lead tsd_en">
+						<p>Called for each message received from the test run.</p>
 					</div>
 				</div>
 				<div class="tsd-type-declaration">
@@ -208,12 +222,15 @@
 				<div class="tsd-signature tsd-kind-icon">report<wbr>ToConsole<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L128">lib.deno.ns.d.ts:128</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L148">lib.deno.ns.d.ts:148</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
+					<div class="lead tsd_i18n">
+						<p>如果为 <code>true</code>，将 <code>deno test</code> 完成的结果输出到控制台。默认值为 <code>true</code>。</p>
+					</div>
 					<div class="lead tsd_en">
-						<p>如果为 <code>true</code>，将 <code>deno test</code> 完成的结果输出到控制台。默认值为 <code>true</code>.</p>
+						<p>If true, report results to the console as is done for <code>deno test</code>. Defaults to <code>true</code>.</p>
 					</div>
 				</div>
 			</section>
@@ -223,12 +240,16 @@
 				<div class="tsd-signature tsd-kind-icon">skip<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">RegExp</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L124">lib.deno.ns.d.ts:124</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L142">lib.deno.ns.d.ts:142</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
-					<div class="lead tsd_en">
+					<div class="lead tsd_i18n">
 						<p>用于跳过要运行的测试的字符串或正则表达式。当测试名称与提供的 <code>String</code> 或 <code>RegExp</code> 相匹配时将不会运行。</p>
+					</div>
+					<div class="lead tsd_en">
+						<p>String or RegExp used to skip tests to run. Tests with names
+						matching provided <code>String</code> or <code>RegExp</code> will not be run.</p>
 					</div>
 				</div>
 			</section>

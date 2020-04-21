@@ -67,8 +67,11 @@
 	<div class="content-wrap">
 		<section class="tsd-panel tsd-comment">
 			<div class="tsd-comment tsd-typography">
-				<div class="lead tsd_en">
+				<div class="lead tsd_i18n">
 					<p>面向流协议的通用网络监听器。</p>
+				</div>
+				<div class="lead tsd_en">
+					<p>A generic network listener for stream-oriented protocols.</p>
 				</div>
 			</div>
 		</section>
@@ -114,12 +117,15 @@
 				<div class="tsd-signature tsd-kind-icon">addr<span class="tsd-signature-symbol">:</span> <a href="../index.html#addr" class="tsd-signature-type">Addr</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L1787">lib.deno.ns.d.ts:1787</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L2347">lib.deno.ns.d.ts:2347</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
-					<div class="lead tsd_en">
+					<div class="lead tsd_i18n">
 						<p>返回 <code>Listener</code> 的地址。</p>
+					</div>
+					<div class="lead tsd_en">
+						<p>Return the address of the <code>Listener</code>.</p>
 					</div>
 				</div>
 			</section>
@@ -130,17 +136,17 @@
 				<a name="_symbol_asynciterator_" class="tsd-anchor"></a>
 				<h3>[<wbr>Symbol.async<wbr>Iterator]</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite">
-					<li class="tsd-signature tsd-kind-icon">[<wbr>Symbol.async<wbr>Iterator]<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AsyncIterator</span><span class="tsd-signature-symbol">&lt;</span><a href="deno.conn.html" class="tsd-signature-type">Conn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">[<wbr>Symbol.async<wbr>Iterator]<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AsyncIterableIterator</span><span class="tsd-signature-symbol">&lt;</span><a href="deno.conn.html" class="tsd-signature-type">Conn</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>重写(Override) AsyncIterable.[Symbol.asyncIterator]</p>
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L1789">lib.deno.ns.d.ts:1789</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L2349">lib.deno.ns.d.ts:2349</a></li>
 							</ul>
 						</aside>
-						<h4 class="tsd-returns-title">返回 <span class="tsd-signature-type">AsyncIterator</span><span class="tsd-signature-symbol">&lt;</span><a href="deno.conn.html" class="tsd-signature-type">Conn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">返回 <span class="tsd-signature-type">AsyncIterableIterator</span><span class="tsd-signature-symbol">&lt;</span><a href="deno.conn.html" class="tsd-signature-type">Conn</a><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -154,12 +160,15 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L1783">lib.deno.ns.d.ts:1783</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L2340">lib.deno.ns.d.ts:2340</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
-							<div class="lead tsd_en">
+							<div class="lead tsd_i18n">
 								<p>等待并解析 (resolve) 到与 <code>Listener</code> 的下一个连接。</p>
+							</div>
+							<div class="lead tsd_en">
+								<p>Waits for and resolves to the next connection to the <code>Listener</code>.</p>
 							</div>
 						</div>
 						<h4 class="tsd-returns-title">返回 <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="deno.conn.html" class="tsd-signature-type">Conn</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -176,12 +185,16 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L1785">lib.deno.ns.d.ts:1785</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L2344">lib.deno.ns.d.ts:2344</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
-							<div class="lead tsd_en">
+							<div class="lead tsd_i18n">
 								<p>关闭监听器。任何待处理的接收应答都将被拒绝 (rejected)，并返回错误。</p>
+							</div>
+							<div class="lead tsd_en">
+								<p>Close closes the listener. Any pending accept promises will be rejected
+								with errors.</p>
 							</div>
 						</div>
 						<h4 class="tsd-returns-title">返回 <span class="tsd-signature-type">void</span></h4>

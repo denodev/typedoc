@@ -102,7 +102,7 @@
 						<aside class="tsd-sources">
 							<p>继承自 <a href="deno.closer.html">Closer</a>.<a href="deno.closer.html#close">close</a></p>
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L513">lib.deno.ns.d.ts:513</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L607">lib.deno.ns.d.ts:607</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">返回 <span class="tsd-signature-type">void</span></h4>
@@ -120,18 +120,29 @@
 						<aside class="tsd-sources">
 							<p>继承自 <a href="deno.writer.html">Writer</a>.<a href="deno.writer.html#write">write</a></p>
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L497">lib.deno.ns.d.ts:497</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L585">lib.deno.ns.d.ts:585</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
-							<div class="lead tsd_en">
+							<div class="lead tsd_i18n">
 								<p>将 <code>p</code> 中的 <code>p.byteLength</code> 字节写入底层数据流。 它 resolve 时返回值为从 <code>p</code> 写入的
 									字节数(<code>0</code> &lt;= <code>n</code> &lt;= <code>p.byteLength</code>），reject 时返回值为导致写入提前停止的错误。
 									如果将要 resolve 一个 <code>n</code> &lt; <code>p.byteLength</code> 的值时， <code>write()</code> 必须 reject，并且返回
 								一个非空错误。<code>write()</code> 禁止修改分片数据，即使是临时修改。</p>
 							</div>
-							<div class="tsd_en">
+							<div class="lead tsd_en">
+								<p>Writes <code>p.byteLength</code> bytes from <code>p</code> to the underlying data stream. It
+									resolves to the number of bytes written from <code>p</code> (<code>0</code> &lt;= <code>n</code> &lt;=
+									<code>p.byteLength</code>) or reject with the error encountered that caused the
+									write to stop early. <code>write()</code> must reject with a non-null error if
+									would resolve to <code>n</code> &lt; <code>p.byteLength</code>. <code>write()</code> must not modify the
+								slice data, even temporarily.</p>
+							</div>
+							<div class="tsd_i18n">
 								<p>实现不应保留对 <code>p</code> 的引用。</p>
+							</div>
+							<div class="tsd_en">
+								<p>Implementations should not retain a reference to <code>p</code>.</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">参数</h4>

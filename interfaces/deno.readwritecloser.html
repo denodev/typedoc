@@ -109,7 +109,7 @@
 						<aside class="tsd-sources">
 							<p>继承自 <a href="deno.closer.html">Closer</a>.<a href="deno.closer.html#close">close</a></p>
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L513">lib.deno.ns.d.ts:513</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L607">lib.deno.ns.d.ts:607</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">返回 <span class="tsd-signature-type">void</span></h4>
@@ -127,21 +127,50 @@
 						<aside class="tsd-sources">
 							<p>继承自 <a href="deno.reader.html">Reader</a>.<a href="deno.reader.html#read">read</a></p>
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L468">lib.deno.ns.d.ts:468</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L537">lib.deno.ns.d.ts:537</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
-							<div class="lead tsd_en">
+							<div class="lead tsd_i18n">
 								<p>最多读取 <code>p.byteLength</code> 个字节到p中，然后返回读取的字节数（<code>0 &lt; n &lt;= p.byteLength</code>），并在遇到任何错误时返回拒绝状态的回调函数。
 									即使 <code>read()</code> 返回值为 <code>n &lt; p.byteLength</code>，p也可能在调用期间被用作临时空间。
 								如果有数据可用，但不存在 <code>p.byteLength</code>，<code>read()</code> 通常会返回可用值，而不是等待更多。</p>
 							</div>
-							<div class="tsd_en">
+							<div class="lead tsd_en">
+								<p>Reads up to <code>p.byteLength</code> bytes into <code>p</code>. It resolves to the number of
+									bytes read (<code>0</code> &lt; <code>n</code> &lt;= <code>p.byteLength</code>) and rejects if any error
+									encountered. Even if <code>read()</code> resolves to <code>n</code> &lt; <code>p.byteLength</code>, it may
+									use all of <code>p</code> as scratch space during the call. If some data is
+									available but not <code>p.byteLength</code> bytes, <code>read()</code> conventionally resolves
+								to what is available instead of waiting for more.</p>
+							</div>
+							<div class="tsd_i18n">
 								<p>当 <code>read()</code> 遇到文件结束条件时，将返回 <code>Deno.EOF</code> 符号。</p>
+							</div>
+							<div class="tsd_en">
+								<p>When <code>read()</code> encounters end-of-file condition, it resolves to
+								<code>Deno.EOF</code> symbol.</p>
+							</div>
+							<div class="tsd_i18n">
 								<p>当 <code>read()</code> 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。</p>
+							</div>
+							<div class="tsd_en">
+								<p>When <code>read()</code> encounters an error, it rejects with an error.</p>
+							</div>
+							<div class="tsd_i18n">
 								<p>调用者应始终处理返回值为 <code>n &gt; 0</code> 的情况，然后再考虑 <code>EOF</code>。
 								应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的 I/O 错误。</p>
+							</div>
+							<div class="tsd_en">
+								<p>Callers should always process the <code>n</code> &gt; <code>0</code> bytes returned before
+									considering the <code>EOF</code>. Doing so correctly handles I/O errors that happen
+								after reading some bytes and also both of the allowed EOF behaviors.</p>
+							</div>
+							<div class="tsd_i18n">
 								<p>实现不应保留对 <code>p</code> 的引用。</p>
+							</div>
+							<div class="tsd_en">
+								<p>Implementations should not retain a reference to <code>p</code>.</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">参数</h4>
@@ -165,18 +194,29 @@
 						<aside class="tsd-sources">
 							<p>继承自 <a href="deno.writer.html">Writer</a>.<a href="deno.writer.html#write">write</a></p>
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L497">lib.deno.ns.d.ts:497</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L585">lib.deno.ns.d.ts:585</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
-							<div class="lead tsd_en">
+							<div class="lead tsd_i18n">
 								<p>将 <code>p</code> 中的 <code>p.byteLength</code> 字节写入底层数据流。 它 resolve 时返回值为从 <code>p</code> 写入的
 									字节数(<code>0</code> &lt;= <code>n</code> &lt;= <code>p.byteLength</code>），reject 时返回值为导致写入提前停止的错误。
 									如果将要 resolve 一个 <code>n</code> &lt; <code>p.byteLength</code> 的值时， <code>write()</code> 必须 reject，并且返回
 								一个非空错误。<code>write()</code> 禁止修改分片数据，即使是临时修改。</p>
 							</div>
-							<div class="tsd_en">
+							<div class="lead tsd_en">
+								<p>Writes <code>p.byteLength</code> bytes from <code>p</code> to the underlying data stream. It
+									resolves to the number of bytes written from <code>p</code> (<code>0</code> &lt;= <code>n</code> &lt;=
+									<code>p.byteLength</code>) or reject with the error encountered that caused the
+									write to stop early. <code>write()</code> must reject with a non-null error if
+									would resolve to <code>n</code> &lt; <code>p.byteLength</code>. <code>write()</code> must not modify the
+								slice data, even temporarily.</p>
+							</div>
+							<div class="tsd_i18n">
 								<p>实现不应保留对 <code>p</code> 的引用。</p>
+							</div>
+							<div class="tsd_en">
+								<p>Implementations should not retain a reference to <code>p</code>.</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">参数</h4>

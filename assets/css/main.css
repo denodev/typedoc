@@ -1900,20 +1900,25 @@ dl.tsd-comment-tags p {
   margin-bottom: 0;
 }
 
+.tsd-description .lead.on,
 .tsd-comment .lead.on {
   margin-bottom: 0;
 }
 
+.tsd-description .tsd_i18n + .tsd_en,
 .tsd-comment .tsd_i18n + .tsd_en {
   display: none;
   border-top: 1px dashed #0273d4;
 }
+.tsd-description .tsd_i18n.on > p,
 .tsd-comment .tsd_i18n.on > p {
   margin-bottom: 0;
 }
+.tsd-description .tsd_i18n.on + .tsd_en,
 .tsd-comment .tsd_i18n.on + .tsd_en {
   display: block;
 }
+.tsd-description .tsd_i18n.on + .tsd_en > p,
 .tsd-comment .tsd_i18n.on + .tsd_en > p {
   margin-top: 0;
 }

@@ -48,13 +48,13 @@
 			<a href="deno.location.html" class="tsd-kind-icon">Location</a>
 			<ul>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="deno.location.html#column" class="tsd-kind-icon">column</a>
+					<a href="deno.location.html#columnnumber" class="tsd-kind-icon">column<wbr>Number</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="deno.location.html#filename" class="tsd-kind-icon">filename</a>
+					<a href="deno.location.html#filename" class="tsd-kind-icon">file<wbr>Name</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="deno.location.html#line" class="tsd-kind-icon">line</a>
+					<a href="deno.location.html#linenumber" class="tsd-kind-icon">line<wbr>Number</a>
 				</li>
 			</ul>
 		</li>
@@ -64,8 +64,11 @@
 	<div class="content-wrap">
 		<section class="tsd-panel tsd-comment">
 			<div class="tsd-comment tsd-typography">
+				<div class="lead tsd_i18n">
+					<p><strong>不稳定</strong>: 不应该和 <code>window.location</code> 具有相同的类型名。</p>
+				</div>
 				<div class="lead tsd_en">
-					<p><em>不稳定*</em>: 不应该和 <code>window.location</code> 具有相同的类型名.</p>
+					<p><em>UNSTABLE*</em>: Should not have same name as <code>window.location</code> type.</p>
 				</div>
 			</div>
 		</section>
@@ -84,9 +87,9 @@
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="deno.location.html#column" class="tsd-kind-icon">column</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="deno.location.html#filename" class="tsd-kind-icon">filename</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="deno.location.html#line" class="tsd-kind-icon">line</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="deno.location.html#columnnumber" class="tsd-kind-icon">column<wbr>Number</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="deno.location.html#filename" class="tsd-kind-icon">file<wbr>Name</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="deno.location.html#linenumber" class="tsd-kind-icon">line<wbr>Number</a></li>
 						</ul>
 					</section>
 				</div>
@@ -95,47 +98,57 @@
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="column" class="tsd-anchor"></a>
-				<h3>column</h3>
-				<div class="tsd-signature tsd-kind-icon">column<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<a name="columnnumber" class="tsd-anchor"></a>
+				<h3>column<wbr>Number</h3>
+				<div class="tsd-signature tsd-kind-icon">column<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L1523">lib.deno.ns.d.ts:1523</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L2028">lib.deno.ns.d.ts:2028</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
-					<div class="lead tsd_en">
+					<div class="lead tsd_i18n">
 						<p>在文件中的列号，从 1 开始索引。</p>
+					</div>
+					<div class="lead tsd_en">
+						<p>The column number in the file. It is assumed to be 1-indexed.</p>
 					</div>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="filename" class="tsd-anchor"></a>
-				<h3>filename</h3>
-				<div class="tsd-signature tsd-kind-icon">filename<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<h3>file<wbr>Name</h3>
+				<div class="tsd-signature tsd-kind-icon">file<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L1519">lib.deno.ns.d.ts:1519</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L2022">lib.deno.ns.d.ts:2022</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
-					<div class="lead tsd_en">
+					<div class="lead tsd_i18n">
 						<p>模块的完整 url，例如：<code>file://some/file.ts</code> 抑或是 <code>https://some/file.ts</code>。</p>
+					</div>
+					<div class="lead tsd_en">
+						<p>The full url for the module, e.g. <code>file://some/file.ts</code> or
+						<code>https://some/file.ts</code>.</p>
 					</div>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="line" class="tsd-anchor"></a>
-				<h3>line</h3>
-				<div class="tsd-signature tsd-kind-icon">line<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<a name="linenumber" class="tsd-anchor"></a>
+				<h3>line<wbr>Number</h3>
+				<div class="tsd-signature tsd-kind-icon">line<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/695bfaf/lib.deno.ns.d.ts#L1521">lib.deno.ns.d.ts:1521</a></li>
+						<li>定义在 <a href="https://github.com/denodev/typedoc/blob/26c531a/lib.deno.ns.d.ts#L2025">lib.deno.ns.d.ts:2025</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
-					<div class="lead tsd_en">
+					<div class="lead tsd_i18n">
 						<p>在文件中的行号，从 1 开始索引。</p>
+					</div>
+					<div class="lead tsd_en">
+						<p>The line number in the file. It is assumed to be 1-indexed.</p>
 					</div>
 				</div>
 			</section>
