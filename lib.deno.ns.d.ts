@@ -3082,7 +3082,9 @@ declare namespace Deno {
      * @i18n 只解析字符串属性的 keyof (忽略 numbers 和 symbols)。默认为 `false`。*/
     keyofStringsOnly?: string;
     /** Emit class fields with ECMAScript-standard semantics. Defaults to `false`.
-     * Does not apply to `"esnext"` target. */
+     * Does not apply to `"esnext"` target.
+     * @i18n 使用 ECMAScript 标准语义声明类字段。 默认为 `false`。
+     * 不适用于生成目标为 `"esnext"`。*/
     useDefineForClassFields?: boolean;
     /** List of library files to be included in the compilation. If omitted,
      * then the Deno main runtime libs are used.
@@ -3163,45 +3165,67 @@ declare namespace Deno {
      * @i18n 模块名到基于 `baseUrl` 的路径映射的列表。默认为 `undefined`。*/
     paths?: Record<string, string[]>;
     /** Do not erase const enum declarations in generated code. Defaults to
-     * `false`. */
+     * `false`.
+     * @i18n 保留 const 和 enum 声明。默认为 `false`。*/
     preserveConstEnums?: boolean;
     /** Remove all comments except copy-right header comments beginning with
-     * `/*!`. Defaults to `true`. */
+     * `/*!`. Defaults to `true`.
+     * @i18n 删除所有注释，除了以 `/*!` 开头的版权信息。默认为 `true`。*/
     removeComments?: boolean;
-    /** Include modules imported with `.json` extension. Defaults to `true`. */
+    /** Include modules imported with `.json` extension. Defaults to `true`.
+     * @i18n 包含以 `.json` 扩展名引入模块。默认为 `true`。*/
     resolveJsonModule?: boolean;
     /** Specifies the root directory of input files. Only use to control the
-     * output directory structure with `outDir`. Defaults to `undefined`. */
+     * output directory structure with `outDir`. Defaults to `undefined`.
+     * @i18n 指定输出文件的根目录。仅用来控制 `outDir` 输出的目录结构。默认为 `undefined`。*/
     rootDir?: string;
     /** List of _root_ folders whose combined content represent the structure of
-     * the project at runtime. Defaults to `undefined`. */
+     * the project at runtime. Defaults to `undefined`.
+     * @i18n 根文件夹列表，表示运行时组合工程结构的内容。默认为 `undefined`。*/
     rootDirs?: string[];
-    /** Generates corresponding `.map` file. Defaults to `false`. */
+    /** Generates corresponding `.map` file. Defaults to `false`.
+     * @i18n 生成对应的 `.map` 文件。默认为 `false`。*/
     sourceMap?: boolean;
     /** Specifies the location where debugger should locate TypeScript files
      * instead of source locations. Use this flag if the sources will be located
      * at run-time in a different location than that at design-time. The location
      * specified will be embedded in the sourceMap to direct the debugger where
-     * the source files will be located. Defaults to `undefined`. */
+     * the source files will be located. Defaults to `undefined`.
+     * @i18n 指定 TypeScript 源文件的路径，以便调试器定位。
+     * 当 TypeScript 文件的位置是在运行时指定时使用此标记。
+     * 路径信息会被加到 sourceMap 里。
+     * 默认为 `undefined`。*/
     sourceRoot?: string;
     /** Enable all strict type checking options. Enabling `strict` enables
      * `noImplicitAny`, `noImplicitThis`, `alwaysStrict`, `strictBindCallApply`,
      * `strictNullChecks`, `strictFunctionTypes` and
-     * `strictPropertyInitialization`. Defaults to `true`. */
+     * `strictPropertyInitialization`. Defaults to `true`.
+     * @i18n 启用所有严格类型检查选项。 启用 `strict` 相当于启用
+     * `noImplicitAny`, `noImplicitThis`, `alwaysStrict`, `strictBindCallApply`,
+     * `strictNullChecks`, `strictFunctionTypes` and
+     * `strictPropertyInitialization`。默认为 `true`。*/
     strict?: boolean;
     /** Enable stricter checking of the `bind`, `call`, and `apply` methods on
-     * functions. Defaults to `true`. */
+     * functions. Defaults to `true`.
+     * @i18n 对函数中的 `bind`, `call`, `apply` 方法启用更严格的检查。默认为 `true`。*/
     strictBindCallApply?: boolean;
     /** Disable bivariant parameter checking for function types. Defaults to
-     * `true`. */
+     * `true`.
+     * @i18n 禁用函数参数双向协变检查。默认为 `true`。*/
     strictFunctionTypes?: boolean;
     /** Ensure non-undefined class properties are initialized in the constructor.
      * This option requires `strictNullChecks` be enabled in order to take effect.
-     * Defaults to `true`. */
+     * Defaults to `true`.
+     * @i18n 确保类的非 undefined 属性已经在构造函数里初始化。
+     * 若要令此选项生效，需要同时启用 `strictNullChecks`。
+     * 默认为 `true`。*/
     strictPropertyInitialization?: boolean;
     /** In strict null checking mode, the `null` and `undefined` values are not in
      * the domain of every type and are only assignable to themselves and `any`
-     * (the one exception being that `undefined` is also assignable to `void`). */
+     * (the one exception being that `undefined` is also assignable to `void`).
+     * @i18n 在严格的 null 检查模式下， `null` 和 `undefined` 值不包含在任何类型里。
+     * 只允许用它们自己和 `any` 来赋值。
+     * (例外的是 `undefined` 可以赋值到 `void` )。 */
     strictNullChecks?: boolean;
     /** Suppress excess property checks for object literals. Defaults to
      * `false`.
@@ -3229,6 +3253,10 @@ declare namespace Deno {
      * The type definitions are resolved according to the normal Deno resolution
      * irrespective of if sources are provided on the call. Like other Deno
      * modules, there is no "magical" resolution. For example:
+     * @i18n 需要包含的类型声明文件名称列表。默认为 `undefined`。
+     *  该类型定义是解决了符合普通的 Deno 类型解析。
+     *  无论资源是否提供来源。
+     *  就像其他的 Deno 模块, 没有“神奇”的解决方法。例如：
      *
      *      Deno.compile(
      *        "./foo.js",
