@@ -10,8 +10,8 @@
     "prettier": "^2.0.4",
     "pretty-quick": "^2.0.1",
     "typedoc": "^0.17.4",
-    "typedoc-deno-theme": "^1.0.1",
-    "typedoc-plugin-deno": "^1.0.0",
+    "typedoc-deno-theme": "^1.3.0",
+    "typedoc-plugin-deno": "^1.3.0",
     "typescript": "^3.8.3"
   },
   "husky": {
