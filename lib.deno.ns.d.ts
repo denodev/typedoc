@@ -2391,42 +2391,41 @@ declare namespace Deno {
     outDir?: string;
     /** 模块名到基于 `baseUrl` 的路径映射的列表。默认为 `undefined`。 */
     paths?: Record<string, string[]>;
-    /** 保留 const 和 enum 声明。 默认为 `false`。 */
+    /** 保留 const 和 enum 声明。默认为 `false`。 */
     preserveConstEnums?: boolean;
     /** 删除所有注释，除了以 `/*!` 开头的版权信息。默认为 `true`。 */
     removeComments?: boolean;
-    /** Include modules imported with `.json` extension. 默认为 `true`。 */
+    /** 包含以 `.json` 扩展名引入模块。默认为 `true`。 */
     resolveJsonModule?: boolean;
     /** 指定输出文件的根目录。仅用来控制 `outDir` 输出的目录结构。默认为 `undefined`。 */
     rootDir?: string;
-    /** 根文件夹列表，表示运行时组合工程结构的内容。 默认为 `undefined`。 */
+    /** 根文件夹列表，表示运行时组合工程结构的内容。默认为 `undefined`。 */
     rootDirs?: string[];
-    /** 生成对应的 `.map` 文件。 默认为 `false`。 */
+    /** 生成对应的 `.map` 文件。默认为 `false`。 */
     sourceMap?: boolean;
     /** 指定 TypeScript 源文件的路径，以便调试器定位。
-     *  Use this flag if the sources will be located
      *  当TypeScript文件的位置是在运行时指定时使用此标记。
      *  路径信息会被加到 sourceMap里。
      *  默认为 `undefined`。 */
     sourceRoot?: string;
     /** 启用所有严格类型检查选项。 启用 `strict` 相当于启用
      * `noImplicitAny`, `noImplicitThis`, `alwaysStrict`, `strictBindCallApply`,
-     * `strictNullChecks`, `strictFunctionTypes` and
-     * `strictPropertyInitialization`. 默认为 `true`。 */
+     * `strictNullChecks`, `strictFunctionTypes`,
+     * `strictPropertyInitialization`。 默认为 `true`。 */
     strict?: boolean;
     /** 对函数中的 `bind`, `call`, `apply` 方法启用更严格的检查。默认为 `true`。 */
     strictBindCallApply?: boolean;
-    /** 禁用函数参数双向协变检查。 默认为 `true`。 */
+    /** 禁用函数参数双向协变检查。默认为 `true`。 */
     strictFunctionTypes?: boolean;
     /** 确保类的非undefined属性已经在构造函数里初始化。
-     * 若要令此选项生效，需要同时启用 `strictNullChecks` 。
-     * 默认为 `true`。 */
+     *  若要令此选项生效，需要同时启用 `strictNullChecks`。
+     *  默认为 `true`。 */
     strictPropertyInitialization?: boolean;
-    /** 在严格的null检查模式下，null和 undefined值不包含在任何类型里。
-     * 只允许用它们自己和 any来赋值。
-     * (例外的是 `undefined` 可以赋值到 `void`). */
+    /** 在严格的null检查模式下， `null` 和 `undefined` 值不包含在任何类型里。
+     *  只允许用它们自己和 `any` 来赋值。
+     *  (例外的是 `undefined` 可以赋值到 `void` )。 */
     strictNullChecks?: boolean;
-    /** 阻止对对象字面量的额外属性检查。默认为 `false`。 */
+    /** 阻止对象字面量的额外属性检查。默认为 `false`。 */
     suppressExcessPropertyErrors?: boolean;
     /** 阻止 `noImplicitAny` 对缺少索引签名的索引对象报错。*/
     suppressImplicitAnyIndexErrors?: boolean;
@@ -2442,12 +2441,10 @@ declare namespace Deno {
       | "es2019"
       | "es2020"
       | "esnext";
-    /** 需要包含的类型声明文件名称列表. 默认为 `undefined`。
-     *
-     * 该类型定义是解决了符合普通的 Deno 类型解析。
-     * 无论资源是否提供来源。
-     * 就像其他的 Deno 模块, 这里没有“神奇”解决方法。 如下:
-     *
+    /** 需要包含的类型声明文件名称列表。默认为 `undefined`。
+     *  该类型定义是解决了符合普通的 Deno 类型解析。
+     *  无论资源是否提供来源。
+     *  就像其他的 Deno 模块, 没有“神奇”的解决方法。例如：
      *      Deno.compile(
      *        "./foo.js",
      *        undefined,
