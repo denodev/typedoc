@@ -4,6 +4,10 @@
 [![license](https://img.shields.io/github/license/denodev/typedoc)](https://github.com/denodev/typedoc/blob/master/LICENSE)
 [![](https://img.shields.io/badge/deno-v0.40.0-green.svg)](https://github.com/denoland/deno)
 
+Deno 简体中文 API 参考手册。本文档是非官方 Deno 简体中文文档，由中文开发者社区的志愿者们维护。
+
+本文档使用了 [typedoc-deno-theme](https://github.com/denodev/typedoc-deno-theme) 主题和 [typedoc-plugin-deno](https://github.com/denodev/typedoc-plugin-deno) 插件，为文档提供了中英文对照功能。
+
 ## 实用命令
 
 - `yarn format`: 整理文件格式。所有文件格式均使用 prettier 的默认配置。如果没有特殊必要，你基本上不需要手动运行此命令。当 `git commit` 的时候此命令会自动运行。
