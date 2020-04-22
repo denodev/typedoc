@@ -679,10 +679,10 @@ typedoc-deno-theme@^1.3.1:
   resolved "https://registry.npm.taobao.org/typedoc-deno-theme/download/typedoc-deno-theme-1.3.1.tgz#62e6ed62461624d606b9fa04a0e8291d3e4604c2"
   integrity sha1-YubtYkYWJNYGufoEoOgpHT5GBMI=
 
-typedoc-plugin-deno@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.npm.taobao.org/typedoc-plugin-deno/download/typedoc-plugin-deno-1.3.1.tgz#2cc238e222191846284013b5cefb95ccc01d125e"
-  integrity sha1-LMI44iIZGEYoQBO1zvuVzMAdEl4=
+typedoc-plugin-deno@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.npm.taobao.org/typedoc-plugin-deno/download/typedoc-plugin-deno-1.3.2.tgz?cache=0&sync_timestamp=1587517267491&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftypedoc-plugin-deno%2Fdownload%2Ftypedoc-plugin-deno-1.3.2.tgz#a97676b7a61b910b030a29d354dac5e125bcb7a4"
+  integrity sha1-qXZ2t6YbkQsDCinTVNrF4SW8t6Q=
   dependencies:
     lodash "^4.17.15"
     semver "^7.3.2"
