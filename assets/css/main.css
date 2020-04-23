@@ -1863,6 +1863,15 @@ html.minimal .tsd-generator {
     padding-left: 0;
   }
 }
+html.minimal .v-fork-me {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999;
+}
+html.minimal .v-fork-me img {
+  border: 0;
+}
 
 dl.tsd-comment-tags {
   overflow: hidden;
