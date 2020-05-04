@@ -537,7 +537,7 @@ declare namespace Deno {
     read(p: Uint8Array): Promise<number | EOF>;
   }
 
-  export interface SyncReader {
+  export interface ReaderSync {
     /** Reads up to `p.byteLength` bytes into `p`. It resolves to the number
      * of bytes read (`0` < `n` <= `p.byteLength`) and rejects if any error
      * encountered. Even if `read()` returns `n` < `p.byteLength`, it may use
@@ -908,7 +908,7 @@ declare namespace Deno {
   export class File
     implements
       Reader,
-      SyncReader,
+      ReaderSync,
       Writer,
       SyncWriter,
       Seeker,
@@ -1054,7 +1054,7 @@ declare namespace Deno {
    *
    * Based on [Go Buffer](https://golang.org/pkg/bytes/#Buffer).
    * @i18n 基于 [Go Buffer](https://golang.org/pkg/bytes/#Buffer)。*/
-  export class Buffer implements Reader, SyncReader, Writer, SyncWriter {
+  export class Buffer implements Reader, ReaderSync, Writer, SyncWriter {
     constructor(ab?: ArrayBuffer);
     /** Returns a slice holding the unread portion of the buffer.
      * @i18n 返回一个缓冲区未读部分的片段。
@@ -1145,7 +1145,7 @@ declare namespace Deno {
      * [Buffer.ReadFrom](https://golang.org/pkg/bytes/#Buffer.ReadFrom).
      * @i18n 基于 Go Lang 的
      * [Buffer.ReadFrom](https://golang.org/pkg/bytes/#Buffer.ReadFrom)。*/
-    readFromSync(r: SyncReader): number;
+    readFromSync(r: ReaderSync): number;
   }
 
   /** Read Reader `r` until end of file (`Deno.EOF`) and resolve to the content
@@ -1186,7 +1186,7 @@ declare namespace Deno {
    *       const reader = new Deno.Buffer(myData.buffer as ArrayBuffer);
    *       const bufferContent = Deno.readAllSync(reader);
    */
-  export function readAllSync(r: SyncReader): Uint8Array;
+  export function readAllSync(r: ReaderSync): Uint8Array;
 
   /** Write all the content of the array buffer (`arr`) to the writer (`w`).
    * @i18n 将所有 Array Buffer （`arr`）中的的内容写入到对象 （`w`） 中。
