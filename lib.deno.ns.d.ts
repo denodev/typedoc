@@ -585,7 +585,7 @@ declare namespace Deno {
     write(p: Uint8Array): Promise<number>;
   }
 
-  export interface SyncWriter {
+  export interface WriterSync {
     /** Writes `p.byteLength` bytes from `p` to the underlying data
      * stream. It returns the number of bytes written from `p` (`0` <= `n`
      * <= `p.byteLength`) and any error encountered that caused the write to
@@ -910,7 +910,7 @@ declare namespace Deno {
       Reader,
       ReaderSync,
       Writer,
-      SyncWriter,
+      WriterSync,
       Seeker,
       SyncSeeker,
       Closer {
@@ -1054,7 +1054,7 @@ declare namespace Deno {
    *
    * Based on [Go Buffer](https://golang.org/pkg/bytes/#Buffer).
    * @i18n 基于 [Go Buffer](https://golang.org/pkg/bytes/#Buffer)。*/
-  export class Buffer implements Reader, ReaderSync, Writer, SyncWriter {
+  export class Buffer implements Reader, ReaderSync, Writer, WriterSync {
     constructor(ab?: ArrayBuffer);
     /** Returns a slice holding the unread portion of the buffer.
      * @i18n 返回一个缓冲区未读部分的片段。
@@ -1229,7 +1229,7 @@ declare namespace Deno {
    *       Deno.writeAllSync(writer, contentBytes);
    *       console.log(writer.bytes().length);  // 11
    */
-  export function writeAllSync(w: SyncWriter, arr: Uint8Array): void;
+  export function writeAllSync(w: WriterSync, arr: Uint8Array): void;
 
   export interface MkdirOptions {
     /** Defaults to `false`. If set to `true`, means that any intermediate
