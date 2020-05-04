@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/denodev/typedoc/workflows/ci/badge.svg?branch=master)](https://github.com/denodev/typedoc/actions)
 [![license](https://img.shields.io/github/license/denodev/typedoc)](https://github.com/denodev/typedoc/blob/master/LICENSE)
-[![](https://img.shields.io/badge/deno-v0.40.0-green.svg)](https://github.com/denoland/deno)
+[![](https://img.shields.io/badge/deno-v0.41.0-green.svg)](https://github.com/denoland/deno)
 
 Deno 简体中文 API 参考手册。本文档是非官方 Deno 简体中文文档，由中文开发者社区的志愿者们维护。
 
