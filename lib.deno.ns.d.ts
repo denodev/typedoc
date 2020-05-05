@@ -537,7 +537,7 @@ declare namespace Deno {
     read(p: Uint8Array): Promise<number | EOF>;
   }
 
-  export interface SyncReader {
+  export interface ReaderSync {
     /** Reads up to `p.byteLength` bytes into `p`. It resolves to the number
      * of bytes read (`0` < `n` <= `p.byteLength`) and rejects if any error
      * encountered. Even if `read()` returns `n` < `p.byteLength`, it may use
@@ -585,7 +585,7 @@ declare namespace Deno {
     write(p: Uint8Array): Promise<number>;
   }
 
-  export interface SyncWriter {
+  export interface WriterSync {
     /** Writes `p.byteLength` bytes from `p` to the underlying data
      * stream. It returns the number of bytes written from `p` (`0` <= `n`
      * <= `p.byteLength`) and any error encountered that caused the write to
@@ -626,23 +626,6 @@ declare namespace Deno {
      * 它返回设置之后的偏移位置。
      */
     seek(offset: number, whence: SeekMode): Promise<number>;
-  }
-
-  export interface SyncSeeker {
-    /** Seek sets the offset for the next `readSync()` or `writeSync()` to
-     * offset, interpreted according to `whence`: `SEEK_START` means relative
-     * to the start of the file, `SEEK_CURRENT` means relative to the current
-     * offset, and `SEEK_END` means relative to the end.
-     * @i18n 设置下一个 `read()` 或 `write()` 的偏移量，根据 `whence` 进行决定从哪个位置开始偏移：
-     * `SEEK_START` 表示相对于文件开头，`SEEK_CURRENT` 表示相对于当前位置，`SEEK_END` 表示相对于文件末尾。
-     *
-     * Seeking to an offset before the start of the file is an error. Seeking to
-     * any positive offset is legal, but the behavior of subsequent I/O
-     * operations on the underlying object is implementation-dependent.
-     * @i18n 把偏移量设置到文件开始之前是错误的。
-     * 设置任何正偏移都是合法的，但是对于之后的 I/O 操作的行为则取决于实现。
-     */
-    seekSync(offset: number, whence: SeekMode): number;
   }
 
   export interface ReadCloser extends Reader, Closer {}
@@ -908,11 +891,10 @@ declare namespace Deno {
   export class File
     implements
       Reader,
-      SyncReader,
+      ReaderSync,
       Writer,
-      SyncWriter,
+      WriterSync,
       Seeker,
-      SyncSeeker,
       Closer {
     readonly rid: number;
     constructor(rid: number);
@@ -1054,7 +1036,7 @@ declare namespace Deno {
    *
    * Based on [Go Buffer](https://golang.org/pkg/bytes/#Buffer).
    * @i18n 基于 [Go Buffer](https://golang.org/pkg/bytes/#Buffer)。*/
-  export class Buffer implements Reader, SyncReader, Writer, SyncWriter {
+  export class Buffer implements Reader, ReaderSync, Writer, WriterSync {
     constructor(ab?: ArrayBuffer);
     /** Returns a slice holding the unread portion of the buffer.
      * @i18n 返回一个缓冲区未读部分的片段。
@@ -1145,7 +1127,7 @@ declare namespace Deno {
      * [Buffer.ReadFrom](https://golang.org/pkg/bytes/#Buffer.ReadFrom).
      * @i18n 基于 Go Lang 的
      * [Buffer.ReadFrom](https://golang.org/pkg/bytes/#Buffer.ReadFrom)。*/
-    readFromSync(r: SyncReader): number;
+    readFromSync(r: ReaderSync): number;
   }
 
   /** Read Reader `r` until end of file (`Deno.EOF`) and resolve to the content
@@ -1186,7 +1168,7 @@ declare namespace Deno {
    *       const reader = new Deno.Buffer(myData.buffer as ArrayBuffer);
    *       const bufferContent = Deno.readAllSync(reader);
    */
-  export function readAllSync(r: SyncReader): Uint8Array;
+  export function readAllSync(r: ReaderSync): Uint8Array;
 
   /** Write all the content of the array buffer (`arr`) to the writer (`w`).
    * @i18n 将所有 Array Buffer （`arr`）中的的内容写入到对象 （`w`） 中。
@@ -1229,7 +1211,7 @@ declare namespace Deno {
    *       Deno.writeAllSync(writer, contentBytes);
    *       console.log(writer.bytes().length);  // 11
    */
-  export function writeAllSync(w: SyncWriter, arr: Uint8Array): void;
+  export function writeAllSync(w: WriterSync, arr: Uint8Array): void;
 
   export interface MkdirOptions {
     /** Defaults to `false`. If set to `true`, means that any intermediate
