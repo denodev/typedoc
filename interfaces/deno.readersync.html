@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="renderer" content="webkit">
-	<title>SyncSeeker | Deno API 简体中文版</title>
+	<title>ReaderSync | Deno API 简体中文版</title>
 	<meta name="keywords" content="Deno,TypeScript,Typedoc,Document,文档,中文文档" />
 	<meta name="description" content="Deno 简体中文文档参考手册。本文档是非官方 Deno 简体中文文档，有中文开发者社区的志愿者们维护。">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,10 +45,10 @@
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class="current tsd-kind-interface tsd-parent-kind-namespace">
-			<a href="deno.syncseeker.html" class="tsd-kind-icon">Sync<wbr>Seeker</a>
+			<a href="deno.readersync.html" class="tsd-kind-icon">Reader<wbr>Sync</a>
 			<ul>
 				<li class=" tsd-kind-method tsd-parent-kind-interface">
-					<a href="deno.syncseeker.html#seeksync" class="tsd-kind-icon">seek<wbr>Sync</a>
+					<a href="deno.readersync.html#readsync" class="tsd-kind-icon">read<wbr>Sync</a>
 				</li>
 			</ul>
 		</li>
@@ -60,13 +60,14 @@
 			<h3>继承关系</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">SyncSeeker</span>
+					<span class="target">ReaderSync</span>
 				</li>
 			</ul>
 		</section>
 		<section class="tsd-panel">
 			<h3>被谁实现</h3>
 			<ul class="tsd-hierarchy">
+				<li><a href="../classes/deno.buffer.html" class="tsd-signature-type">Buffer</a></li>
 				<li><a href="../classes/deno.file.html" class="tsd-signature-type">File</a></li>
 			</ul>
 		</section>
@@ -77,7 +78,7 @@
 					<section class="tsd-index-section ">
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-method tsd-parent-kind-interface"><a href="deno.syncseeker.html#seeksync" class="tsd-kind-icon">seek<wbr>Sync</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-interface"><a href="deno.readersync.html#readsync" class="tsd-kind-icon">read<wbr>Sync</a></li>
 						</ul>
 					</section>
 				</div>
@@ -86,37 +87,59 @@
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Methods</h2>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-				<a name="seeksync" class="tsd-anchor"></a>
-				<h3>seek<wbr>Sync</h3>
+				<a name="readsync" class="tsd-anchor"></a>
+				<h3>read<wbr>Sync</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-					<li class="tsd-signature tsd-kind-icon">seek<wbr>Sync<span class="tsd-signature-symbol">(</span>offset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, whence<span class="tsd-signature-symbol">: </span><a href="../enums/deno.seekmode.html" class="tsd-signature-type">SeekMode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					<li class="tsd-signature tsd-kind-icon">read<wbr>Sync<span class="tsd-signature-symbol">(</span>p<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">unique symbol</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/1b7accf/lib.deno.ns.d.ts#L645">lib.deno.ns.d.ts:645</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/127fac9/lib.deno.ns.d.ts#L567">lib.deno.ns.d.ts:567</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead tsd_i18n">
-								<p>设置下一个 <code>read()</code> 或 <code>write()</code> 的偏移量，根据 <code>whence</code> 进行决定从哪个位置开始偏移：
-								<code>SEEK_START</code> 表示相对于文件开头，<code>SEEK_CURRENT</code> 表示相对于当前位置，<code>SEEK_END</code> 表示相对于文件末尾。</p>
+								<p>最多读取 <code>p.byteLength</code> 个字节到p中，然后返回读取的字节数（<code>0 &lt; n &lt;= p.byteLength</code>），并在遇到任何错误时返回拒绝状态的回调函数。
+									即使 <code>readSync()</code> 返回值为 <code>n &lt; p.byteLength</code>，p也可能在调用期间被用作临时空间。
+								如果有数据可用，但不存在 <code>p.byteLength</code>，<code>readSync()</code> 通常会返回可用值，而不是等待更多。</p>
 							</div>
 							<div class="lead tsd_en">
-								<p>Seek sets the offset for the next <code>readSync()</code> or <code>writeSync()</code> to
-									offset, interpreted according to <code>whence</code>: <code>SEEK_START</code> means relative
-									to the start of the file, <code>SEEK_CURRENT</code> means relative to the current
-								offset, and <code>SEEK_END</code> means relative to the end.</p>
+								<p>Reads up to <code>p.byteLength</code> bytes into <code>p</code>. It resolves to the number
+									of bytes read (<code>0</code> &lt; <code>n</code> &lt;= <code>p.byteLength</code>) and rejects if any error
+									encountered. Even if <code>read()</code> returns <code>n</code> &lt; <code>p.byteLength</code>, it may use
+									all of <code>p</code> as scratch space during the call. If some data is available
+									but not <code>p.byteLength</code> bytes, <code>read()</code> conventionally returns what is
+								available instead of waiting for more.</p>
 							</div>
 							<div class="tsd_i18n">
-								<p>把偏移量设置到文件开始之前是错误的。
-								设置任何正偏移都是合法的，但是对于之后的 I/O 操作的行为则取决于实现。</p>
+								<p>当 <code>readSync()</code> 遇到文件结束条件时，将返回 <code>Deno.EOF</code> 符号。</p>
 							</div>
 							<div class="tsd_en">
-								<p>Seeking to an offset before the start of the file is an error. Seeking to
-									any positive offset is legal, but the behavior of subsequent I/O
-								operations on the underlying object is implementation-dependent.</p>
+								<p>When <code>readSync()</code> encounters end-of-file condition, it returns <code>Deno.EOF</code>
+								symbol.</p>
+							</div>
+							<div class="tsd_i18n">
+								<p>当 <code>readSync()</code> 遇到错误时，它会返回拒绝状态的回调函数，参数值为错误信息。</p>
+							</div>
+							<div class="tsd_en">
+								<p>When <code>readSync()</code> encounters an error, it throws with an error.</p>
+							</div>
+							<div class="tsd_i18n">
+								<p>调用者应始终处理返回值为 <code>n &gt; 0</code> 的情况，然后再考虑 <code>EOF</code>。
+								应正确处理在读取一些字节以及两种被允许的EOF行为之后可能发生的 I/O 错误。</p>
+							</div>
+							<div class="tsd_en">
+								<p>Callers should always process the <code>n</code> &gt; <code>0</code> bytes returned before
+									considering the <code>EOF</code>. Doing so correctly handles I/O errors that happen
+								after reading some bytes and also both of the allowed EOF behaviors.</p>
+							</div>
+							<div class="tsd_i18n">
+								<p>实现不应保留对 <code>p</code> 的引用。</p>
+							</div>
+							<div class="tsd_en">
+								<p>Implementations should not retain a reference to <code>p</code>.</p>
 							</div>
 							<div class="tsd_en">
 							</div>
@@ -124,13 +147,10 @@
 						<h4 class="tsd-parameters-title">参数</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>offset: <span class="tsd-signature-type">number</span></h5>
-							</li>
-							<li>
-								<h5>whence: <a href="../enums/deno.seekmode.html" class="tsd-signature-type">SeekMode</a></h5>
+								<h5>p: <span class="tsd-signature-type">Uint8Array</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">返回 <span class="tsd-signature-type">number</span></h4>
+						<h4 class="tsd-returns-title">返回 <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">unique symbol</span></h4>
 					</li>
 				</ul>
 			</section>

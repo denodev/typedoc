@@ -97,7 +97,7 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/1b7accf/lib.deno.ns.d.ts#L2160">lib.deno.ns.d.ts:2160</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/127fac9/lib.deno.ns.d.ts#L2142">lib.deno.ns.d.ts:2142</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -108,9 +108,9 @@
 								<p>Resolves to the current status of a permission.</p>
 							</div>
 							<div class="tsd_en">
-								<pre><code>  const status = await Deno.permissions.query({ name: <span class="hljs-string">"read"</span>, path: <span class="hljs-string">"/etc"</span> });
-  if (status.<span class="hljs-keyword">state</span> === <span class="hljs-string">"granted"</span>) {
-    data = await Deno.readFile(<span class="hljs-string">"/etc/passwd"</span>);
+								<pre><code>  <span class="hljs-keyword">const</span> status = await Deno.permissions.query({ name: <span class="hljs-string">&quot;read&quot;</span>, path: <span class="hljs-string">&quot;/etc&quot;</span> });
+  if (status.<span class="hljs-keyword">state</span> === <span class="hljs-string">&quot;granted&quot;</span>) {
+    data = await Deno.readFile(<span class="hljs-string">&quot;/etc/passwd&quot;</span>);
   }</code></pre>
 							</div>
 						</div>
@@ -134,7 +134,7 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/1b7accf/lib.deno.ns.d.ts#L2180">lib.deno.ns.d.ts:2180</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/127fac9/lib.deno.ns.d.ts#L2162">lib.deno.ns.d.ts:2162</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -145,11 +145,11 @@
 								<p>Requests the permission, and resolves to the state of the permission.</p>
 							</div>
 							<div class="tsd_en">
-								<pre><code>  const status = await Deno.permissions.request({ name: <span class="hljs-string">"env"</span> });
-  if (status.<span class="hljs-keyword">state</span> === <span class="hljs-string">"granted"</span>) {
+								<pre><code>  <span class="hljs-keyword">const</span> status = await Deno.permissions.request({ name: <span class="hljs-string">&quot;env&quot;</span> });
+  if (status.<span class="hljs-keyword">state</span> === <span class="hljs-string">&quot;granted&quot;</span>) {
     console.<span class="hljs-keyword">log</span>(Deno.homeDir());
   } else {
-    console.<span class="hljs-keyword">log</span>(<span class="hljs-string">"'env' permission is denied."</span>);
+    console.<span class="hljs-keyword">log</span>(<span class="hljs-string">&quot;&#x27;env&#x27; permission is denied.&quot;</span>);
   }</code></pre>
 							</div>
 						</div>
@@ -173,7 +173,7 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/1b7accf/lib.deno.ns.d.ts#L2168">lib.deno.ns.d.ts:2168</a></li>
+								<li>定义在 <a href="https://github.com/denodev/typedoc/blob/127fac9/lib.deno.ns.d.ts#L2150">lib.deno.ns.d.ts:2150</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -184,8 +184,8 @@
 								<p>Revokes a permission, and resolves to the state of the permission.</p>
 							</div>
 							<div class="tsd_en">
-								<pre><code>  const status = await Deno.permissions.revoke({ name: <span class="hljs-string">"run"</span> });
-  assert(status.<span class="hljs-keyword">state</span> !== <span class="hljs-string">"granted"</span>)</code></pre>
+								<pre><code>  <span class="hljs-keyword">const</span> status = await Deno.permissions.revoke({ name: <span class="hljs-string">&quot;run&quot;</span> });
+  assert(status.<span class="hljs-keyword">state</span> !== <span class="hljs-string">&quot;granted&quot;</span>)</code></pre>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">参数</h4>
